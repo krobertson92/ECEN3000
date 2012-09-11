@@ -20,18 +20,40 @@
 // See crp.h header for more information
 __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
-// TODO: insert other include files here
+#include "driver_config.h"
+#include "target_config.h"
 
-// TODO: insert other definitions and declarations here
+#include "timer32.h"
+#include "gpio.h"
+
+extern int fibonacci(int index, int a, int b);
+
+int translateFib(int fibNum) {
+
+}
+
+void morse_pulse(uint8_t long_pulse){
+	if(long_pulse == 1){
+		init_timer32(0, LONG_PULSE_TIME);
+	}else{
+		init_timer32(0, SHORT_PULSE_TIME);
+	}
+	enable_timer32(0);
+	GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
+	__WFI();
+	init_timer32(0, DELAY_TIME);
+	enable_timer32(0);
+	GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+	__WFI();
+}
 
 int main(void) {
-	
-	// TODO: insert code here
-
-	// Enter an infinite loop, just incrementing a counter
-	volatile static int i = 0 ;
-	while(1) {
-		i++ ;
+	GPIOInit();//setup the gpio
+	GPIOSetDir( LED_PORT, LED_BIT, 1 );//setup the led pin as an output
+	fibonacci(20, 0, 1);
+	while(1){
+		morse_pulse(1);
+		morse_pulse(0);
 	}
 	return 0 ;
 }
