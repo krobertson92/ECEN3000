@@ -54,9 +54,20 @@ void TIMERInit() {
     LPC_SYSCON->SYSAHBCLKCTRL |= (1<<9);
 
     //set up 32 bit timer0
+    LPC_IOCON->PIO1_5 &= ~0x07;		//disable all functions on PIO1_5 (timer)
+    LPC_IOCON->PIO1_5 |= 0x02; 		//Selects function CT32B0_CAP0.
+    LPC_IOCON->PIO1_5 &= ~0x07;		//disable all functions on PIO1_6 (timer)
+    LPC_IOCON->PIO1_5 |= 0x02; 		//Selects function CT32B0_MAT0.
+    LPC_IOCON->PIO1_7 &= ~0x07;		//disable all functions on PIO1_6 (timer)
+    LPC_IOCON->PIO1_7 |= 0x02;		//selects function CT32B0_MAT1
+    LPC_IOCON->PIO0_1 &= ~0x07;		//disable all functions on PIO1_6 (timer)
+    LPC_IOCON->PIO0_1 |= 0x02;		//selects function CT32B0_MAT2
+
     LPC_TMR32B0->IR |= (1<<0);		//setup interrupt for timer0
     LPC_TMR32B0->TCR |= (1<<0); 	//enable counting for timer0
+    LPC_TMR32B0->MCR |= (0b11<<0);		//enable interrupt when counter reaches mr0
     LPC_TMR32B0->MR0 = 15000; 		//interrupt when counter reaches 15000 (1ms)
+    LPC_TMR32B0->CCR |= (0b101<<0);
 
     //enable interrupts
     NVIC_EnableIRQ(TIMER_32_0_IRQn);	//enable timer32_0 interupt
@@ -76,6 +87,7 @@ void PIOINT2_IRQHandler(void) {
 
 /* TIMER32 Interrupt Handler */
 void TIMER32_0_IRQHandler(void) {
+	//is_high=!is_high;
 	if(is_high)
 		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
 	else
@@ -89,7 +101,7 @@ int main(void) {
 
     /* Initialization code */
     GPIOInit();                   // Initialize GPIO ports for both Interrupts and LED control
-    //TIMERInit();                // Initialize Timer and Generate a 1ms interrupt
+    TIMERInit();                // Initialize Timer and Generate a 1ms interrupt
 
     /* Infinite looping */
     while(1);
