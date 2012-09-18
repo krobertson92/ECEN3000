@@ -54,9 +54,13 @@ void TIMERInit() {
     LPC_SYSCON->SYSAHBCLKCTRL |= (1<<9);
 
     //set up 32 bit timer0
-    LPC_TMR32B0->IR |= (1<<0);
+    LPC_TMR32B0->IR |= (1<<0);		//setup interrupt for timer0
+    LPC_TMR32B0->TCR |= (1<<0); 	//enable counting for timer0
+    LPC_TMR32B0->MR0 = 15000; 		//interrupt when counter reaches 15000 (1ms)
 
-
+    //enable interrupts
+    NVIC_EnableIRQ(TIMER_32_0_IRQn);	//enable timer32_0 interupt
+    NVIC_SetPriority(TIMER_32_0_IRQn,1);//set timer32_0 interrupt priority to 1
 }
 
 /* GPIO Interrupt Handler */
