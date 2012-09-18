@@ -74,6 +74,7 @@ void TIMERInit() {
     NVIC_SetPriority(TIMER_32_0_IRQn,1);//set timer32_0 interrupt priority to 1
 }
 
+uint8_t newInt;
 /* GPIO Interrupt Handler */
 void PIOINT2_IRQHandler(void) {
 	LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
@@ -81,13 +82,14 @@ void PIOINT2_IRQHandler(void) {
 		__asm("nop");
 		__asm("nop");
 
-	is_high=!is_high;
+	//is_high=!is_high;
+	newInt++;
 	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 }
 
 /* TIMER32 Interrupt Handler */
 void TIMER32_0_IRQHandler(void) {
-	//is_high=!is_high;
+	if(newInt>0){is_high=!is_high;}newInt=0;
 	if(is_high)
 		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
 	else
