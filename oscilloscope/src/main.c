@@ -56,6 +56,7 @@ void TIMERInit() {
     //set up 32 bit timer0
     LPC_TMR32B0->IR |= (1<<0);
 
+
 }
 
 /* GPIO Interrupt Handler */
@@ -64,23 +65,21 @@ void PIOINT2_IRQHandler(void) {
 	LPC_GPIO2->IC |= (1<<1); //clear interrupt
 		__asm("nop");
 		__asm("nop");
-	if(is_high)
-		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn off led
-	else
-		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn on led
+
 	is_high=!is_high;
 	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 }
 
 /* TIMER32 Interrupt Handler */
 void TIMER32_0_IRQHandler(void) {
-
-    /* Your code here */
-
+	if(is_high)
+		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn off led
+	else
+		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn on led
 }
 
 int main(void) {
-
+	//debug_printf();
 	is_high = 0;
 
     /* Initialization code */
