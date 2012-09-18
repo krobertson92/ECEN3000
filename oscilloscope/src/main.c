@@ -77,9 +77,10 @@ void PIOINT2_IRQHandler(void) {
 /* TIMER32 Interrupt Handler */
 void TIMER32_0_IRQHandler(void) {
 	if(is_high)
-		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn off led
+		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
 	else
-		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn on led
+		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn on led
+	LPC_TMR32B0->IR |= (1<<0);
 }
 
 int main(void) {
