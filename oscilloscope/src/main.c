@@ -88,8 +88,14 @@ void PIOINT2_IRQHandler(void) {
 }
 
 /* TIMER32 Interrupt Handler */
+uint8_t intCounterA;
+uint8_t intCounterB;
 void TIMER32_0_IRQHandler(void) {
-	if(newInt>0){is_high=!is_high;}newInt=0;
+	if(newInt>0){is_high=!is_high;}
+	intCounterA+=newInt;
+	intCounterB++;
+	if(intCounterB>=100){debug_printf(">> %f",intCounterA/(1000*100.0));intCounterA=0;intCounterB=0;}
+	newInt=0;
 	if(is_high)
 		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
 	else
