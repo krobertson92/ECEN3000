@@ -25,10 +25,19 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 // TODO: insert other definitions and declarations here
 
 /* GPIO and GPIO Interrupt Initialization */
+//see page 184
+//http://www.nxp.com/documents/user_manual/UM10398.pdf
 void GPIOInit() {
+	LPC_GPIO2->DIR&=(0xFFFF<<1);//Set Dir
+	LPC_GPIO2->IE|=(0x1<<1);	//Set Interrupt Mask
+	LPC_GPIO2->IS=0;			//Set Edge Sensitive
+	LPC_GPIO2->IEV=0x1;			//Rising Edge
 
-    /* Your code here */
-
+	NVIC_EnableIRQ(EINT2_IRQn);
+	NVIC_SetPriority(EINT2_IRQn,1);
+	//Enable LED
+	//*(*uint32_t)(LPC_AHB_BASE  + LPC_GPIO0_BASE + GPIOnDIR) = 0;//Set Dir
+	LPC_GPIO0->DIR|=0x;			//Set Dir
 }
 
 /* TIMER32 and TIMER32 Interrupt Initialization */
