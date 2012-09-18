@@ -11,7 +11,7 @@
 #ifdef __USE_CMSIS
 #include "LPC11xx.h"
 #endif
-
+#include "debug_printf.h"
 #include <cr_section_macros.h>
 #include <NXP/crp.h>
 

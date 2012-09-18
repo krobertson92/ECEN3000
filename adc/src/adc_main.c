@@ -12,8 +12,6 @@
 #include "target_config.h"
 
 #include "adc.h"
-#include "gpio.h"
-#include "timer32.h"
 #include "debug_printf.h"
 
 #ifdef ADC_DEBUG
@@ -82,45 +80,47 @@ int main (void)
 	   * from the startup code. SystemInit() and chip settings are defined
 	   * in the CMSIS system_<part family>.c file.
 	   */
+
   uint32_t i;
 
   /* Initialize ADC  */
   ADCInit( ADC_CLK );
 
-  /* LED Initialization code here */
-  GPIOSetDir( LED_PORT, LED_BIT, 1 );
-
-  //Init Timer
-  init_timer32(0, TIME_INTERVAL/10);
-  enable_timer32(0);
-  //(timer32_0_counter%(LED_TOGGLE_TICKS/COUNT_MAX))
-  uint8_t state=0;
-  timer32_0_counter=0;
-  int count=0;
   while(1)
   {
-	/* Read one sample from the ADC port 'AD0' */
-	ADCRead( 0 );
-	while ( !ADCIntDone );
-	ADCIntDone = 0;
-
-#ifdef ADC_DEBUG
-	/* Print ADC Voltage as a real-time bar graph */
+#if CONFIG_ADC_ENABLE_BURST_MODE==1				/* Interrupt driven only */
+	ADCBurstRead();
+	while ( !ADC0IntDone );
+	ADC0IntDone = 0;
+#else						/* Not burst mode */
+#if CONFIG_ADC_ENABLE_ADC_IRQHANDLER==1		/* Interrupt driven */
+	for ( i = 0; i < ADC_NUM; i++ )
+	{
+	  ADCRead( i );
+	  while ( !ADCIntDone );
+	  ADCIntDone = 0;
+	}
+#else  						/* Polling */
+	for ( i = 0; i < ADC_NUM; i++ )
+	{
+	  ADCValue[i] = ADCRead( i );
+	}
+#endif	/* Endif interrupt driven */
+#endif	/* Endif BURST mode */
+#ifdef SEMIHOSTED_ADC_OUTPUT
+#ifndef OUTPUT_ONLY_CH0
+	for ( i = 0; i < ADC_NUM; i++ )
+	{
+		ADCBar(i, ADCValue[i]);
+	}
+#else
 	ADCBar(0, ADCValue[0]);
 #endif
-
-	/* LED lighting and analog signal frequency calculation and printing code here */
-	if(ADCValue[0]*SUPPLY_VOLTAGE/ADC_COUNT_MAX > 1.0){
-		if(state==0){state=1;count++;if(count==20){count=0;debug_printf("Freq: %d \n",(int)(1/((timer32_0_counter*0.001f)/20)));timer32_0_counter=0;}}
-		GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-	}else{
-		if(state==1){state=0;}
-		GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+#endif
 	}
-
-  }
 }
 
 /******************************************************************************
 **                            End Of File
 ******************************************************************************/
+
