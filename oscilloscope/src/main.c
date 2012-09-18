@@ -82,7 +82,10 @@ void PIOINT2_IRQHandler(void) {
 		__asm("nop");
 		__asm("nop");
 
-	//is_high=!is_high;
+	//if(LPC_GPIO2->MASKED_ACCESS[(1<<1)])
+	//	is_high=1;
+	//else
+	//	is_high=0;
 	newInt++;
 	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 }
