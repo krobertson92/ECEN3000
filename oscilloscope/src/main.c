@@ -82,14 +82,20 @@ void PIOINT2_IRQHandler(void) {
 		__asm("nop");
 		__asm("nop");
 
-	//is_high=!is_high;
+	//if(LPC_GPIO2->MASKED_ACCESS[(1<<1)])
+	//	is_high=1;
+	//else
+	//	is_high=0;
 	newInt++;
 	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 }
 
 /* TIMER32 Interrupt Handler */
 void TIMER32_0_IRQHandler(void) {
-	if(newInt>0){is_high=!is_high;}newInt=0;
+	if(newInt>0){
+		is_high = !is_high;
+	}
+	newInt=0;
 	if(is_high)
 		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
 	else
