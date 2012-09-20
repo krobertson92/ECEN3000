@@ -25,7 +25,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 #define CONFIG_ENABLE_DRIVER_PRINTF 1
 
-//#include "debug_printf.h"
+#include "debug_printf.h"
 
 // TODO: insert other definitions and declarations here
 
@@ -72,7 +72,7 @@ void TIMERInit() {
     LPC_TMR32B0->IR |= (1<<0);		//setup interrupt for timer0
     LPC_TMR32B0->TCR |= (1<<0); 	//enable counting for timer0
     LPC_TMR32B0->MCR |= (0b11<<0);		//enable interrupt when counter reaches mr0
-    LPC_TMR32B0->MR0 = 150000; 		//interrupt when counter reaches 15000 (1ms)
+    LPC_TMR32B0->MR0 = 12000; 		//interrupt when counter reaches 15000 (1ms)
     LPC_TMR32B0->CCR |= (0b101<<0);
 
     //enable interrupts
@@ -83,7 +83,7 @@ void TIMERInit() {
 uint8_t newInt;
 // GPIO Interrupt Handler
 void PIOINT2_IRQHandler(void) {
-	LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
+	//LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
 	LPC_GPIO2->IC |= (1<<1); //clear interrupt
 		__asm("nop");
 		__asm("nop");
@@ -93,44 +93,55 @@ void PIOINT2_IRQHandler(void) {
 	//else
 	//	is_high=0;
 	newInt++;
-	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
+	//is_high = !is_high;
+	//LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 }
 
  //TIMER32 Interrupt Handler
 uint8_t intCounterA;
-uint8_t intCounterB;
+int intCounterB;
 uint8_t no_change;
 uint8_t freq;
+uint8_t current_state;
 void TIMER32_0_IRQHandler(void) {
+	LPC_TMR32B0->IR |= (1<<0);
 	//debug_printf("nochange: %d",no_change);
-	if(newInt>0){
-		is_high=!is_high;
+	/*intCounterA++;
+	if(is_high!=current_state){
+		//is_high=!is_high;
 		freq = (int)(1/(no_change*.001));
-		//debug_printf("freq: %d Hz\n", freq);
 		no_change = 0;
+		current_state = is_high;
+		newInt = 0;
+		if(is_high)
+			LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
+		else
+			LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn on led
 	}else{
 		//debug_printf("freq: %d Hz\n", freq);
 		no_change++;
 	}
-	/*intCounterA+=newInt;
-	intCounterB++;
-	if(intCounterB>=100){
-		//debug_printf(">> %d\n",(int)(intCounterA/(.1)));
-		intCounterA=0;
-		intCounterB=0;
+	if(intCounterA>100){
+		debug_printf("freq: %d Hz\n", freq);
+		intCounterA = 0;
+	}*/
+	if(newInt>0){
+		is_high=!is_high;
+		intCounterA++;
+		if(is_high)
+			LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
+		else
+			LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn on led
+		LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 	}
-	newInt=0;*/
-	if(is_high)
-		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
-	else
-		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn on led
-	LPC_TMR32B0->IR |= (1<<0);
+		intCounterB++;
+		if(intCounterB>=2000){debug_printf(">> %d\n",(int)(intCounterA/(1)));intCounterA=0;intCounterB=0;}
+		newInt=0;
 }
 
 int main(void) {
-
-	//debug_printf();
 	is_high = 0;
+	current_state = 0;
 	no_change = 0;
 	freq = 0;
 
