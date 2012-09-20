@@ -94,14 +94,14 @@ void PIOINT2_IRQHandler (void) ALIAS(IntDefaultHandler);
 void PIOINT1_IRQHandler (void) ALIAS(IntDefaultHandler);
 void PIOINT0_IRQHandler (void) ALIAS(IntDefaultHandler);
 void WAKEUP_IRQHandler  (void) ALIAS(IntDefaultHandler);
-/*extern void WAKEUP1_IRQHandler();
+extern void WAKEUP1_IRQHandler();
 extern void WAKEUP2_IRQHandler();
 extern void WAKEUP3_IRQHandler();
 extern void WAKEUP6_IRQHandler();
 extern void WAKEUP7_IRQHandler();
 extern void WAKEUP8_IRQHandler();
 extern void WAKEUP9_IRQHandler();
-extern void WAKEUP11_IRQHandler();*/
+extern void WAKEUP11_IRQHandler();
 
 //*****************************************************************************
 //
@@ -161,17 +161,17 @@ void (* const g_pfnVectors[])(void) = {
     //   PIO0 (0:11)
     //   PIO1 (0)
     WAKEUP_IRQHandler,                      // PIO0_0  Wakeup
-    //WAKEUP1_IRQHandler,                      // PIO0_1  Wakeup
-    //WAKEUP2_IRQHandler,                      // PIO0_2  Wakeup
-    //WAKEUP3_IRQHandler,                      // PIO0_3  Wakeup
+    WAKEUP1_IRQHandler,                      // PIO0_1  Wakeup
+    WAKEUP2_IRQHandler,                      // PIO0_2  Wakeup
+    WAKEUP3_IRQHandler,                      // PIO0_3  Wakeup
     WAKEUP_IRQHandler,                      // PIO0_4  Wakeup
     WAKEUP_IRQHandler,                      // PIO0_5  Wakeup
-    //WAKEUP6_IRQHandler,                      // PIO0_6  Wakeup
-    //WAKEUP7_IRQHandler,                      // PIO0_7  Wakeup
-    //WAKEUP8_IRQHandler,                      // PIO0_8  Wakeup
-    //WAKEUP9_IRQHandler,                      // PIO0_9  Wakeup
+    WAKEUP6_IRQHandler,                      // PIO0_6  Wakeup
+    WAKEUP7_IRQHandler,                      // PIO0_7  Wakeup
+    WAKEUP8_IRQHandler,                      // PIO0_8  Wakeup
+    WAKEUP9_IRQHandler,                      // PIO0_9  Wakeup
     WAKEUP_IRQHandler,                      // PIO0_10 Wakeup
-    //WAKEUP11_IRQHandler,                    // PIO0_11 Wakeup
+    WAKEUP11_IRQHandler,                    // PIO0_11 Wakeup
     WAKEUP_IRQHandler,                      // PIO1_0  Wakeup
     
     CAN_IRQHandler,							// C_CAN Interrupt

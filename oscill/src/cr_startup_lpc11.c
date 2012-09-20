@@ -252,8 +252,8 @@ extern unsigned int _ebss;
 // library.
 //*****************************************************************************
 __attribute__ ((section(".after_vectors")))
-void
-ResetISR(void) {
+/*
+void ResetISR(void) {
 
 #ifndef USE_OLD_STYLE_DATA_BSS_INIT
     //
@@ -311,6 +311,57 @@ ResetISR(void) {
 #if defined (__REDLIB__)
 	// Call the Redlib library, which in turn calls main()
 	__main() ;
+#else
+	main();
+#endif
+	//
+	// main() shouldn't return, but if it does, we'll just enter an infinite loop
+	//
+	while (1) {
+		;
+	}
+}
+*/
+
+
+extern unsigned long _etext;
+extern unsigned long _data;
+extern unsigned long _edata;
+extern unsigned long _bss;
+extern unsigned long _ebss;
+void ResetISR(void)
+{
+    unsigned char *pulSrc, *pulDest;
+
+    //
+    // Copy the data segment initializers from flash to SRAM.
+    //
+    pulSrc = (unsigned char *)&_etext;
+    for(pulDest = (unsigned char *)&_data; pulDest < (unsigned char *)&_edata; )
+    {
+        *pulDest++ = *pulSrc++;
+    }
+
+    //
+    // Zero fill the bss segment.
+    //
+	for(pulDest = (unsigned char *)&_bss; pulDest < (unsigned char *)&_ebss; pulDest++)
+	  *pulDest = 0;
+
+#ifdef __USE_CMSIS
+	SystemInit();
+#endif
+
+#if defined (__cplusplus)
+	//
+	// Call C++ library initialisation
+	//
+	__libc_init_array();
+#endif
+
+#if defined (__REDLIB__)
+	// Call the Redlib library, which in turn calls main()
+		__main() ;
 #else
 	main();
 #endif
