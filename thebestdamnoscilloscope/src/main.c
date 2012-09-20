@@ -135,7 +135,7 @@ void TIMER32_0_IRQHandler(void) {
 		LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 	}
 		intCounterB++;
-		if(intCounterB>=2000){debug_printf(">> %d\n",(int)(intCounterA/(1)));intCounterA=0;intCounterB=0;}
+		if(intCounterB>=2000){debug_printf(">> %d\n",(int)(intCounterA/(4)));intCounterA=0;intCounterB=0;}
 		newInt=0;
 }
 
