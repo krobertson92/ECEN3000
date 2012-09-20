@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>oscilloscope</name>
+	<name>digosc</name>
 	<comment></comment>
 	<projects>
 		<project>CMSISv1p30_LPC11xx</project>
@@ -32,7 +32,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/oscilloscope/Debug}</value>
+					<value>${workspace_loc:/digosc/Debug}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
@@ -80,26 +80,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Lib</name>
-			<type>2</type>
-			<location>C:/Users/Keith Robertson/Documents/ECEN3000/lib_small_printf_m0/Lib</location>
-		</link>
-		<link>
-			<name>inc</name>
-			<type>2</type>
-			<location>C:/Users/Keith Robertson/Documents/ECEN3000/lib_small_printf_m0/inc</location>
-		</link>
-		<link>
-			<name>lib_small_printf_m0</name>
-			<type>2</type>
-			<location>C:/Users/Keith Robertson/Documents/ECEN3000/lib_small_printf_m0</location>
-		</link>
-		<link>
-			<name>printf_src</name>
-			<type>2</type>
-			<location>C:/Users/Keith Robertson/Documents/ECEN3000/lib_small_printf_m0/src</location>
-		</link>
-	</linkedResources>
 </projectDescription>

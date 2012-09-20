@@ -18,8 +18,13 @@
 // Variable to store CRP value in. Will be placed automatically
 // by the linker when "Enable Code Read Protect" selected.
 // See crp.h header for more information
+
 __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
+#define CONFIG_ENABLE_DRIVER_CRP						1
+#define CONFIG_CRP_SETTING_NO_CRP						1
+
 #define CONFIG_ENABLE_DRIVER_PRINTF 1
+
 #include "debug_printf.h"
 
 // TODO: insert other definitions and declarations here
@@ -27,6 +32,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 /* GPIO and GPIO Interrupt Initialization */
 //see page 184
 //http://www.nxp.com/documents/user_manual/UM10398.pdf
+
 
 uint8_t is_high;
 
@@ -48,7 +54,7 @@ void GPIOInit() {
 	LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (0<<7); //turn off led
 }
 
-/* TIMER32 and TIMER32 Interrupt Initialization */
+// TIMER32 and TIMER32 Interrupt Initialization
 void TIMERInit() {
 	//set up the clock
     LPC_SYSCON->SYSAHBCLKCTRL |= (1<<9);
@@ -66,7 +72,7 @@ void TIMERInit() {
     LPC_TMR32B0->IR |= (1<<0);		//setup interrupt for timer0
     LPC_TMR32B0->TCR |= (1<<0); 	//enable counting for timer0
     LPC_TMR32B0->MCR |= (0b11<<0);		//enable interrupt when counter reaches mr0
-    LPC_TMR32B0->MR0 = 15000; 		//interrupt when counter reaches 15000 (1ms)
+    LPC_TMR32B0->MR0 = 150000; 		//interrupt when counter reaches 15000 (1ms)
     LPC_TMR32B0->CCR |= (0b101<<0);
 
     //enable interrupts
@@ -75,7 +81,7 @@ void TIMERInit() {
 }
 
 uint8_t newInt;
-/* GPIO Interrupt Handler */
+// GPIO Interrupt Handler
 void PIOINT2_IRQHandler(void) {
 	LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
 	LPC_GPIO2->IC |= (1<<1); //clear interrupt
@@ -90,15 +96,30 @@ void PIOINT2_IRQHandler(void) {
 	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 }
 
-/* TIMER32 Interrupt Handler */
+ //TIMER32 Interrupt Handler
 uint8_t intCounterA;
 uint8_t intCounterB;
+uint8_t no_change;
+uint8_t freq;
 void TIMER32_0_IRQHandler(void) {
-	if(newInt>0){is_high=!is_high;}
-	intCounterA+=newInt;
+	debug_printf("nochange: %d",no_change);
+	if(newInt>0){
+		is_high=!is_high;
+		freq = (int)(1/(no_change*.001));
+		debug_printf("freq: %d Hz\n", freq);
+		no_change = 0;
+	}else{
+		debug_printf("freq: %d Hz\n", freq);
+		no_change++;
+	}
+	/*intCounterA+=newInt;
 	intCounterB++;
-	if(intCounterB>=100){debug_printf(">> %f",intCounterA/(1000*100.0));intCounterA=0;intCounterB=0;}
-	newInt=0;
+	if(intCounterB>=100){
+		//debug_printf(">> %d\n",(int)(intCounterA/(.1)));
+		intCounterA=0;
+		intCounterB=0;
+	}
+	newInt=0;*/
 	if(is_high)
 		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led
 	else
@@ -107,10 +128,13 @@ void TIMER32_0_IRQHandler(void) {
 }
 
 int main(void) {
+
 	//debug_printf();
 	is_high = 0;
+	no_change = 0;
+	freq = 0;
 
-    /* Initialization code */
+    // Initialization code
     GPIOInit();                   // Initialize GPIO ports for both Interrupts and LED control
     TIMERInit();                // Initialize Timer and Generate a 1ms interrupt
 

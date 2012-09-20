@@ -1,5 +1,5 @@
 /***********************************************************************
- * $Id:: small_utils.c 4181 2010-08-03 23:14:09Z nxp28548              $
+ * $Id:: small_printf.h 4181 2010-08-03 23:14:09Z nxp28548             $
  *
  * Description:
  *     Small printf library based on LGPL code- see following header.
@@ -49,76 +49,47 @@ replace outbyte(c) by your own function call.
 
 #define putchar(c) outbyte(c)
 */
+#ifndef SMALLPRINTF_H_INCLUDED
+#define SMALLPRINTF_H_INCLUDED
+#include <stdarg.h>
 
-#include "../inc/small_utils.h"
+typedef int (*fp_printf_write_func)(char c);
 
-int small_strlen(const char *str)
-{
-    const char *p = str;
 
-    while(*p)
-        p++;
+extern int func_printf_nofloat(const fp_printf_write_func printf_write, const char *format, ...)
+	__attribute__ ((format (printf, 2, 3)));
 
-    return p-str;
-}
+extern int printf_format_nofloat(const fp_printf_write_func printf_write, const char *format, va_list varg);
 
-int small_strcmp(const char *str1, const char *str2)
-{
-    while(*str1 && *str2 && (*str1)==(*str2))
-        str1++,str2++;
-    return *str2 - *str1;
-}
+// We don't implement sprintf because of the risk of buffer overruns
+extern int snprintf_nofloat(char *buffer, int buffer_length, const char *format, ...)
+    __attribute__ ((format (printf, 3, 4)));
 
-#define CMPIC(a, b) (((a)>='A' && (a)<='Z' ? (a)-'A' + 'a' : (a)) == ((b)>='A' && (b)<='Z' ? (b)-'A' + 'a' : (b)))
-int small_stricmp(const char *str1, const char *str2)
-{
-    while(*str1 && *str2 && CMPIC(*str1,*str2))
-        str1++,str2++;
-    return *str2 - *str1;
-}
+extern int func_printf_float(const fp_printf_write_func printf_write, const char *format, ...)
+	__attribute__ ((format (printf, 2, 3)));
 
-void small_strim(char *str)
-{
-    char *p = &str[small_strlen(str)];
+extern int printf_format_float(const fp_printf_write_func printf_write, const char *format, va_list varg);
 
-    while(p-- >= str)
-    {
-        if(*p == '\r' || *p == '\n' || *p == '\t' || *p == ' ')
-            *p = 0;
-    }
-}
+// We don't implement sprintf because of the risk of buffer overruns
+extern int snprintf_float(char *buffer, int buffer_length, const char *format, ...)
+    __attribute__ ((format (printf, 3, 4)));
 
-unsigned long gethex(const char *s)
-{
-    unsigned long value = 0;
-    unsigned char n;
+// Internal functions defined in small_printf_support.c
+// Used by small_printf.c and small_printf_float.c which should be identical except for
+// #define enabling and disabling float at the top
+int prints(const fp_printf_write_func printf_write, const char *string, int width, int pad);
+int printi(const fp_printf_write_func printf_write, int i, int b, int sg, int width, int pad, int letbase);
+void nsprintf_write_init();
+int nsprintf_write(char c);
 
-    while(1)
-    {
+#ifdef LIB_FLOAT_PRINTF
+#define func_printf(...)	( func_printf_float(__VA_ARGS__))
+#define printf_format(...) 	( printf_format_float(__VA_ARGS__))
+#define snprintf(...) 		( snprintf_float(__VA_ARGS__))
+#else
+#define func_printf(...) 	( func_printf_nofloat(__VA_ARGS__))
+#define printf_format(...) 	( printf_format_nofloat(__VA_ARGS__))
+#define snprintf(...) 		( snprintf_nofloat(__VA_ARGS__))
+#endif
 
-        // if letter from a-f convert to uppercase
-        if(*s >= 'a' && *s <= 'f')
-            n = *s - 'a' + 10;
-        else if(*s >= 'A' && *s <= 'F')
-            n = *s - 'A' + 10;
-        else if(*s >= '0' && *s <= '9')
-            n = *s - '0';
-        else
-            return value;
-
-        value = (value<<4) | n;
-        s++;
-    }
-    return value;
-}
-
-double small_fmodf(double f, double div)
-{
-    if(f<0)
-        f = -f;
-    if(div<0)
-        div = -div;
-    while(f>div)
-        f -= div;
-    return f;
-}
+#endif
