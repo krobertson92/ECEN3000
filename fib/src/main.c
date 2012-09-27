@@ -282,6 +282,30 @@ void EnterDeepSleep(void)
     __WFI();                            // Enter deep sleep mode (sleep mode in DEBUG)
 }
 
+int runFib(int mhzA){
+	//mhzA MHz setup begin
+	LPC_SYSCON->MAINCLKSEL = 0x01;              //main clock source is the PLL input
+	LPC_SYSCON->MAINCLKUEN = 0x00;              //update the main clock source...
+	LPC_SYSCON->MAINCLKUEN = 0x01;              //...
+	for (i = 0; i != 10000; i++);               //wait for a while
+	command[0] = mhzA;                            //system freq 48 MHz
+	command[1] = PARAM_LOW_CURRENT;             //specify system power for low active current
+	(*rom)->pPWRD->set_power(command,result);   //set system power
+	if (result[0] != PARAM_CMD_CUCCESS){        //if a failure is reported...
+		while(1);                               //... stay in the loop
+	}
+	command[0] = 12000;                         //PLL's input freq 12000
+	command[1] = 1000*mhzA;                         //CPU's freq 48000
+	command[2] = CPU_FREQ_EQU;                  //specify exact frequency
+	command[3] = 0;                             //infinitely wait for the PLL to lock
+	(*rom)->pPWRD->set_pll(command,result);     //set the PLL
+	if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
+		while(1);                               //... stay in the loop
+	}
+	fibonacci(30);
+	//mhzA MHz setup end
+}
+
 int initSleep(){
 	LPC_SYSCON->PDRUNCFG      = BF_PDRUNCFG_RUN; // Initialize power to chip modules
     LPC_SYSCON->SYSAHBCLKCTRL = BF_SYSAHBCLKCTRL_RUN; // Initialize clocks
@@ -293,7 +317,11 @@ int main(void) {
 	initSleep();
 	*((int*)GPREG0)=0;
 	while(1){
-		fibonacci(30);
+		runFib(48);
+		runFib(24);
+		runFib(12);
+		runFib(3);
+		//fibonacci(30);
 		EnterDeepSleep();
 		(*(int*)GPREG0)++;
 		int wakeTemp=*((int*)GPREG0);
