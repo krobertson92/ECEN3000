@@ -33,6 +33,7 @@
 #include "timer16.h"
 
 #include "wakeupdefs.h"
+#include "rom_drivers.h"
 
 // Configuration for normal operation
 // If other peripherals are used, they need to be added to the _RUN macro

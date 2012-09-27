@@ -8,6 +8,8 @@
 ===============================================================================
 */
 
+#include "rom_drivers.h"
+
 #ifdef __USE_CMSIS
 #include "LPC11xx.h"
 #endif
@@ -19,7 +21,6 @@
 // by the linker when "Enable Code Read Protect" selected.
 // See crp.h header for more information
 __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
-
 #include "driver_config.h"
 #include "target_config.h"
 
@@ -70,6 +71,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #define GPREG0 0x40038004
 
 unsigned long i=0;
+unsigned int command[5], result[5];             //command and result arrays
 
 //
 // END Normal Config
@@ -282,10 +284,9 @@ void EnterDeepSleep(void)
     __WFI();                            // Enter deep sleep mode (sleep mode in DEBUG)
 }
 
-int runFib(int mhzA){
+void runFib(int mhzA){
 	//mhzA MHz setup begin
 	LPC_SYSCON->MAINCLKSEL = 0x01;              //main clock source is the PLL input
-	/*
 	LPC_SYSCON->MAINCLKUEN = 0x00;              //update the main clock source...
 	LPC_SYSCON->MAINCLKUEN = 0x01;              //...
 	for (i = 0; i != 10000; i++);               //wait for a while
@@ -302,7 +303,7 @@ int runFib(int mhzA){
 	(*rom)->pPWRD->set_pll(command,result);     //set the PLL
 	if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
 		while(1);                               //... stay in the loop
-	}*/
+	}
 	fibonacci(30);
 	//mhzA MHz setup end
 }
