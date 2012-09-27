@@ -25,6 +25,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 #include "timer32.h"
 #include "gpio.h"
+#include "debug_printf.h"
 
 extern int fibonacci(int index, int a, int b);
 

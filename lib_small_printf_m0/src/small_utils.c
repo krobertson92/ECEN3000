@@ -50,7 +50,7 @@ replace outbyte(c) by your own function call.
 #define putchar(c) outbyte(c)
 */
 
-#include "small_utils.h"
+#include "../inc/small_utils.h"
 
 int small_strlen(const char *str)
 {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="C Source File">
+<includepath>cmsis</includepath>
+<includepath>/lib_small_printf_m0/inc</includepath>
+<includepath>config</includepath>
+<includepath>driver</includepath>
+
+</language>
+<language name="Additional Assembly Source Files">
+<includepath>cmsis</includepath>
+<includepath>/lib_small_printf_m0/inc</includepath>
+<includepath>config</includepath>
+<includepath>driver</includepath>
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="C Source File">
+<macro>
+<name>__REDLIB__</name><value/>
+</macro>
+<macro>
+<name>__USE_CMSIS</name><value/>
+</macro>
+<macro>
+<name>DEBUG</name><value/>
+</macro>
+<macro>
+<name>__CODE_RED</name><value/>
+</macro>
+
+</language>
+<language name="Additional Assembly Source Files">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>

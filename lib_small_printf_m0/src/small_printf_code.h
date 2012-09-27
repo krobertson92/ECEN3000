@@ -49,11 +49,12 @@ replace outbyte(c) by your own function call.
 
 #define putchar(c) outbyte(c)
 */
-
+#ifndef _small_printf_code_h_wtf_
+#define _small_printf_code_h_wtf_
 #include <stdint.h>
 #include <stdarg.h>
-#include "small_printf.h"
-#include "small_utils.h"
+#include "../inc/small_printf.h"
+#include "../inc/small_utils.h"
 
 #define PAD_RIGHT 1
 #define PAD_ZERO 2
@@ -345,4 +346,5 @@ return 0;
 * -3:   -3 right justif.
 */
 
+#endif
 #endif

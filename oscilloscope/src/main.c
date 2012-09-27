@@ -11,7 +11,7 @@
 #ifdef __USE_CMSIS
 #include "LPC11xx.h"
 #endif
-//#include "debug_printf.h"
+
 #include <cr_section_macros.h>
 #include <NXP/crp.h>
 #include "debug_printf.h"
@@ -19,8 +19,8 @@
 // by the linker when "Enable Code Read Protect" selected.
 // See crp.h header for more information
 __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
-
-// TODO: insert other include files here
+#define CONFIG_ENABLE_DRIVER_PRINTF 1
+#include "debug_printf.h"
 
 // TODO: insert other definitions and declarations here
 

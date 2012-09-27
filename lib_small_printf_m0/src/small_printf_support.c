@@ -54,8 +54,8 @@ replace outbyte(c) by your own function call.
 
 #include <stdint.h>
 #include <stdarg.h>
-#include "small_printf.h"
-#include "small_utils.h"
+#include "../inc/small_printf.h"
+#include "../inc/small_utils.h"
 
 #define PAD_RIGHT 1
 #define PAD_ZERO 2
