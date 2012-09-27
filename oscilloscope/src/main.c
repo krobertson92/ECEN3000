@@ -14,7 +14,7 @@
 
 #include <cr_section_macros.h>
 #include <NXP/crp.h>
-
+#include "debug_printf.h"
 // Variable to store CRP value in. Will be placed automatically
 // by the linker when "Enable Code Read Protect" selected.
 // See crp.h header for more information
@@ -66,7 +66,7 @@ void TIMERInit() {
     LPC_TMR32B0->IR |= (1<<0);		//setup interrupt for timer0
     LPC_TMR32B0->TCR |= (1<<0); 	//enable counting for timer0
     LPC_TMR32B0->MCR |= (0b11<<0);		//enable interrupt when counter reaches mr0
-    LPC_TMR32B0->MR0 = 15000; 		//interrupt when counter reaches 15000 (1ms)
+    LPC_TMR32B0->MR0 = 1500000; 		//interrupt when counter reaches 15000 (1ms)..15000
     LPC_TMR32B0->CCR |= (0b101<<0);
 
     //enable interrupts
@@ -78,7 +78,6 @@ uint8_t newInt;
 /* GPIO Interrupt Handler */
 void PIOINT2_IRQHandler(void) {
 	LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
-	LPC_GPIO2->IC |= (1<<1); //clear interrupt
 		__asm("nop");
 		__asm("nop");
 
@@ -88,16 +87,17 @@ void PIOINT2_IRQHandler(void) {
 	//	is_high=0;
 	newInt++;
 	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
+	LPC_GPIO2->IC |= (1<<1); //clear interrupt
 }
 
 /* TIMER32 Interrupt Handler */
 uint8_t intCounterA;
 uint8_t intCounterB;
 void TIMER32_0_IRQHandler(void) {
-	if(newInt>0){is_high=!is_high;}
+	if(newInt>0){is_high=(is_high==0?1:0);}//is_high;}
 	intCounterA+=newInt;
 	intCounterB++;
-	if(intCounterB>=100){debug_printf(">> %f",intCounterA/(1000*100.0));intCounterA=0;intCounterB=0;}
+	//if(intCounterB>=100){debug_printf(">> %f",intCounterA/(1000*100.0));intCounterA=0;intCounterB=0;}
 	newInt=0;
 	if(is_high)
 		LPC_GPIO0->MASKED_ACCESS[(1<<7)] = (1<<7); //turn off led

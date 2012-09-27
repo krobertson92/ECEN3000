@@ -36,6 +36,10 @@
 								<option id="gnu.c.compiler.option.misc.other.1254659535" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections" valueType="string"/>
 								<option id="com.crt.advproject.gcc.hdrlib.144349337" name="Use headers for C library" superClass="com.crt.advproject.gcc.hdrlib" value="com.crt.advproject.gcc.hdrlib.codered" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.965869799" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+<<<<<<< HEAD
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_small_printf}&quot;"/>
+=======
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/CMSISv1p30_LPC11xx/inc}&quot;"/>
 								</option>
 								<inputType id="com.crt.advproject.compiler.input.259894280" superClass="com.crt.advproject.compiler.input"/>
@@ -45,6 +49,12 @@
 								<option id="com.crt.advproject.gas.thumb.955026779" name="Thumb mode" superClass="com.crt.advproject.gas.thumb" value="true" valueType="boolean"/>
 								<option id="gnu.both.asm.option.flags.crt.2060554411" name="Assembler flags" superClass="gnu.both.asm.option.flags.crt" value="-c -x assembler-with-cpp -D__REDLIB__ -DDEBUG -D__CODE_RED" valueType="string"/>
 								<option id="com.crt.advproject.gas.hdrlib.1262605929" name="Use headers for C library" superClass="com.crt.advproject.gas.hdrlib" value="com.crt.advproject.gas.hdrlib.codered" valueType="enumerated"/>
+<<<<<<< HEAD
+								<option id="gnu.both.asm.option.include.paths.670813112" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_small_printf}&quot;"/>
+								</option>
+=======
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 								<inputType id="com.crt.advproject.assembler.input.181198484" name="Additional Assembly Source Files" superClass="com.crt.advproject.assembler.input"/>
 							</tool>
 							<tool id="com.crt.advproject.link.cpp.exe.debug.377746807" name="MCU C++ Linker" superClass="com.crt.advproject.link.cpp.exe.debug"/>
@@ -63,6 +73,10 @@
 									<listOptionValue builtIn="false" value="CMSISv1p30_LPC11xx"/>
 								</option>
 								<option id="gnu.c.link.option.paths.1827201175" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
+<<<<<<< HEAD
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_small_printf/Debug}&quot;"/>
+=======
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/CMSISv1p30_LPC11xx/Debug}&quot;"/>
 								</option>
 								<option id="com.crt.advproject.link.crpenable.1233085641" name="Enable Code Read Protect" superClass="com.crt.advproject.link.crpenable" value="true" valueType="boolean"/>
@@ -126,9 +140,21 @@
 					</sourceEntries>
 				</configuration>
 			</storageModule>
+<<<<<<< HEAD
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="lib_small_printf_m0;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/lib_small_printf"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/lib_small_printf/Debug"/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+=======
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 			<storageModule moduleId="scannerConfiguration">
 				<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 				<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -354,6 +380,8 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+<<<<<<< HEAD
+=======
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.506825337;com.crt.advproject.gcc.exe.debug.840972508;com.crt.advproject.compiler.input.1969549032">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -467,6 +495,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.;com.crt.advproject.gcc.exe.debug.1197594576;com.crt.advproject.compiler.input.259894280">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -580,6 +609,8 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+<<<<<<< HEAD
+=======
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.1613092418;com.crt.advproject.gas.exe.debug.954275157;com.crt.advproject.assembler.input.2043532204">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -1597,6 +1628,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.;com.crt.advproject.gas.exe.debug.386359305;com.crt.advproject.assembler.input.181198484">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -1790,7 +1822,10 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<<<<<<< HEAD
+=======
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 			<storageModule moduleId="scannerConfiguration">
 				<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 				<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -2016,6 +2051,8 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+<<<<<<< HEAD
+=======
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.506825337;com.crt.advproject.gcc.exe.debug.840972508;com.crt.advproject.compiler.input.1969549032">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -2129,6 +2166,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.;com.crt.advproject.gcc.exe.debug.1197594576;com.crt.advproject.compiler.input.259894280">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -2242,6 +2280,8 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+<<<<<<< HEAD
+=======
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.1613092418;com.crt.advproject.gas.exe.debug.954275157;com.crt.advproject.assembler.input.2043532204">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
@@ -3259,6 +3299,7 @@
 						</scannerInfoProvider>
 					</profile>
 				</scannerConfigBuildInfo>
+>>>>>>> d783b5193d1e2af8905507b14adc54f75dd15294
 				<scannerConfigBuildInfo instanceId="com.crt.advproject.config.exe.debug.569900292;com.crt.advproject.config.exe.debug.569900292.;com.crt.advproject.gas.exe.debug.386359305;com.crt.advproject.assembler.input.181198484">
 					<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="com.crt.advproject.GCCManagedMakePerProjectProfile"/>
 					<profile id="com.crt.advproject.GCCManagedMakePerProjectProfileCPP">
