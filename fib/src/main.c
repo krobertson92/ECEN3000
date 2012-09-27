@@ -27,7 +27,19 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #include "gpio.h"
 #include "debug_printf.h"
 
-extern int fibonacci(int index, int a, int b);
+//extern int fibonacci(int index, int a, int b);
+
+int fibonacci(int n)
+{
+    int c;
+
+    if (n == 1 || n == 2)
+        return 1;
+
+    c = fibonacci(n-2) + fibonacci(n-1);
+
+    return c;
+}
 
 int translateFib(int fibNum) {
 
@@ -51,7 +63,7 @@ void morse_pulse(uint8_t long_pulse){
 int main(void) {
 	GPIOInit();//setup the gpio
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );//setup the led pin as an output
-	fibonacci(20, 0, 1);
+	fibonacci(20);
 	while(1){
 		morse_pulse(1);
 		morse_pulse(0);

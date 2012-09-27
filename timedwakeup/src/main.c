@@ -56,7 +56,7 @@
 
 // When changing any of the values below, check that none of the
 // 16-bit timer code overflows
-#define PROCDURATION_MS			50
+#define PROCDURATION_MS			10000
 #define  LEDDURATION_MS         50
 #define WAKEDURATION_MS			(PROCDURATION_MS + LEDDURATION_MS)
 #define SLEEPDURATION_MS        200
@@ -74,6 +74,7 @@ int main(void)
     while(1)
     {
         Wait1mS(PROCDURATION_MS); // Active mode: Do some work
+        //while(1);
 #ifdef FLASH_LED
         SetBitsPort0(1<<7);  // Turn on LED on LPCXpresso board
 #else

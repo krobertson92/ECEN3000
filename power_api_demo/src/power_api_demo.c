@@ -108,7 +108,9 @@ int main (void)
         if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
             while(1);                               //... stay in the loop
         }
-        for (i = 0; i != 10000; i++);
+        for (i = 0; i != 1000000; i++);
+
+
         //48 MHz setup end
 
         //24 MHz setup begin
@@ -131,6 +133,7 @@ int main (void)
             while(1);                               //... stay in the loop
         }
         for (i = 0; i != 5000; i++);
+
         //24 MHz setup end
 
         //18 MHz setup begin
@@ -153,6 +156,8 @@ int main (void)
             while(1);                               //... stay in the loop
         }
         for (i = 0; i != 3750; i++);
+        while(1);
+
         //18 MHz setup end
 
         //3 MHz setup begin
@@ -175,6 +180,7 @@ int main (void)
             while(1);                               //... stay in the loop
         }
         for (i = 0; i != 625; i++);
+
         //3 MHz setup end
     }
 }

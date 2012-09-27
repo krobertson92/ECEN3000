@@ -72,7 +72,7 @@ void TIMERInit() {
     LPC_TMR32B0->IR |= (1<<0);		//setup interrupt for timer0
     LPC_TMR32B0->TCR |= (1<<0); 	//enable counting for timer0
     LPC_TMR32B0->MCR |= (0b11<<0);		//enable interrupt when counter reaches mr0
-    LPC_TMR32B0->MR0 = 12000; 		//interrupt when counter reaches 15000 (1ms)
+    LPC_TMR32B0->MR0 = 6000; 		//interrupt when counter reaches 12000 (.5ms)
     LPC_TMR32B0->CCR |= (0b101<<0);
 
     //enable interrupts
@@ -83,7 +83,7 @@ void TIMERInit() {
 uint8_t newInt;
 // GPIO Interrupt Handler
 void PIOINT2_IRQHandler(void) {
-	//LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
+	LPC_GPIO2->IE &= ~(1<<1);	//Set Interrupt Mask
 	LPC_GPIO2->IC |= (1<<1); //clear interrupt
 		__asm("nop");
 		__asm("nop");
@@ -94,11 +94,12 @@ void PIOINT2_IRQHandler(void) {
 	//	is_high=0;
 	newInt++;
 	//is_high = !is_high;
-	//LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
+	LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
+	//LPC_GPIO2->IC |= (1<<1);
 }
 
  //TIMER32 Interrupt Handler
-uint8_t intCounterA;
+int intCounterA;
 int intCounterB;
 uint8_t no_change;
 uint8_t freq;
@@ -135,7 +136,7 @@ void TIMER32_0_IRQHandler(void) {
 		LPC_GPIO2->IE |= (1<<1);	//Set Interrupt Mask
 	}
 		intCounterB++;
-		if(intCounterB>=2000){debug_printf(">> %d\n",(int)(intCounterA/(4)));intCounterA=0;intCounterB=0;}
+		if(intCounterB>=4000){debug_printf(">> %d\n",(int)(intCounterA/(4)));intCounterA=0;intCounterB=0;}
 		newInt=0;
 }
 

@@ -4,7 +4,7 @@
  	.global	fibonacci
  	.thumb
  	.thumb_func
- fibonacci:
+ fibonacci_asm:
  	push {lr}
  fib_recur:
 	subs r0,r0,#1 //subtract 1 from the index
