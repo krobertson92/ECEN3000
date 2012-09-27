@@ -106,22 +106,6 @@
 							<inputType id="com.crt.advproject.compiler.input.1638021377" superClass="com.crt.advproject.compiler.input"/>
 						</tool>
 					</fileInfo>
-					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.src/cr_startup_lpc11.c" name="cr_startup_lpc11.c" rcbsApplicability="disable" resourcePath="src/cr_startup_lpc11.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1789608750">
-						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1789608750" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
-							<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.1571287905" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" value="gnu.c.optimization.level.size" valueType="enumerated"/>
-							<inputType id="com.crt.advproject.compiler.input.60924128" superClass="com.crt.advproject.compiler.input"/>
-						</tool>
-					</fileInfo>
-					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.450372165" name="main.c" rcbsApplicability="disable" resourcePath="src/main.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1388023040">
-						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1388023040" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
-							<option id="gnu.c.compiler.option.include.paths.120789896" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-								<listOptionValue builtIn="false" value="../config"/>
-								<listOptionValue builtIn="false" value="../cmsis"/>
-								<listOptionValue builtIn="false" value="../driver"/>
-							</option>
-							<inputType id="com.crt.advproject.compiler.input.845895635" superClass="com.crt.advproject.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<folderInfo id="com.crt.advproject.config.exe.debug.2106846055.1582866564" name="/" resourcePath="cmsis">
 						<toolChain id="com.crt.advproject.toolchain.exe.debug.1422548552" name="Code Red MCU Tools" superClass="com.crt.advproject.toolchain.exe.debug" unusedChildren="">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.debug" name="ARM-based MCU (Debug)" superClass="com.crt.advproject.platform.exe.debug"/>
@@ -147,12 +131,28 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.373458088" name="LPC11xx.h" rcbsApplicability="disable" resourcePath="cmsis/LPC11xx.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.src/cr_startup_lpc11.c" name="cr_startup_lpc11.c" rcbsApplicability="disable" resourcePath="src/cr_startup_lpc11.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1789608750">
+						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1789608750" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
+							<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.1571287905" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" value="gnu.c.optimization.level.size" valueType="enumerated"/>
+							<inputType id="com.crt.advproject.compiler.input.60924128" superClass="com.crt.advproject.compiler.input"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.450372165" name="main.c" rcbsApplicability="disable" resourcePath="src/main.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1388023040">
+						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1388023040" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
+							<option id="gnu.c.compiler.option.include.paths.120789896" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="../config"/>
+								<listOptionValue builtIn="false" value="../cmsis"/>
+								<listOptionValue builtIn="false" value="../driver"/>
+							</option>
+							<inputType id="com.crt.advproject.compiler.input.845895635" superClass="com.crt.advproject.compiler.input"/>
+						</tool>
+					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="config"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmsis"/>
 						<entry excluding="driver|src|config|cmsis" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry excluding="adc.c|adc.h|can.c|can.h|clkconfig.c|clkconfig.h|crp.c|crp.h|i2c.c|i2c.h|i2cslave.c|i2cslave.h|lpc_swu.c|lpc_swu.h|rom_driver_CAN.h|rom_drivers.h|rs485.c|rs485.h|small_gpio.c|small_gpio.h|ssp.c|ssp.h|type.h|uart.c|uart.h|wdt.c|wdt.h|debug_printf.h|debug_printf.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="driver"/>
+						<entry excluding="adc.c|adc.h|can.c|can.h|clkconfig.c|clkconfig.h|crp.c|crp.h|i2c.c|i2c.h|i2cslave.c|i2cslave.h|lpc_swu.c|lpc_swu.h|rs485.c|rs485.h|small_gpio.c|small_gpio.h|ssp.c|ssp.h|type.h|uart.c|uart.h|wdt.c|wdt.h|debug_printf.h|debug_printf.c" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="driver"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -4231,6 +4231,18 @@
 							<inputType id="com.crt.advproject.compiler.input.2134364123" superClass="com.crt.advproject.compiler.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="com.crt.advproject.config.exe.release.666633644.1212378767" name="rom_driver_CAN.h" rcbsApplicability="disable" resourcePath="driver/rom_driver_CAN.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.exe.release.666633644.1605641584" name="rom_drivers.h" rcbsApplicability="disable" resourcePath="driver/rom_drivers.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.exe.release.666633644.500404035" name="main.c" rcbsApplicability="disable" resourcePath="src/main.c" toolsToInvoke="com.crt.advproject.gcc.exe.release.1999554011.19335776">
+						<tool id="com.crt.advproject.gcc.exe.release.1999554011.19335776" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.release.1999554011">
+							<option id="gnu.c.compiler.option.include.paths.1438803715" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="../cmsis"/>
+								<listOptionValue builtIn="false" value="../config"/>
+								<listOptionValue builtIn="false" value="../driver"/>
+							</option>
+							<inputType id="com.crt.advproject.compiler.input.30466999" superClass="com.crt.advproject.compiler.input"/>
+						</tool>
+					</fileInfo>
 					<folderInfo id="com.crt.advproject.config.exe.release.666633644.1244832371" name="/" resourcePath="cmsis">
 						<toolChain id="com.crt.advproject.toolchain.exe.release.585420144" name="Code Red MCU Tools" superClass="com.crt.advproject.toolchain.exe.release" unusedChildren="">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.release" name="ARM-based MCU (Release)" superClass="com.crt.advproject.platform.exe.release"/>
@@ -4255,16 +4267,6 @@
 							<tool id="com.crt.advproject.link.exe.release.21694348" name="MCU Linker" superClass="com.crt.advproject.link.exe.release.585172022"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="com.crt.advproject.config.exe.release.666633644.500404035" name="main.c" rcbsApplicability="disable" resourcePath="src/main.c" toolsToInvoke="com.crt.advproject.gcc.exe.release.1999554011.19335776">
-						<tool id="com.crt.advproject.gcc.exe.release.1999554011.19335776" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.release.1999554011">
-							<option id="gnu.c.compiler.option.include.paths.1438803715" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-								<listOptionValue builtIn="false" value="../cmsis"/>
-								<listOptionValue builtIn="false" value="../config"/>
-								<listOptionValue builtIn="false" value="../driver"/>
-							</option>
-							<inputType id="com.crt.advproject.compiler.input.30466999" superClass="com.crt.advproject.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="cmsis"/>

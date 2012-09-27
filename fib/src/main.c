@@ -8,7 +8,7 @@
 ===============================================================================
 */
 
-#include "rom_drivers.h"
+#define CONFIG_ENABLE_DRIVER_ROMPOWER 1
 
 #ifdef __USE_CMSIS
 #include "LPC11xx.h"
@@ -29,6 +29,8 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #include "debug_printf.h"
 
 #include "wakeupdefs.h"
+
+#include "rom_drivers.h"
 
 //extern int fibonacci(int index, int a, int b);
 
@@ -72,6 +74,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 unsigned long i=0;
 unsigned int command[5], result[5];             //command and result arrays
+const ROM ** rom = (const ROM **) 0x1FFF1FF8;
 
 //
 // END Normal Config
@@ -304,7 +307,7 @@ void runFib(int mhzA){
 	if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
 		while(1);                               //... stay in the loop
 	}
-	fibonacci(30);
+	fibonacci(29);
 	//mhzA MHz setup end
 }
 
