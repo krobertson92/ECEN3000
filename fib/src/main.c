@@ -285,6 +285,7 @@ void EnterDeepSleep(void)
 int runFib(int mhzA){
 	//mhzA MHz setup begin
 	LPC_SYSCON->MAINCLKSEL = 0x01;              //main clock source is the PLL input
+	/*
 	LPC_SYSCON->MAINCLKUEN = 0x00;              //update the main clock source...
 	LPC_SYSCON->MAINCLKUEN = 0x01;              //...
 	for (i = 0; i != 10000; i++);               //wait for a while
@@ -301,7 +302,7 @@ int runFib(int mhzA){
 	(*rom)->pPWRD->set_pll(command,result);     //set the PLL
 	if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
 		while(1);                               //... stay in the loop
-	}
+	}*/
 	fibonacci(30);
 	//mhzA MHz setup end
 }
