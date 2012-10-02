@@ -3,7 +3,14 @@
 
 #include "menus.h"
 
+#define LPC_GPIO0_DATA ((volatile uint16_t * const)0x50000000)
+#define SetBitsPort0(bits) (*(LPC_GPIO0_DATA+(2*bits)) = bits)
+#define ClrBitsPort0(bits) (*(LPC_GPIO0_DATA+(2*bits)) = 0)
+
 extern uint32_t current_menu;
+
+uint32_t enable_blink = 0;
+uint32_t blink_counter = 0;
 
 void peripheral_control_menu_handler(uint8_t input) {
 	//UARTSend( &input, 1 );
@@ -16,17 +23,36 @@ void peripheral_control_menu_handler(uint8_t input) {
 	}
 }
 
-void set_blink(uint32_t param){
+// \brief: Stop Blink
+void start_blink(){
+	enable_blink=enable_blink<0?enable_blink*-1:enable_blink;
 
+}
+
+// \brief: Stop Blink
+void stop_blink(){
+	enable_blink=enable_blink>0?enable_blink*-1:enable_blink;
+}
+
+void blinkCaller(){
+	if(enable_blink<0){return;}
+	blink_counter++;
+	if(blink_counter%enable_blink==0){
+		if(blink_counter%(2*enable_blink)==0){
+			SetBitsPort0(0<<7);
+		}else{
+			SetBitsPort0(1<<7);
+		}
+	}
 }
 
 void led_control_menu_handler(uint8_t input){
 	switch(input){
 		case 1:
-			set_blink(1);
+			start_blink(1);
 			break;
 		case 2:
-			set_blink(0);
+			stop_blink(0);
 			break;
 		case 3:
 			send_LED_frequency_menu();
@@ -43,8 +69,9 @@ void led_control_menu_handler(uint8_t input){
 		}
 }
 
-void slf(uint32_t freq){
-
+// \brief: Set LED Frequency.
+void slf(int mode){
+	enable_blink=mode*3*(enable_blink<0?-1:1);
 }
 
 void LED_frequency_menu_handler(uint8_t input){

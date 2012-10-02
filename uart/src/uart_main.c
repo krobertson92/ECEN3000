@@ -28,6 +28,9 @@
 #include "menus.h"
 #include "menu_handlers.h"
 
+#define LED_PORT 0		// Port for led
+#define LED_BIT 7		// Bit on port for led
+
 extern volatile uint32_t UARTCount;
 extern volatile uint8_t UARTBuffer[BUFSIZE];
 
@@ -38,9 +41,6 @@ extern volatile uint32_t timer32_0_counter;
 extern volatile uint32_t timer32_0_capture;
 
 uint32_t current_menu = 0;
-
-uint32_t enable_blink = 0;
-uint32_t blink_counter = 0;
 //0 = Arm Peripheral Control Menu
 //1 = LED Control Menu
 //2 = LED Frequency Menu
@@ -65,32 +65,6 @@ void menu_handler(uint8_t input){
 	}
 }
 
-// \brief: Stop Blink
-void start_blink(){
-	enable_blink=enable_blink<0?enable_blink*-1:enable_blink;
-
-}
-
-// \brief: Stop Blink
-void stop_blink(){
-	enable_blink=enable_blink>0?enable_blink*-1:enable_blink;
-}
-
-// \brief: Set LED Frequency.
-void slf(int mode){
-	enable_blink=mode*3*(enable_blink<0?-1:1);
-}
-void blinkCaller(){
-	if(enable_blink<0){return;}
-	blink_counter++;
-	if(blink_counter%enable_blink==0){
-		if(blink_counter%(2*enable_blink)==0){
-			SetBitsPort0(0<<7);
-		}else{
-			SetBitsPort0(1<<7);
-		}
-	}
-}
 void initLED(){
 	GPIOInit();
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );
