@@ -11,6 +11,7 @@ extern uint32_t current_menu;
 
 uint32_t enable_blink = 0;
 uint32_t blink_counter = 0;
+uint32_t blink_duty = 50;
 
 void peripheral_control_menu_handler(uint8_t input) {
 	//UARTSend( &input, 1 );
@@ -26,23 +27,24 @@ void peripheral_control_menu_handler(uint8_t input) {
 // \brief: Stop Blink
 void start_blink(){
 	enable_blink=enable_blink<0?enable_blink*-1:enable_blink;
-
+	SetBitsPort0(1<<7);
 }
 
 // \brief: Stop Blink
 void stop_blink(){
 	enable_blink=enable_blink>0?enable_blink*-1:enable_blink;
+	SetBitsPort0(0<<7);
 }
 
 void blinkCaller(){
 	if(enable_blink<0){return;}
 	blink_counter++;
+	if(blink_counter%((blink_duty/100.0f)*enable_blink)==0){
+		SetBitsPort0(0<<7);
+	}
 	if(blink_counter%enable_blink==0){
-		if(blink_counter%(2*enable_blink)==0){
-			SetBitsPort0(0<<7);
-		}else{
-			SetBitsPort0(1<<7);
-		}
+		SetBitsPort0(1<<7);
+		blink_counter=0;
 	}
 }
 
