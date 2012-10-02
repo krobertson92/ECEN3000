@@ -38,7 +38,7 @@
 #define TIME_INTERVAL	(SystemCoreClock/100 - 1)
 /* depending on the SystemFrequency and SystemAHBFrequency setting, 
 if SystemFrequency = 60Mhz, SystemAHBFrequency = 1/4 SystemAHBFrequency, 
-10mSec = 150.000-1 counts */
+10mSec = 150,000-1 counts */
 
 void delay32Ms(uint8_t timer_num, uint32_t delayInMs);
 

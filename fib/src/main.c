@@ -32,6 +32,8 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 #include "rom_drivers.h"
 
+int test_int;
+
 //extern int fibonacci(int index, int a, int b);
 
 
@@ -84,14 +86,14 @@ const ROM ** rom = (const ROM **) 0x1FFF1FF8;
 
 
 
-int fibonacci(int n)
+int fib(int n)
 {
     int c;
 
     if (n == 1 || n == 2)
         return 1;
 
-    c = fibonacci(n-2) + fibonacci(n-1);
+    c = fib(n-2) + fib(n-1);
 
     return c;
 }
@@ -112,6 +114,46 @@ void Wait1mS(uint32_t i)
 
 void SysTick_Handler(void)
 {
+}
+
+uint32_t MeasureWDO(void)
+{
+    uint32_t start,end;
+    static uint32_t WDO_clocks;
+
+    if(!WDO_clocks)
+    {
+        // Configure Watchdog Oscillator
+        LPC_SYSCON->WDTOSCCTRL = (0x1<<5) | (0x1F<<0);
+
+        LPC_SYSCON->SYSAHBCLKCTRL |= BF_SYSAHBCLKCTRL_WDT;  // Turn on clock to WDT register block
+
+        // Now enable clock to WDT counter
+#if defined(DEBUG)
+        LPC_SYSCON->WDTCLKSEL = WDTCLKSEL_SEL_MAINCLK;
+#else
+        LPC_SYSCON->WDTCLKSEL = WDTCLKSEL_SEL_WDOSC;
+#endif
+        LPC_SYSCON->WDTCLKUEN = 0;  // Arm WDT clock selection update
+        LPC_SYSCON->WDTCLKUEN = 1;  // Update WDT clock selection
+        LPC_SYSCON->WDTCLKUEN = 0;  // Arm WDT clock selection update
+        LPC_SYSCON->WDTCLKDIV = 1;  // WDT clock divide by 1
+
+        LPC_WDT->TC = 0xFFFFFF;   // big value, WDT timer duration = don't care
+        LPC_WDT->MOD = 1;           // enable WDT for counting/interrupts but not resets
+        LPC_WDT->FEED = 0xAA;       // WDT start sequence step 1
+        LPC_WDT->FEED = 0x55;       // WDT start sequence step 2
+
+        Wait1mS(100);               // Need to delay before measuring because WDT looses 256 cycles
+        start = LPC_WDT->TV;
+        Wait1mS(WDOMEASUREDURATION_MS);
+        end = LPC_WDT->TV;
+
+        LPC_SYSCON->SYSAHBCLKCTRL &= ~BF_SYSAHBCLKCTRL_WDT;  // Turn off clock to WDT register block
+        WDO_clocks = (start-end)*4;
+    }
+
+    return WDO_clocks;
 }
 
 void InitDeepSleep(void)
@@ -272,6 +314,7 @@ void EnterDeepSleep(void)
     LPC_SYSCON->MAINCLKUEN = 0;
     LPC_SYSCON->MAINCLKUEN = 1; // toggle to enable
     LPC_SYSCON->MAINCLKUEN = 0;
+    test_int++;
 #else
     // In debug mode, we are only going to sleep mode, not deep sleep
     // We must disable the SysTick interrupt because it will wake us from
@@ -286,7 +329,6 @@ void EnterDeepSleep(void)
 
     __WFI();                            // Enter deep sleep mode (sleep mode in DEBUG)
 }
-
 void runFib(int mhzA){
 	//mhzA MHz setup begin
 	LPC_SYSCON->MAINCLKSEL = 0x01;              //main clock source is the PLL input
@@ -307,7 +349,7 @@ void runFib(int mhzA){
 	if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
 		while(1);  4                              //... stay in the loop
 	}
-	fibonacci(29);
+	fib(30);
 	//mhzA MHz setup end
 }
 
@@ -318,23 +360,37 @@ int initSleep(){
     InitDeepSleep();
 }
 
+void blink_led() {
+		SetBitsPort0(1<<7);
+		Wait1mS(300);
+		ClrBitsPort0(1<<7);
+		Wait1mS(300);
+}
+
 int main(void) {
 	initSleep();
 	*((int*)GPREG0)=0;
 	while(1){
+		/*
+		blink_led();
+		runFib(3);
+		runFib(3);
+		blink_led();
+		blink_led();
+		*/
 		runFib(48);
 		runFib(24);
 		runFib(12);
 		runFib(3);
 		//fibonacci(30);
 		EnterDeepSleep();
+		//test_int++;
 		(*(int*)GPREG0)++;
 		int wakeTemp=*((int*)GPREG0);
+		//int wakeTemp = test_int+1;
+
 		for(i=0;i<wakeTemp;i++){
-			SetBitsPort0(1<<7);
-			Wait1mS(100);
-			ClrBitsPort0(1<<7);
-			Wait1mS(100);
+			blink_led();
 		}
 	}
 }

@@ -106,6 +106,22 @@
 							<inputType id="com.crt.advproject.compiler.input.1638021377" superClass="com.crt.advproject.compiler.input"/>
 						</tool>
 					</fileInfo>
+					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.src/cr_startup_lpc11.c" name="cr_startup_lpc11.c" rcbsApplicability="disable" resourcePath="src/cr_startup_lpc11.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1789608750">
+						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1789608750" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
+							<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.1571287905" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" value="gnu.c.optimization.level.size" valueType="enumerated"/>
+							<inputType id="com.crt.advproject.compiler.input.60924128" superClass="com.crt.advproject.compiler.input"/>
+						</tool>
+					</fileInfo>
+					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.450372165" name="main.c" rcbsApplicability="disable" resourcePath="src/main.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1388023040">
+						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1388023040" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
+							<option id="gnu.c.compiler.option.include.paths.120789896" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+								<listOptionValue builtIn="false" value="../config"/>
+								<listOptionValue builtIn="false" value="../cmsis"/>
+								<listOptionValue builtIn="false" value="../driver"/>
+							</option>
+							<inputType id="com.crt.advproject.compiler.input.845895635" superClass="com.crt.advproject.compiler.input"/>
+						</tool>
+					</fileInfo>
 					<folderInfo id="com.crt.advproject.config.exe.debug.2106846055.1582866564" name="/" resourcePath="cmsis">
 						<toolChain id="com.crt.advproject.toolchain.exe.debug.1422548552" name="Code Red MCU Tools" superClass="com.crt.advproject.toolchain.exe.debug" unusedChildren="">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF" id="com.crt.advproject.platform.exe.debug" name="ARM-based MCU (Debug)" superClass="com.crt.advproject.platform.exe.debug"/>
@@ -131,22 +147,6 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.373458088" name="LPC11xx.h" rcbsApplicability="disable" resourcePath="cmsis/LPC11xx.h" toolsToInvoke=""/>
-					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.src/cr_startup_lpc11.c" name="cr_startup_lpc11.c" rcbsApplicability="disable" resourcePath="src/cr_startup_lpc11.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1789608750">
-						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1789608750" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
-							<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.1571287905" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" value="gnu.c.optimization.level.size" valueType="enumerated"/>
-							<inputType id="com.crt.advproject.compiler.input.60924128" superClass="com.crt.advproject.compiler.input"/>
-						</tool>
-					</fileInfo>
-					<fileInfo id="com.crt.advproject.config.exe.debug.2106846055.450372165" name="main.c" rcbsApplicability="disable" resourcePath="src/main.c" toolsToInvoke="com.crt.advproject.gcc.exe.debug.686554405.1388023040">
-						<tool id="com.crt.advproject.gcc.exe.debug.686554405.1388023040" name="MCU C Compiler" superClass="com.crt.advproject.gcc.exe.debug.686554405">
-							<option id="gnu.c.compiler.option.include.paths.120789896" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-								<listOptionValue builtIn="false" value="../config"/>
-								<listOptionValue builtIn="false" value="../cmsis"/>
-								<listOptionValue builtIn="false" value="../driver"/>
-							</option>
-							<inputType id="com.crt.advproject.compiler.input.845895635" superClass="com.crt.advproject.compiler.input"/>
-						</tool>
-					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="config"/>
@@ -4142,7 +4142,6 @@
 								<option id="com.crt.advproject.gcc.thumb.866735525" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" value="true" valueType="boolean"/>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1532743209" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__REDLIB__"/>
-									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="__CODE_RED"/>
 									<listOptionValue builtIn="false" value="NDEBUG"/>
 								</option>

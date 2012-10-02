@@ -1,7 +1,7 @@
 	.syntax unified
  	.cpu cortex-m0
  	.align	2
- 	.global	fibonacci
+ 	//.global	fibonacci
  	.thumb
  	.thumb_func
  fibonacci_asm:
