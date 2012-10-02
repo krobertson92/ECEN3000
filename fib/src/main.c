@@ -305,7 +305,7 @@ void runFib(int mhzA){
 	command[3] = 0;                             //infinitely wait for the PLL to lock
 	(*rom)->pPWRD->set_pll(command,result);     //set the PLL
 	if ((result[0] != PLL_CMD_CUCCESS)){        //if a failure is reported...
-		while(1);                               //... stay in the loop
+		while(1);  4                              //... stay in the loop
 	}
 	fibonacci(29);
 	//mhzA MHz setup end
