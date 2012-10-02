@@ -54,6 +54,7 @@ void UART_IRQHandler(void)
       /* If no error on RLS, normal ready, save into the data buffer. */
       /* Note: read RBR will clear the interrupt */
       UARTBuffer[UARTCount++] = LPC_UART->RBR;
+      //menu_handler(LPC_UART->RBR);
       if (UARTCount == BUFSIZE)
       {
         UARTCount = 0;		/* buffer overflow */
@@ -64,6 +65,7 @@ void UART_IRQHandler(void)
   {
     /* Receive Data Available */
     UARTBuffer[UARTCount++] = LPC_UART->RBR;
+    //menu_handler(LPC_UART->RBR);
     if (UARTCount == BUFSIZE)
     {
       UARTCount = 0;		/* buffer overflow */
