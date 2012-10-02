@@ -23,6 +23,8 @@
 #include "uart.h"
 #include "timer32.h"
 
+#include "gpio.h"
+
 #include "menus.h"
 #include "menu_handlers.h"
 
@@ -36,6 +38,9 @@ extern volatile uint32_t timer32_0_counter;
 extern volatile uint32_t timer32_0_capture;
 
 uint32_t current_menu = 0;
+
+uint32_t enable_blink = 0;
+uint32_t blink_counter = 0;
 //0 = Arm Peripheral Control Menu
 //1 = LED Control Menu
 //2 = LED Frequency Menu
@@ -60,6 +65,37 @@ void menu_handler(uint8_t input){
 	}
 }
 
+// \brief: Stop Blink
+void start_blink(){
+	enable_blink=enable_blink<0?enable_blink*-1:enable_blink;
+
+}
+
+// \brief: Stop Blink
+void stop_blink(){
+	enable_blink=enable_blink>0?enable_blink*-1:enable_blink;
+}
+
+// \brief: Set LED Frequency.
+void slf(int mode){
+	enable_blink=mode*3*(enable_blink<0?-1:1);
+}
+void blinkCaller(){
+	if(enable_blink<0){return;}
+	blink_counter++;
+	if(blink_counter%enable_blink==0){
+		if(blink_counter%(2*enable_blink)==0){
+			SetBitsPort0(0<<7);
+		}else{
+			SetBitsPort0(1<<7);
+		}
+	}
+}
+void initLED(){
+	GPIOInit();
+	GPIOSetDir( LED_PORT, LED_BIT, 1 );
+}
+
 #if CONFIG_TIMER32_DEFAULT_TIMER32_0_IRQHANDLER==0
 /******************************************************************************
 ** Function name:		TIMER32_0_IRQHandler
@@ -73,6 +109,7 @@ void menu_handler(uint8_t input){
 ******************************************************************************/
 void TIMER32_0_IRQHandler(void)
 {
+	blinkCaller();
   if ( LPC_TMR32B0->IR & 0x01 )
   {
 	LPC_TMR32B0->IR = 1;				/* clear interrupt flag */
@@ -84,7 +121,7 @@ void TIMER32_0_IRQHandler(void)
 	timer32_0_capture++;
   }
 
-  if(timer32_0_counter > 10){
+  if(timer32_0_counter%10==0){
 	  char* value="Hello World!";
 	  uint32_t stringLength = 12;
 	  UARTSend( (uint8_t*)value, stringLength );
@@ -181,27 +218,17 @@ int main (void) {
 	//enable timer
 	init_timer32(0, TIME_INTERVAL);
 	enable_timer32(0);
+	initLED();
 
-  /* NVIC is installed inside UARTInit file. */
-  UARTInit(UART_BAUD);
+	/* NVIC is installed inside UARTInit file. */
+	UARTInit(UART_BAUD);
 
-#if MODEM_TEST
-  ModemInit();
-#endif
-  send_arm_peripheral_control_menu();
-  while(1){
-	    __WFI();
-  }
-/*
-  while (1) 
-  {
-	if ( UARTCount != 0 )
-	{
-	  LPC_UART->IER = IER_THRE | IER_RLS;			// Disable RBR
-	  UARTSend( (uint8_t *)UARTBuffer, UARTCount );
-	  UARTCount = 0;
-	  LPC_UART->IER = IER_THRE | IER_RLS | IER_RBR;	// Re-enable RBR
-	}
-  }
-*/
+	#if MODEM_TEST
+		ModemInit();
+	#endif
+
+		send_arm_peripheral_control_menu();
+		  while(1){
+			    __WFI();
+		  }
 }
