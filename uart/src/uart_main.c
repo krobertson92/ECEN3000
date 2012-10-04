@@ -51,6 +51,13 @@ uint32_t current_menu = 0;
 //4 = ADC Control Menu
 //5 = ADC Reporting Frequency Menu
 
+uint8_t report_adc = 0;
+uint32_t adc_report_speed = 1;
+//4 = slow
+//3 = medium
+//2 = fast
+//1 = very fast
+
 void menu_handler(uint8_t input){
 	switch(current_menu){
 		case 0:
@@ -65,6 +72,12 @@ void menu_handler(uint8_t input){
 		case 3:
 			LED_duty_cycle_menu_handler(input);
 			break;
+		case 4:
+			ADC_control_menu_handler(input);
+			break;
+		case 5:
+			ADC_reporting_frequency_menu_handler(input);
+			break;
 	}
 }
 
@@ -76,28 +89,38 @@ void initLED(){
 void ConvertDigital ( uint32_t digital32, uint8_t* ascii_char)
 {
   //uint8_t* ascii_char[8];
-
-  ascii_char[0] = digital32 & 0xF<<0;
-  ascii_char[1] = digital32 & 0xF<<4;
-  ascii_char[2] = digital32 & 0xF<<8;
-  ascii_char[3] = digital32 & 0xF<<12;
-  ascii_char[4] = digital32 & 0xF<<16;
-  ascii_char[5] = digital32 & 0xF<<20;
-  ascii_char[6] = digital32 & 0xF<<24;
-  ascii_char[7] = digital32 & 0xF<<28;
+/*
+	uint8_t test[3];
+	test[1]  = (digital32 & 0xFF);
+	test[0]  = (digital32 & (0xFF<<8))>>8;
+	test[2] = 0x0A;
+	UARTSend(test,3);
+*/
+	digital32 = (((digital32&0x3FF)*3300) / 1024);
+	/*
+	uint8_t test2[3];
+		test2[1]  = (digital32 & 0xFF);
+		test2[0]  = (digital32 & (0xFF<<8))>>8;
+		test2[2] = 0x0A;
+		UARTSend(test2,3);
+		*/
+  ascii_char[2] = (digital32 & (0xF<<0))>>0;
+  ascii_char[1] = (digital32 & (0xF<<4))>>4;
+  ascii_char[0] = (digital32 & (0xF<<8))>>8;
 
   int i;
-  for(i=0; i<4; i++){
+  for(i=0; i<3; i++){
 	  if ( (ascii_char[i] >= 0) && (ascii_char[i] <= 9) )
 	  {
-		  ascii_char[i] = ascii_char[i] + 0x30;	/* 0~9 */
+		  ascii_char[i] = ascii_char[i] + '0';	/* 0~9 */
 	  }
 	  else
 	  {
 		  ascii_char[i] = ascii_char[i] - 0x0A;
-		  ascii_char[i] += 0x41;				/* A~F */
+		  ascii_char[i] += 'A';				/* A~F */
 	  }
   }
+  ascii_char[3] = 0xA; //new line
   //return ( ascii_char );
 }
 
@@ -112,9 +135,17 @@ void ConvertDigital ( uint32_t digital32, uint8_t* ascii_char)
 ** Returned value:		None
 **
 ******************************************************************************/
+uint32_t adc_timer_counter = 0;
 void TIMER32_0_IRQHandler(void)
 {
 	blinkCaller();
+	if(report_adc == 1){
+		++adc_timer_counter;
+		if(adc_timer_counter>(adc_report_speed*100)){
+			ADCRead( 0 );
+			adc_timer_counter = 0;
+		}
+	}
   if ( LPC_TMR32B0->IR & 0x01 )
   {
 	LPC_TMR32B0->IR = 1;				/* clear interrupt flag */
@@ -227,10 +258,6 @@ void ADC_IRQHandler (void)
 {
   uint32_t regVal, i;
 
-  uint8_t test[1];
-  test[0] = 1;
-  UARTSend(test , 1 );
-
   regVal = LPC_ADC->STAT;		/* Read ADC will clear the interrupt */
   if ( regVal & 0x0000FF00 )	/* check OVERRUN error first */
   {
@@ -257,9 +284,9 @@ void ADC_IRQHandler (void)
 	  if ( (regVal&0xFF) & (0x1 << i) )
 	  {
 		ADCValue[i] = ( LPC_ADC->DR[i] >> 6 ) & 0x3FF;
-		uint8_t ascii_char[8];
-		ConvertDigital(ADCValue[i],ascii_char);
-		UARTSend(ascii_char , 8 );
+		uint8_t ascii_char[4];
+		ConvertDigital((ADCValue[i]),ascii_char);
+		UARTSend(ascii_char , 4 );
 	  }
 	}
 #if CONFIG_ADC_ENABLE_BURST_MODE==1

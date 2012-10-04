@@ -9,6 +9,8 @@
 #define ClrBitsPort0(bits) (*(LPC_GPIO0_DATA+(2*bits)) = 0)
 
 extern uint32_t current_menu;
+extern uint8_t report_adc;
+extern uint32_t adc_report_speed;
 uint32_t en_b=0;
 uint32_t enable_blink = 100;
 uint32_t blink_counter = 0;
@@ -88,7 +90,7 @@ void led_control_menu_handler(uint8_t input){
 
 // \brief: Set LED Frequency.
 void slf(int mode){
-	enable_blink=(5-mode)*100;//*(enable_blink<0?-1:1);
+	enable_blink=(5-mode)*(5-mode)*25;//*(enable_blink<0?-1:1);
 }
 
 void LED_frequency_menu_handler(uint8_t input){
@@ -146,6 +148,64 @@ void LED_duty_cycle_menu_handler(uint8_t input){
 			send_LED_control_menu();
 			current_menu = 1;
 			break;
+	}
+}
+
+void ADC_control_menu_handler(uint8_t input) {
+	switch(input){
+	case '1':
+		//adc reporting on
+		report_adc = 1;
+		break;
+	case '2':
+		//adc reporting off
+		report_adc = 0;
+		send_ADC_control_menu();
+		current_menu = 4;
+		break;
+	case '3':
+		//set reporting freqency
+		send_ADC_Reporting_Frequency_menu();
+		current_menu = 5;
+		break;
+	case'4':
+		send_arm_peripheral_control_menu();
+		current_menu = 0;
+		break;
+	}
+}
+
+void ADC_reporting_frequency_menu_handler(uint8_t input) {
+	switch(input){
+	case '1':
+		//slow
+		adc_report_speed = 4;
+		send_ADC_Reporting_Frequency_menu();
+		current_menu = 5;
+		break;
+	case '2':
+		//medium
+		adc_report_speed = 3;
+		send_ADC_Reporting_Frequency_menu();
+		current_menu = 5;
+		break;
+	case '3':
+		//fast
+		adc_report_speed = 2;
+		send_ADC_Reporting_Frequency_menu();
+		current_menu = 5;
+		break;
+	case '4':
+		//very fast
+		adc_report_speed = 1;
+		send_ADC_Reporting_Frequency_menu();
+		current_menu = 5;
+		break;
+	case '5':
+		//go back
+		send_ADC_control_menu();
+		current_menu = 4;
+		break;
 	}
 }
 
