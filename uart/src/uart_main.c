@@ -227,6 +227,10 @@ void ADC_IRQHandler (void)
 {
   uint32_t regVal, i;
 
+  uint8_t test[1];
+  test[0] = 1;
+  UARTSend(test , 1 );
+
   regVal = LPC_ADC->STAT;		/* Read ADC will clear the interrupt */
   if ( regVal & 0x0000FF00 )	/* check OVERRUN error first */
   {
