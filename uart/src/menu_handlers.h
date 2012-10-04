@@ -37,9 +37,10 @@ void stop_blink(){
 }
 
 void blinkCaller(){
+	return;
 	if(enable_blink<0){return;}
 	blink_counter++;
-	if(blink_counter%((blink_duty/100.0f)*enable_blink)==0){
+	if(blink_counter%((int)((blink_duty/100.0f)*enable_blink))==0){
 		SetBitsPort0(0<<7);
 	}
 	if(blink_counter%enable_blink==0){
@@ -104,7 +105,7 @@ void LED_frequency_menu_handler(uint8_t input){
 }
 
 void lsdc(uint32_t dc){
-
+	blink_duty=dc;
 }
 
 void LED_duty_cycle_menu_handler(uint8_t input){
