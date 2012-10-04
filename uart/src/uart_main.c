@@ -125,13 +125,13 @@ void TIMER32_0_IRQHandler(void)
 	LPC_TMR32B0->IR = 0x1<<4;			/* clear interrupt flag */
 	timer32_0_capture++;
   }
-
+/*
   if(timer32_0_counter%10==0){
 	  char* value="Hello World!";
 	  uint32_t stringLength = 12;
 	  UARTSend( (uint8_t*)value, stringLength );
   }
-
+*/
   return;
 }
 #endif //CONFIG_TIMER32_DEFAULT_TIMER32_0_IRQHANDLER
@@ -287,6 +287,8 @@ int main (void) {
 	//enable timer
 	init_timer32(0, TIME_INTERVAL);
 	enable_timer32(0);
+	NVIC_EnableIRQ(TIMER_32_0_IRQn);
+
 	initLED();
 
 	/* NVIC is installed inside UARTInit file. */
