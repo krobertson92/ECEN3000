@@ -91,7 +91,7 @@
 						</tool>
 					</fileInfo>
 					<sourceEntries>
-						<entry excluding="i2c.c|adc.h|ssp.h|i2cslave.c|timer16.h|wdt.c|rs485.c|small_gpio.h|clkconfig.h|i2cslave.h|debug_printf.c|timer16.c|ssp.c|adc.c|type.h|wdt.h|i2c.h|small_gpio.c|lpc_swu.h|clkconfig.c|debug_printf.h|lpc_swu.c|rs485.h" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="driver"/>
+						<entry excluding="i2c.c|ssp.h|i2cslave.c|timer16.h|wdt.c|rs485.c|small_gpio.h|clkconfig.h|i2cslave.h|debug_printf.c|timer16.c|ssp.c|type.h|wdt.h|i2c.h|small_gpio.c|lpc_swu.h|clkconfig.c|debug_printf.h|lpc_swu.c|rs485.h" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="driver"/>
 						<entry excluding="config|cmsis|startup|driver|src|linker" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="startup"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>

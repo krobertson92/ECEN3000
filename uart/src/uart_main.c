@@ -22,8 +22,8 @@
 
 #include "uart.h"
 #include "timer32.h"
-
 #include "gpio.h"
+#include "adc.h"
 
 #include "menus.h"
 #include "menu_handlers.h"
@@ -39,6 +39,9 @@ extern volatile uint8_t  UARTTxEmpty;
 
 extern volatile uint32_t timer32_0_counter;
 extern volatile uint32_t timer32_0_capture;
+
+extern volatile uint32_t OverRunCounter;
+volatile uint32_t ADCIntDone = 0;
 
 uint32_t current_menu = 0;
 //0 = Arm Peripheral Control Menu
@@ -68,6 +71,34 @@ void menu_handler(uint8_t input){
 void initLED(){
 	GPIOInit();
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );
+}
+
+void ConvertDigital ( uint32_t digital32, uint8_t* ascii_char)
+{
+  //uint8_t* ascii_char[8];
+
+  ascii_char[0] = digital32 & 0xF<<0;
+  ascii_char[1] = digital32 & 0xF<<4;
+  ascii_char[2] = digital32 & 0xF<<8;
+  ascii_char[3] = digital32 & 0xF<<12;
+  ascii_char[4] = digital32 & 0xF<<16;
+  ascii_char[5] = digital32 & 0xF<<20;
+  ascii_char[6] = digital32 & 0xF<<24;
+  ascii_char[7] = digital32 & 0xF<<28;
+
+  int i;
+  for(i=0; i<4; i++){
+	  if ( (ascii_char[i] >= 0) && (ascii_char[i] <= 9) )
+	  {
+		  ascii_char[i] = ascii_char[i] + 0x30;	/* 0~9 */
+	  }
+	  else
+	  {
+		  ascii_char[i] = ascii_char[i] - 0x0A;
+		  ascii_char[i] += 0x41;				/* A~F */
+	  }
+  }
+  //return ( ascii_char );
 }
 
 #if CONFIG_TIMER32_DEFAULT_TIMER32_0_IRQHANDLER==0
@@ -182,6 +213,70 @@ void UART_IRQHandler(void)
 }
 #endif
 
+#if CONFIG_ADC_DEFAULT_ADC_IRQHANDLER==0
+/******************************************************************************
+** Function name:		ADC_IRQHandler
+**
+** Descriptions:		ADC interrupt handler
+**
+** parameters:			None
+** Returned value:		None
+**
+******************************************************************************/
+void ADC_IRQHandler (void)
+{
+  uint32_t regVal, i;
+
+  regVal = LPC_ADC->STAT;		/* Read ADC will clear the interrupt */
+  if ( regVal & 0x0000FF00 )	/* check OVERRUN error first */
+  {
+	OverRunCounter++;
+	for ( i = 0; i < ADC_NUM; i++ )
+	{
+	  regVal = (regVal & 0x0000FF00) >> 0x08;
+	  /* if overrun, just read ADDR to clear */
+	  /* regVal variable has been reused. */
+	  if ( regVal & (0x1 << i) )
+	  {
+		regVal = LPC_ADC->DR[i];
+	  }
+	}
+	LPC_ADC->CR &= 0xF8FFFFFF;	/* stop ADC now */
+	ADCIntDone = 1;
+	return;
+  }
+
+  if ( regVal & ADC_ADINT )
+  {
+	for ( i = 0; i < ADC_NUM; i++ )
+	{
+	  if ( (regVal&0xFF) & (0x1 << i) )
+	  {
+		ADCValue[i] = ( LPC_ADC->DR[i] >> 6 ) & 0x3FF;
+		uint8_t ascii_char[8];
+		ConvertDigital(ADCValue[i],ascii_char);
+		UARTSend(ascii_char , 8 );
+	  }
+	}
+#if CONFIG_ADC_ENABLE_BURST_MODE==1
+	channel_flag |= (regVal & 0xFF);
+	if ( (channel_flag & 0xFF) == 0xFF )
+	{
+	  /* All the bits in have been set, it indicates all the ADC
+	  channels have been converted. */
+	  LPC_ADC->CR &= 0xF8FFFFFF;	/* stop ADC now */
+	  channel_flag = 0;
+	  ADCIntDone = 1;
+	}
+#else
+	LPC_ADC->CR &= 0xF8FFFFFF;	/* stop ADC now */
+	ADCIntDone = 1;
+#endif
+  }
+  return;
+}
+#endif
+
 
 int main (void) {
 	  /* Basic chip initialization is taken care of in SystemInit() called
@@ -196,6 +291,9 @@ int main (void) {
 
 	/* NVIC is installed inside UARTInit file. */
 	UARTInit(UART_BAUD);
+
+	/* Initialize ADC  */
+	ADCInit( ADC_CLK );
 
 	#if MODEM_TEST
 		ModemInit();
