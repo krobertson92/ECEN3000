@@ -161,12 +161,12 @@ void UARTInit(uint32_t baudrate)
   
   NVIC_DisableIRQ(UART_IRQn);
 
-  LPC_IOCON->PIO1_6 &= ~0x07;    /*  UART I/O config */
-  LPC_IOCON->PIO1_6 |= 0x01;     /* UART RXD */
-  LPC_IOCON->PIO1_7 &= ~0x07;	
-  LPC_IOCON->PIO1_7 |= 0x01;     /* UART TXD */
+  LPC_IOCON->PIO1_6 &= ~0x07;    /*  UART I/O config. Resets IO function */
+  LPC_IOCON->PIO1_6 |= 0x01;     /* UART RXD. Selects function RXD */
+  LPC_IOCON->PIO1_7 &= ~0x07;	/* resents IO function */
+  LPC_IOCON->PIO1_7 |= 0x01;     /* UART TXD. selects function txd. */
   /* Enable UART clock */
-  LPC_SYSCON->SYSAHBCLKCTRL |= (1<<12);
+  LPC_SYSCON->SYSAHBCLKCTRL |= (1<<12); /*enable uart clock*/
   LPC_SYSCON->UARTCLKDIV = 0x1;     /* divided by 1 */
 
   LPC_UART->LCR = 0x83;             /* 8 bits, no Parity, 1 Stop bit */
@@ -174,10 +174,10 @@ void UARTInit(uint32_t baudrate)
 
   Fdiv = (((SystemCoreClock*LPC_SYSCON->SYSAHBCLKDIV)/regVal)/16)/baudrate ;	/*baud rate */
 
-  LPC_UART->DLM = Fdiv / 256;							
-  LPC_UART->DLL = Fdiv % 256;
-  LPC_UART->LCR = 0x03;		/* DLAB = 0 */
-  LPC_UART->FCR = 0x07;		/* Enable and reset TX and RX FIFO. */
+  LPC_UART->DLM = Fdiv / 256; /*Divisor Latch MSB. high 8 bits of baud rate*/
+  LPC_UART->DLL = Fdiv % 256; /*Divisor Latch Lsb. low 8 bits of baud rate*/
+  LPC_UART->LCR = 0x03;		/* DLAB = 0. disable access to the divisor latch. aka lock in the baud rate */
+  LPC_UART->FCR = 0x07;		/* Enable and reset TX and RX FIFO. FIFO control register */
 
   /* Read to clear the line status. */
   regVal = LPC_UART->LSR;
