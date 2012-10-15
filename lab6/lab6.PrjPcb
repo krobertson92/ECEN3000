@@ -86,6 +86,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for lab6\Design Rule Check - Lab6.html
+DItemRevisionGUID=
+
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
