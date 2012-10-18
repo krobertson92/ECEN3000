@@ -37,7 +37,7 @@
 
 
 set_global_assignment -name FAMILY "Cyclone III"
-set_global_assignment -name DEVICE EP3C16F256C6
+set_global_assignment -name DEVICE EP3C16F484C6
 set_global_assignment -name TOP_LEVEL_ENTITY des
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "12.0 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:25:21  OCTOBER 16, 2012"
@@ -52,7 +52,6 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VERILOG_FILE DES.v
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name VERILOG_FILE DES_testbench.v
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
@@ -63,3 +62,5 @@ set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME DES_Testbench -section_id
 set_global_assignment -name EDA_TEST_BENCH_FILE DES_testbench.v -section_id DES_Testbench
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
