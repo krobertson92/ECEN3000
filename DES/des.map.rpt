@@ -1,6 +1,6 @@
 Analysis & Synthesis report for des
-Tue Oct 16 13:18:38 2012
-Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
+Thu Oct 18 13:21:59 2012
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
 
 
 ---------------------
@@ -9,15 +9,19 @@ Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Editio
   1. Legal Notice
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
-  4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. General Register Statistics
+  8. Port Connectivity Checks: "K_plus_gen:kasdf"
+  9. Analysis & Synthesis Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2012 Altera Corporation
+Copyright (C) 1991-2009 Altera Corporation
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -33,142 +37,558 @@ applicable agreement for further details.
 
 
 
-+------------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                       ;
-+------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Tue Oct 16 13:18:38 2012             ;
-; Quartus II 32-bit Version          ; 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition ;
-; Revision Name                      ; des                                           ;
-; Top-level Entity Name              ; des                                           ;
-; Family                             ; Cyclone III                                   ;
-; Total logic elements               ; N/A until Partition Merge                     ;
-;     Total combinational functions  ; N/A until Partition Merge                     ;
-;     Dedicated logic registers      ; N/A until Partition Merge                     ;
-; Total registers                    ; N/A until Partition Merge                     ;
-; Total pins                         ; N/A until Partition Merge                     ;
-; Total virtual pins                 ; N/A until Partition Merge                     ;
-; Total memory bits                  ; N/A until Partition Merge                     ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                     ;
-; Total PLLs                         ; N/A until Partition Merge                     ;
-+------------------------------------+-----------------------------------------------+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++------------------------------------+-----------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Oct 18 13:21:59 2012   ;
+; Quartus II Version                 ; 9.0 Build 132 02/25/2009 SJ Web Edition ;
+; Revision Name                      ; des                                     ;
+; Top-level Entity Name              ; des                                     ;
+; Family                             ; Cyclone III                             ;
+; Total logic elements               ; 0                                       ;
+;     Total combinational functions  ; 0                                       ;
+;     Dedicated logic registers      ; 0                                       ;
+; Total registers                    ; 0                                       ;
+; Total pins                         ; 196                                     ;
+; Total virtual pins                 ; 0                                       ;
+; Total memory bits                  ; 0                                       ;
+; Embedded Multiplier 9-bit elements ; 0                                       ;
+; Total PLLs                         ; 0                                       ;
++------------------------------------+-----------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                                        ;
-+----------------------------------------------------------------------------+--------------------+--------------------+
-; Option                                                                     ; Setting            ; Default Value      ;
-+----------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                     ; EP3C16F256C6       ;                    ;
-; Top-level entity name                                                      ; des                ; des                ;
-; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
-; Use smart compilation                                                      ; Off                ; Off                ;
-; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
-; Enable compact report table                                                ; Off                ; Off                ;
-; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
-; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
-; Preserve fewer node names                                                  ; On                 ; On                 ;
-; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
-; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
-; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
-; State Machine Processing                                                   ; Auto               ; Auto               ;
-; Safe State Machine                                                         ; Off                ; Off                ;
-; Extract Verilog State Machines                                             ; On                 ; On                 ;
-; Extract VHDL State Machines                                                ; On                 ; On                 ;
-; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
-; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
-; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
-; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
-; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
-; Parallel Synthesis                                                         ; On                 ; On                 ;
-; DSP Block Balancing                                                        ; Auto               ; Auto               ;
-; NOT Gate Push-Back                                                         ; On                 ; On                 ;
-; Power-Up Don't Care                                                        ; On                 ; On                 ;
-; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
-; Remove Duplicate Registers                                                 ; On                 ; On                 ;
-; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
-; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
-; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
-; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
-; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
-; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
-; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
-; Optimization Technique                                                     ; Balanced           ; Balanced           ;
-; Carry Chain Length                                                         ; 70                 ; 70                 ;
-; Auto Carry Chains                                                          ; On                 ; On                 ;
-; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
-; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
-; Auto ROM Replacement                                                       ; On                 ; On                 ;
-; Auto RAM Replacement                                                       ; On                 ; On                 ;
-; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
-; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
-; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
-; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
-; Strict RAM Replacement                                                     ; Off                ; Off                ;
-; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
-; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
-; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
-; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
-; Auto Resource Sharing                                                      ; Off                ; Off                ;
-; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
-; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
-; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
-; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
-; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
-; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
-; Report Parameter Settings                                                  ; On                 ; On                 ;
-; Report Source Assignments                                                  ; On                 ; On                 ;
-; Report Connectivity Checks                                                 ; On                 ; On                 ;
-; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
-; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
-; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
-; HDL message level                                                          ; Level2             ; Level2             ;
-; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
-; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
-; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
-; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
-; Clock MUX Protection                                                       ; On                 ; On                 ;
-; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
-; Block Design Naming                                                        ; Auto               ; Auto               ;
-; SDC constraint protection                                                  ; Off                ; Off                ;
-; Synthesis Effort                                                           ; Auto               ; Auto               ;
-; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
-; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
-; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
-; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
-; Synthesis Seed                                                             ; 1                  ; 1                  ;
-+----------------------------------------------------------------------------+--------------------+--------------------+
++----------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                            ;
++----------------------------------------------------------------+--------------------+--------------------+
+; Option                                                         ; Setting            ; Default Value      ;
++----------------------------------------------------------------+--------------------+--------------------+
+; Device                                                         ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                          ; des                ; des                ;
+; Family name                                                    ; Cyclone III        ; Stratix II         ;
+; Use smart compilation                                          ; Off                ; Off                ;
+; Restructure Multiplexers                                       ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                            ; Off                ; Off                ;
+; Preserve fewer node names                                      ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                      ; Off                ; Off                ;
+; Verilog Version                                                ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                   ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                       ; Auto               ; Auto               ;
+; Safe State Machine                                             ; Off                ; Off                ;
+; Extract Verilog State Machines                                 ; On                 ; On                 ;
+; Extract VHDL State Machines                                    ; On                 ; On                 ;
+; Ignore Verilog initial constructs                              ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                     ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                 ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                        ; On                 ; On                 ;
+; Parallel Synthesis                                             ; Off                ; Off                ;
+; DSP Block Balancing                                            ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                             ; On                 ; On                 ;
+; Power-Up Don't Care                                            ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                   ; Off                ; Off                ;
+; Remove Duplicate Registers                                     ; On                 ; On                 ;
+; Ignore CARRY Buffers                                           ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                         ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                          ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                      ; Off                ; Off                ;
+; Ignore LCELL Buffers                                           ; Off                ; Off                ;
+; Ignore SOFT Buffers                                            ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                 ; Off                ; Off                ;
+; Optimization Technique                                         ; Balanced           ; Balanced           ;
+; Carry Chain Length                                             ; 70                 ; 70                 ;
+; Auto Carry Chains                                              ; On                 ; On                 ;
+; Auto Open-Drain Pins                                           ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                          ; Off                ; Off                ;
+; Auto ROM Replacement                                           ; On                 ; On                 ;
+; Auto RAM Replacement                                           ; On                 ; On                 ;
+; Auto DSP Block Replacement                                     ; On                 ; On                 ;
+; Auto Shift Register Replacement                                ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                  ; On                 ; On                 ;
+; Strict RAM Replacement                                         ; Off                ; Off                ;
+; Allow Synchronous Control Signals                              ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                         ; Off                ; Off                ;
+; Auto RAM Block Balancing                                       ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                              ; Off                ; Off                ;
+; Auto Resource Sharing                                          ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                             ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                             ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                  ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing            ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives              ; Off                ; Off                ;
+; Timing-Driven Synthesis                                        ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report             ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                             ; Off                ; Off                ;
+; Synchronization Register Chain Length                          ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                              ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report       ; 100                ; 100                ;
+; Number of Inverted Registers Reported in Synthesis Report      ; 100                ; 100                ;
+; Clock MUX Protection                                           ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                    ; Off                ; Off                ;
+; Block Design Naming                                            ; Auto               ; Auto               ;
+; SDC constraint protection                                      ; Off                ; Off                ;
+; Synthesis Effort                                               ; Auto               ; Auto               ;
+; Allows Asynchronous Clear Usage For Shift Register Replacement ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                             ; Medium             ; Medium             ;
++----------------------------------------------------------------+--------------------+--------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 4      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                  ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                              ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+
+; DES.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Vaio/Documents/LPCXpresso_4.2.3_292/workspace/ECEN3000/DES/DES.v ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+;                                             ;       ;
+; Total combinational functions               ; 0     ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 0     ;
+;     -- <=2 input functions                  ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 0     ;
+;     -- arithmetic mode                      ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 0     ;
+;     -- Dedicated logic registers            ; 0     ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 196   ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 196   ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |des                       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 196  ; 0            ; |des                ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "K_plus_gen:kasdf"                                                                       ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; key_plus ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 32-bit Analysis & Synthesis
-    Info: Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
-    Info: Processing started: Tue Oct 16 13:18:36 2012
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
+    Info: Processing started: Thu Oct 18 13:21:57 2012
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off des -c des
-Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 4 design units, including 4 entities, in source file des.v
-    Info (12023): Found entity 1: DES
-    Info (12023): Found entity 2: K_plus_gen
-    Info (12023): Found entity 3: CnDn_gen
-    Info (12023): Found entity 4: kn_gen
-Error (12007): Top-level design entity "des" is undefined
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 304 megabytes
-    Error: Processing ended: Tue Oct 16 13:18:38 2012
-    Error: Elapsed time: 00:00:02
-    Error: Total CPU time (on all processors): 00:00:02
+Info: Found 16 design units, including 16 entities, in source file DES.v
+    Info: Found entity 1: des
+    Info: Found entity 2: K_plus_gen
+    Info: Found entity 3: CnDn_gen
+    Info: Found entity 4: kn_gen
+    Info: Found entity 5: ip_gen
+    Info: Found entity 6: LnRn_gen
+    Info: Found entity 7: genEXORK
+    Info: Found entity 8: sBox
+    Info: Found entity 9: S1
+    Info: Found entity 10: S2
+    Info: Found entity 11: S3
+    Info: Found entity 12: S4
+    Info: Found entity 13: S5
+    Info: Found entity 14: S6
+    Info: Found entity 15: S7
+    Info: Found entity 16: S8
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(44): created implicit net for "C2"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(45): created implicit net for "D2"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(48): created implicit net for "C3"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(49): created implicit net for "D3"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(52): created implicit net for "C4"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(53): created implicit net for "D4"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(56): created implicit net for "C5"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(57): created implicit net for "D5"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(60): created implicit net for "C6"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(61): created implicit net for "D6"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(65): created implicit net for "D7"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(66): created implicit net for "CD7"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(69): created implicit net for "D8"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(70): created implicit net for "CD16"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(72): created implicit net for "C9"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(73): created implicit net for "D9"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(76): created implicit net for "C10"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(77): created implicit net for "D10"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(80): created implicit net for "C11"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(81): created implicit net for "D11"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(84): created implicit net for "C12"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(85): created implicit net for "D12"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(88): created implicit net for "C13"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(89): created implicit net for "D13"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(92): created implicit net for "C14"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(93): created implicit net for "D14"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(96): created implicit net for "C15"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(97): created implicit net for "D15"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(100): created implicit net for "C16"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(101): created implicit net for "D16"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(131): created implicit net for "exporout"
+Info: Elaborating entity "des" for the top level hierarchy
+Warning (10034): Output port "dout[63]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[62]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[61]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[60]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[59]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[58]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[57]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[56]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[55]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[54]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[53]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[52]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[51]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[50]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[49]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[48]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[47]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[46]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[45]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[44]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[43]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[42]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[41]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[40]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[39]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[38]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[37]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[36]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[35]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[34]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[33]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[32]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[31]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[30]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[29]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[28]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[27]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[26]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[25]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[24]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[23]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[22]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[21]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[20]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[19]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[18]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[17]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[16]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[15]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[14]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[13]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[12]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[11]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[10]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[9]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[8]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[7]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[6]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[5]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[4]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[3]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[2]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[1]" at DES.v(4) has no driver
+Warning (10034): Output port "dout[0]" at DES.v(4) has no driver
+Warning (10034): Output port "oflag" at DES.v(5) has no driver
+Info: Elaborating entity "K_plus_gen" for hierarchy "K_plus_gen:kasdf"
+Warning (10034): Output port "key_plus[55]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[54]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[53]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[52]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[51]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[50]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[49]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[48]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[47]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[46]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[45]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[44]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[43]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[42]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[41]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[40]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[39]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[38]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[37]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[36]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[35]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[34]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[33]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[32]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[31]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[30]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[29]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[28]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[27]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[26]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[25]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[24]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[23]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[22]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[21]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[20]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[19]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[18]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[17]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[16]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[15]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[14]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[13]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[12]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[11]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[10]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[9]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[8]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[7]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[6]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[5]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[4]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[3]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[2]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[1]" at DES.v(12) has no driver
+Warning (10034): Output port "key_plus[0]" at DES.v(12) has no driver
+Warning: Entity "K_plus_gen" contains only dangling pins
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "dout[0]" is stuck at GND
+    Warning (13410): Pin "dout[1]" is stuck at GND
+    Warning (13410): Pin "dout[2]" is stuck at GND
+    Warning (13410): Pin "dout[3]" is stuck at GND
+    Warning (13410): Pin "dout[4]" is stuck at GND
+    Warning (13410): Pin "dout[5]" is stuck at GND
+    Warning (13410): Pin "dout[6]" is stuck at GND
+    Warning (13410): Pin "dout[7]" is stuck at GND
+    Warning (13410): Pin "dout[8]" is stuck at GND
+    Warning (13410): Pin "dout[9]" is stuck at GND
+    Warning (13410): Pin "dout[10]" is stuck at GND
+    Warning (13410): Pin "dout[11]" is stuck at GND
+    Warning (13410): Pin "dout[12]" is stuck at GND
+    Warning (13410): Pin "dout[13]" is stuck at GND
+    Warning (13410): Pin "dout[14]" is stuck at GND
+    Warning (13410): Pin "dout[15]" is stuck at GND
+    Warning (13410): Pin "dout[16]" is stuck at GND
+    Warning (13410): Pin "dout[17]" is stuck at GND
+    Warning (13410): Pin "dout[18]" is stuck at GND
+    Warning (13410): Pin "dout[19]" is stuck at GND
+    Warning (13410): Pin "dout[20]" is stuck at GND
+    Warning (13410): Pin "dout[21]" is stuck at GND
+    Warning (13410): Pin "dout[22]" is stuck at GND
+    Warning (13410): Pin "dout[23]" is stuck at GND
+    Warning (13410): Pin "dout[24]" is stuck at GND
+    Warning (13410): Pin "dout[25]" is stuck at GND
+    Warning (13410): Pin "dout[26]" is stuck at GND
+    Warning (13410): Pin "dout[27]" is stuck at GND
+    Warning (13410): Pin "dout[28]" is stuck at GND
+    Warning (13410): Pin "dout[29]" is stuck at GND
+    Warning (13410): Pin "dout[30]" is stuck at GND
+    Warning (13410): Pin "dout[31]" is stuck at GND
+    Warning (13410): Pin "dout[32]" is stuck at GND
+    Warning (13410): Pin "dout[33]" is stuck at GND
+    Warning (13410): Pin "dout[34]" is stuck at GND
+    Warning (13410): Pin "dout[35]" is stuck at GND
+    Warning (13410): Pin "dout[36]" is stuck at GND
+    Warning (13410): Pin "dout[37]" is stuck at GND
+    Warning (13410): Pin "dout[38]" is stuck at GND
+    Warning (13410): Pin "dout[39]" is stuck at GND
+    Warning (13410): Pin "dout[40]" is stuck at GND
+    Warning (13410): Pin "dout[41]" is stuck at GND
+    Warning (13410): Pin "dout[42]" is stuck at GND
+    Warning (13410): Pin "dout[43]" is stuck at GND
+    Warning (13410): Pin "dout[44]" is stuck at GND
+    Warning (13410): Pin "dout[45]" is stuck at GND
+    Warning (13410): Pin "dout[46]" is stuck at GND
+    Warning (13410): Pin "dout[47]" is stuck at GND
+    Warning (13410): Pin "dout[48]" is stuck at GND
+    Warning (13410): Pin "dout[49]" is stuck at GND
+    Warning (13410): Pin "dout[50]" is stuck at GND
+    Warning (13410): Pin "dout[51]" is stuck at GND
+    Warning (13410): Pin "dout[52]" is stuck at GND
+    Warning (13410): Pin "dout[53]" is stuck at GND
+    Warning (13410): Pin "dout[54]" is stuck at GND
+    Warning (13410): Pin "dout[55]" is stuck at GND
+    Warning (13410): Pin "dout[56]" is stuck at GND
+    Warning (13410): Pin "dout[57]" is stuck at GND
+    Warning (13410): Pin "dout[58]" is stuck at GND
+    Warning (13410): Pin "dout[59]" is stuck at GND
+    Warning (13410): Pin "dout[60]" is stuck at GND
+    Warning (13410): Pin "dout[61]" is stuck at GND
+    Warning (13410): Pin "dout[62]" is stuck at GND
+    Warning (13410): Pin "dout[63]" is stuck at GND
+    Warning (13410): Pin "oflag" is stuck at GND
+Warning: Design contains 131 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk"
+    Warning (15610): No output dependent on input pin "reset"
+    Warning (15610): No output dependent on input pin "mode"
+    Warning (15610): No output dependent on input pin "din[0]"
+    Warning (15610): No output dependent on input pin "din[1]"
+    Warning (15610): No output dependent on input pin "din[2]"
+    Warning (15610): No output dependent on input pin "din[3]"
+    Warning (15610): No output dependent on input pin "din[4]"
+    Warning (15610): No output dependent on input pin "din[5]"
+    Warning (15610): No output dependent on input pin "din[6]"
+    Warning (15610): No output dependent on input pin "din[7]"
+    Warning (15610): No output dependent on input pin "din[8]"
+    Warning (15610): No output dependent on input pin "din[9]"
+    Warning (15610): No output dependent on input pin "din[10]"
+    Warning (15610): No output dependent on input pin "din[11]"
+    Warning (15610): No output dependent on input pin "din[12]"
+    Warning (15610): No output dependent on input pin "din[13]"
+    Warning (15610): No output dependent on input pin "din[14]"
+    Warning (15610): No output dependent on input pin "din[15]"
+    Warning (15610): No output dependent on input pin "din[16]"
+    Warning (15610): No output dependent on input pin "din[17]"
+    Warning (15610): No output dependent on input pin "din[18]"
+    Warning (15610): No output dependent on input pin "din[19]"
+    Warning (15610): No output dependent on input pin "din[20]"
+    Warning (15610): No output dependent on input pin "din[21]"
+    Warning (15610): No output dependent on input pin "din[22]"
+    Warning (15610): No output dependent on input pin "din[23]"
+    Warning (15610): No output dependent on input pin "din[24]"
+    Warning (15610): No output dependent on input pin "din[25]"
+    Warning (15610): No output dependent on input pin "din[26]"
+    Warning (15610): No output dependent on input pin "din[27]"
+    Warning (15610): No output dependent on input pin "din[28]"
+    Warning (15610): No output dependent on input pin "din[29]"
+    Warning (15610): No output dependent on input pin "din[30]"
+    Warning (15610): No output dependent on input pin "din[31]"
+    Warning (15610): No output dependent on input pin "din[32]"
+    Warning (15610): No output dependent on input pin "din[33]"
+    Warning (15610): No output dependent on input pin "din[34]"
+    Warning (15610): No output dependent on input pin "din[35]"
+    Warning (15610): No output dependent on input pin "din[36]"
+    Warning (15610): No output dependent on input pin "din[37]"
+    Warning (15610): No output dependent on input pin "din[38]"
+    Warning (15610): No output dependent on input pin "din[39]"
+    Warning (15610): No output dependent on input pin "din[40]"
+    Warning (15610): No output dependent on input pin "din[41]"
+    Warning (15610): No output dependent on input pin "din[42]"
+    Warning (15610): No output dependent on input pin "din[43]"
+    Warning (15610): No output dependent on input pin "din[44]"
+    Warning (15610): No output dependent on input pin "din[45]"
+    Warning (15610): No output dependent on input pin "din[46]"
+    Warning (15610): No output dependent on input pin "din[47]"
+    Warning (15610): No output dependent on input pin "din[48]"
+    Warning (15610): No output dependent on input pin "din[49]"
+    Warning (15610): No output dependent on input pin "din[50]"
+    Warning (15610): No output dependent on input pin "din[51]"
+    Warning (15610): No output dependent on input pin "din[52]"
+    Warning (15610): No output dependent on input pin "din[53]"
+    Warning (15610): No output dependent on input pin "din[54]"
+    Warning (15610): No output dependent on input pin "din[55]"
+    Warning (15610): No output dependent on input pin "din[56]"
+    Warning (15610): No output dependent on input pin "din[57]"
+    Warning (15610): No output dependent on input pin "din[58]"
+    Warning (15610): No output dependent on input pin "din[59]"
+    Warning (15610): No output dependent on input pin "din[60]"
+    Warning (15610): No output dependent on input pin "din[61]"
+    Warning (15610): No output dependent on input pin "din[62]"
+    Warning (15610): No output dependent on input pin "din[63]"
+    Warning (15610): No output dependent on input pin "key[0]"
+    Warning (15610): No output dependent on input pin "key[1]"
+    Warning (15610): No output dependent on input pin "key[2]"
+    Warning (15610): No output dependent on input pin "key[3]"
+    Warning (15610): No output dependent on input pin "key[4]"
+    Warning (15610): No output dependent on input pin "key[5]"
+    Warning (15610): No output dependent on input pin "key[6]"
+    Warning (15610): No output dependent on input pin "key[7]"
+    Warning (15610): No output dependent on input pin "key[8]"
+    Warning (15610): No output dependent on input pin "key[9]"
+    Warning (15610): No output dependent on input pin "key[10]"
+    Warning (15610): No output dependent on input pin "key[11]"
+    Warning (15610): No output dependent on input pin "key[12]"
+    Warning (15610): No output dependent on input pin "key[13]"
+    Warning (15610): No output dependent on input pin "key[14]"
+    Warning (15610): No output dependent on input pin "key[15]"
+    Warning (15610): No output dependent on input pin "key[16]"
+    Warning (15610): No output dependent on input pin "key[17]"
+    Warning (15610): No output dependent on input pin "key[18]"
+    Warning (15610): No output dependent on input pin "key[19]"
+    Warning (15610): No output dependent on input pin "key[20]"
+    Warning (15610): No output dependent on input pin "key[21]"
+    Warning (15610): No output dependent on input pin "key[22]"
+    Warning (15610): No output dependent on input pin "key[23]"
+    Warning (15610): No output dependent on input pin "key[24]"
+    Warning (15610): No output dependent on input pin "key[25]"
+    Warning (15610): No output dependent on input pin "key[26]"
+    Warning (15610): No output dependent on input pin "key[27]"
+    Warning (15610): No output dependent on input pin "key[28]"
+    Warning (15610): No output dependent on input pin "key[29]"
+    Warning (15610): No output dependent on input pin "key[30]"
+    Warning (15610): No output dependent on input pin "key[31]"
+    Warning (15610): No output dependent on input pin "key[32]"
+    Warning (15610): No output dependent on input pin "key[33]"
+    Warning (15610): No output dependent on input pin "key[34]"
+    Warning (15610): No output dependent on input pin "key[35]"
+    Warning (15610): No output dependent on input pin "key[36]"
+    Warning (15610): No output dependent on input pin "key[37]"
+    Warning (15610): No output dependent on input pin "key[38]"
+    Warning (15610): No output dependent on input pin "key[39]"
+    Warning (15610): No output dependent on input pin "key[40]"
+    Warning (15610): No output dependent on input pin "key[41]"
+    Warning (15610): No output dependent on input pin "key[42]"
+    Warning (15610): No output dependent on input pin "key[43]"
+    Warning (15610): No output dependent on input pin "key[44]"
+    Warning (15610): No output dependent on input pin "key[45]"
+    Warning (15610): No output dependent on input pin "key[46]"
+    Warning (15610): No output dependent on input pin "key[47]"
+    Warning (15610): No output dependent on input pin "key[48]"
+    Warning (15610): No output dependent on input pin "key[49]"
+    Warning (15610): No output dependent on input pin "key[50]"
+    Warning (15610): No output dependent on input pin "key[51]"
+    Warning (15610): No output dependent on input pin "key[52]"
+    Warning (15610): No output dependent on input pin "key[53]"
+    Warning (15610): No output dependent on input pin "key[54]"
+    Warning (15610): No output dependent on input pin "key[55]"
+    Warning (15610): No output dependent on input pin "key[56]"
+    Warning (15610): No output dependent on input pin "key[57]"
+    Warning (15610): No output dependent on input pin "key[58]"
+    Warning (15610): No output dependent on input pin "key[59]"
+    Warning (15610): No output dependent on input pin "key[60]"
+    Warning (15610): No output dependent on input pin "key[61]"
+    Warning (15610): No output dependent on input pin "key[62]"
+    Warning (15610): No output dependent on input pin "key[63]"
+Info: Implemented 196 device resources after synthesis - the final resource count might be different
+    Info: Implemented 131 input pins
+    Info: Implemented 65 output pins
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 351 warnings
+    Info: Peak virtual memory: 218 megabytes
+    Info: Processing ended: Thu Oct 18 13:21:59 2012
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 
