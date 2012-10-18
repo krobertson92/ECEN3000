@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 Analysis & Synthesis Status : Successful - Thu Oct 18 13:21:59 2012
 Quartus II Version : 9.0 Build 132 02/25/2009 SJ Web Edition
+=======
+Analysis & Synthesis Status : Successful - Tue Oct 16 14:45:33 2012
+Quartus II 32-bit Version : 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition
+>>>>>>> 588192116f10adb043904da95c880dba34e73409
 Revision Name : des
 Top-level Entity Name : des
 Family : Cyclone III
