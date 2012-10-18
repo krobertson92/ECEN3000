@@ -1,5 +1,5 @@
 Analysis & Synthesis report for des
-Tue Oct 16 14:45:33 2012
+Thu Oct 18 13:08:13 2012
 Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
 
 
@@ -10,13 +10,7 @@ Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Editio
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "K_plus_gen:kasdf"
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
 
 
 
@@ -42,20 +36,20 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 16 14:45:33 2012         ;
+; Analysis & Synthesis Status        ; Failed - Thu Oct 18 13:08:13 2012             ;
 ; Quartus II 32-bit Version          ; 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition ;
 ; Revision Name                      ; des                                           ;
 ; Top-level Entity Name              ; des                                           ;
 ; Family                             ; Cyclone III                                   ;
-; Total logic elements               ; 0                                             ;
-;     Total combinational functions  ; 0                                             ;
-;     Dedicated logic registers      ; 0                                             ;
-; Total registers                    ; 0                                             ;
-; Total pins                         ; 196                                           ;
-; Total virtual pins                 ; 0                                             ;
-; Total memory bits                  ; 0                                             ;
-; Embedded Multiplier 9-bit elements ; 0                                             ;
-; Total PLLs                         ; 0                                             ;
+; Total logic elements               ; N/A until Partition Merge                     ;
+;     Total combinational functions  ; N/A until Partition Merge                     ;
+;     Dedicated logic registers      ; N/A until Partition Merge                     ;
+; Total registers                    ; N/A until Partition Merge                     ;
+; Total pins                         ; N/A until Partition Merge                     ;
+; Total virtual pins                 ; N/A until Partition Merge                     ;
+; Total memory bits                  ; N/A until Partition Merge                     ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                     ;
+; Total PLLs                         ; N/A until Partition Merge                     ;
 +------------------------------------+-----------------------------------------------+
 
 
@@ -156,311 +150,30 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                        ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-; DES.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-
-
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-;                                             ;       ;
-; Total combinational functions               ; 0     ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 0     ;
-;     -- arithmetic mode                      ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
-;     -- I/O registers                        ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 196   ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 196   ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |des                       ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 196  ; 0            ; |des                ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+--------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "K_plus_gen:kasdf"                                                                       ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                             ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-; key_plus ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
-    Info: Processing started: Tue Oct 16 14:45:28 2012
+    Info: Processing started: Thu Oct 18 13:08:11 2012
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off des -c des
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 4 design units, including 4 entities, in source file des.v
+Info (12021): Found 7 design units, including 7 entities, in source file des.v
     Info (12023): Found entity 1: des
     Info (12023): Found entity 2: K_plus_gen
     Info (12023): Found entity 3: CnDn_gen
     Info (12023): Found entity 4: kn_gen
+    Info (12023): Found entity 5: e_gen
+    Info (12023): Found entity 6: ip_inv
+    Info (12023): Found entity 7: p_gen
 Info (12127): Elaborating entity "des" for the top level hierarchy
-Warning (10034): Output port "dout" at DES.v(4) has no driver
-Warning (10034): Output port "oflag" at DES.v(5) has no driver
-Info (12128): Elaborating entity "K_plus_gen" for hierarchy "K_plus_gen:kasdf"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "dout[0]" is stuck at GND
-    Warning (13410): Pin "dout[1]" is stuck at GND
-    Warning (13410): Pin "dout[2]" is stuck at GND
-    Warning (13410): Pin "dout[3]" is stuck at GND
-    Warning (13410): Pin "dout[4]" is stuck at GND
-    Warning (13410): Pin "dout[5]" is stuck at GND
-    Warning (13410): Pin "dout[6]" is stuck at GND
-    Warning (13410): Pin "dout[7]" is stuck at GND
-    Warning (13410): Pin "dout[8]" is stuck at GND
-    Warning (13410): Pin "dout[9]" is stuck at GND
-    Warning (13410): Pin "dout[10]" is stuck at GND
-    Warning (13410): Pin "dout[11]" is stuck at GND
-    Warning (13410): Pin "dout[12]" is stuck at GND
-    Warning (13410): Pin "dout[13]" is stuck at GND
-    Warning (13410): Pin "dout[14]" is stuck at GND
-    Warning (13410): Pin "dout[15]" is stuck at GND
-    Warning (13410): Pin "dout[16]" is stuck at GND
-    Warning (13410): Pin "dout[17]" is stuck at GND
-    Warning (13410): Pin "dout[18]" is stuck at GND
-    Warning (13410): Pin "dout[19]" is stuck at GND
-    Warning (13410): Pin "dout[20]" is stuck at GND
-    Warning (13410): Pin "dout[21]" is stuck at GND
-    Warning (13410): Pin "dout[22]" is stuck at GND
-    Warning (13410): Pin "dout[23]" is stuck at GND
-    Warning (13410): Pin "dout[24]" is stuck at GND
-    Warning (13410): Pin "dout[25]" is stuck at GND
-    Warning (13410): Pin "dout[26]" is stuck at GND
-    Warning (13410): Pin "dout[27]" is stuck at GND
-    Warning (13410): Pin "dout[28]" is stuck at GND
-    Warning (13410): Pin "dout[29]" is stuck at GND
-    Warning (13410): Pin "dout[30]" is stuck at GND
-    Warning (13410): Pin "dout[31]" is stuck at GND
-    Warning (13410): Pin "dout[32]" is stuck at GND
-    Warning (13410): Pin "dout[33]" is stuck at GND
-    Warning (13410): Pin "dout[34]" is stuck at GND
-    Warning (13410): Pin "dout[35]" is stuck at GND
-    Warning (13410): Pin "dout[36]" is stuck at GND
-    Warning (13410): Pin "dout[37]" is stuck at GND
-    Warning (13410): Pin "dout[38]" is stuck at GND
-    Warning (13410): Pin "dout[39]" is stuck at GND
-    Warning (13410): Pin "dout[40]" is stuck at GND
-    Warning (13410): Pin "dout[41]" is stuck at GND
-    Warning (13410): Pin "dout[42]" is stuck at GND
-    Warning (13410): Pin "dout[43]" is stuck at GND
-    Warning (13410): Pin "dout[44]" is stuck at GND
-    Warning (13410): Pin "dout[45]" is stuck at GND
-    Warning (13410): Pin "dout[46]" is stuck at GND
-    Warning (13410): Pin "dout[47]" is stuck at GND
-    Warning (13410): Pin "dout[48]" is stuck at GND
-    Warning (13410): Pin "dout[49]" is stuck at GND
-    Warning (13410): Pin "dout[50]" is stuck at GND
-    Warning (13410): Pin "dout[51]" is stuck at GND
-    Warning (13410): Pin "dout[52]" is stuck at GND
-    Warning (13410): Pin "dout[53]" is stuck at GND
-    Warning (13410): Pin "dout[54]" is stuck at GND
-    Warning (13410): Pin "dout[55]" is stuck at GND
-    Warning (13410): Pin "dout[56]" is stuck at GND
-    Warning (13410): Pin "dout[57]" is stuck at GND
-    Warning (13410): Pin "dout[58]" is stuck at GND
-    Warning (13410): Pin "dout[59]" is stuck at GND
-    Warning (13410): Pin "dout[60]" is stuck at GND
-    Warning (13410): Pin "dout[61]" is stuck at GND
-    Warning (13410): Pin "dout[62]" is stuck at GND
-    Warning (13410): Pin "dout[63]" is stuck at GND
-    Warning (13410): Pin "oflag" is stuck at GND
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 131 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk"
-    Warning (15610): No output dependent on input pin "reset"
-    Warning (15610): No output dependent on input pin "mode"
-    Warning (15610): No output dependent on input pin "din[0]"
-    Warning (15610): No output dependent on input pin "din[1]"
-    Warning (15610): No output dependent on input pin "din[2]"
-    Warning (15610): No output dependent on input pin "din[3]"
-    Warning (15610): No output dependent on input pin "din[4]"
-    Warning (15610): No output dependent on input pin "din[5]"
-    Warning (15610): No output dependent on input pin "din[6]"
-    Warning (15610): No output dependent on input pin "din[7]"
-    Warning (15610): No output dependent on input pin "din[8]"
-    Warning (15610): No output dependent on input pin "din[9]"
-    Warning (15610): No output dependent on input pin "din[10]"
-    Warning (15610): No output dependent on input pin "din[11]"
-    Warning (15610): No output dependent on input pin "din[12]"
-    Warning (15610): No output dependent on input pin "din[13]"
-    Warning (15610): No output dependent on input pin "din[14]"
-    Warning (15610): No output dependent on input pin "din[15]"
-    Warning (15610): No output dependent on input pin "din[16]"
-    Warning (15610): No output dependent on input pin "din[17]"
-    Warning (15610): No output dependent on input pin "din[18]"
-    Warning (15610): No output dependent on input pin "din[19]"
-    Warning (15610): No output dependent on input pin "din[20]"
-    Warning (15610): No output dependent on input pin "din[21]"
-    Warning (15610): No output dependent on input pin "din[22]"
-    Warning (15610): No output dependent on input pin "din[23]"
-    Warning (15610): No output dependent on input pin "din[24]"
-    Warning (15610): No output dependent on input pin "din[25]"
-    Warning (15610): No output dependent on input pin "din[26]"
-    Warning (15610): No output dependent on input pin "din[27]"
-    Warning (15610): No output dependent on input pin "din[28]"
-    Warning (15610): No output dependent on input pin "din[29]"
-    Warning (15610): No output dependent on input pin "din[30]"
-    Warning (15610): No output dependent on input pin "din[31]"
-    Warning (15610): No output dependent on input pin "din[32]"
-    Warning (15610): No output dependent on input pin "din[33]"
-    Warning (15610): No output dependent on input pin "din[34]"
-    Warning (15610): No output dependent on input pin "din[35]"
-    Warning (15610): No output dependent on input pin "din[36]"
-    Warning (15610): No output dependent on input pin "din[37]"
-    Warning (15610): No output dependent on input pin "din[38]"
-    Warning (15610): No output dependent on input pin "din[39]"
-    Warning (15610): No output dependent on input pin "din[40]"
-    Warning (15610): No output dependent on input pin "din[41]"
-    Warning (15610): No output dependent on input pin "din[42]"
-    Warning (15610): No output dependent on input pin "din[43]"
-    Warning (15610): No output dependent on input pin "din[44]"
-    Warning (15610): No output dependent on input pin "din[45]"
-    Warning (15610): No output dependent on input pin "din[46]"
-    Warning (15610): No output dependent on input pin "din[47]"
-    Warning (15610): No output dependent on input pin "din[48]"
-    Warning (15610): No output dependent on input pin "din[49]"
-    Warning (15610): No output dependent on input pin "din[50]"
-    Warning (15610): No output dependent on input pin "din[51]"
-    Warning (15610): No output dependent on input pin "din[52]"
-    Warning (15610): No output dependent on input pin "din[53]"
-    Warning (15610): No output dependent on input pin "din[54]"
-    Warning (15610): No output dependent on input pin "din[55]"
-    Warning (15610): No output dependent on input pin "din[56]"
-    Warning (15610): No output dependent on input pin "din[57]"
-    Warning (15610): No output dependent on input pin "din[58]"
-    Warning (15610): No output dependent on input pin "din[59]"
-    Warning (15610): No output dependent on input pin "din[60]"
-    Warning (15610): No output dependent on input pin "din[61]"
-    Warning (15610): No output dependent on input pin "din[62]"
-    Warning (15610): No output dependent on input pin "din[63]"
-    Warning (15610): No output dependent on input pin "key[0]"
-    Warning (15610): No output dependent on input pin "key[1]"
-    Warning (15610): No output dependent on input pin "key[2]"
-    Warning (15610): No output dependent on input pin "key[3]"
-    Warning (15610): No output dependent on input pin "key[4]"
-    Warning (15610): No output dependent on input pin "key[5]"
-    Warning (15610): No output dependent on input pin "key[6]"
-    Warning (15610): No output dependent on input pin "key[7]"
-    Warning (15610): No output dependent on input pin "key[8]"
-    Warning (15610): No output dependent on input pin "key[9]"
-    Warning (15610): No output dependent on input pin "key[10]"
-    Warning (15610): No output dependent on input pin "key[11]"
-    Warning (15610): No output dependent on input pin "key[12]"
-    Warning (15610): No output dependent on input pin "key[13]"
-    Warning (15610): No output dependent on input pin "key[14]"
-    Warning (15610): No output dependent on input pin "key[15]"
-    Warning (15610): No output dependent on input pin "key[16]"
-    Warning (15610): No output dependent on input pin "key[17]"
-    Warning (15610): No output dependent on input pin "key[18]"
-    Warning (15610): No output dependent on input pin "key[19]"
-    Warning (15610): No output dependent on input pin "key[20]"
-    Warning (15610): No output dependent on input pin "key[21]"
-    Warning (15610): No output dependent on input pin "key[22]"
-    Warning (15610): No output dependent on input pin "key[23]"
-    Warning (15610): No output dependent on input pin "key[24]"
-    Warning (15610): No output dependent on input pin "key[25]"
-    Warning (15610): No output dependent on input pin "key[26]"
-    Warning (15610): No output dependent on input pin "key[27]"
-    Warning (15610): No output dependent on input pin "key[28]"
-    Warning (15610): No output dependent on input pin "key[29]"
-    Warning (15610): No output dependent on input pin "key[30]"
-    Warning (15610): No output dependent on input pin "key[31]"
-    Warning (15610): No output dependent on input pin "key[32]"
-    Warning (15610): No output dependent on input pin "key[33]"
-    Warning (15610): No output dependent on input pin "key[34]"
-    Warning (15610): No output dependent on input pin "key[35]"
-    Warning (15610): No output dependent on input pin "key[36]"
-    Warning (15610): No output dependent on input pin "key[37]"
-    Warning (15610): No output dependent on input pin "key[38]"
-    Warning (15610): No output dependent on input pin "key[39]"
-    Warning (15610): No output dependent on input pin "key[40]"
-    Warning (15610): No output dependent on input pin "key[41]"
-    Warning (15610): No output dependent on input pin "key[42]"
-    Warning (15610): No output dependent on input pin "key[43]"
-    Warning (15610): No output dependent on input pin "key[44]"
-    Warning (15610): No output dependent on input pin "key[45]"
-    Warning (15610): No output dependent on input pin "key[46]"
-    Warning (15610): No output dependent on input pin "key[47]"
-    Warning (15610): No output dependent on input pin "key[48]"
-    Warning (15610): No output dependent on input pin "key[49]"
-    Warning (15610): No output dependent on input pin "key[50]"
-    Warning (15610): No output dependent on input pin "key[51]"
-    Warning (15610): No output dependent on input pin "key[52]"
-    Warning (15610): No output dependent on input pin "key[53]"
-    Warning (15610): No output dependent on input pin "key[54]"
-    Warning (15610): No output dependent on input pin "key[55]"
-    Warning (15610): No output dependent on input pin "key[56]"
-    Warning (15610): No output dependent on input pin "key[57]"
-    Warning (15610): No output dependent on input pin "key[58]"
-    Warning (15610): No output dependent on input pin "key[59]"
-    Warning (15610): No output dependent on input pin "key[60]"
-    Warning (15610): No output dependent on input pin "key[61]"
-    Warning (15610): No output dependent on input pin "key[62]"
-    Warning (15610): No output dependent on input pin "key[63]"
-Info (21057): Implemented 196 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 131 input pins
-    Info (21059): Implemented 65 output pins
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 201 warnings
-    Info: Peak virtual memory: 311 megabytes
-    Info: Processing ended: Tue Oct 16 14:45:33 2012
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+Error (10285): Verilog HDL Module Instantiation error at DES.v(24): instance "cndng" specifies 18 actual port connections but module "CnDn_gen" only expects 5 File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 24
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
+    Error: Peak virtual memory: 304 megabytes
+    Error: Processing ended: Thu Oct 18 13:08:13 2012
+    Error: Elapsed time: 00:00:02
+    Error: Total CPU time (on all processors): 00:00:02
 
 

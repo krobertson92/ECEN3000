@@ -1,10 +1,61 @@
 module des(clk,reset,mode,din,key,dout,oflag);
 	input clk,reset,mode;
-	input[63:0] din,key;
-	output[63:0] dout;
+	input[1:64] din,key;
+	output[1:64] dout;
 	output oflag;
-	wire[55:0] key_plus;
-	K_plus_gen kasdf(key,key_plus);
+	wire[1:56] key_plus;
+	K_plus_gen kpg(key,key_plus);
+	wire[1:56] cd1;
+	wire[1:56] cd2;
+	wire[1:56] cd3;
+	wire[1:56] cd4;
+	wire[1:56] cd5;
+	wire[1:56] cd6;
+	wire[1:56] cd7;
+	wire[1:56] cd8;
+	wire[1:56] cd9;
+	wire[1:56] cd10;
+	wire[1:56] cd11;
+	wire[1:56] cd12;
+	wire[1:56] cd13;
+	wire[1:56] cd14;
+	wire[1:56] cd15;
+	wire[1:56] cd16;
+	CnDn_gen cndng(key_plus[1:28],key_plus[29:56],cd1,cd2,cd3,cd4,cd5,cd6,cd7,cd8,cd9,cd10,cd11,cd12,cd13,cd14,cd15,cd16);
+	
+	wire[1:48] k1;
+	wire[1:48] k2;
+	wire[1:48] k3;
+	wire[1:48] k4;
+	wire[1:48] k5;
+	wire[1:48] k6;
+	wire[1:48] k7;
+	wire[1:48] k8;
+	wire[1:48] k9;
+	wire[1:48] k10;
+	wire[1:48] k11;
+	wire[1:48] k12;
+	wire[1:48] k13;
+	wire[1:48] k14;
+	wire[1:48] k15;
+	wire[1:48] k16;
+	kn_gen kng(
+	cd1,k1,
+	cd2,k2,
+	cd3,k3,
+	cd4,k4,
+	cd5,k5,
+	cd6,k6,
+	cd7,k7,
+	cd8,k8,
+	cd9,k9,
+	cd10,k10,
+	cd11,k11,
+	cd12,k12,
+	cd13,k13,
+	cd14,k14,
+	cd15,k15,
+	cd16,k16);
 endmodule
 
 module K_plus_gen(key,key_plus);
@@ -261,4 +312,42 @@ module kn_gen(
    assign k16[43] = cd16[46];assign k16[44] = cd16[42];assign k16[45] = cd16[50];assign k16[46] = cd16[36];assign k16[47] = cd16[29];assign k16[48] = cd16[32];
                 
 endmodule
-	
+
+module e_gen(rn_prev, e);
+	input[1:32] rn_prev;
+	output[1:48] e;
+	assign e[1] = rn_prev[32];assign e[2] = rn_prev[1];assign e[3] = rn_prev[2];assign e[4] = rn_prev[3];assign e[5] = rn_prev[4];assign e[6] = rn_prev[5];
+	assign e[7] = rn_prev[4];assign e[8] = rn_prev[5];assign e[9] = rn_prev[6];assign e[10] = rn_prev[7];assign e[11] = rn_prev[8];assign e[12] = rn_prev[9];
+	assign e[13] = rn_prev[8];assign e[14] = rn_prev[9];assign e[15] = rn_prev[10];assign e[16] = rn_prev[11];assign e[17] = rn_prev[12];assign e[18] = rn_prev[13];
+	assign e[19] = rn_prev[12];assign e[20] = rn_prev[13];assign e[21] = rn_prev[14];assign e[22] = rn_prev[15];assign e[23] = rn_prev[16];assign e[24] = rn_prev[17];					
+   assign e[25] = rn_prev[16];assign e[26] = rn_prev[17];assign e[27] = rn_prev[18];assign e[28] = rn_prev[19];assign e[29] = rn_prev[20];assign e[30] = rn_prev[21];               
+   assign e[31] = rn_prev[20];assign e[32] = rn_prev[21];assign e[33] = rn_prev[22];assign e[34] = rn_prev[23];assign e[35] = rn_prev[24];assign e[36] = rn_prev[25];
+	assign e[37] = rn_prev[24];assign e[38] = rn_prev[25];assign e[39] = rn_prev[26];assign e[40] = rn_prev[27];assign e[41] = rn_prev[28];assign e[42] = rn_prev[29];
+   assign e[43] = rn_prev[28];assign e[44] = rn_prev[29];assign e[45] = rn_prev[30];assign e[46] = rn_prev[31];assign e[47] = rn_prev[32];assign e[48] = rn_prev[1];
+endmodule
+
+module ip_inv(rl,enc);
+	input[1:64] rl;
+	output[1:64] enc;
+	assign enc[1]=rl[40];assign enc[2]=rl[8];assign enc[3]=rl[48];assign enc[4]=rl[16];assign enc[5]=rl[56];assign enc[6]=rl[24];assign enc[7]=rl[64];assign enc[8]=rl[32];
+	assign enc[9]=rl[39];assign enc[10]=rl[7];assign enc[11]=rl[47];assign enc[12]=rl[15];assign enc[13]=rl[55];assign enc[14]=rl[23];assign enc[15]=rl[63];assign enc[16]=rl[31];
+	assign enc[17]=rl[38];assign enc[18]=rl[6];assign enc[19]=rl[46];assign enc[20]=rl[14];assign enc[21]=rl[54];assign enc[22]=rl[22];assign enc[23]=rl[62];assign enc[24]=rl[30];
+	assign enc[25]=rl[37];assign enc[26]=rl[5];assign enc[27]=rl[45];assign enc[28]=rl[13];assign enc[29]=rl[53];assign enc[30]=rl[21];assign enc[31]=rl[61];assign enc[32]=rl[29];
+	assign enc[33]=rl[36];assign enc[34]=rl[4];assign enc[35]=rl[44];assign enc[36]=rl[12];assign enc[37]=rl[52];assign enc[38]=rl[20];assign enc[39]=rl[60];assign enc[40]=rl[28];
+	assign enc[41]=rl[35];assign enc[42]=rl[3];assign enc[43]=rl[43];assign enc[44]=rl[11];assign enc[45]=rl[51];assign enc[46]=rl[19];assign enc[47]=rl[59];assign enc[48]=rl[27];
+	assign enc[49]=rl[34];assign enc[50]=rl[2];assign enc[51]=rl[42];assign enc[52]=rl[10];assign enc[53]=rl[50];assign enc[54]=rl[18];assign enc[55]=rl[58];assign enc[56]=rl[26];
+	assign enc[57]=rl[33];assign enc[58]=rl[1];assign enc[59]=rl[41];assign enc[60]=rl[9];assign enc[61]=rl[49];assign enc[62]=rl[17];assign enc[63]=rl[57];assign enc[64]=rl[25];
+endmodule
+
+module p_gen(sb,pout);
+	input[1:32] sb;
+	output[1:32] pout;
+	assign pout[1]=sb[16];assign pout[2]=sb[7];assign pout[3]=sb[20];assign pout[4]=sb[21];
+	assign pout[5]=sb[29];assign pout[6]=sb[12];assign pout[7]=sb[28];assign pout[8]=sb[17];
+	assign pout[9]=sb[1];assign pout[10]=sb[15];assign pout[11]=sb[23];assign pout[12]=sb[26];
+	assign pout[13]=sb[5];assign pout[14]=sb[18];assign pout[15]=sb[31];assign pout[16]=sb[10];
+	assign pout[17]=sb[2];assign pout[18]=sb[8];assign pout[19]=sb[24];assign pout[20]=sb[14];
+	assign pout[21]=sb[32];assign pout[22]=sb[27];assign pout[23]=sb[3];assign pout[24]=sb[9];
+	assign pout[25]=sb[19];assign pout[26]=sb[13];assign pout[27]=sb[30];assign pout[28]=sb[6];
+	assign pout[29]=sb[22];assign pout[30]=sb[11];assign pout[31]=sb[4];assign pout[32]=sb[25];
+endmodule 
