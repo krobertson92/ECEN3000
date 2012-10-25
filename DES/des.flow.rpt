@@ -1,6 +1,6 @@
 Flow report for des
-Thu Oct 18 13:46:24 2012
-Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
+Thu Oct 25 09:50:12 2012
+Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
 
 
 ---------------------
@@ -19,7 +19,7 @@ Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Editio
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2012 Altera Corporation
+Copyright (C) 1991-2009 Altera Corporation
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -35,26 +35,27 @@ applicable agreement for further details.
 
 
 
-+------------------------------------------------------------------------------------+
-; Flow Summary                                                                       ;
-+------------------------------------+-----------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct 18 13:46:24 2012         ;
-; Quartus II 32-bit Version          ; 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition ;
-; Revision Name                      ; des                                           ;
-; Top-level Entity Name              ; des                                           ;
-; Family                             ; Cyclone III                                   ;
-; Device                             ; EP3C16F484C6                                  ;
-; Timing Models                      ; Final                                         ;
-; Total logic elements               ; 0 / 15,408 ( 0 % )                            ;
-;     Total combinational functions  ; 0 / 15,408 ( 0 % )                            ;
-;     Dedicated logic registers      ; 0 / 15,408 ( 0 % )                            ;
-; Total registers                    ; 0                                             ;
-; Total pins                         ; 196 / 347 ( 56 % )                            ;
-; Total virtual pins                 ; 0                                             ;
-; Total memory bits                  ; 0 / 516,096 ( 0 % )                           ;
-; Embedded Multiplier 9-bit elements ; 0 / 112 ( 0 % )                               ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                                 ;
-+------------------------------------+-----------------------------------------------+
++------------------------------------------------------------------------------+
+; Flow Summary                                                                 ;
++------------------------------------+-----------------------------------------+
+; Flow Status                        ; Successful - Thu Oct 25 09:50:12 2012   ;
+; Quartus II Version                 ; 9.0 Build 132 02/25/2009 SJ Web Edition ;
+; Revision Name                      ; des                                     ;
+; Top-level Entity Name              ; des                                     ;
+; Family                             ; Cyclone III                             ;
+; Device                             ; EP3C16F484C6                            ;
+; Timing Models                      ; Final                                   ;
+; Met timing requirements            ; N/A                                     ;
+; Total logic elements               ; 153 / 15,408 ( < 1 % )                  ;
+;     Total combinational functions  ; 153 / 15,408 ( < 1 % )                  ;
+;     Dedicated logic registers      ; 0 / 15,408 ( 0 % )                      ;
+; Total registers                    ; 0                                       ;
+; Total pins                         ; 196 / 347 ( 56 % )                      ;
+; Total virtual pins                 ; 0                                       ;
+; Total memory bits                  ; 0 / 516,096 ( 0 % )                     ;
+; Embedded Multiplier 9-bit elements ; 0 / 112 ( 0 % )                         ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                           ;
++------------------------------------+-----------------------------------------+
 
 
 +-----------------------------------------+
@@ -62,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/18/2012 13:45:23 ;
+; Start date & time ; 10/25/2012 09:49:06 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; des                 ;
 +-------------------+---------------------+
@@ -73,7 +74,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 1095485158154.135058952307584         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 1098176121097.135118014505444         ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; DES_Testbench  ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; DES_Testbench                         ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
@@ -99,26 +100,26 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 306 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:34     ; 1.0                     ; 411 MB              ; 00:00:28                           ;
-; Assembler                 ; 00:00:08     ; 1.0                     ; 319 MB              ; 00:00:07                           ;
-; TimeQuest Timing Analyzer ; 00:00:12     ; 1.0                     ; 317 MB              ; 00:00:08                           ;
-; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 274 MB              ; 00:00:03                           ;
-; Total                     ; 00:01:01     ; --                      ; --                  ; 00:00:50                           ;
+; Analysis & Synthesis      ; 00:00:16     ; 1.0                     ; 241 MB              ; 00:00:16                           ;
+; Fitter                    ; 00:00:18     ; 1.0                     ; 288 MB              ; 00:00:17                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 227 MB              ; 00:00:08                           ;
+; TimeQuest Timing Analyzer ; 00:00:10     ; 1.0                     ; 239 MB              ; 00:00:09                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 174 MB              ; 00:00:03                           ;
+; Total                     ; 00:00:57     ; --                      ; --                  ; 00:00:53                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                        ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
-+---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; policevehicle    ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; policevehicle    ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; policevehicle    ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; policevehicle    ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; policevehicle    ; Windows 7 ; 6.1        ; x86_64         ;
-+---------------------------+------------------+-----------+------------+----------------+
++--------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                            ;
++---------------------------+------------------+---------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
++---------------------------+------------------+---------------+------------+----------------+
+; Analysis & Synthesis      ; Vaio-PC          ; Windows Vista ; 6.1        ; x86_64         ;
+; Fitter                    ; Vaio-PC          ; Windows Vista ; 6.1        ; x86_64         ;
+; Assembler                 ; Vaio-PC          ; Windows Vista ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Vaio-PC          ; Windows Vista ; 6.1        ; x86_64         ;
+; EDA Netlist Writer        ; Vaio-PC          ; Windows Vista ; 6.1        ; x86_64         ;
++---------------------------+------------------+---------------+------------+----------------+
 
 
 ------------

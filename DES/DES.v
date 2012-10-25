@@ -59,7 +59,8 @@ module des(clk,reset,mode,din,key,dout,oflag);
 	
 	wire[1:64] ip;
 	ip_gen ipg(din,ip);
-	
+	LnRn_gen lnrn_genA(ip[1:32],ip[33:64],k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16,dout);
+		
 endmodule
 
 module K_plus_gen(key,key_plus);
@@ -129,7 +130,7 @@ module K_plus_gen(key,key_plus);
 	assign key_plus[56] = key[4];
 endmodule
 
-module CnDn_gen(C0, D0,CD1,CD2,CD3,CD4,CD5,CD6,CD7,CD8,CD9,CD10,CD11,CD12,CD13,CD14,CD15,CD16);//, num_shift);
+module CnDn_gen(C0, D0,CD1,CD2,CD3,CD4,CD5,CD6,CD7,CD8,CD9,CD10,CD11,CD12,CD13,CD14,CD15,CD16);
 	//input[55:0] cn_prev,dn_prev;
 	//input num_shift;
 	//output[55:0] cn,dn;
@@ -179,35 +180,35 @@ module CnDn_gen(C0, D0,CD1,CD2,CD3,CD4,CD5,CD6,CD7,CD8,CD9,CD10,CD11,CD12,CD13,C
 	
 	assign C8={C0[14:1],C0[28:15]};
 	assign D8={D0[14:1],D0[28:15]};
-	assign CD16={C16,D16};
+	assign CD8={C8,D8};
 	
 	assign C9={C0[13:1],C0[28:14]};
 	assign D9={D0[13:1],D0[28:14]};
-	assign CD16={C16,D16};
+	assign CD9={C9,D9};
 	
 	assign C10={C0[11:1],C0[28:12]};
 	assign D10={D0[11:1],D0[28:12]};
-	assign CD16={C16,D16};
+	assign CD10={C10,D10};
 	
 	assign C11={C0[9:1],C0[28:10]};
 	assign D11={D0[9:1],D0[28:10]};
-	assign CD16={C16,D16};
+	assign CD11={C11,D11};
 	
 	assign C12={C0[7:1],C0[28:8]};
 	assign D12={D0[7:1],D0[28:8]};
-	assign CD16={C16,D16};
+	assign CD12={C12,D12};
 	
 	assign C13={C0[5:1],C0[28:6]};
 	assign D13={D0[5:1],D0[28:6]};
-	assign CD16={C16,D16};
+	assign CD13={C13,D13};
 	
 	assign C14={C0[3:1],C0[28:4]};
 	assign D14={D0[3:1],D0[28:4]};
-	assign CD16={C16,D16};
+	assign CD14={C14,D14};
 	
 	assign C15={C0[1:1],C0[28:2]};
 	assign D15={D0[1:1],D0[28:2]};
-	assign CD16={C16,D16};
+	assign CD15={C15,D15};
 	
 	assign C16=C0[28:1];
 	assign D16=D0[28:1];
@@ -235,10 +236,10 @@ module kn_gen(
 	output[1:48] k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16;
 	
 	/*k1 generation*/
-	assign k1[1] = cd1[14];assign k1[2] = cd1[17];assign k1[3] = cd1[11];assign k1[4] = cd1[24];assign k1[5] = cd1[1];assign k1[6] = cd1[5];
-	assign k1[7] = cd1[3];assign k1[8] = cd1[28];assign k1[9] = cd1[15];assign k1[10] = cd1[6];assign k1[11] = cd1[21];assign k1[12] = cd1[10];
-	assign k1[13] = cd1[23];assign k1[14] = cd1[17];assign k1[15] = cd1[11];assign k1[16] = cd1[4];assign k1[17] = cd1[26];assign k1[18] = cd1[8];
-   assign k1[19] = cd1[16];assign k1[20] = cd1[7];assign k1[21] = cd1[27];assign k1[22] = cd1[20];assign k1[23] = cd1[13];assign k1[24] = cd1[2];               
+	assign k1[ 1] = cd1[14];assign k1[ 2] = cd1[17];assign k1[ 3] = cd1[11];assign k1[ 4] = cd1[24];assign k1[ 5] = cd1[ 1];assign k1[ 6] = cd1[ 5];
+	assign k1[ 7] = cd1[ 3];assign k1[ 8] = cd1[28];assign k1[ 9] = cd1[15];assign k1[10] = cd1[ 6];assign k1[11] = cd1[21];assign k1[12] = cd1[10];
+	assign k1[13] = cd1[23];assign k1[14] = cd1[19];assign k1[15] = cd1[12];assign k1[16] = cd1[ 4];assign k1[17] = cd1[26];assign k1[18] = cd1[ 8];
+   assign k1[19] = cd1[16];assign k1[20] = cd1[ 7];assign k1[21] = cd1[27];assign k1[22] = cd1[20];assign k1[23] = cd1[13];assign k1[24] = cd1[ 2];               
    assign k1[25] = cd1[41];assign k1[26] = cd1[52];assign k1[27] = cd1[31];assign k1[28] = cd1[37];assign k1[29] = cd1[47];assign k1[30] = cd1[55];
    assign k1[31] = cd1[30];assign k1[32] = cd1[40];assign k1[33] = cd1[51];assign k1[34] = cd1[45];assign k1[35] = cd1[33];assign k1[36] = cd1[48];
    assign k1[37] = cd1[44];assign k1[38] = cd1[49];assign k1[39] = cd1[39];assign k1[40] = cd1[56];assign k1[41] = cd1[34];assign k1[42] = cd1[53];
@@ -438,28 +439,89 @@ endmodule
 
 module ip_gen(din,ip);
 	input[1:64] din;
-	output[1:64] ip;
+	output[0:63] ip;
 	assign ip[ 0]=din[58];assign ip[ 1]=din[50];assign ip[ 2]=din[42];assign ip[ 3]=din[34];assign ip[ 4]=din[26];assign ip[ 5]=din[18];assign ip[ 6]=din[10];assign ip[ 7]=din[2];
 	assign ip[ 8]=din[60];assign ip[ 9]=din[52];assign ip[10]=din[44];assign ip[11]=din[36];assign ip[12]=din[28];assign ip[13]=din[20];assign ip[14]=din[12];assign ip[15]=din[4];
 	assign ip[16]=din[62];assign ip[17]=din[54];assign ip[18]=din[46];assign ip[19]=din[38];assign ip[20]=din[30];assign ip[21]=din[22];assign ip[22]=din[14];assign ip[23]=din[6];
 	assign ip[24]=din[64];assign ip[25]=din[56];assign ip[26]=din[48];assign ip[27]=din[40];assign ip[28]=din[32];assign ip[29]=din[24];assign ip[30]=din[16];assign ip[31]=din[8];
-	assign ip[32]=din[57];assign ip[32]=din[49];assign ip[33]=din[41];assign ip[34]=din[33];assign ip[35]=din[25];assign ip[36]=din[17];assign ip[37]=din[ 9];assign ip[38]=din[1];
+	assign ip[32]=din[57];assign ip[33]=din[49];assign ip[34]=din[41];assign ip[35]=din[33];assign ip[36]=din[25];assign ip[37]=din[17];assign ip[38]=din[ 9];assign ip[39]=din[1];
 	assign ip[40]=din[59];assign ip[41]=din[51];assign ip[42]=din[43];assign ip[43]=din[35];assign ip[44]=din[27];assign ip[45]=din[19];assign ip[46]=din[11];assign ip[47]=din[3];
 	assign ip[48]=din[61];assign ip[49]=din[53];assign ip[50]=din[45];assign ip[51]=din[37];assign ip[52]=din[29];assign ip[53]=din[21];assign ip[54]=din[13];assign ip[55]=din[5];
 	assign ip[56]=din[63];assign ip[57]=din[55];assign ip[58]=din[47];assign ip[59]=din[39];assign ip[60]=din[31];assign ip[61]=din[23];assign ip[62]=din[15];assign ip[63]=din[7];
 endmodule
 
-module LnRn_gen(L0,R0);
-	assign L1=R0;
-	wire[1:48] e;
-	e_gen
-	assign R1=L0^;
+module LnRn_gen(L0,R0,k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16,enc);
+	output[1:64] enc;
+	input[1:48] k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16;
+	input[1:32] L0,R0;
+	wire[1:32] Lo1,Ro1;
+	RL_gen rlg1(R0,L0,k1,Lo1,Ro1);
+	wire[1:32] Lo2,Ro2;
+	RL_gen rlg2(Ro1,Lo1,k2,Lo2,Ro2);
+	wire[1:32] Lo3,Ro3;
+	RL_gen rlg3(Ro2,Lo2,k3,Lo3,Ro3);
+	wire[1:32] Lo4,Ro4;
+	RL_gen rlg4(Ro3,Lo3,k4,Lo4,Ro4);
+	wire[1:32] Lo5,Ro5;
+	RL_gen rlg5(Ro4,Lo4,k5,Lo5,Ro5);
+	wire[1:32] Lo6,Ro6;
+	RL_gen rlg6(Ro5,Lo5,k6,Lo6,Ro6);
+	wire[1:32] Lo7,Ro7;
+	RL_gen rlg7(Ro6,Lo6,k7,Lo7,Ro7);
+	wire[1:32] Lo8,Ro8;
+	RL_gen rlg8(Ro7,Lo7,k8,Lo8,Ro8);
+	wire[1:32] Lo9,Ro9;
+	RL_gen rlg9(Ro8,Lo8,k9,Lo9,Ro9);
+	wire[1:32] Lo10,Ro10;
+	RL_gen rlg10(Ro9,Lo9,k10,Lo10,Ro10);
+	wire[1:32] Lo11,Ro11;
+	RL_gen rlg11(Ro10,Lo10,k11,Lo11,Ro11);
+	wire[1:32] Lo12,Ro12;
+	RL_gen rlg12(Ro11,Lo11,k12,Lo12,Ro12);
+	wire[1:32] Lo13,Ro13;
+	RL_gen rlg13(Ro12,Lo12,k13,Lo13,Ro13);
+	wire[1:32] Lo14,Ro14;
+	RL_gen rlg14(Ro13,Lo13,k14,Lo14,Ro14);
+	wire[1:32] Lo15,Ro15;
+	RL_gen rlg15(Ro14,Lo14,k15,Lo15,Ro15);
+	wire[1:32] Lo16,Ro16;
+	RL_gen rlg16(Ro15,Lo15,k16,Lo16,Ro16);
+	
+	wire[1:64] RL16={Ro16,Lo16};
+	ip_inv ipinv1(RL16,enc);
+	
 endmodule
 
-module genEXORK(ein,kin,exout);
-	input[1:48] ein,kin;
+module RL_gen(R,L,k,Lo,Ro);
+	input[1:48] k;
+	input[1:32] R,L;
+	output[1:32] Lo,Ro;
+	assign Lo=R;
+	wire[1:48] e0;
+	e_gen G0(R,e0);
+	wire[1:48] ke1;
+	assign ke1=k^e0;
+	wire[1:32] sb1;
+	wire[1:4] Vo1,Vo2,Vo3,Vo4,Vo5,Vo6,Vo7,Vo8;
+	S1 s1(ke1[ 1: 6],Vo1);
+	S2 s2(ke1[ 7:12],Vo2);
+	S3 s3(ke1[13:18],Vo3);
+	S4 s4(ke1[19:24],Vo4);
+	S5 s5(ke1[25:30],Vo5);
+	S6 s6(ke1[31:36],Vo6);
+	S7 s7(ke1[37:42],Vo7);
+	S8 s8(ke1[43:48],Vo8);
+	assign sb1={Vo1,Vo2,Vo3,Vo4,Vo5,Vo6,Vo7,Vo8};//{S1(ke1[1:6]),S2(ke1[7:12]),S3(ke1[13:18]),S4(ke1[19:24]),S5(ke1[25:30]),S6(ke1[31:36]),S7(ke1[37:42]),S8(ke1[43:48])};
+	wire[1:32] f1;
+	p_gen P1(sb1,f1);
+	assign Ro=Lo^f1;
+	
+endmodule
+
+module genEXoRK(ein,kin0,exout);
+	input[1:48] ein,kin0;
 	output[1:48] exout;
-	assign exporout=kin^ein;
+	assign exporout=kin0^ein;
 endmodule
 
 module sBox(exorin,biout);
@@ -470,87 +532,96 @@ endmodule
 module S1(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=14;assign S[2]=4;assign S[3]=13;assign S[4]=1;assign S[5]=2;assign S[6]=15;assign S[7]=11;assign S[8]=8;assign S[9]=3;assign S[10]=10;assign S[11]=6;assign S[12]=12;assign S[13]=5;assign S[14]=9;assign S[15]=0;assign S[16]=7;
-assign S[17]=0;assign S[18]=15;assign S[19]=7;assign S[20]=4;assign S[21]=14;assign S[22]=2;assign S[23]=13;assign S[24]=1;assign S[25]=10;assign S[26]=6;assign S[27]=12;assign S[28]=11;assign S[29]=9;assign S[30]=5;assign S[31]=3;assign S[32]=8;
-assign S[33]=4;assign S[34]=1;assign S[35]=14;assign S[36]=8;assign S[37]=13;assign S[38]=6;assign S[39]=2;assign S[40]=11;assign S[41]=15;assign S[42]=12;assign S[43]=9;assign S[44]=7;assign S[45]=3;assign S[46]=10;assign S[47]=5;assign S[48]=0;
-assign S[49]=15;assign S[50]=12;assign S[51]=8;assign S[52]=2;assign S[53]=4;assign S[54]=9;assign S[55]=1;assign S[56]=7;assign S[57]=5;assign S[58]=11;assign S[59]=3;assign S[60]=14;assign S[61]=10;assign S[62]=0;assign S[63]=6;assign S[64]=13;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp== 1?14:0)||(temp==2?4:0)||(temp==3?13:0)||(temp==4?1:0)||(temp==5?2:0)||(temp==6?15:0)||(temp==7?11:0)||(temp==8?8:0)||(temp==9?3:0)||(temp==10?10:0)||(temp==11?6:0)||(temp==12?12:0)||(temp==13?5:0)||(temp==14?9:0)||(temp==15?0:0)||(temp==16?7:0)
+||(temp==17?0:0)||(temp==18?15:0)||(temp==19?7:0)||(temp==20?4:0)||(temp==21?14:0)||(temp==22?2:0)||(temp==23?13:0)||(temp==24?1:0)||(temp==25?10:0)||(temp==26?6:0)||(temp==27?12:0)||(temp==28?11:0)||(temp==29?9:0)||(temp==30?5:0)||(temp==31?3:0)||(temp==32?8:0)
+||(temp==33?4:0)||(temp==34?1:0)||(temp==35?14:0)||(temp==36?8:0)||(temp==37?13:0)||(temp==38?6:0)||(temp==39?2:0)||(temp==40?11:0)||(temp==41?15:0)||(temp==42?12:0)||(temp==43?9:0)||(temp==44?7:0)||(temp==45?3:0)||(temp==46?10:0)||(temp==47?5:0)||(temp==48?0:0)
+||(temp==49?15:0)||(temp==50?12:0)||(temp==51?8:0)||(temp==52?2:0)||(temp==53?4:0)||(temp==54?9:0)||(temp==55?1:0)||(temp==56?7:0)||(temp==57?5:0)||(temp==58?11:0)||(temp==59?3:0)||(temp==60?14:0)||(temp==61?10:0)||(temp==62?0:0)||(temp==63?6:0)||(temp==64?13:0);
 endmodule
 
 module S2(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=15;assign S[2]=1;assign S[3]=8;assign S[4]=14;assign S[5]=6;assign S[6]=11;assign S[7]=3;assign S[8]=4;assign S[9]=9;assign S[10]=7;assign S[11]=2;assign S[12]=13;assign S[13]=12;assign S[14]=0;assign S[15]=5;assign S[16]=10;
-assign S[17]=3;assign S[18]=13;assign S[19]=4;assign S[20]=7;assign S[21]=15;assign S[22]=2;assign S[23]=8;assign S[24]=14;assign S[25]=12;assign S[26]=0;assign S[27]=1;assign S[28]=10;assign S[29]=6;assign S[30]=9;assign S[31]=11;assign S[32]=5;
-assign S[33]=0;assign S[34]=14;assign S[35]=7;assign S[36]=11;assign S[37]=10;assign S[38]=4;assign S[39]=13;assign S[40]=1;assign S[41]=5;assign S[42]=8;assign S[43]=12;assign S[44]=6;assign S[45]=9;assign S[46]=3;assign S[47]=2;assign S[48]=15;
-assign S[49]=13;assign S[50]=8;assign S[51]=10;assign S[52]=1;assign S[53]=3;assign S[54]=15;assign S[55]=4;assign S[56]=2;assign S[57]=11;assign S[58]=6;assign S[59]=7;assign S[60]=12;assign S[61]=0;assign S[62]=5;assign S[63]=14;assign S[64]=9;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?15:0)||(temp==2?1:0)||(temp==3?8:0)||(temp==4?14:0)||(temp==5?6:0)||(temp==6?11:0)||(temp==7?3:0)||(temp==8?4:0)||(temp==9?9:0)||(temp==10?7:0)||(temp==11?2:0)||(temp==12?13:0)||(temp==13?12:0)||(temp==14?0:0)||(temp==15?5:0)||(temp==16?10:0)
+||(temp==17?3:0)||(temp==18?13:0)||(temp==19?4:0)||(temp==20?7:0)||(temp==21?15:0)||(temp==22?2:0)||(temp==23?8:0)||(temp==24?14:0)||(temp==25?12:0)||(temp==26?0:0)||(temp==27?1:0)||(temp==28?10:0)||(temp==29?6:0)||(temp==30?9:0)||(temp==31?11:0)||(temp==32?5:0)
+||(temp==33?0:0)||(temp==34?14:0)||(temp==35?7:0)||(temp==36?11:0)||(temp==37?10:0)||(temp==38?4:0)||(temp==39?13:0)||(temp==40?1:0)||(temp==41?5:0)||(temp==42?8:0)||(temp==43?12:0)||(temp==44?6:0)||(temp==45?9:0)||(temp==46?3:0)||(temp==47?2:0)||(temp==48?15:0)
+||(temp==49?13:0)||(temp==50?8:0)||(temp==51?10:0)||(temp==52?1:0)||(temp==53?3:0)||(temp==54?15:0)||(temp==55?4:0)||(temp==56?2:0)||(temp==57?11:0)||(temp==58?6:0)||(temp==59?7:0)||(temp==60?12:0)||(temp==61?0:0)||(temp==62?5:0)||(temp==63?14:0)||(temp==64?9:0);
 endmodule
 
 module S3(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=10;assign S[2]=0;assign S[3]=9;assign S[4]=14;assign S[5]=6;assign S[6]=3;assign S[7]=15;assign S[8]=5;assign S[9]=1;assign S[10]=13;assign S[11]=12;assign S[12]=7;assign S[13]=11;assign S[14]=4;assign S[15]=2;assign S[16]=8;
-assign S[17]=13;assign S[18]=7;assign S[19]=0;assign S[20]=9;assign S[21]=3;assign S[22]=4;assign S[23]=6;assign S[24]=10;assign S[25]=2;assign S[26]=8;assign S[27]=5;assign S[28]=14;assign S[29]=12;assign S[30]=11;assign S[31]=15;assign S[32]=1;
-assign S[33]=13;assign S[34]=6;assign S[35]=4;assign S[36]=9;assign S[37]=8;assign S[38]=15;assign S[39]=3;assign S[40]=0;assign S[41]=11;assign S[42]=1;assign S[43]=2;assign S[44]=12;assign S[45]=5;assign S[46]=10;assign S[47]=14;assign S[48]=7;
-assign S[49]=1;assign S[50]=10;assign S[51]=13;assign S[52]=0;assign S[53]=6;assign S[54]=9;assign S[55]=8;assign S[56]=7;assign S[57]=4;assign S[58]=15;assign S[59]=14;assign S[60]=3;assign S[61]=11;assign S[62]=5;assign S[63]=2;assign S[64]=12;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?10:0)||(temp==2?0:0)||(temp==3?9:0)||(temp==4?14:0)||(temp==5?6:0)||(temp==6?3:0)||(temp==7?15:0)||(temp==8?5:0)||(temp==9?1:0)||(temp==10?13:0)||(temp==11?12:0)||(temp==12?7:0)||(temp==13?11:0)||(temp==14?4:0)||(temp==15?2:0)||(temp==16?8:0)
+||(temp==17?13:0)||(temp==18?7:0)||(temp==19?0:0)||(temp==20?9:0)||(temp==21?3:0)||(temp==22?4:0)||(temp==23?6:0)||(temp==24?10:0)||(temp==25?2:0)||(temp==26?8:0)||(temp==27?5:0)||(temp==28?14:0)||(temp==29?12:0)||(temp==30?11:0)||(temp==31?15:0)||(temp==32?1:0)
+||(temp==33?13:0)||(temp==34?6:0)||(temp==35?4:0)||(temp==36?9:0)||(temp==37?8:0)||(temp==38?15:0)||(temp==39?3:0)||(temp==40?0:0)||(temp==41?11:0)||(temp==42?1:0)||(temp==43?2:0)||(temp==44?12:0)||(temp==45?5:0)||(temp==46?10:0)||(temp==47?14:0)||(temp==48?7:0)
+||(temp==49?1:0)||(temp==50?10:0)||(temp==51?13:0)||(temp==52?0:0)||(temp==53?6:0)||(temp==54?9:0)||(temp==55?8:0)||(temp==56?7:0)||(temp==57?4:0)||(temp==58?15:0)||(temp==59?14:0)||(temp==60?3:0)||(temp==61?11:0)||(temp==62?5:0)||(temp==63?2:0)||(temp==64?12:0);
 endmodule
 
 module S4(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=7;assign S[2]=13;assign S[3]=14;assign S[4]=3;assign S[5]=0;assign S[6]=6;assign S[7]=9;assign S[8]=10;assign S[9]=1;assign S[10]=2;assign S[11]=8;assign S[12]=5;assign S[13]=11;assign S[14]=12;assign S[15]=4;assign S[16]=15;
-assign S[17]=13;assign S[18]=8;assign S[19]=11;assign S[20]=5;assign S[21]=6;assign S[22]=15;assign S[23]=0;assign S[24]=3;assign S[25]=4;assign S[26]=7;assign S[27]=2;assign S[28]=12;assign S[29]=1;assign S[30]=10;assign S[31]=14;assign S[32]=9;
-assign S[33]=10;assign S[34]=6;assign S[35]=9;assign S[36]=0;assign S[37]=12;assign S[38]=11;assign S[39]=7;assign S[40]=13;assign S[41]=15;assign S[42]=1;assign S[43]=3;assign S[44]=14;assign S[45]=5;assign S[46]=2;assign S[47]=8;assign S[48]=4;
-assign S[49]=3;assign S[50]=15;assign S[51]=0;assign S[52]=6;assign S[53]=10;assign S[54]=1;assign S[55]=13;assign S[56]=8;assign S[57]=9;assign S[58]=4;assign S[59]=5;assign S[60]=11;assign S[61]=12;assign S[62]=7;assign S[63]=2;assign S[64]=14;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?7:0)||(temp==2?13:0)||(temp==3?14:0)||(temp==4?3:0)||(temp==5?0:0)||(temp==6?6:0)||(temp==7?9:0)||(temp==8?10:0)||(temp==9?1:0)||(temp==10?2:0)||(temp==11?8:0)||(temp==12?5:0)||(temp==13?11:0)||(temp==14?12:0)||(temp==15?4:0)||(temp==16?15:0)
+||(temp==17?13:0)||(temp==18?8:0)||(temp==19?11:0)||(temp==20?5:0)||(temp==21?6:0)||(temp==22?15:0)||(temp==23?0:0)||(temp==24?3:0)||(temp==25?4:0)||(temp==26?7:0)||(temp==27?2:0)||(temp==28?12:0)||(temp==29?1:0)||(temp==30?10:0)||(temp==31?14:0)||(temp==32?9:0)
+||(temp==33?10:0)||(temp==34?6:0)||(temp==35?9:0)||(temp==36?0:0)||(temp==37?12:0)||(temp==38?11:0)||(temp==39?7:0)||(temp==40?13:0)||(temp==41?15:0)||(temp==42?1:0)||(temp==43?3:0)||(temp==44?14:0)||(temp==45?5:0)||(temp==46?2:0)||(temp==47?8:0)||(temp==48?4:0)
+||(temp==49?3:0)||(temp==50?15:0)||(temp==51?0:0)||(temp==52?6:0)||(temp==53?10:0)||(temp==54?1:0)||(temp==55?13:0)||(temp==56?8:0)||(temp==57?9:0)||(temp==58?4:0)||(temp==59?5:0)||(temp==60?11:0)||(temp==61?12:0)||(temp==62?7:0)||(temp==63?2:0)||(temp==64?14:0);
 endmodule
 
 module S5(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=2;assign S[2]=12;assign S[3]=4;assign S[4]=1;assign S[5]=7;assign S[6]=10;assign S[7]=11;assign S[8]=6;assign S[9]=8;assign S[10]=5;assign S[11]=3;assign S[12]=15;assign S[13]=13;assign S[14]=0;assign S[15]=14;assign S[16]=9;
-assign S[17]=14;assign S[18]=11;assign S[19]=2;assign S[20]=12;assign S[21]=4;assign S[22]=7;assign S[23]=13;assign S[24]=1;assign S[25]=5;assign S[26]=0;assign S[27]=15;assign S[28]=10;assign S[29]=3;assign S[30]=9;assign S[31]=8;assign S[32]=6;
-assign S[33]=4;assign S[34]=2;assign S[35]=1;assign S[36]=11;assign S[37]=10;assign S[38]=13;assign S[39]=7;assign S[40]=8;assign S[41]=15;assign S[42]=9;assign S[43]=12;assign S[44]=5;assign S[45]=6;assign S[46]=3;assign S[47]=0;assign S[48]=14;
-assign S[49]=11;assign S[50]=8;assign S[51]=12;assign S[52]=7;assign S[53]=1;assign S[54]=14;assign S[55]=2;assign S[56]=13;assign S[57]=6;assign S[58]=15;assign S[59]=0;assign S[60]=9;assign S[61]=10;assign S[62]=4;assign S[63]=5;assign S[64]=3;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?2:0)||(temp==2?12:0)||(temp==3?4:0)||(temp==4?1:0)||(temp==5?7:0)||(temp==6?10:0)||(temp==7?11:0)||(temp==8?6:0)||(temp==9?8:0)||(temp==10?5:0)||(temp==11?3:0)||(temp==12?15:0)||(temp==13?13:0)||(temp==14?0:0)||(temp==15?14:0)||(temp==16?9:0)
+||(temp==17?14:0)||(temp==18?11:0)||(temp==19?2:0)||(temp==20?12:0)||(temp==21?4:0)||(temp==22?7:0)||(temp==23?13:0)||(temp==24?1:0)||(temp==25?5:0)||(temp==26?0:0)||(temp==27?15:0)||(temp==28?10:0)||(temp==29?3:0)||(temp==30?9:0)||(temp==31?8:0)||(temp==32?6:0)
+||(temp==33?4:0)||(temp==34?2:0)||(temp==35?1:0)||(temp==36?11:0)||(temp==37?10:0)||(temp==38?13:0)||(temp==39?7:0)||(temp==40?8:0)||(temp==41?15:0)||(temp==42?9:0)||(temp==43?12:0)||(temp==44?5:0)||(temp==45?6:0)||(temp==46?3:0)||(temp==47?0:0)||(temp==48?14:0)
+||(temp==49?11:0)||(temp==50?8:0)||(temp==51?12:0)||(temp==52?7:0)||(temp==53?1:0)||(temp==54?14:0)||(temp==55?2:0)||(temp==56?13:0)||(temp==57?6:0)||(temp==58?15:0)||(temp==59?0:0)||(temp==60?9:0)||(temp==61?10:0)||(temp==62?4:0)||(temp==63?5:0)||(temp==64?3:0);
 endmodule
 
 module S6(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
 wire[1:64] S;
-assign S[1]=12;assign S[2]=1;assign S[3]=10;assign S[4]=15;assign S[5]=9;assign S[6]=2;assign S[7]=6;assign S[8]=8;assign S[9]=0;assign S[10]=13;assign S[11]=3;assign S[12]=4;assign S[13]=14;assign S[14]=7;assign S[15]=5;assign S[16]=11;
-assign S[17]=10;assign S[18]=15;assign S[19]=4;assign S[20]=2;assign S[21]=7;assign S[22]=12;assign S[23]=9;assign S[24]=5;assign S[25]=6;assign S[26]=1;assign S[27]=13;assign S[28]=14;assign S[29]=0;assign S[30]=11;assign S[31]=3;assign S[32]=8;
-assign S[33]=9;assign S[34]=14;assign S[35]=15;assign S[36]=5;assign S[37]=2;assign S[38]=8;assign S[39]=12;assign S[40]=3;assign S[41]=7;assign S[42]=0;assign S[43]=4;assign S[44]=10;assign S[45]=1;assign S[46]=13;assign S[47]=11;assign S[48]=6;
-assign S[49]=4;assign S[50]=3;assign S[51]=2;assign S[52]=12;assign S[53]=9;assign S[54]=5;assign S[55]=15;assign S[56]=10;assign S[57]=11;assign S[58]=14;assign S[59]=1;assign S[60]=7;assign S[61]=6;assign S[62]=0;assign S[63]=8;assign S[64]=13;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?12:0)||(temp==2?1:0)||(temp==3?10:0)||(temp==4?15:0)||(temp==5?9:0)||(temp==6?2:0)||(temp==7?6:0)||(temp==8?8:0)||(temp==9?0:0)||(temp==10?13:0)||(temp==11?3:0)||(temp==12?4:0)||(temp==13?14:0)||(temp==14?7:0)||(temp==15?5:0)||(temp==16?11:0)
+||(temp==17?10:0)||(temp==18?15:0)||(temp==19?4:0)||(temp==20?2:0)||(temp==21?7:0)||(temp==22?12:0)||(temp==23?9:0)||(temp==24?5:0)||(temp==25?6:0)||(temp==26?1:0)||(temp==27?13:0)||(temp==28?14:0)||(temp==29?0:0)||(temp==30?11:0)||(temp==31?3:0)||(temp==32?8:0)
+||(temp==33?9:0)||(temp==34?14:0)||(temp==35?15:0)||(temp==36?5:0)||(temp==37?2:0)||(temp==38?8:0)||(temp==39?12:0)||(temp==40?3:0)||(temp==41?7:0)||(temp==42?0:0)||(temp==43?4:0)||(temp==44?10:0)||(temp==45?1:0)||(temp==46?13:0)||(temp==47?11:0)||(temp==48?6:0)
+||(temp==49?4:0)||(temp==50?3:0)||(temp==51?2:0)||(temp==52?12:0)||(temp==53?9:0)||(temp==54?5:0)||(temp==55?15:0)||(temp==56?10:0)||(temp==57?11:0)||(temp==58?14:0)||(temp==59?1:0)||(temp==60?7:0)||(temp==61?6:0)||(temp==62?0:0)||(temp==63?8:0)||(temp==64?13:0);
 endmodule
 
 module S7(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=4;assign S[2]=11;assign S[3]=2;assign S[4]=14;assign S[5]=15;assign S[6]=0;assign S[7]=8;assign S[8]=13;assign S[9]=3;assign S[10]=12;assign S[11]=9;assign S[12]=7;assign S[13]=5;assign S[14]=10;assign S[15]=6;assign S[16]=1;
-assign S[17]=13;assign S[18]=0;assign S[19]=11;assign S[20]=7;assign S[21]=4;assign S[22]=9;assign S[23]=1;assign S[24]=10;assign S[25]=14;assign S[26]=3;assign S[27]=5;assign S[28]=12;assign S[29]=2;assign S[30]=15;assign S[31]=8;assign S[32]=6;
-assign S[33]=1;assign S[34]=4;assign S[35]=11;assign S[36]=13;assign S[37]=12;assign S[38]=3;assign S[39]=7;assign S[40]=14;assign S[41]=10;assign S[42]=15;assign S[43]=6;assign S[44]=8;assign S[45]=0;assign S[46]=5;assign S[47]=9;assign S[48]=2;
-assign S[49]=6;assign S[50]=11;assign S[51]=13;assign S[52]=8;assign S[53]=1;assign S[54]=4;assign S[55]=10;assign S[56]=7;assign S[57]=9;assign S[58]=5;assign S[59]=0;assign S[60]=15;assign S[61]=14;assign S[62]=2;assign S[63]=3;assign S[64]=12;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?4:0)||(temp==2?11:0)||(temp==3?2:0)||(temp==4?14:0)||(temp==5?15:0)||(temp==6?0:0)||(temp==7?8:0)||(temp==8?13:0)||(temp==9?3:0)||(temp==10?12:0)||(temp==11?9:0)||(temp==12?7:0)||(temp==13?5:0)||(temp==14?10:0)||(temp==15?6:0)||(temp==16?1:0)
+||(temp==17?13:0)||(temp==18?0:0)||(temp==19?11:0)||(temp==20?7:0)||(temp==21?4:0)||(temp==22?9:0)||(temp==23?1:0)||(temp==24?10:0)||(temp==25?14:0)||(temp==26?3:0)||(temp==27?5:0)||(temp==28?12:0)||(temp==29?2:0)||(temp==30?15:0)||(temp==31?8:0)||(temp==32?6:0)
+||(temp==33?1:0)||(temp==34?4:0)||(temp==35?11:0)||(temp==36?13:0)||(temp==37?12:0)||(temp==38?3:0)||(temp==39?7:0)||(temp==40?14:0)||(temp==41?10:0)||(temp==42?15:0)||(temp==43?6:0)||(temp==44?8:0)||(temp==45?0:0)||(temp==46?5:0)||(temp==47?9:0)||(temp==48?2:0)
+||(temp==49?6:0)||(temp==50?11:0)||(temp==51?13:0)||(temp==52?8:0)||(temp==53?1:0)||(temp==54?4:0)||(temp==55?10:0)||(temp==56?7:0)||(temp==57?9:0)||(temp==58?5:0)||(temp==59?0:0)||(temp==60?15:0)||(temp==61?14:0)||(temp==62?2:0)||(temp==63?3:0)||(temp==64?12:0);
 endmodule
 
 module S8(bin,vout);
 input[1:6] bin;
 output[1:4] vout;
-wire[1:64] S;
-assign S[1]=13;assign S[2]=2;assign S[3]=8;assign S[4]=4;assign S[5]=6;assign S[6]=15;assign S[7]=11;assign S[8]=1;assign S[9]=10;assign S[10]=9;assign S[11]=3;assign S[12]=14;assign S[13]=5;assign S[14]=0;assign S[15]=12;assign S[16]=7;
-assign S[17]=1;assign S[18]=15;assign S[19]=13;assign S[20]=8;assign S[21]=10;assign S[22]=3;assign S[23]=7;assign S[24]=4;assign S[25]=12;assign S[26]=5;assign S[27]=6;assign S[28]=11;assign S[29]=0;assign S[30]=14;assign S[31]=9;assign S[32]=2;
-assign S[33]=7;assign S[34]=11;assign S[35]=4;assign S[36]=1;assign S[37]=9;assign S[38]=12;assign S[39]=14;assign S[40]=2;assign S[41]=0;assign S[42]=6;assign S[43]=10;assign S[44]=13;assign S[45]=15;assign S[46]=3;assign S[47]=5;assign S[48]=8;
-assign S[49]=2;assign S[50]=1;assign S[51]=14;assign S[52]=7;assign S[53]=4;assign S[54]=10;assign S[55]=8;assign S[56]=13;assign S[57]=15;assign S[58]=12;assign S[59]=9;assign S[60]=0;assign S[61]=3;assign S[62]=5;assign S[63]=6;assign S[64]=11;
-assign vout=S[{bin[1],bin[6]}<<3+bin[2:4]];
+wire[1:4] temp;
+assign temp={bin[1],bin[6]}<<3+bin[2:5];
+assign vout=
+  (temp==1?13:0)||(temp==2?2:0)||(temp==3?8:0)||(temp==4?4:0)||(temp==5?6:0)||(temp==6?15:0)||(temp==7?11:0)||(temp==8?1:0)||(temp==9?10:0)||(temp==10?9:0)||(temp==11?3:0)||(temp==12?14:0)||(temp==13?5:0)||(temp==14?0:0)||(temp==15?12:0)||(temp==16?7:0)
+||(temp==17?1:0)||(temp==18?15:0)||(temp==19?13:0)||(temp==20?8:0)||(temp==21?10:0)||(temp==22?3:0)||(temp==23?7:0)||(temp==24?4:0)||(temp==25?12:0)||(temp==26?5:0)||(temp==27?6:0)||(temp==28?11:0)||(temp==29?0:0)||(temp==30?14:0)||(temp==31?9:0)||(temp==32?2:0)
+||(temp==33?7:0)||(temp==34?11:0)||(temp==35?4:0)||(temp==36?1:0)||(temp==37?9:0)||(temp==38?12:0)||(temp==39?14:0)||(temp==40?2:0)||(temp==41?0:0)||(temp==42?6:0)||(temp==43?10:0)||(temp==44?13:0)||(temp==45?15:0)||(temp==46?3:0)||(temp==47?5:0)||(temp==48?8:0)
+||(temp==49?2:0)||(temp==50?1:0)||(temp==51?14:0)||(temp==52?7:0)||(temp==53?4:0)||(temp==54?10:0)||(temp==55?8:0)||(temp==56?13:0)||(temp==57?15:0)||(temp==58?12:0)||(temp==59?9:0)||(temp==60?0:0)||(temp==61?3:0)||(temp==62?5:0)||(temp==63?6:0)||(temp==64?11:0);
 endmodule
