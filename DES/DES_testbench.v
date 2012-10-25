@@ -12,7 +12,7 @@ module DES_Testbench;
 //instantiate the Device Under Test(DUT)
 	des MyDes (
 	.clk (clk),
-	.en (reset),
+	.reset (reset),
 	.mode (mode),
 	.din (din),
 	.key (key),
@@ -26,8 +26,10 @@ module DES_Testbench;
 		clk = 0;
 		reset = 1;//disable,do initialize and reset
 		
-		din = 64'h8787878787878787;//eight-digital decimal 
-		key = 64'h0E329232EA6D0D73;//result of encryption:0x0000000000000000
+		//din = 64'h8787878787878787;//eight-digital decimal 
+		//key = 64'h0E329232EA6D0D73;//result of encryption:0x0000000000000000
+		din = 64'h0123456789ABCDEF;
+		key = 64'h133457799BBCDFF1;
 	
 		mode = 0;//in Encryption mode		
 		#300 reset = 0;//Enable the DES	 
