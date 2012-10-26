@@ -1,4 +1,48 @@
-module des(clk,reset,mode,din,key,dout,oflag);
+module des(din,key,master,slave,start);
+	input din,key,master,start;
+	output slave;
+	//collect all inputs and then call the runner.
+	reg[1:64] recon_din;
+	reg[1:64] recon_key;
+	reg[1:8] state;
+	reg[1:1] slaveReg;
+	assign slave=slaveReg;
+	initial begin
+		state<=1;
+		slaveReg<=0;
+	end
+	
+	always @(posedge master)
+	begin
+		if(state<=64)
+		begin
+			recon_din[state]<=din;
+			recon_key[state]<=key;
+			state<=state+1;
+			slaveReg=1;
+		end
+		if(state==65)
+		begin
+			state<=state+1;
+		end
+	end
+	
+	always @(posedge start)
+	begin
+		state<=1;
+	end
+	
+	always @(negedge master)
+	begin
+		slaveReg=0;
+	end
+	
+	wire[1:64] dout;
+	wire oflag;
+	run_des rd(clk,reset,0,recon_din,recon_key,dout,oflag);
+endmodule
+
+module run_des(clk,reset,mode,din,key,dout,oflag);
 	input clk,reset,mode;
 	input[1:64] din,key;
 	output[1:64] dout;

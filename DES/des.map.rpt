@@ -1,5 +1,5 @@
 Analysis & Synthesis report for des
-Thu Oct 25 11:50:40 2012
+Thu Oct 25 13:37:57 2012
 Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
 
 
@@ -10,12 +10,8 @@ Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Editio
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -41,20 +37,20 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 25 11:50:39 2012         ;
+; Analysis & Synthesis Status        ; Failed - Thu Oct 25 13:37:57 2012             ;
 ; Quartus II 32-bit Version          ; 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition ;
 ; Revision Name                      ; des                                           ;
 ; Top-level Entity Name              ; des                                           ;
 ; Family                             ; Cyclone III                                   ;
-; Total logic elements               ; 7,367                                         ;
-;     Total combinational functions  ; 7,367                                         ;
-;     Dedicated logic registers      ; 0                                             ;
-; Total registers                    ; 0                                             ;
-; Total pins                         ; 196                                           ;
-; Total virtual pins                 ; 0                                             ;
-; Total memory bits                  ; 0                                             ;
-; Embedded Multiplier 9-bit elements ; 0                                             ;
-; Total PLLs                         ; 0                                             ;
+; Total logic elements               ; N/A until Partition Merge                     ;
+;     Total combinational functions  ; N/A until Partition Merge                     ;
+;     Dedicated logic registers      ; N/A until Partition Merge                     ;
+; Total registers                    ; N/A until Partition Merge                     ;
+; Total pins                         ; N/A until Partition Merge                     ;
+; Total virtual pins                 ; N/A until Partition Merge                     ;
+; Total memory bits                  ; N/A until Partition Merge                     ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                     ;
+; Total PLLs                         ; N/A until Partition Merge                     ;
 +------------------------------------+-----------------------------------------------+
 
 
@@ -155,370 +151,67 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                        ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-; DES.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-
-
-+-------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                         ;
-+---------------------------------------------+---------------------------------------+
-; Resource                                    ; Usage                                 ;
-+---------------------------------------------+---------------------------------------+
-; Estimated Total logic elements              ; 7,367                                 ;
-;                                             ;                                       ;
-; Total combinational functions               ; 7367                                  ;
-; Logic element usage by number of LUT inputs ;                                       ;
-;     -- 4 input functions                    ; 6034                                  ;
-;     -- 3 input functions                    ; 866                                   ;
-;     -- <=2 input functions                  ; 467                                   ;
-;                                             ;                                       ;
-; Logic elements by mode                      ;                                       ;
-;     -- normal mode                          ; 7367                                  ;
-;     -- arithmetic mode                      ; 0                                     ;
-;                                             ;                                       ;
-; Total registers                             ; 0                                     ;
-;     -- Dedicated logic registers            ; 0                                     ;
-;     -- I/O registers                        ; 0                                     ;
-;                                             ;                                       ;
-; I/O pins                                    ; 196                                   ;
-; Maximum fan-out node                        ; LnRn_gen:lnrn_genA|RL_gen:rlg4|Ro[17] ;
-; Maximum fan-out                             ; 41                                    ;
-; Total fan-out                               ; 27928                                 ;
-; Average fan-out                             ; 3.60                                  ;
-+---------------------------------------------+---------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
-; |des                       ; 7367 (0)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 196  ; 0            ; |des                                       ;              ;
-;    |LnRn_gen:lnrn_genA|    ; 7367 (0)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA                    ;              ;
-;       |RL_gen:rlg10|       ; 455 (38)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10       ;              ;
-;          |S1:s1|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S1:s1 ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S2:s2 ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S3:s3 ;              ;
-;          |S4:s4|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S4:s4 ;              ;
-;          |S5:s5|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S5:s5 ;              ;
-;          |S6:s6|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S6:s6 ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S7:s7 ;              ;
-;          |S8:s8|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg10|S8:s8 ;              ;
-;       |RL_gen:rlg11|       ; 462 (35)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11       ;              ;
-;          |S1:s1|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S1:s1 ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S2:s2 ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S3:s3 ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S4:s4 ;              ;
-;          |S5:s5|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S5:s5 ;              ;
-;          |S6:s6|           ; 58 (58)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S6:s6 ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S7:s7 ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg11|S8:s8 ;              ;
-;       |RL_gen:rlg12|       ; 455 (39)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12       ;              ;
-;          |S1:s1|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S1:s1 ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S2:s2 ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S3:s3 ;              ;
-;          |S4:s4|           ; 47 (47)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S4:s4 ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S5:s5 ;              ;
-;          |S6:s6|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S6:s6 ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S7:s7 ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg12|S8:s8 ;              ;
-;       |RL_gen:rlg13|       ; 462 (37)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13       ;              ;
-;          |S1:s1|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S1:s1 ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S2:s2 ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S3:s3 ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S4:s4 ;              ;
-;          |S5:s5|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S5:s5 ;              ;
-;          |S6:s6|           ; 59 (59)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S6:s6 ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S7:s7 ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg13|S8:s8 ;              ;
-;       |RL_gen:rlg14|       ; 455 (41)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14       ;              ;
-;          |S1:s1|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S1:s1 ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S2:s2 ;              ;
-;          |S3:s3|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S3:s3 ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S4:s4 ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S5:s5 ;              ;
-;          |S6:s6|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S6:s6 ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S7:s7 ;              ;
-;          |S8:s8|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg14|S8:s8 ;              ;
-;       |RL_gen:rlg15|       ; 457 (41)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15       ;              ;
-;          |S1:s1|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S1:s1 ;              ;
-;          |S2:s2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S2:s2 ;              ;
-;          |S3:s3|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S3:s3 ;              ;
-;          |S4:s4|           ; 49 (49)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S4:s4 ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S5:s5 ;              ;
-;          |S6:s6|           ; 57 (57)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S6:s6 ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S7:s7 ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg15|S8:s8 ;              ;
-;       |RL_gen:rlg16|       ; 456 (40)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16       ;              ;
-;          |S1:s1|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S1:s1 ;              ;
-;          |S2:s2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S2:s2 ;              ;
-;          |S3:s3|           ; 49 (49)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S3:s3 ;              ;
-;          |S4:s4|           ; 49 (49)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S4:s4 ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S5:s5 ;              ;
-;          |S6:s6|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S6:s6 ;              ;
-;          |S7:s7|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S7:s7 ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg16|S8:s8 ;              ;
-;       |RL_gen:rlg1|        ; 493 (72)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1        ;              ;
-;          |S1:s1|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S1:s1  ;              ;
-;          |S2:s2|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S2:s2  ;              ;
-;          |S3:s3|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S3:s3  ;              ;
-;          |S4:s4|           ; 44 (44)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S4:s4  ;              ;
-;          |S5:s5|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S5:s5  ;              ;
-;          |S6:s6|           ; 59 (59)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S6:s6  ;              ;
-;          |S7:s7|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S7:s7  ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg1|S8:s8  ;              ;
-;       |RL_gen:rlg2|        ; 458 (37)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2        ;              ;
-;          |S1:s1|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S1:s1  ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S2:s2  ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S3:s3  ;              ;
-;          |S4:s4|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S4:s4  ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S5:s5  ;              ;
-;          |S6:s6|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S6:s6  ;              ;
-;          |S7:s7|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S7:s7  ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg2|S8:s8  ;              ;
-;       |RL_gen:rlg3|        ; 459 (43)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3        ;              ;
-;          |S1:s1|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S1:s1  ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S2:s2  ;              ;
-;          |S3:s3|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S3:s3  ;              ;
-;          |S4:s4|           ; 47 (47)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S4:s4  ;              ;
-;          |S5:s5|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S5:s5  ;              ;
-;          |S6:s6|           ; 59 (59)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S6:s6  ;              ;
-;          |S7:s7|           ; 49 (49)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S7:s7  ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg3|S8:s8  ;              ;
-;       |RL_gen:rlg4|        ; 460 (36)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4        ;              ;
-;          |S1:s1|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S1:s1  ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S2:s2  ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S3:s3  ;              ;
-;          |S4:s4|           ; 47 (47)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S4:s4  ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S5:s5  ;              ;
-;          |S6:s6|           ; 57 (57)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S6:s6  ;              ;
-;          |S7:s7|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S7:s7  ;              ;
-;          |S8:s8|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg4|S8:s8  ;              ;
-;       |RL_gen:rlg5|        ; 458 (42)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5        ;              ;
-;          |S1:s1|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S1:s1  ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S2:s2  ;              ;
-;          |S3:s3|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S3:s3  ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S4:s4  ;              ;
-;          |S5:s5|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S5:s5  ;              ;
-;          |S6:s6|           ; 59 (59)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S6:s6  ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S7:s7  ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg5|S8:s8  ;              ;
-;       |RL_gen:rlg6|        ; 457 (44)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6        ;              ;
-;          |S1:s1|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S1:s1  ;              ;
-;          |S2:s2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S2:s2  ;              ;
-;          |S3:s3|           ; 49 (49)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S3:s3  ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S4:s4  ;              ;
-;          |S5:s5|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S5:s5  ;              ;
-;          |S6:s6|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S6:s6  ;              ;
-;          |S7:s7|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S7:s7  ;              ;
-;          |S8:s8|           ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg6|S8:s8  ;              ;
-;       |RL_gen:rlg7|        ; 463 (36)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7        ;              ;
-;          |S1:s1|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S1:s1  ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S2:s2  ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S3:s3  ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S4:s4  ;              ;
-;          |S5:s5|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S5:s5  ;              ;
-;          |S6:s6|           ; 60 (60)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S6:s6  ;              ;
-;          |S7:s7|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S7:s7  ;              ;
-;          |S8:s8|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg7|S8:s8  ;              ;
-;       |RL_gen:rlg8|        ; 456 (43)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8        ;              ;
-;          |S1:s1|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S1:s1  ;              ;
-;          |S2:s2|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S2:s2  ;              ;
-;          |S3:s3|           ; 50 (50)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S3:s3  ;              ;
-;          |S4:s4|           ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S4:s4  ;              ;
-;          |S5:s5|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S5:s5  ;              ;
-;          |S6:s6|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S6:s6  ;              ;
-;          |S7:s7|           ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S7:s7  ;              ;
-;          |S8:s8|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg8|S8:s8  ;              ;
-;       |RL_gen:rlg9|        ; 461 (36)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9        ;              ;
-;          |S1:s1|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S1:s1  ;              ;
-;          |S2:s2|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S2:s2  ;              ;
-;          |S3:s3|           ; 55 (55)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S3:s3  ;              ;
-;          |S4:s4|           ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S4:s4  ;              ;
-;          |S5:s5|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S5:s5  ;              ;
-;          |S6:s6|           ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S6:s6  ;              ;
-;          |S7:s7|           ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S7:s7  ;              ;
-;          |S8:s8|           ; 54 (54)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |des|LnRn_gen:lnrn_genA|RL_gen:rlg9|S8:s8  ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:06:42     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Oct 25 11:44:54 2012
+    Info: Processing started: Thu Oct 25 13:37:55 2012
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off des -c des
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 20 design units, including 20 entities, in source file des.v
+Info (12021): Found 21 design units, including 21 entities, in source file des.v
     Info (12023): Found entity 1: des
-    Info (12023): Found entity 2: K_plus_gen
-    Info (12023): Found entity 3: CnDn_gen
-    Info (12023): Found entity 4: kn_gen
-    Info (12023): Found entity 5: e_gen
-    Info (12023): Found entity 6: ip_inv
-    Info (12023): Found entity 7: p_gen
-    Info (12023): Found entity 8: ip_gen
-    Info (12023): Found entity 9: LnRn_gen
-    Info (12023): Found entity 10: RL_gen
-    Info (12023): Found entity 11: genEXoRK
-    Info (12023): Found entity 12: sBox
-    Info (12023): Found entity 13: S1
-    Info (12023): Found entity 14: S2
-    Info (12023): Found entity 15: S3
-    Info (12023): Found entity 16: S4
-    Info (12023): Found entity 17: S5
-    Info (12023): Found entity 18: S6
-    Info (12023): Found entity 19: S7
-    Info (12023): Found entity 20: S8
+    Info (12023): Found entity 2: run_des
+    Info (12023): Found entity 3: K_plus_gen
+    Info (12023): Found entity 4: CnDn_gen
+    Info (12023): Found entity 5: kn_gen
+    Info (12023): Found entity 6: e_gen
+    Info (12023): Found entity 7: ip_inv
+    Info (12023): Found entity 8: p_gen
+    Info (12023): Found entity 9: ip_gen
+    Info (12023): Found entity 10: LnRn_gen
+    Info (12023): Found entity 11: RL_gen
+    Info (12023): Found entity 12: genEXoRK
+    Info (12023): Found entity 13: sBox
+    Info (12023): Found entity 14: S1
+    Info (12023): Found entity 15: S2
+    Info (12023): Found entity 16: S3
+    Info (12023): Found entity 17: S4
+    Info (12023): Found entity 18: S5
+    Info (12023): Found entity 19: S6
+    Info (12023): Found entity 20: S7
+    Info (12023): Found entity 21: S8
 Info (12021): Found 1 design units, including 1 entities, in source file des_testbench.v
     Info (12023): Found entity 1: DES_Testbench
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(157): created implicit net for "C2"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(158): created implicit net for "D2"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(161): created implicit net for "C3"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(162): created implicit net for "D3"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(165): created implicit net for "C4"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(166): created implicit net for "D4"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(169): created implicit net for "C5"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(170): created implicit net for "D5"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(173): created implicit net for "C6"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(174): created implicit net for "D6"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(177): created implicit net for "C7"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(178): created implicit net for "D7"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(181): created implicit net for "C8"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(182): created implicit net for "D8"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(185): created implicit net for "C9"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(186): created implicit net for "D9"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(189): created implicit net for "C10"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(190): created implicit net for "D10"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(193): created implicit net for "C11"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(194): created implicit net for "D11"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(197): created implicit net for "C12"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(198): created implicit net for "D12"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(201): created implicit net for "C13"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(202): created implicit net for "D13"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(205): created implicit net for "C14"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(206): created implicit net for "D14"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(209): created implicit net for "C15"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(210): created implicit net for "D15"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(213): created implicit net for "C16"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(214): created implicit net for "D16"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(524): created implicit net for "exporout"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(42): created implicit net for "clk"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(42): created implicit net for "reset"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(598): created implicit net for "exporout"
 Info (12127): Elaborating entity "des" for the top level hierarchy
-Warning (10034): Output port "oflag" at DES.v(5) has no driver
-Info (12128): Elaborating entity "K_plus_gen" for hierarchy "K_plus_gen:kpg"
-Info (12128): Elaborating entity "CnDn_gen" for hierarchy "CnDn_gen:cndng"
-Warning (10230): Verilog HDL assignment warning at DES.v(157): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(158): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(161): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(162): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(165): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(166): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(169): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(170): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(173): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(174): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(177): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(178): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(181): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(182): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(185): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(186): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(189): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(190): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(193): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(194): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(197): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(198): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(201): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(202): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(205): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(206): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(209): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(210): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(213): truncated value with size 28 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at DES.v(214): truncated value with size 28 to match size of target (1)
-Info (12128): Elaborating entity "kn_gen" for hierarchy "kn_gen:kng"
-Info (12128): Elaborating entity "ip_gen" for hierarchy "ip_gen:ipg"
-Info (12128): Elaborating entity "LnRn_gen" for hierarchy "LnRn_gen:lnrn_genA"
-Info (12128): Elaborating entity "RL_gen" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1"
-Info (12128): Elaborating entity "e_gen" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|e_gen:G0"
-Info (12128): Elaborating entity "S1" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S1:s1"
-Warning (10230): Verilog HDL assignment warning at DES.v(537): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S2" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S2:s2"
-Warning (10230): Verilog HDL assignment warning at DES.v(549): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S3" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S3:s3"
-Warning (10230): Verilog HDL assignment warning at DES.v(561): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S4" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S4:s4"
-Warning (10230): Verilog HDL assignment warning at DES.v(573): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S5" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S5:s5"
-Warning (10230): Verilog HDL assignment warning at DES.v(585): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S6" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S6:s6"
-Warning (10230): Verilog HDL assignment warning at DES.v(597): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S7" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S7:s7"
-Warning (10230): Verilog HDL assignment warning at DES.v(609): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "S8" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|S8:s8"
-Warning (10230): Verilog HDL assignment warning at DES.v(621): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "p_gen" for hierarchy "LnRn_gen:lnrn_genA|RL_gen:rlg1|p_gen:P1"
-Info (12128): Elaborating entity "ip_inv" for hierarchy "LnRn_gen:lnrn_genA|ip_inv:ipinv1"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "oflag" is stuck at GND
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 14 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk"
-    Warning (15610): No output dependent on input pin "reset"
-    Warning (15610): No output dependent on input pin "mode"
-    Warning (15610): No output dependent on input pin "key[64]"
-    Warning (15610): No output dependent on input pin "key[56]"
-    Warning (15610): No output dependent on input pin "key[52]"
-    Warning (15610): No output dependent on input pin "key[48]"
-    Warning (15610): No output dependent on input pin "key[46]"
-    Warning (15610): No output dependent on input pin "key[40]"
-    Warning (15610): No output dependent on input pin "key[32]"
-    Warning (15610): No output dependent on input pin "key[24]"
-    Warning (15610): No output dependent on input pin "key[16]"
-    Warning (15610): No output dependent on input pin "key[8]"
-    Warning (15610): No output dependent on input pin "key[6]"
-Info (21057): Implemented 7563 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 131 input pins
-    Info (21059): Implemented 65 output pins
-    Info (21061): Implemented 7367 logic cells
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 88 warnings
-    Info: Peak virtual memory: 350 megabytes
-    Info: Processing ended: Thu Oct 25 11:50:40 2012
-    Info: Elapsed time: 00:05:46
-    Info: Total CPU time (on all processors): 00:05:35
+Warning (10230): Verilog HDL assignment warning at DES.v(21): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at DES.v(26): truncated value with size 32 to match size of target (8)
+Error (10028): Can't resolve multiple constant drivers for net "state[1]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10029): Constant driver at DES.v(15) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 15
+Error (10028): Can't resolve multiple constant drivers for net "state[2]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "state[3]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "state[4]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "state[5]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "state[6]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "state[7]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "state[8]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
+Error (10028): Can't resolve multiple constant drivers for net "slaveReg[1]" at DES.v(35) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 35
+Error (12153): Can't elaborate top-level user hierarchy
+Info (144001): Generated suppressed messages file C:/Users/Keith Robertson/Documents/ECEN3000/DES/des.map.smsg
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 11 errors, 6 warnings
+    Error: Peak virtual memory: 304 megabytes
+    Error: Processing ended: Thu Oct 25 13:37:57 2012
+    Error: Elapsed time: 00:00:02
+    Error: Total CPU time (on all processors): 00:00:02
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Keith Robertson/Documents/ECEN3000/DES/des.map.smsg.
 
 
