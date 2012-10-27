@@ -75,6 +75,29 @@ void Init7Segment(void)
     SetSegment(-1);
 }
 
+void sendBit(int data,int key){
+	while(GPIOGetValue(0,Slave)==1){}//wait for slave to set low
+	GPIOSetValue(1, Data, data);
+	GPIOSetValue(1, Data, key);
+	GPIOSetValue(1, Master, 1);
+	while(GPIOGetValue(0,Slave)==0){}//wait for slave to set high
+	//continue.
+}
+void sendEnc(){
+	GPIOSetValue(1, Start, 1);
+	char data[8];
+	char keyA[8];
+	data[0]=0b0000;
+	keyA[0]=0b0000;
+	for(int i=0;i<8;i++){
+		for(int ii=0;ii<8;ii++){
+			sendBit((data[i]>>ii)&0x1,(keyA[i]>>ii)&0x1);
+		}
+	}
+	GPIOSetValue(1, Start, 0);
+
+}
+
 /* Main Program */
 
 int main (void)
