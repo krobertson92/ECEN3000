@@ -1,5 +1,5 @@
 Analysis & Synthesis report for des
-Thu Oct 25 13:37:57 2012
+Fri Oct 26 17:45:22 2012
 Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
 
 
@@ -10,8 +10,15 @@ Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Editio
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
-  6. Analysis & Synthesis Suppressed Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Inverted Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Port Connectivity Checks: "run_des:rd"
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -37,20 +44,20 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Oct 25 13:37:57 2012             ;
+; Analysis & Synthesis Status        ; Successful - Fri Oct 26 17:45:22 2012         ;
 ; Quartus II 32-bit Version          ; 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition ;
 ; Revision Name                      ; des                                           ;
 ; Top-level Entity Name              ; des                                           ;
 ; Family                             ; Cyclone III                                   ;
-; Total logic elements               ; N/A until Partition Merge                     ;
-;     Total combinational functions  ; N/A until Partition Merge                     ;
-;     Dedicated logic registers      ; N/A until Partition Merge                     ;
-; Total registers                    ; N/A until Partition Merge                     ;
-; Total pins                         ; N/A until Partition Merge                     ;
-; Total virtual pins                 ; N/A until Partition Merge                     ;
-; Total memory bits                  ; N/A until Partition Merge                     ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                     ;
-; Total PLLs                         ; N/A until Partition Merge                     ;
+; Total logic elements               ; 23                                            ;
+;     Total combinational functions  ; 23                                            ;
+;     Dedicated logic registers      ; 10                                            ;
+; Total registers                    ; 10                                            ;
+; Total pins                         ; 5                                             ;
+; Total virtual pins                 ; 0                                             ;
+; Total memory bits                  ; 0                                             ;
+; Embedded Multiplier 9-bit elements ; 0                                             ;
+; Total PLLs                         ; 0                                             ;
 +------------------------------------+-----------------------------------------------+
 
 
@@ -151,13 +158,116 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; DES.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 23           ;
+;                                             ;              ;
+; Total combinational functions               ; 23           ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 10           ;
+;     -- 3 input functions                    ; 2            ;
+;     -- <=2 input functions                  ; 11           ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 16           ;
+;     -- arithmetic mode                      ; 7            ;
+;                                             ;              ;
+; Total registers                             ; 10           ;
+;     -- Dedicated logic registers            ; 10           ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 5            ;
+; Maximum fan-out node                        ; master~input ;
+; Maximum fan-out                             ; 10           ;
+; Total fan-out                               ; 97           ;
+; Average fan-out                             ; 2.26         ;
++---------------------------------------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |des                       ; 23 (23)           ; 10 (10)      ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |des                ;              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 10    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 5     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; state[8]                               ; 4       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered    ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------+----------------------------+
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; |des|state[1] ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------+----------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "run_des:rd"                                                                                                                                                                            ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                                                                            ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; mode     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; mode[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; dout     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
+; oflag    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++----------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
-    Info: Processing started: Thu Oct 25 13:37:55 2012
+    Info: Processing started: Fri Oct 26 17:45:11 2012
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off des -c des
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 21 design units, including 21 entities, in source file des.v
@@ -184,34 +294,53 @@ Info (12021): Found 21 design units, including 21 entities, in source file des.v
     Info (12023): Found entity 21: S8
 Info (12021): Found 1 design units, including 1 entities, in source file des_testbench.v
     Info (12023): Found entity 1: DES_Testbench
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(42): created implicit net for "clk"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(42): created implicit net for "reset"
-Warning (10236): Verilog HDL Implicit Net warning at DES.v(598): created implicit net for "exporout"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(44): created implicit net for "clk"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(44): created implicit net for "reset"
+Warning (10236): Verilog HDL Implicit Net warning at DES.v(600): created implicit net for "exporout"
 Info (12127): Elaborating entity "des" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at DES.v(21): truncated value with size 32 to match size of target (8)
-Warning (10230): Verilog HDL assignment warning at DES.v(26): truncated value with size 32 to match size of target (8)
-Error (10028): Can't resolve multiple constant drivers for net "state[1]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10029): Constant driver at DES.v(15) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 15
-Error (10028): Can't resolve multiple constant drivers for net "state[2]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "state[3]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "state[4]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "state[5]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "state[6]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "state[7]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "state[8]" at DES.v(30) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 30
-Error (10028): Can't resolve multiple constant drivers for net "slaveReg[1]" at DES.v(35) File: C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v Line: 35
-Error (12153): Can't elaborate top-level user hierarchy
-Info (144001): Generated suppressed messages file C:/Users/Keith Robertson/Documents/ECEN3000/DES/des.map.smsg
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 11 errors, 6 warnings
-    Error: Peak virtual memory: 304 megabytes
-    Error: Processing ended: Thu Oct 25 13:37:57 2012
-    Error: Elapsed time: 00:00:02
-    Error: Total CPU time (on all processors): 00:00:02
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in C:/Users/Keith Robertson/Documents/ECEN3000/DES/des.map.smsg.
+Warning (10230): Verilog HDL assignment warning at DES.v(24): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at DES.v(29): truncated value with size 32 to match size of target (8)
+Info (12128): Elaborating entity "run_des" for hierarchy "run_des:rd"
+Warning (10034): Output port "oflag" at DES.v(51) has no driver
+Info (12128): Elaborating entity "K_plus_gen" for hierarchy "run_des:rd|K_plus_gen:kpg"
+Info (12128): Elaborating entity "CnDn_gen" for hierarchy "run_des:rd|CnDn_gen:cndng"
+Info (12128): Elaborating entity "kn_gen" for hierarchy "run_des:rd|kn_gen:kng"
+Info (12128): Elaborating entity "ip_gen" for hierarchy "run_des:rd|ip_gen:ipg"
+Info (12128): Elaborating entity "LnRn_gen" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA"
+Info (12128): Elaborating entity "RL_gen" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1"
+Info (12128): Elaborating entity "e_gen" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|e_gen:G0"
+Info (12128): Elaborating entity "S1" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S1:s1"
+Warning (10230): Verilog HDL assignment warning at DES.v(613): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S2" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S2:s2"
+Warning (10230): Verilog HDL assignment warning at DES.v(625): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S3" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S3:s3"
+Warning (10230): Verilog HDL assignment warning at DES.v(637): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S4" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S4:s4"
+Warning (10230): Verilog HDL assignment warning at DES.v(649): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S5" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S5:s5"
+Warning (10230): Verilog HDL assignment warning at DES.v(661): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S6" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S6:s6"
+Warning (10230): Verilog HDL assignment warning at DES.v(673): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S7" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S7:s7"
+Warning (10230): Verilog HDL assignment warning at DES.v(685): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "S8" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|S8:s8"
+Warning (10230): Verilog HDL assignment warning at DES.v(697): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "p_gen" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|RL_gen:rlg1|p_gen:P1"
+Info (12128): Elaborating entity "ip_inv" for hierarchy "run_des:rd|LnRn_gen:lnrn_genA|ip_inv:ipinv1"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "din"
+    Warning (15610): No output dependent on input pin "key"
+Info (21057): Implemented 28 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 1 output pins
+    Info (21061): Implemented 23 logic cells
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 19 warnings
+    Info: Peak virtual memory: 335 megabytes
+    Info: Processing ended: Fri Oct 26 17:45:22 2012
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:09
 
 
