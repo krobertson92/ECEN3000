@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="17dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/brad" 
+        android:contentDescription="@string/imgdesc"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_centerVertical="true"
+        android:text="@string/hello_world"
+        tools:context=".MainActivity" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="18dp"
+        android:text="@string/zin" 
+        android:onClick="ZoomIn"/>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:text="@string/zout" 
+        android:onClick="ZoomOut"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_below="@+id/button2"
+        android:text="@string/rotate" 
+        android:onClick="Rotate"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_below="@+id/button3"
+        android:text="@string/changepic" 
+        android:onClick="Change"/>
+
+</RelativeLayout>

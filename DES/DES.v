@@ -1,51 +1,74 @@
-module des(din,key,master,slave,start);
-	input din,key,master,start;
-	output slave;
+module des(din,key,master,slave,start,hex0,hex1,hex2,hex3,dp0,dp1,dp2,dp3);
+	input[1:1] din,key,master,start;
+	output slave,dp0,dp1,dp2,dp3;
+	output[6:0] hex0,hex1,hex2,hex3;
+	wire[1:64] dout;
 	//collect all inputs and then call the runner.
 	reg[1:64] recon_din;
 	reg[1:64] recon_key;
 	reg[1:8] state;
-	reg[1:1] slaveRegA,slaveRegB;
-	wire[1:1] slaveReg;
-	assign slaveReg=~(slaveRegA^slaveRegB);
-	assign slave=slaveReg;
+	reg[1:1] slaveRegA,slaveRegB,dpreg0,dpreg1,dpreg2,dpreg3;
+	assign slave=(slaveRegA^slaveRegB);
+	assign dp0=dpreg0;
+	assign dp1=dpreg1;
+	assign dp2=dpreg2;
+	assign dp3=dpreg3;
+	
 	initial begin
 		state<=1;
 		slaveRegA<=0;
 		slaveRegB<=0;
+		dpreg0<=0;
+		dpreg1<=0;
+		dpreg2<=0;
+		dpreg3<=0;
 	end
 	
 	always @(posedge master)
 	begin
-		if(state<=64)
-		begin
-			recon_din[state]<=din;
-			recon_key[state]<=key;
-			state<=state+1;
-			slaveRegA<=~slaveRegA;
-		end
-		if(state==65)
-		begin
-			state<=state+1;
-			if(start)
-			begin 
-				state<=1;
+		if(start==1'b1)
+		begin 
+			state<=1;
+			slaveRegA<=0;
+		end else begin
+			if(state<=64)
+			begin
+				recon_din[state]<=din;
+				recon_key[state]<=key;
+				state<=state+1;
+				slaveRegA<=~slaveRegA;
 			end
 		end
 	end
 	
 	always @(negedge master)
 	begin
-		slaveRegB<=~slaveRegB;
+		if(start==1'b1)
+		begin
+			slaveRegB<=0;
+		end else begin
+			slaveRegB<=~slaveRegB;
+		end
 	end
 	
-	wire[1:64] dout;
 	wire oflag;
 	run_des rd(recon_din,recon_key,dout,oflag);
+	
+	SEG7_LUT	seg0(hex3,dout[49:52]);
+	//SEG7_LUT	seg0(hex0,state[1:4]);
+	
+	SEG7_LUT	seg1(hex2,dout[53:56]);
+	//SEG7_LUT	seg1(hex1,state[5:8]);
+	
+	SEG7_LUT	seg2(hex1,dout[57:60]);
+	//SEG7_LUT	seg2(hex2,{3'b000,key});
+	
+	SEG7_LUT	seg3(hex0,dout[61:64]);
+	//SEG7_LUT	seg3(hex3,{3'b000,din});
+	
 endmodule
 
 module run_des(din,key,dout,oflag);
-	input clk,reset,mode;
 	input[1:64] din,key;
 	output[1:64] dout;
 	output oflag;
@@ -106,6 +129,9 @@ module run_des(din,key,dout,oflag);
 	wire[1:64] ip;
 	ip_gen ipg(din,ip);
 	LnRn_gen lnrn_genA(ip[1:32],ip[33:64],k1,k2,k3,k4,k5,k6,k7,k8,k9,k10,k11,k12,k13,k14,k15,k16,dout);
+	
+	/*Output to LEDs*/
+	
 		
 endmodule
 
@@ -594,12 +620,6 @@ module RL_gen(R,L,k,Lo,Ro);
 	
 endmodule
 
-module genEXoRK(ein,kin0,exout);
-	input[1:48] ein,kin0;
-	output[1:48] exout;
-	assign exporout=kin0^ein;
-endmodule
-
 module sBox(exorin,biout);
 	input[1:48] exorin;
 	output[1:48] biout;
@@ -699,4 +719,32 @@ assign vout=
 	(((bin[1]==0&&bin[6]==1)?4'b1111:0)&((temp==0?1:0)|(temp==1?15:0)|(temp==2?13:0)|(temp==3?8:0)|(temp==4?10:0)|(temp==5?3:0)|(temp==6?7:0)|(temp==7?4:0)|(temp==8?12:0)|(temp==9?5:0)|(temp==10?6:0)|(temp==11?11:0)|(temp==12?0:0)|(temp==13?14:0)|(temp==14?9:0)|(temp==15?2:0)))|
 	(((bin[1]==1&&bin[6]==0)?4'b1111:0)&((temp==0?7:0)|(temp==1?11:0)|(temp==2?4:0)|(temp==3?1:0)|(temp==4?9:0)|(temp==5?12:0)|(temp==6?14:0)|(temp==7?2:0)|(temp==8?0:0)|(temp==9?6:0)|(temp==10?10:0)|(temp==11?13:0)|(temp==12?15:0)|(temp==13?3:0)|(temp==14?5:0)|(temp==15?8:0)))|
 	(((bin[1]==1&&bin[6]==1)?4'b1111:0)&((temp==0?2:0)|(temp==1?1:0)|(temp==2?14:0)|(temp==3?7:0)|(temp==4?4:0)|(temp==5?10:0)|(temp==6?8:0)|(temp==7?13:0)|(temp==8?15:0)|(temp==9?12:0)|(temp==10?9:0)|(temp==11?0:0)|(temp==12?3:0)|(temp==13?5:0)|(temp==14?6:0)|(temp==15?11:0)));
+endmodule
+
+module SEG7_LUT	(	oSEG,iDIG	);
+input		[3:0]	iDIG;
+output	[6:0]	oSEG;
+reg		[6:0]	oSEG;
+
+always @(iDIG)
+begin
+		case(iDIG)
+		4'h1: oSEG = 7'b1111001;	// ---t----
+		4'h2: oSEG = 7'b0100100; 	// |	  |
+		4'h3: oSEG = 7'b0110000; 	// lt	 rt
+		4'h4: oSEG = 7'b0011001; 	// |	  |
+		4'h5: oSEG = 7'b0010010; 	// ---m----
+		4'h6: oSEG = 7'b0000010; 	// |	  |
+		4'h7: oSEG = 7'b1111000; 	// lb	 rb
+		4'h8: oSEG = 7'b0000000; 	// |	  |
+		4'h9: oSEG = 7'b0011000; 	// ---b----
+		4'ha: oSEG = 7'b0001000;
+		4'hb: oSEG = 7'b0000011;
+		4'hc: oSEG = 7'b1000110;
+		4'hd: oSEG = 7'b0100001;
+		4'he: oSEG = 7'b0000110;
+		4'hf: oSEG = 7'b0001110;
+		4'h0: oSEG = 7'b1000000;
+		endcase
+end
 endmodule
