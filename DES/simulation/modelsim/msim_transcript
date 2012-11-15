@@ -1,0 +1,44 @@
+# Reading C:/altera/12.0/modelsim_ase/tcl/vsim/pref.tcl 
+# do des_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying c:\altera\12.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied c:\altera\12.0\modelsi# vlib rtl_work
+# vmap work rtl_work
+# ** Error: (vmap-20) Cannot access for writing file "c:\altera\12.0\modelsim_ase\win32aloem/../modelsim.ini".
+# Permission denied. (errno = EACCES)
+# ** Warning: modelsim.ini and default modelsim.ini are the same file
+# Error in macro ./des_run_msim_rtl_verilog.do line 6
+# ** Error: (vmap-20) Cannot access for writing file "c:\altera\12.0\modelsim_ase\win32aloem/../modelsim.ini".
+# Permission denied. (errno = EACCES)
+# ** Warning: modelsim.ini and default modelsim.ini are the same file
+#     while executing
+# "vmap work rtl_work"
+#  
+-- Compiling module e_gen
+# -- Compiling module ip_inv
+# -- Compiling module p_gen
+# -- Compiling module ip_gen
+# -- Compiling module LnRn_gen
+# -- Compiling module RL_gen
+# -- Compiling module genEXoRK
+# -- Compiling module sBox
+# -- Compiling module S1
+# -- Compiling module S2
+# -- Compiling module S3
+# -- Compiling module S4
+# -- Compiling module S5
+# -- Compiling module S6
+# -- Compiling module S7
+# -- Compiling module S8
+# -- Compiling module SEG7_LUT
+# ** Error: c:/altera/12.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./des_run_msim_rtl_verilog.do line 8
+# c:/altera/12.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+C:/Users/Keith\ Robertson/Documents/ECEN3000/DES {C:/Users/Keith Robertson/Documents/ECEN3000/DES/DES.v}"
+#  

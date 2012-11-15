@@ -1,15 +1,28 @@
+<<<<<<< HEAD
 Fitter Status : Successful - Thu Oct 25 09:49:42 2012
 Quartus II Version : 9.0 Build 132 02/25/2009 SJ Web Edition
+=======
+Fitter Status : Successful - Sat Oct 27 01:42:05 2012
+Quartus II 32-bit Version : 12.0 Build 263 08/02/2012 SP 2 SJ Web Edition
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 Revision Name : des
 Top-level Entity Name : des
 Family : Cyclone III
 Device : EP3C16F484C6
 Timing Models : Final
+<<<<<<< HEAD
 Total logic elements : 153 / 15,408 ( < 1 % )
     Total combinational functions : 153 / 15,408 ( < 1 % )
     Dedicated logic registers : 0 / 15,408 ( 0 % )
 Total registers : 0
 Total pins : 196 / 347 ( 56 % )
+=======
+Total logic elements : 7,697 / 15,408 ( 50 % )
+    Total combinational functions : 7,615 / 15,408 ( 49 % )
+    Dedicated logic registers : 130 / 15,408 ( < 1 % )
+Total registers : 130
+Total pins : 37 / 347 ( 11 % )
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 Total virtual pins : 0
 Total memory bits : 0 / 516,096 ( 0 % )
 Embedded Multiplier 9-bit elements : 0 / 112 ( 0 % )

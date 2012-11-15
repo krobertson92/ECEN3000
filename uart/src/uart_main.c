@@ -348,6 +348,7 @@ int main (void) {
 
 		send_arm_peripheral_control_menu();
 		  while(1){
-			    __WFI();
+			  send_arm_peripheral_control_menu();
+			  //  __WFI();
 		  }
 }

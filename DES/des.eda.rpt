@@ -1,6 +1,11 @@
 EDA Netlist Writer report for des
+<<<<<<< HEAD
 Thu Oct 25 09:50:12 2012
 Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
+=======
+Sat Oct 27 01:43:37 2012
+Quartus II 32-bit Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 
 
 ---------------------
@@ -17,7 +22,11 @@ Quartus II Version 9.0 Build 132 02/25/2009 SJ Web Edition
 ----------------
 ; Legal Notice ;
 ----------------
+<<<<<<< HEAD
 Copyright (C) 1991-2009 Altera Corporation
+=======
+Copyright (C) 1991-2012 Altera Corporation
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -36,7 +45,11 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
+<<<<<<< HEAD
 ; EDA Netlist Writer Status ; Successful - Thu Oct 25 09:50:12 2012 ;
+=======
+; EDA Netlist Writer Status ; Successful - Sat Oct 27 01:43:37 2012 ;
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 ; Revision Name             ; des                                   ;
 ; Top-level Entity Name     ; des                                   ;
 ; Family                    ; Cyclone III                           ;
@@ -66,6 +79,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
+<<<<<<< HEAD
 +----------------------------------------------------------------------------------------------------------------------+
 ; Simulation Generated Files                                                                                           ;
 +----------------------------------------------------------------------------------------------------------------------+
@@ -80,12 +94,29 @@ applicable agreement for further details.
 ; C:/Users/Vaio/Documents/LPCXpresso_4.2.3_292/workspace/ECEN3000/DES/simulation/modelsim/des_min_1200mv_0c_v_fast.sdo ;
 ; C:/Users/Vaio/Documents/LPCXpresso_4.2.3_292/workspace/ECEN3000/DES/simulation/modelsim/des_v.sdo                    ;
 +----------------------------------------------------------------------------------------------------------------------+
+=======
++--------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                       ;
++--------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                  ;
++--------------------------------------------------------------------------------------------------+
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_6_1200mv_85c_slow.vo     ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_6_1200mv_0c_slow.vo      ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_min_1200mv_0c_fast.vo    ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des.vo                       ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_6_1200mv_85c_v_slow.sdo  ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_6_1200mv_0c_v_slow.sdo   ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_min_1200mv_0c_v_fast.sdo ;
+; C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/des_v.sdo                    ;
++--------------------------------------------------------------------------------------------------+
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 
 
 +-----------------------------+
 ; EDA Netlist Writer Messages ;
 +-----------------------------+
 Info: *******************************************************************
+<<<<<<< HEAD
 Info: Running Quartus II EDA Netlist Writer
     Info: Version 9.0 Build 132 02/25/2009 SJ Web Edition
     Info: Processing started: Thu Oct 25 09:50:09 2012
@@ -103,5 +134,24 @@ Info: Quartus II EDA Netlist Writer was successful. 0 errors, 0 warnings
     Info: Processing ended: Thu Oct 25 09:50:12 2012
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
+=======
+Info: Running Quartus II 32-bit EDA Netlist Writer
+    Info: Version 12.0 Build 263 08/02/2012 Service Pack 2 SJ Web Edition
+    Info: Processing started: Sat Oct 27 01:42:48 2012
+Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off des -c des
+Info (204019): Generated file des_6_1200mv_85c_slow.vo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des_6_1200mv_0c_slow.vo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des_min_1200mv_0c_fast.vo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des.vo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des_6_1200mv_85c_v_slow.sdo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des_6_1200mv_0c_v_slow.sdo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file des_v.sdo in folder "C:/Users/Keith Robertson/Documents/ECEN3000/DES/simulation/modelsim/" for EDA simulation tool
+Info: Quartus II 32-bit EDA Netlist Writer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 334 megabytes
+    Info: Processing ended: Sat Oct 27 01:43:37 2012
+    Info: Elapsed time: 00:00:49
+    Info: Total CPU time (on all processors): 00:00:42
+>>>>>>> 1bc80c099aa85df0c819902a74a3e032b5d5d2f0
 
 

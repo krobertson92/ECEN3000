@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">PictureEdit</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Picture Editor</string>
+    <string name="zin">Zoom In</string>
+    <string name="zout">Zoom Out</string>
+    <string name="rotate">Rotate</string>
+    <string name="changepic">Change Picture</string>
+    <string name="imgdesc">Image</string>
+
+</resources>

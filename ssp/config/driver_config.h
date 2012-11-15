@@ -14,8 +14,10 @@
 #define CONFIG_CRP_SETTING_NO_CRP						1
 
 #define CONFIG_ENABLE_DRIVER_SSP						1
+#define SSP_NUM											1
 
 #define CONFIG_ENABLE_DRIVER_GPIO						1
+#define USE_CS											1
 
  /* DRIVER_CONFIG_H_ */
 #endif
