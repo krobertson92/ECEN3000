@@ -1,0 +1,267 @@
+Lab and Comp Org
+Merge branch 'master' of https://github.com/krobertson92/ECEN3000
+
+Conflicts:
+	DES/des.asm.rpt
+	DES/des.eda.rpt
+	DES/des.fit.rpt
+	DES/des.fit.summary
+	DES/des.pin
+	DES/des.qws
+	DES/des.sof
+	DES/des.sta.rpt
+	DES/des.sta.summary
+	DES/incremental_db/compiled_partitions/des.root_partition.cmp.kpt
+	DES/simulation/modelsim/des.vo
+	DES/simulation/modelsim/des_6_1200mv_0c_slow.vo
+	DES/simulation/modelsim/des_6_1200mv_0c_v_slow.sdo
+	DES/simulation/modelsim/des_6_1200mv_85c_slow.vo
+	DES/simulation/modelsim/des_6_1200mv_85c_v_slow.sdo
+	DES/simulation/modelsim/des_min_1200mv_0c_fast.vo
+	DES/simulation/modelsim/des_min_1200mv_0c_v_fast.sdo
+	DES/simulation/modelsim/des_modelsim.xrf
+	DES/simulation/modelsim/des_v.sdo
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 4 and 1 different commit each, respectively.
+#
+# Changes to be committed:
+#
+#	new file:   ADS1299Control/.cproject
+#	new file:   ADS1299Control/.project
+#	new file:   ADS1299Control/config/driver_config.h
+#	new file:   ADS1299Control/config/system_LPC11xx.h
+#	new file:   ADS1299Control/config/target_config.h
+#	new file:   ADS1299Control/driver/adc.c
+#	new file:   ADS1299Control/driver/adc.h
+#	new file:   ADS1299Control/driver/can.c
+#	new file:   ADS1299Control/driver/can.h
+#	new file:   ADS1299Control/driver/clkconfig.c
+#	new file:   ADS1299Control/driver/clkconfig.h
+#	new file:   ADS1299Control/driver/crp.c
+#	new file:   ADS1299Control/driver/crp.h
+#	new file:   ADS1299Control/driver/debug_printf.c
+#	new file:   ADS1299Control/driver/debug_printf.h
+#	new file:   ADS1299Control/driver/gpio.c
+#	new file:   ADS1299Control/driver/gpio.h
+#	new file:   ADS1299Control/driver/i2c.c
+#	new file:   ADS1299Control/driver/i2c.h
+#	new file:   ADS1299Control/driver/i2cslave.c
+#	new file:   ADS1299Control/driver/i2cslave.h
+#	new file:   ADS1299Control/driver/lpc_swu.c
+#	new file:   ADS1299Control/driver/lpc_swu.h
+#	new file:   ADS1299Control/driver/rom_driver_CAN.h
+#	new file:   ADS1299Control/driver/rom_drivers.h
+#	new file:   ADS1299Control/driver/rs485.c
+#	new file:   ADS1299Control/driver/rs485.h
+#	new file:   ADS1299Control/driver/small_gpio.c
+#	new file:   ADS1299Control/driver/small_gpio.h
+#	new file:   ADS1299Control/driver/ssp.c
+#	new file:   ADS1299Control/driver/ssp.h
+#	new file:   ADS1299Control/driver/timer16.c
+#	new file:   ADS1299Control/driver/timer16.h
+#	new file:   ADS1299Control/driver/timer32.c
+#	new file:   ADS1299Control/driver/timer32.h
+#	new file:   ADS1299Control/driver/type.h
+#	new file:   ADS1299Control/driver/uart.c
+#	new file:   ADS1299Control/driver/uart.h
+#	new file:   ADS1299Control/driver/wdt.c
+#	new file:   ADS1299Control/driver/wdt.h
+#	new file:   ADS1299Control/src/ADS1299_commands.h
+#	new file:   ADS1299Control/src/cr_startup_lpc11.c
+#	new file:   ADS1299Control/src/main.c
+#	modified:   DES/DES.v
+#	modified:   DES/des.asm.rpt
+#	new file:   DES/des.cdf
+#	modified:   DES/des.done
+#	modified:   DES/des.eda.rpt
+#	modified:   DES/des.fit.rpt
+#	modified:   DES/des.fit.summary
+#	modified:   DES/des.flow.rpt
+#	new file:   DES/des.jdi
+#	modified:   DES/des.map.rpt
+#	new file:   DES/des.map.smsg
+#	modified:   DES/des.map.summary
+#	modified:   DES/des.pin
+#	modified:   DES/des.qsf
+#	modified:   DES/des.sta.rpt
+#	modified:   DES/des.sta.summary
+#	new file:   DES/des_assignment_defaults.qdf
+#	new file:   DES/des_nativelink_simulation.rpt
+#	new file:   DES/incremental_db/compiled_partitions/des.root_partition.cmp.cdb
+#	new file:   DES/incremental_db/compiled_partitions/des.root_partition.cmp.hdb
+#	new file:   DES/incremental_db/compiled_partitions/des.root_partition.cmp.rcfdb
+#	modified:   DES/incremental_db/compiled_partitions/des.root_partition.map.cdb
+#	modified:   DES/incremental_db/compiled_partitions/des.root_partition.map.dpi
+#	modified:   DES/incremental_db/compiled_partitions/des.root_partition.map.hbdb.cdb
+#	modified:   DES/incremental_db/compiled_partitions/des.root_partition.map.hbdb.hdb
+#	modified:   DES/incremental_db/compiled_partitions/des.root_partition.map.hdb
+#	modified:   DES/incremental_db/compiled_partitions/des.root_partition.map.kpt
+#	new file:   DES/simulation/modelsim/DES.vcd
+#	modified:   DES/simulation/modelsim/des.vo
+#	modified:   DES/simulation/modelsim/des_6_1200mv_0c_slow.vo
+#	modified:   DES/simulation/modelsim/des_6_1200mv_0c_v_slow.sdo
+#	modified:   DES/simulation/modelsim/des_6_1200mv_85c_slow.vo
+#	modified:   DES/simulation/modelsim/des_6_1200mv_85c_v_slow.sdo
+#	modified:   DES/simulation/modelsim/des_min_1200mv_0c_fast.vo
+#	modified:   DES/simulation/modelsim/des_min_1200mv_0c_v_fast.sdo
+#	modified:   DES/simulation/modelsim/des_modelsim.xrf
+#	new file:   DES/simulation/modelsim/des_run_msim_gate_verilog.do
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak1
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak10
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak11
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak2
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak3
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak4
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak5
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak6
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak7
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak8
+#	new file:   DES/simulation/modelsim/des_run_msim_rtl_verilog.do.bak9
+#	modified:   DES/simulation/modelsim/des_v.sdo
+#	new file:   DES/simulation/modelsim/gate_work/@d@e@s_@testbench/_primary.dat
+#	new file:   DES/simulation/modelsim/gate_work/@d@e@s_@testbench/_primary.dbs
+#	new file:   DES/simulation/modelsim/gate_work/@d@e@s_@testbench/_primary.vhd
+#	new file:   DES/simulation/modelsim/gate_work/@d@e@s_@testbench/verilog.prw
+#	new file:   DES/simulation/modelsim/gate_work/@d@e@s_@testbench/verilog.psm
+#	new file:   DES/simulation/modelsim/gate_work/_info
+#	new file:   DES/simulation/modelsim/gate_work/_vmake
+#	new file:   DES/simulation/modelsim/gate_work/des/_primary.dat
+#	new file:   DES/simulation/modelsim/gate_work/des/_primary.dbs
+#	new file:   DES/simulation/modelsim/gate_work/des/_primary.vhd
+#	new file:   DES/simulation/modelsim/gate_work/des/verilog.prw
+#	new file:   DES/simulation/modelsim/gate_work/des/verilog.psm
+#	new file:   DES/simulation/modelsim/modelsim.ini
+#	new file:   DES/simulation/modelsim/msim_transcript
+#	new file:   DES/simulation/modelsim/rtl_work/_info
+#	new file:   DES/simulation/modelsim/vsim.wlf
+#	new file:   DES/stupidshit/des.(0).cnf.cdb
+#	new file:   DES/stupidshit/des.(0).cnf.hdb
+#	new file:   DES/stupidshit/des.(1).cnf.cdb
+#	new file:   DES/stupidshit/des.(1).cnf.hdb
+#	new file:   DES/stupidshit/des.(10).cnf.cdb
+#	new file:   DES/stupidshit/des.(10).cnf.hdb
+#	new file:   DES/stupidshit/des.(11).cnf.cdb
+#	new file:   DES/stupidshit/des.(11).cnf.hdb
+#	new file:   DES/stupidshit/des.(12).cnf.cdb
+#	new file:   DES/stupidshit/des.(12).cnf.hdb
+#	new file:   DES/stupidshit/des.(13).cnf.cdb
+#	new file:   DES/stupidshit/des.(13).cnf.hdb
+#	new file:   DES/stupidshit/des.(14).cnf.cdb
+#	new file:   DES/stupidshit/des.(14).cnf.hdb
+#	new file:   DES/stupidshit/des.(15).cnf.cdb
+#	new file:   DES/stupidshit/des.(15).cnf.hdb
+#	new file:   DES/stupidshit/des.(16).cnf.cdb
+#	new file:   DES/stupidshit/des.(16).cnf.hdb
+#	new file:   DES/stupidshit/des.(17).cnf.cdb
+#	new file:   DES/stupidshit/des.(17).cnf.hdb
+#	new file:   DES/stupidshit/des.(2).cnf.cdb
+#	new file:   DES/stupidshit/des.(2).cnf.hdb
+#	new file:   DES/stupidshit/des.(3).cnf.cdb
+#	new file:   DES/stupidshit/des.(3).cnf.hdb
+#	new file:   DES/stupidshit/des.(4).cnf.cdb
+#	new file:   DES/stupidshit/des.(4).cnf.hdb
+#	new file:   DES/stupidshit/des.(5).cnf.cdb
+#	new file:   DES/stupidshit/des.(5).cnf.hdb
+#	new file:   DES/stupidshit/des.(6).cnf.cdb
+#	new file:   DES/stupidshit/des.(6).cnf.hdb
+#	new file:   DES/stupidshit/des.(7).cnf.cdb
+#	new file:   DES/stupidshit/des.(7).cnf.hdb
+#	new file:   DES/stupidshit/des.(8).cnf.cdb
+#	new file:   DES/stupidshit/des.(8).cnf.hdb
+#	new file:   DES/stupidshit/des.(9).cnf.cdb
+#	new file:   DES/stupidshit/des.(9).cnf.hdb
+#	new file:   DES/stupidshit/des.amm.cdb
+#	new file:   DES/stupidshit/des.asm.qmsg
+#	new file:   DES/stupidshit/des.asm.rdb
+#	new file:   DES/stupidshit/des.asm_labs.ddb
+#	new file:   DES/stupidshit/des.cbx.xml
+#	new file:   DES/stupidshit/des.cmp.bpm
+#	new file:   DES/stupidshit/des.cmp.cdb
+#	new file:   DES/stupidshit/des.cmp.hdb
+#	new file:   DES/stupidshit/des.cmp.kpt
+#	new file:   DES/stupidshit/des.cmp.logdb
+#	new file:   DES/stupidshit/des.cmp.rdb
+#	new file:   DES/stupidshit/des.cmp_merge.kpt
+#	new file:   DES/stupidshit/des.cuda_io_sim_cache.31um_ff_1200mv_0c_fast.hsd
+#	new file:   DES/stupidshit/des.cuda_io_sim_cache.31um_tt_1200mv_85c_slow.hsd
+#	new file:   DES/stupidshit/des.db_info
+#	new file:   DES/stupidshit/des.eda.qmsg
+#	new file:   DES/stupidshit/des.fit.qmsg
+#	new file:   DES/stupidshit/des.hier_info
+#	new file:   DES/stupidshit/des.hif
+#	new file:   DES/stupidshit/des.idb.cdb
+#	new file:   DES/stupidshit/des.lpc.html
+#	new file:   DES/stupidshit/des.lpc.rdb
+#	new file:   DES/stupidshit/des.lpc.txt
+#	new file:   DES/stupidshit/des.map.bpm
+#	new file:   DES/stupidshit/des.map.cdb
+#	new file:   DES/stupidshit/des.map.hdb
+#	new file:   DES/stupidshit/des.map.kpt
+#	new file:   DES/stupidshit/des.map.logdb
+#	new file:   DES/stupidshit/des.map.qmsg
+#	new file:   DES/stupidshit/des.map.rdb
+#	new file:   DES/stupidshit/des.map_bb.cdb
+#	new file:   DES/stupidshit/des.map_bb.hdb
+#	new file:   DES/stupidshit/des.map_bb.logdb
+#	new file:   DES/stupidshit/des.pre_map.cdb
+#	new file:   DES/stupidshit/des.pre_map.hdb
+#	new file:   DES/stupidshit/des.root_partition.map.reg_db.cdb
+#	new file:   DES/stupidshit/des.routing.rdb
+#	new file:   DES/stupidshit/des.rtlv.hdb
+#	new file:   DES/stupidshit/des.rtlv_sg.cdb
+#	new file:   DES/stupidshit/des.rtlv_sg_swap.cdb
+#	new file:   DES/stupidshit/des.sgdiff.cdb
+#	new file:   DES/stupidshit/des.sgdiff.hdb
+#	new file:   DES/stupidshit/des.sld_design_entry.sci
+#	new file:   DES/stupidshit/des.sld_design_entry_dsc.sci
+#	new file:   DES/stupidshit/des.smart_action.txt
+#	new file:   DES/stupidshit/des.sta.qmsg
+#	new file:   DES/stupidshit/des.sta.rdb
+#	new file:   DES/stupidshit/des.sta_cmp.6_slow_1200mv_85c.tdb
+#	new file:   DES/stupidshit/des.syn_hier_info
+#	new file:   DES/stupidshit/des.tis_db_list.ddb
+#	new file:   DES/stupidshit/des.tiscmp.fast_1200mv_0c.ddb
+#	new file:   DES/stupidshit/des.tiscmp.slow_1200mv_0c.ddb
+#	new file:   DES/stupidshit/des.tiscmp.slow_1200mv_85c.ddb
+#	new file:   DES/stupidshit/logic_util_heursitic.dat
+#	new file:   DES/stupidshit/prev_cmp_des.qmsg
+#	new file:   eclipse/PictureEdit/.project
+#	new file:   eclipse/PictureEdit/AndroidManifest.xml
+#	new file:   eclipse/PictureEdit/gen/com/dielawn/pictureedit/BuildConfig.java
+#	new file:   eclipse/PictureEdit/gen/com/dielawn/pictureedit/R.java
+#	new file:   eclipse/PictureEdit/ic_launcher-web.png
+#	new file:   eclipse/PictureEdit/libs/android-support-v4.jar
+#	new file:   eclipse/PictureEdit/proguard-project.txt
+#	new file:   eclipse/PictureEdit/project.properties
+#	new file:   eclipse/PictureEdit/res/drawable-hdpi/brad.jpg
+#	new file:   eclipse/PictureEdit/res/drawable-hdpi/brian.jpg
+#	new file:   eclipse/PictureEdit/res/drawable-hdpi/dielawn.jpg
+#	new file:   eclipse/PictureEdit/res/drawable-hdpi/ic_action_search.png
+#	new file:   eclipse/PictureEdit/res/drawable-hdpi/ic_launcher.png
+#	new file:   eclipse/PictureEdit/res/drawable-ldpi/ic_launcher.png
+#	new file:   eclipse/PictureEdit/res/drawable-mdpi/ic_action_search.png
+#	new file:   eclipse/PictureEdit/res/drawable-mdpi/ic_launcher.png
+#	new file:   eclipse/PictureEdit/res/drawable-xhdpi/ic_action_search.png
+#	new file:   eclipse/PictureEdit/res/drawable-xhdpi/ic_launcher.png
+#	new file:   eclipse/PictureEdit/res/layout/activity_main.xml
+#	new file:   eclipse/PictureEdit/res/menu/activity_main.xml
+#	new file:   eclipse/PictureEdit/res/values-v11/styles.xml
+#	new file:   eclipse/PictureEdit/res/values-v14/styles.xml
+#	new file:   eclipse/PictureEdit/res/values/strings.xml
+#	new file:   eclipse/PictureEdit/res/values/styles.xml
+#	new file:   eclipse/PictureEdit/src/com/dielawn/pictureedit/MainActivity.java
+#	modified:   ssp/config/driver_config.h
+#	modified:   uart/src/uart_main.c
+#
+
