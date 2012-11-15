@@ -1,0 +1,20 @@
+Required Pins
+1	Cs
+3	SPI_CLK
+11	MOSI
+13	MISO
+15	DReady
+
+4	Gnd
+8	~Reset (3.3)
+
+wyatt.mohrman@gmail.com
+
+%connecting to bluetooth in matlab
+ b = Bluetooth('FireFly-B2C5',1,'InputBufferSize',800)
+ fopen(b)
+ 
+%read from buffer 
+while(true)
+    val=fread(b,215)
+end
