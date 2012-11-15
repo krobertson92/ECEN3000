@@ -9,7 +9,7 @@
 #include "uart.h"
 
 void send_arm_peripheral_control_menu() {
-	char* menu = "Arm Peripheral Control Menu\r\n1.  Control LED\r\n2.  Control ADC\n";
+	char* menu = "Arm Peripheral Control Menu\r\n1.  Control LED\r\n2.  Control ADC\n\n3.  Send Data\n4. Set Key\n";
 	//uint32_t stringLength = 61;
 	UARTSend( (uint8_t*)menu, strlen(menu) );
 }

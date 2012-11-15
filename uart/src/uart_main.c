@@ -50,6 +50,7 @@ uint32_t current_menu = 0;
 //3 = LED Duty Cycle Menu
 //4 = ADC Control Menu
 //5 = ADC Reporting Frequency Menu
+//6 = DES stuff
 
 uint8_t report_adc = 0;
 uint32_t adc_report_speed = 1;
@@ -77,6 +78,12 @@ void menu_handler(uint8_t input){
 			break;
 		case 5:
 			ADC_reporting_frequency_menu_handler(input);
+			break;
+		case 6:
+			DES_menu_handler(input);
+			break;
+		case 7:
+			DES_menu_handlerK(input);
 			break;
 	}
 }
@@ -310,6 +317,13 @@ void ADC_IRQHandler (void)
 
 
 int main (void) {
+	/*
+	while(1==1){
+		sendEnc();
+		//volatile int delay=0;for(delay=0;delay<1000000;delay++);
+	}
+	while(1==1);
+
 	  /* Basic chip initialization is taken care of in SystemInit() called
 	   * from the startup code. SystemInit() and chip settings are defined
 	   * in the CMSIS system_<part family>.c file.

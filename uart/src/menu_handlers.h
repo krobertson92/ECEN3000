@@ -16,14 +16,129 @@ uint32_t enable_blink = 100;
 uint32_t blink_counter = 0;
 uint32_t blink_duty = 50;
 
+/*
+void GPIOSetValue( uint32_t portNum, uint32_t bitPosi, uint32_t bitVal ){
+  LPC_GPIO[portNum]->MASKED_ACCESS[(1<<bitPosi)] = (bitVal<<bitPosi);
+}
+
+void GPIOSetDir( uint32_t portNum, uint32_t bitPosi, uint32_t dir ){
+  if(dir)
+	LPC_GPIO[portNum]->DIR |= 1<<bitPosi;
+  else
+	LPC_GPIO[portNum]->DIR &= ~(1<<bitPosi);
+}
+*/
+uint32_t GIPOGetValue( uint32_t portNum, uint32_t bitPosi ){
+	return LPC_GPIO[portNum]->MASKED_ACCESS[(1<<bitPosi)];
+}
+
+
+
+
+uint32_t MastP=3;uint32_t Mast=0;
+uint32_t SlavP=3;uint32_t Slav=1;
+uint32_t StrtP=3;uint32_t Strt=3;
+uint32_t DataP=0;uint32_t Data=6;
+uint32_t KeeyP=1;uint32_t Keey=8;
+
+uint8_t data_to_send[8];
+uint8_t keyy_to_send[8];
+uint8_t data_size=0;
+uint8_t keyy_size=0;
+void DES_menu_handler(uint8_t input){
+	data_to_send[data_size] = input;
+	data_size++;
+	if(data_size >= 8){
+		sendEnc(data_to_send,keyy_to_send);
+		data_size=0;
+		current_menu = 0;
+		send_arm_peripheral_control_menu();
+	}
+}
+int counter=0;
+void DES_menu_handlerK(uint8_t input){
+	counter++;
+	keyy_to_send[keyy_size] = input;
+	keyy_size++;
+	if(keyy_size >= 8){
+		sendEnc(data_to_send,keyy_to_send);
+		keyy_size=0;
+		current_menu = 0;
+		send_arm_peripheral_control_menu();
+	}
+}
+
+void sendBit(int data,int key){
+	while(LPC_GPIO[SlavP]->MASKED_ACCESS[(1<<Slav)]!=0){}//wait for slave to set low
+	volatile int delay=0;for(delay=0;delay<10;delay++);
+	GPIOSetValue(DataP, Data, data);
+	GPIOSetValue(KeeyP, Keey, key);
+	GPIOSetValue(MastP, Mast, 1);
+	GPIOSetValue(0,7,key);
+	while(LPC_GPIO[SlavP]->MASKED_ACCESS[(1<<Slav)]==0){}//wait for slave to set high
+	GPIOSetValue(MastP, Mast, 0);
+	for(delay=0;delay<10;delay++);
+
+	//continue.
+}
+void sendEnc(uint8_t* data,uint8_t* keyA){
+	GPIOSetDir(MastP,Mast,1);//output
+	GPIOSetDir(SlavP,Slav,0);//input
+	GPIOSetDir(DataP,Data,1);//output
+	GPIOSetDir(StrtP,Strt,1);//output
+	GPIOSetDir(KeeyP,Keey,1);//output
+	GPIOSetDir(0,7,1);//output
+	GPIOSetValue(0,7, 1);
+	GPIOSetValue(StrtP,Strt, 0);
+	GPIOSetValue(MastP,Mast, 0);
+
+	volatile int delay=0;for(delay=0;delay<10;delay++);
+
+	GPIOSetValue(StrtP,Strt, 1);
+	for(delay=0;delay<10;delay++);
+	GPIOSetValue(MastP,Mast, 1);
+	for(delay=0;delay<10;delay++);
+	GPIOSetValue(MastP,Mast, 0);
+	for(delay=0;delay<10;delay++);
+	GPIOSetValue(StrtP,Strt, 0);
+	for(delay=0;delay<10;delay++);
+
+	//char data[8];
+	//char keyA[8];
+	if(counter==0){
+		//data[0]=0x87;data[1]=0x87;data[2]=0x87;data[3]=0x87;data[4]=0x87;data[5]=0x87;data[6]=0x87;data[7]=0x87;
+		keyA[0]=0x0E;keyA[1]=0x32;keyA[2]=0x92;keyA[3]=0x32;keyA[4]=0xEA;keyA[5]=0x6D;keyA[6]=0x0D;keyA[7]=0x73;
+		counter++;
+		//counter=0;
+	}else{
+		//data[0]=0x01;data[1]=0x23;data[2]=0x45;data[3]=0x67;data[4]=0x89;data[5]=0xAB;data[6]=0xCD;data[7]=0xEF;
+		//keyA[0]=0x13;keyA[1]=0x34;keyA[2]=0x57;keyA[3]=0x79;keyA[4]=0x9B;keyA[5]=0xBC;keyA[6]=0xDF;keyA[7]=0xF1;
+		//counter=0;
+	}
+	int i=0;int ii=0;
+	for(i=0;i<8;i++){
+		for(ii=0;ii<8;ii++){
+			sendBit((data[i]>>(7-ii))&0x1,(keyA[i]>>(7-ii))&0x1);
+		}
+	}
+	//GPIOSetValue(3, Strt, 0);
+}
+
 void peripheral_control_menu_handler(uint8_t input) {
+
+
+
 	//UARTSend( &input, 1 );
 	if(input == '1') { //led control
 		send_LED_control_menu();
 		current_menu = 1;
-	}else{
+	}else if(input=='2'){
 		send_ADC_control_menu();
 		current_menu = 4;
+	}else if(input=='3'){
+		current_menu = 6;
+	}else if(input=='4'){
+		current_menu = 7;
 	}
 }
 
@@ -64,6 +179,8 @@ void blinkCaller(){
 }
 
 void led_control_menu_handler(uint8_t input){
+
+
 	switch(input){
 		case '1':
 			start_blink();

@@ -1,0 +1,5221 @@
+// Copyright (C) 1991-2009 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II"
+// VERSION "Version 9.0 Build 132 02/25/2009 SJ Web Edition"
+
+// DATE "10/25/2012 09:50:11"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module des (
+	clk,
+	reset,
+	mode,
+	din,
+	key,
+	dout,
+	oflag);
+input 	clk;
+input 	reset;
+input 	mode;
+input 	[1:64] din;
+input 	[1:64] key;
+output 	[1:64] dout;
+output 	oflag;
+
+wire gnd = 1'b0;
+wire vcc = 1'b1;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+// synopsys translate_off
+initial $sdf_annotate("des_min_1200mv_0c_v_fast.sdo");
+// synopsys translate_on
+
+wire \lnrn_genA|rlg1|s4|ShiftLeft0~0_combout ;
+wire \lnrn_genA|rlg1|s7|ShiftLeft0~0_combout ;
+wire \lnrn_genA|rlg9|Ro[6]~33_combout ;
+wire \lnrn_genA|rlg1|s8|vout[4]~14_combout ;
+wire \lnrn_genA|rlg1|s1|vout[4]~15_combout ;
+wire \lnrn_genA|rlg3|s8|vout[4]~14_combout ;
+wire \lnrn_genA|rlg4|s5|vout[4]~13_combout ;
+wire \lnrn_genA|rlg8|s5|vout[4]~13_combout ;
+wire \lnrn_genA|rlg11|s8|vout[4]~13_combout ;
+wire \lnrn_genA|rlg12|s5|vout[4]~13_combout ;
+wire \lnrn_genA|rlg14|s5|vout[4]~13_combout ;
+wire \lnrn_genA|rlg15|s5|vout[4]~13_combout ;
+wire \clk~input_o ;
+wire \reset~input_o ;
+wire \mode~input_o ;
+wire \din[64]~input_o ;
+wire \din[62]~input_o ;
+wire \din[60]~input_o ;
+wire \din[58]~input_o ;
+wire \din[56]~input_o ;
+wire \din[54]~input_o ;
+wire \din[52]~input_o ;
+wire \din[50]~input_o ;
+wire \din[48]~input_o ;
+wire \din[46]~input_o ;
+wire \din[44]~input_o ;
+wire \din[42]~input_o ;
+wire \din[40]~input_o ;
+wire \din[38]~input_o ;
+wire \din[36]~input_o ;
+wire \din[34]~input_o ;
+wire \din[32]~input_o ;
+wire \din[30]~input_o ;
+wire \din[28]~input_o ;
+wire \din[26]~input_o ;
+wire \din[24]~input_o ;
+wire \din[22]~input_o ;
+wire \din[20]~input_o ;
+wire \din[18]~input_o ;
+wire \din[16]~input_o ;
+wire \din[14]~input_o ;
+wire \din[12]~input_o ;
+wire \din[10]~input_o ;
+wire \din[8]~input_o ;
+wire \din[6]~input_o ;
+wire \din[4]~input_o ;
+wire \din[2]~input_o ;
+wire \key[64]~input_o ;
+wire \key[56]~input_o ;
+wire \key[52]~input_o ;
+wire \key[48]~input_o ;
+wire \key[46]~input_o ;
+wire \key[40]~input_o ;
+wire \key[32]~input_o ;
+wire \key[24]~input_o ;
+wire \key[16]~input_o ;
+wire \key[8]~input_o ;
+wire \key[6]~input_o ;
+wire \key[47]~input_o ;
+wire \key[3]~input_o ;
+wire \key[36]~input_o ;
+wire \key[42]~input_o ;
+wire \key[21]~input_o ;
+wire \key[15]~input_o ;
+wire \key[26]~input_o ;
+wire \key[35]~input_o ;
+wire \key[7]~input_o ;
+wire \key[49]~input_o ;
+wire \key[62]~input_o ;
+wire \key[53]~input_o ;
+wire \key[30]~input_o ;
+wire \key[34]~input_o ;
+wire \key[60]~input_o ;
+wire \dout[64]~output_o ;
+wire \dout[63]~output_o ;
+wire \dout[62]~output_o ;
+wire \dout[61]~output_o ;
+wire \dout[60]~output_o ;
+wire \dout[59]~output_o ;
+wire \dout[58]~output_o ;
+wire \dout[57]~output_o ;
+wire \dout[56]~output_o ;
+wire \dout[55]~output_o ;
+wire \dout[54]~output_o ;
+wire \dout[53]~output_o ;
+wire \dout[52]~output_o ;
+wire \dout[51]~output_o ;
+wire \dout[50]~output_o ;
+wire \dout[49]~output_o ;
+wire \dout[48]~output_o ;
+wire \dout[47]~output_o ;
+wire \dout[46]~output_o ;
+wire \dout[45]~output_o ;
+wire \dout[44]~output_o ;
+wire \dout[43]~output_o ;
+wire \dout[42]~output_o ;
+wire \dout[41]~output_o ;
+wire \dout[40]~output_o ;
+wire \dout[39]~output_o ;
+wire \dout[38]~output_o ;
+wire \dout[37]~output_o ;
+wire \dout[36]~output_o ;
+wire \dout[35]~output_o ;
+wire \dout[34]~output_o ;
+wire \dout[33]~output_o ;
+wire \dout[32]~output_o ;
+wire \dout[31]~output_o ;
+wire \dout[30]~output_o ;
+wire \dout[29]~output_o ;
+wire \dout[28]~output_o ;
+wire \dout[27]~output_o ;
+wire \dout[26]~output_o ;
+wire \dout[25]~output_o ;
+wire \dout[24]~output_o ;
+wire \dout[23]~output_o ;
+wire \dout[22]~output_o ;
+wire \dout[21]~output_o ;
+wire \dout[20]~output_o ;
+wire \dout[19]~output_o ;
+wire \dout[18]~output_o ;
+wire \dout[17]~output_o ;
+wire \dout[16]~output_o ;
+wire \dout[15]~output_o ;
+wire \dout[14]~output_o ;
+wire \dout[13]~output_o ;
+wire \dout[12]~output_o ;
+wire \dout[11]~output_o ;
+wire \dout[10]~output_o ;
+wire \dout[9]~output_o ;
+wire \dout[8]~output_o ;
+wire \dout[7]~output_o ;
+wire \dout[6]~output_o ;
+wire \dout[5]~output_o ;
+wire \dout[4]~output_o ;
+wire \dout[3]~output_o ;
+wire \dout[2]~output_o ;
+wire \dout[1]~output_o ;
+wire \oflag~output_o ;
+wire \din[63]~input_o ;
+wire \din[61]~input_o ;
+wire \din[59]~input_o ;
+wire \din[11]~input_o ;
+wire \din[19]~input_o ;
+wire \lnrn_genA|rlg15|Ro[1]~34_combout ;
+wire \din[27]~input_o ;
+wire \key[41]~input_o ;
+wire \key[18]~input_o ;
+wire \lnrn_genA|rlg1|s4|ShiftLeft0~1_combout ;
+wire \din[57]~input_o ;
+wire \key[27]~input_o ;
+wire \lnrn_genA|rlg9|Ro[1]~32_combout ;
+wire \lnrn_genA|rlg10|Ro[1]~32_combout ;
+wire \din[55]~input_o ;
+wire \key[58]~input_o ;
+wire \lnrn_genA|rlg9|Ro[6]~35_combout ;
+wire \din[17]~input_o ;
+wire \din[43]~input_o ;
+wire \key[25]~input_o ;
+wire \key[44]~input_o ;
+wire \lnrn_genA|rlg9|Ro[6]~34_combout ;
+wire \lnrn_genA|rlg9|Ro[6]~36_combout ;
+wire \key[12]~input_o ;
+wire \din[47]~input_o ;
+wire \din[31]~input_o ;
+wire \din[39]~input_o ;
+wire \lnrn_genA|rlg16|Ro[7]~32_combout ;
+wire \lnrn_genA|rlg15|Ro[7]~36_combout ;
+wire \din[25]~input_o ;
+wire \din[1]~input_o ;
+wire \lnrn_genA|rlg16|s2|vout[4]~13_combout ;
+wire \din[51]~input_o ;
+wire \din[35]~input_o ;
+wire \lnrn_genA|rlg15|Ro[6]~35_combout ;
+wire \lnrn_genA|rlg14|Ro[6]~34_combout ;
+wire \key[28]~input_o ;
+wire \din[49]~input_o ;
+wire \din[33]~input_o ;
+wire \lnrn_genA|rlg2|s1|vout[4]~13_combout ;
+wire \lnrn_genA|rlg3|s1|vout[4]~13_combout ;
+wire \key[54]~input_o ;
+wire \key[37]~input_o ;
+wire \din[45]~input_o ;
+wire \lnrn_genA|rlg1|s5|vout[4]~14_combout ;
+wire \din[53]~input_o ;
+wire \lnrn_genA|rlg1|s5|vout[4]~13_combout ;
+wire \din[29]~input_o ;
+wire \lnrn_genA|rlg1|s5|vout[4]~15_combout ;
+wire \din[41]~input_o ;
+wire \lnrn_genA|rlg2|s1|vout[4]~14_combout ;
+wire \key[31]~input_o ;
+wire \key[14]~input_o ;
+wire \din[23]~input_o ;
+wire \lnrn_genA|rlg1|s8|vout[4]~13_combout ;
+wire \key[57]~input_o ;
+wire \key[2]~input_o ;
+wire \lnrn_genA|rlg1|s2|vout[4]~13_combout ;
+wire \din[9]~input_o ;
+wire \key[19]~input_o ;
+wire \key[9]~input_o ;
+wire \lnrn_genA|rlg1|s2|vout[4]~14_combout ;
+wire \din[5]~input_o ;
+wire \key[29]~input_o ;
+wire \lnrn_genA|rlg1|s6|ShiftLeft0~1_combout ;
+wire \din[21]~input_o ;
+wire \key[5]~input_o ;
+wire \lnrn_genA|rlg1|s6|ShiftLeft0~0_combout ;
+wire \lnrn_genA|rlg2|s5|vout[4]~13_combout ;
+wire \din[13]~input_o ;
+wire \lnrn_genA|rlg4|s6|vout[4]~13_combout ;
+wire \key[20]~input_o ;
+wire \key[63]~input_o ;
+wire \lnrn_genA|rlg1|s7|ShiftLeft0~1_combout ;
+wire \lnrn_genA|rlg3|s5|vout[4]~15_combout ;
+wire \key[33]~input_o ;
+wire \din[7]~input_o ;
+wire \lnrn_genA|rlg3|s8|vout[4]~13_combout ;
+wire \lnrn_genA|rlg2|s8|vout[4]~13_combout ;
+wire \key[55]~input_o ;
+wire \lnrn_genA|rlg3|s8|vout[4]~15_combout ;
+wire \key[17]~input_o ;
+wire \lnrn_genA|rlg1|s1|vout[4]~14_combout ;
+wire \key[51]~input_o ;
+wire \lnrn_genA|rlg1|s1|vout[4]~13_combout ;
+wire \din[15]~input_o ;
+wire \lnrn_genA|rlg3|s8|vout[4]~16_combout ;
+wire \lnrn_genA|rlg7|s8|vout[4]~16_combout ;
+wire \lnrn_genA|rlg7|s8|vout[4]~15_combout ;
+wire \lnrn_genA|rlg8|s6|vout[4]~13_combout ;
+wire \key[59]~input_o ;
+wire \lnrn_genA|rlg10|s5|vout[4]~13_combout ;
+wire \din[37]~input_o ;
+wire \lnrn_genA|rlg2|s5|vout[4]~14_combout ;
+wire \key[39]~input_o ;
+wire \key[23]~input_o ;
+wire \key[10]~input_o ;
+wire \lnrn_genA|rlg9|s5|vout[4]~13_combout ;
+wire \key[43]~input_o ;
+wire \lnrn_genA|rlg4|s6|vout[4]~14_combout ;
+wire \lnrn_genA|rlg7|s5|vout[4]~13_combout ;
+wire \key[50]~input_o ;
+wire \lnrn_genA|rlg6|s5|vout[4]~13_combout ;
+wire \key[1]~input_o ;
+wire \lnrn_genA|rlg5|s5|vout[4]~13_combout ;
+wire \lnrn_genA|rlg11|s5|vout[4]~13_combout ;
+wire \key[22]~input_o ;
+wire \key[38]~input_o ;
+wire \lnrn_genA|rlg14|s8|vout[4]~13_combout ;
+wire \key[11]~input_o ;
+wire \lnrn_genA|rlg13|s5|vout[4]~13_combout ;
+wire \key[45]~input_o ;
+wire \key[61]~input_o ;
+wire \key[13]~input_o ;
+wire \lnrn_genA|rlg16|s5|vout[4]~14_combout ;
+wire \lnrn_genA|rlg16|s5|vout[4]~13_combout ;
+wire \key[4]~input_o ;
+wire \lnrn_genA|rlg16|Ro[7]~33_combout ;
+wire \din[3]~input_o ;
+wire [1:48] \lnrn_genA|rlg1|ke1 ;
+wire [1:32] \lnrn_genA|rlg16|Ro ;
+wire [1:32] \lnrn_genA|rlg14|Ro ;
+wire [1:32] \lnrn_genA|rlg13|Ro ;
+wire [1:32] \lnrn_genA|rlg11|Ro ;
+wire [1:32] \lnrn_genA|rlg10|Ro ;
+wire [1:32] \lnrn_genA|rlg9|Ro ;
+wire [1:32] \lnrn_genA|rlg5|Ro ;
+wire [1:32] \lnrn_genA|rlg1|Ro ;
+wire [1:32] \lnrn_genA|rlg15|Ro ;
+wire [1:32] \lnrn_genA|rlg12|Ro ;
+wire [1:32] \lnrn_genA|rlg8|Ro ;
+wire [1:32] \lnrn_genA|rlg7|Ro ;
+wire [1:32] \lnrn_genA|rlg6|Ro ;
+wire [1:32] \lnrn_genA|rlg4|Ro ;
+wire [1:32] \lnrn_genA|rlg3|Ro ;
+wire [1:32] \lnrn_genA|rlg2|Ro ;
+
+
+// atom is at LCCOMB_X14_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s4|ShiftLeft0~0 (
+// Equation(s):
+// \lnrn_genA|rlg1|s4|ShiftLeft0~0_combout  = \din[27]~input_o  & \key[1]~input_o  & (\din[19]~input_o  $ !\key[36]~input_o ) # !\din[27]~input_o  & !\key[1]~input_o  & (\din[19]~input_o  $ !\key[36]~input_o )
+
+	.dataa(\din[27]~input_o ),
+	.datab(\key[1]~input_o ),
+	.datac(\din[19]~input_o ),
+	.datad(\key[36]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s4|ShiftLeft0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s4|ShiftLeft0~0 .lut_mask = 16'h9009;
+defparam \lnrn_genA|rlg1|s4|ShiftLeft0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg1|ke1[12] (
+// Equation(s):
+// \lnrn_genA|rlg1|ke1 [12] = \key[42]~input_o  $ \din[59]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\key[42]~input_o ),
+	.datad(\din[59]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|ke1 [12]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|ke1[12] .lut_mask = 16'h0FF0;
+defparam \lnrn_genA|rlg1|ke1[12] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s7|ShiftLeft0~0 (
+// Equation(s):
+// \lnrn_genA|rlg1|s7|ShiftLeft0~0_combout  = \key[21]~input_o  & \din[63]~input_o  & (\key[38]~input_o  $ !\din[55]~input_o ) # !\key[21]~input_o  & !\din[63]~input_o  & (\key[38]~input_o  $ !\din[55]~input_o )
+
+	.dataa(\key[21]~input_o ),
+	.datab(\din[63]~input_o ),
+	.datac(\key[38]~input_o ),
+	.datad(\din[55]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s7|ShiftLeft0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s7|ShiftLeft0~0 .lut_mask = 16'h9009;
+defparam \lnrn_genA|rlg1|s7|ShiftLeft0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[6]~33 (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro[6]~33_combout  = \key[35]~input_o  & (\key[26]~input_o  $ \din[51]~input_o  # !\din[59]~input_o ) # !\key[35]~input_o  & (\din[59]~input_o  # \key[26]~input_o  $ \din[51]~input_o )
+
+	.dataa(\key[35]~input_o ),
+	.datab(\din[59]~input_o ),
+	.datac(\key[26]~input_o ),
+	.datad(\din[51]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro[6]~33_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[6]~33 .lut_mask = 16'h6FF6;
+defparam \lnrn_genA|rlg9|Ro[6]~33 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg5|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg5|Ro [7] = \lnrn_genA|rlg4|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[7]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\lnrn_genA|rlg4|Ro [7]),
+	.datac(\key[7]~input_o ),
+	.datad(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|Ro[7] .lut_mask = 16'h69CC;
+defparam \lnrn_genA|rlg5|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s8|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg1|s8|vout[4]~14_combout  = \din[15]~input_o  & \key[62]~input_o  & (\din[7]~input_o  $ !\key[55]~input_o ) # !\din[15]~input_o  & !\key[62]~input_o  & (\din[7]~input_o  $ !\key[55]~input_o )
+
+	.dataa(\din[15]~input_o ),
+	.datab(\din[7]~input_o ),
+	.datac(\key[62]~input_o ),
+	.datad(\key[55]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s8|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s8|vout[4]~14 .lut_mask = 16'h8421;
+defparam \lnrn_genA|rlg1|s8|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg1|ke1[34] (
+// Equation(s):
+// \lnrn_genA|rlg1|ke1 [34] = \key[53]~input_o  $ \din[13]~input_o 
+
+	.dataa(\key[53]~input_o ),
+	.datab(gnd),
+	.datac(\din[13]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|ke1 [34]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|ke1[34] .lut_mask = 16'h5A5A;
+defparam \lnrn_genA|rlg1|ke1[34] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s1|vout[4]~15 (
+// Equation(s):
+// \lnrn_genA|rlg1|s1|vout[4]~15_combout  = \key[60]~input_o  $ \din[41]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\key[60]~input_o ),
+	.datad(\din[41]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s1|vout[4]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s1|vout[4]~15 .lut_mask = 16'h0FF0;
+defparam \lnrn_genA|rlg1|s1|vout[4]~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg3|s8|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg3|s8|vout[4]~14_combout  = \din[7]~input_o  & (\din[39]~input_o ) # !\din[7]~input_o  & (\din[27]~input_o  # !\lnrn_genA|rlg15|Ro[1]~34_combout )
+
+	.dataa(\din[7]~input_o ),
+	.datab(\lnrn_genA|rlg15|Ro[1]~34_combout ),
+	.datac(\din[27]~input_o ),
+	.datad(\din[39]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|s8|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|s8|vout[4]~14 .lut_mask = 16'hFB51;
+defparam \lnrn_genA|rlg3|s8|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg4|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg4|s5|vout[4]~13_combout  = \lnrn_genA|rlg2|s5|vout[4]~14_combout  & (\lnrn_genA|rlg3|s8|vout[4]~16_combout  $ \key[17]~input_o  $ \lnrn_genA|rlg2|Ro [21])
+
+	.dataa(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datab(\lnrn_genA|rlg3|s8|vout[4]~16_combout ),
+	.datac(\key[17]~input_o ),
+	.datad(\lnrn_genA|rlg2|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|s5|vout[4]~13 .lut_mask = 16'h8228;
+defparam \lnrn_genA|rlg4|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg8|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg8|s5|vout[4]~13_combout  = !\lnrn_genA|rlg7|Ro [19] & (\lnrn_genA|rlg6|Ro [21] $ \key[18]~input_o  $ \lnrn_genA|rlg7|s8|vout[4]~15_combout )
+
+	.dataa(\lnrn_genA|rlg6|Ro [21]),
+	.datab(\key[18]~input_o ),
+	.datac(\lnrn_genA|rlg7|s8|vout[4]~15_combout ),
+	.datad(\lnrn_genA|rlg7|Ro [19]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|s5|vout[4]~13 .lut_mask = 16'h0096;
+defparam \lnrn_genA|rlg8|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg11|s8|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg11|s8|vout[4]~13_combout  = !\lnrn_genA|rlg10|Ro [31] & \lnrn_genA|rlg3|s8|vout[4]~15_combout 
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg10|Ro [31]),
+	.datac(gnd),
+	.datad(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|s8|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|s8|vout[4]~13 .lut_mask = 16'h3300;
+defparam \lnrn_genA|rlg11|s8|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg13|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg13|Ro [19] = \lnrn_genA|rlg12|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & !\lnrn_genA|rlg12|Ro [21])
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg12|Ro [19]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg12|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|Ro[19] .lut_mask = 16'hCC3C;
+defparam \lnrn_genA|rlg13|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg12|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg12|s5|vout[4]~13_combout  = !\lnrn_genA|rlg11|Ro [19] & (\key[27]~input_o  $ \lnrn_genA|rlg11|s8|vout[4]~13_combout  $ \lnrn_genA|rlg10|Ro [21])
+
+	.dataa(\key[27]~input_o ),
+	.datab(\lnrn_genA|rlg11|Ro [19]),
+	.datac(\lnrn_genA|rlg11|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg10|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|s5|vout[4]~13 .lut_mask = 16'h2112;
+defparam \lnrn_genA|rlg12|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg12|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg12|Ro [3] = \lnrn_genA|rlg11|Ro [3] $ (!\lnrn_genA|rlg11|Ro [18] & \lnrn_genA|rlg2|s5|vout[4]~14_combout  & \lnrn_genA|rlg12|s5|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg11|Ro [18]),
+	.datab(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datac(\lnrn_genA|rlg12|s5|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg11|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|Ro[3] .lut_mask = 16'hBF40;
+defparam \lnrn_genA|rlg12|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg13|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg13|Ro [21] = \lnrn_genA|rlg12|Ro [21] $ (\lnrn_genA|rlg3|s8|vout[4]~15_combout  & !\lnrn_genA|rlg12|Ro [31])
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datac(\lnrn_genA|rlg12|Ro [31]),
+	.datad(\lnrn_genA|rlg12|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|Ro[21] .lut_mask = 16'hF30C;
+defparam \lnrn_genA|rlg13|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg14|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg14|s5|vout[4]~13_combout  = !\lnrn_genA|rlg13|Ro [19] & (\lnrn_genA|rlg13|Ro [21] $ \key[60]~input_o )
+
+	.dataa(\lnrn_genA|rlg13|Ro [21]),
+	.datab(gnd),
+	.datac(\lnrn_genA|rlg13|Ro [19]),
+	.datad(\key[60]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|s5|vout[4]~13 .lut_mask = 16'h050A;
+defparam \lnrn_genA|rlg14|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg15|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg15|s5|vout[4]~13_combout  = !\lnrn_genA|rlg14|Ro [19] & (\lnrn_genA|rlg13|Ro [21] $ \lnrn_genA|rlg14|s8|vout[4]~13_combout  $ \key[44]~input_o )
+
+	.dataa(\lnrn_genA|rlg13|Ro [21]),
+	.datab(\lnrn_genA|rlg14|Ro [19]),
+	.datac(\lnrn_genA|rlg14|s8|vout[4]~13_combout ),
+	.datad(\key[44]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|s5|vout[4]~13 .lut_mask = 16'h2112;
+defparam \lnrn_genA|rlg15|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg7|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg7|Ro [19] = \lnrn_genA|rlg5|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg6|Ro [21] $ \lnrn_genA|rlg5|Ro [21]))
+
+	.dataa(\lnrn_genA|rlg6|Ro [21]),
+	.datab(\lnrn_genA|rlg5|Ro [19]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg5|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|Ro[19] .lut_mask = 16'h9C6C;
+defparam \lnrn_genA|rlg7|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg11|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg11|Ro [19] = \lnrn_genA|rlg9|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg10|Ro [21] $ \lnrn_genA|rlg9|Ro [21]))
+
+	.dataa(\lnrn_genA|rlg9|Ro [19]),
+	.datab(\lnrn_genA|rlg10|Ro [21]),
+	.datac(\lnrn_genA|rlg9|Ro [21]),
+	.datad(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|Ro[19] .lut_mask = 16'h96AA;
+defparam \lnrn_genA|rlg11|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro [19] = \lnrn_genA|rlg12|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg13|Ro [21] $ \lnrn_genA|rlg12|Ro [21]))
+
+	.dataa(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg12|Ro [19]),
+	.datac(\lnrn_genA|rlg13|Ro [21]),
+	.datad(\lnrn_genA|rlg12|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[19] .lut_mask = 16'hC66C;
+defparam \lnrn_genA|rlg14|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y9_N22
+cycloneiii_io_ibuf \key[36]~input (
+	.i(key[36]),
+	.ibar(gnd),
+	.o(\key[36]~input_o ));
+// synopsys translate_off
+defparam \key[36]~input .bus_hold = "false";
+defparam \key[36]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X23_Y0_N29
+cycloneiii_io_ibuf \key[42]~input (
+	.i(key[42]),
+	.ibar(gnd),
+	.o(\key[42]~input_o ));
+// synopsys translate_off
+defparam \key[42]~input .bus_hold = "false";
+defparam \key[42]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X28_Y29_N8
+cycloneiii_io_ibuf \key[21]~input (
+	.i(key[21]),
+	.ibar(gnd),
+	.o(\key[21]~input_o ));
+// synopsys translate_off
+defparam \key[21]~input .bus_hold = "false";
+defparam \key[21]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X39_Y0_N15
+cycloneiii_io_ibuf \key[15]~input (
+	.i(key[15]),
+	.ibar(gnd),
+	.o(\key[15]~input_o ));
+// synopsys translate_off
+defparam \key[15]~input .bus_hold = "false";
+defparam \key[15]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y11_N22
+cycloneiii_io_ibuf \key[26]~input (
+	.i(key[26]),
+	.ibar(gnd),
+	.o(\key[26]~input_o ));
+// synopsys translate_off
+defparam \key[26]~input .bus_hold = "false";
+defparam \key[26]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y12_N22
+cycloneiii_io_ibuf \key[35]~input (
+	.i(key[35]),
+	.ibar(gnd),
+	.o(\key[35]~input_o ));
+// synopsys translate_off
+defparam \key[35]~input .bus_hold = "false";
+defparam \key[35]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y0_N15
+cycloneiii_io_ibuf \key[7]~input (
+	.i(key[7]),
+	.ibar(gnd),
+	.o(\key[7]~input_o ));
+// synopsys translate_off
+defparam \key[7]~input .bus_hold = "false";
+defparam \key[7]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X28_Y0_N29
+cycloneiii_io_ibuf \key[49]~input (
+	.i(key[49]),
+	.ibar(gnd),
+	.o(\key[49]~input_o ));
+// synopsys translate_off
+defparam \key[49]~input .bus_hold = "false";
+defparam \key[49]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y12_N1
+cycloneiii_io_ibuf \key[62]~input (
+	.i(key[62]),
+	.ibar(gnd),
+	.o(\key[62]~input_o ));
+// synopsys translate_off
+defparam \key[62]~input .bus_hold = "false";
+defparam \key[62]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y10_N8
+cycloneiii_io_ibuf \key[53]~input (
+	.i(key[53]),
+	.ibar(gnd),
+	.o(\key[53]~input_o ));
+// synopsys translate_off
+defparam \key[53]~input .bus_hold = "false";
+defparam \key[53]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X28_Y29_N1
+cycloneiii_io_ibuf \key[30]~input (
+	.i(key[30]),
+	.ibar(gnd),
+	.o(\key[30]~input_o ));
+// synopsys translate_off
+defparam \key[30]~input .bus_hold = "false";
+defparam \key[30]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y11_N1
+cycloneiii_io_ibuf \key[34]~input (
+	.i(key[34]),
+	.ibar(gnd),
+	.o(\key[34]~input_o ));
+// synopsys translate_off
+defparam \key[34]~input .bus_hold = "false";
+defparam \key[34]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X19_Y0_N29
+cycloneiii_io_ibuf \key[60]~input (
+	.i(key[60]),
+	.ibar(gnd),
+	.o(\key[60]~input_o ));
+// synopsys translate_off
+defparam \key[60]~input .bus_hold = "false";
+defparam \key[60]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOOBUF_X32_Y0_N2
+cycloneiii_io_obuf \dout[64]~output (
+	.i(\din[63]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[64]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[64]~output .bus_hold = "false";
+defparam \dout[64]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X7_Y0_N9
+cycloneiii_io_obuf \dout[63]~output (
+	.i(\din[63]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[63]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[63]~output .bus_hold = "false";
+defparam \dout[63]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y5_N23
+cycloneiii_io_obuf \dout[62]~output (
+	.i(\din[61]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[62]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[62]~output .bus_hold = "false";
+defparam \dout[62]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y4_N2
+cycloneiii_io_obuf \dout[61]~output (
+	.i(\din[61]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[61]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[61]~output .bus_hold = "false";
+defparam \dout[61]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X23_Y29_N23
+cycloneiii_io_obuf \dout[60]~output (
+	.i(\din[59]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[60]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[60]~output .bus_hold = "false";
+defparam \dout[60]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X23_Y29_N30
+cycloneiii_io_obuf \dout[59]~output (
+	.i(\din[59]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[59]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[59]~output .bus_hold = "false";
+defparam \dout[59]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X11_Y29_N30
+cycloneiii_io_obuf \dout[58]~output (
+	.i(\lnrn_genA|rlg10|Ro[1]~32_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[58]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[58]~output .bus_hold = "false";
+defparam \dout[58]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X26_Y29_N2
+cycloneiii_io_obuf \dout[57]~output (
+	.i(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[57]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[57]~output .bus_hold = "false";
+defparam \dout[57]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y3_N16
+cycloneiii_io_obuf \dout[56]~output (
+	.i(\din[55]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[56]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[56]~output .bus_hold = "false";
+defparam \dout[56]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y6_N23
+cycloneiii_io_obuf \dout[55]~output (
+	.i(\din[55]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[55]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[55]~output .bus_hold = "false";
+defparam \dout[55]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y13_N2
+cycloneiii_io_obuf \dout[54]~output (
+	.i(\lnrn_genA|rlg16|Ro [18]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[54]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[54]~output .bus_hold = "false";
+defparam \dout[54]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y10_N2
+cycloneiii_io_obuf \dout[53]~output (
+	.i(\lnrn_genA|rlg15|Ro [18]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[53]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[53]~output .bus_hold = "false";
+defparam \dout[53]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y5_N16
+cycloneiii_io_obuf \dout[52]~output (
+	.i(\din[51]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[52]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[52]~output .bus_hold = "false";
+defparam \dout[52]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y8_N23
+cycloneiii_io_obuf \dout[51]~output (
+	.i(\din[51]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[51]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[51]~output .bus_hold = "false";
+defparam \dout[51]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X28_Y29_N23
+cycloneiii_io_obuf \dout[50]~output (
+	.i(\din[49]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[50]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[50]~output .bus_hold = "false";
+defparam \dout[50]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X28_Y29_N30
+cycloneiii_io_obuf \dout[49]~output (
+	.i(\din[49]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[49]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[49]~output .bus_hold = "false";
+defparam \dout[49]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y7_N9
+cycloneiii_io_obuf \dout[48]~output (
+	.i(\din[47]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[48]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[48]~output .bus_hold = "false";
+defparam \dout[48]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y7_N16
+cycloneiii_io_obuf \dout[47]~output (
+	.i(\din[47]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[47]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[47]~output .bus_hold = "false";
+defparam \dout[47]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X11_Y0_N16
+cycloneiii_io_obuf \dout[46]~output (
+	.i(\lnrn_genA|rlg16|Ro [19]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[46]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[46]~output .bus_hold = "false";
+defparam \dout[46]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X14_Y0_N23
+cycloneiii_io_obuf \dout[45]~output (
+	.i(\lnrn_genA|rlg15|Ro [19]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[45]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[45]~output .bus_hold = "false";
+defparam \dout[45]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X23_Y29_N16
+cycloneiii_io_obuf \dout[44]~output (
+	.i(\din[43]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[44]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[44]~output .bus_hold = "false";
+defparam \dout[44]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X21_Y29_N16
+cycloneiii_io_obuf \dout[43]~output (
+	.i(\din[43]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[43]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[43]~output .bus_hold = "false";
+defparam \dout[43]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X11_Y29_N23
+cycloneiii_io_obuf \dout[42]~output (
+	.i(\lnrn_genA|rlg16|Ro [3]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[42]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[42]~output .bus_hold = "false";
+defparam \dout[42]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y12_N23
+cycloneiii_io_obuf \dout[41]~output (
+	.i(\lnrn_genA|rlg15|Ro [3]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[41]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[41]~output .bus_hold = "false";
+defparam \dout[41]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X19_Y29_N30
+cycloneiii_io_obuf \dout[40]~output (
+	.i(\din[39]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[40]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[40]~output .bus_hold = "false";
+defparam \dout[40]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X23_Y29_N9
+cycloneiii_io_obuf \dout[39]~output (
+	.i(\din[39]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[39]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[39]~output .bus_hold = "false";
+defparam \dout[39]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X16_Y0_N16
+cycloneiii_io_obuf \dout[38]~output (
+	.i(\din[37]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[38]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[38]~output .bus_hold = "false";
+defparam \dout[38]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X23_Y0_N23
+cycloneiii_io_obuf \dout[37]~output (
+	.i(\din[37]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[37]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[37]~output .bus_hold = "false";
+defparam \dout[37]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X16_Y0_N23
+cycloneiii_io_obuf \dout[36]~output (
+	.i(\din[35]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[36]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[36]~output .bus_hold = "false";
+defparam \dout[36]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X11_Y0_N30
+cycloneiii_io_obuf \dout[35]~output (
+	.i(\din[35]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[35]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[35]~output .bus_hold = "false";
+defparam \dout[35]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X28_Y0_N23
+cycloneiii_io_obuf \dout[34]~output (
+	.i(\din[33]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[34]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[34]~output .bus_hold = "false";
+defparam \dout[34]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X26_Y0_N30
+cycloneiii_io_obuf \dout[33]~output (
+	.i(\din[33]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[33]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[33]~output .bus_hold = "false";
+defparam \dout[33]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y12_N9
+cycloneiii_io_obuf \dout[32]~output (
+	.i(\din[31]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[32]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[32]~output .bus_hold = "false";
+defparam \dout[32]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y13_N9
+cycloneiii_io_obuf \dout[31]~output (
+	.i(\din[31]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[31]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[31]~output .bus_hold = "false";
+defparam \dout[31]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y13_N23
+cycloneiii_io_obuf \dout[30]~output (
+	.i(\lnrn_genA|rlg16|Ro [21]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[30]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[30]~output .bus_hold = "false";
+defparam \dout[30]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X14_Y29_N30
+cycloneiii_io_obuf \dout[29]~output (
+	.i(\lnrn_genA|rlg15|Ro [21]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[29]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[29]~output .bus_hold = "false";
+defparam \dout[29]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X19_Y0_N9
+cycloneiii_io_obuf \dout[28]~output (
+	.i(\din[27]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[28]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[28]~output .bus_hold = "false";
+defparam \dout[28]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X11_Y0_N2
+cycloneiii_io_obuf \dout[27]~output (
+	.i(\din[27]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[27]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[27]~output .bus_hold = "false";
+defparam \dout[27]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X35_Y0_N23
+cycloneiii_io_obuf \dout[26]~output (
+	.i(\din[25]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[26]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[26]~output .bus_hold = "false";
+defparam \dout[26]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X28_Y0_N9
+cycloneiii_io_obuf \dout[25]~output (
+	.i(\din[25]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[25]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[25]~output .bus_hold = "false";
+defparam \dout[25]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y18_N16
+cycloneiii_io_obuf \dout[24]~output (
+	.i(\din[23]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[24]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[24]~output .bus_hold = "false";
+defparam \dout[24]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y21_N2
+cycloneiii_io_obuf \dout[23]~output (
+	.i(\din[23]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[23]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[23]~output .bus_hold = "false";
+defparam \dout[23]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X30_Y0_N2
+cycloneiii_io_obuf \dout[22]~output (
+	.i(\din[21]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[22]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[22]~output .bus_hold = "false";
+defparam \dout[22]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X28_Y0_N16
+cycloneiii_io_obuf \dout[21]~output (
+	.i(\din[21]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[21]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[21]~output .bus_hold = "false";
+defparam \dout[21]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X14_Y0_N2
+cycloneiii_io_obuf \dout[20]~output (
+	.i(\din[19]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[20]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[20]~output .bus_hold = "false";
+defparam \dout[20]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X7_Y0_N30
+cycloneiii_io_obuf \dout[19]~output (
+	.i(\din[19]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[19]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[19]~output .bus_hold = "false";
+defparam \dout[19]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y13_N9
+cycloneiii_io_obuf \dout[18]~output (
+	.i(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[18]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[18]~output .bus_hold = "false";
+defparam \dout[18]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y12_N16
+cycloneiii_io_obuf \dout[17]~output (
+	.i(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[17]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[17]~output .bus_hold = "false";
+defparam \dout[17]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y11_N16
+cycloneiii_io_obuf \dout[16]~output (
+	.i(\lnrn_genA|rlg16|Ro [31]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[16]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[16]~output .bus_hold = "false";
+defparam \dout[16]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X16_Y0_N9
+cycloneiii_io_obuf \dout[15]~output (
+	.i(!\lnrn_genA|rlg15|Ro [31]),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[15]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[15]~output .bus_hold = "false";
+defparam \dout[15]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X28_Y29_N16
+cycloneiii_io_obuf \dout[14]~output (
+	.i(\din[13]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[14]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[14]~output .bus_hold = "false";
+defparam \dout[14]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X32_Y29_N23
+cycloneiii_io_obuf \dout[13]~output (
+	.i(\din[13]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[13]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[13]~output .bus_hold = "false";
+defparam \dout[13]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y7_N23
+cycloneiii_io_obuf \dout[12]~output (
+	.i(\din[11]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[12]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[12]~output .bus_hold = "false";
+defparam \dout[12]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y4_N23
+cycloneiii_io_obuf \dout[11]~output (
+	.i(\din[11]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[11]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[11]~output .bus_hold = "false";
+defparam \dout[11]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X41_Y10_N16
+cycloneiii_io_obuf \dout[10]~output (
+	.i(\lnrn_genA|rlg16|Ro[7]~33_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[10]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[10]~output .bus_hold = "false";
+defparam \dout[10]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X11_Y0_N9
+cycloneiii_io_obuf \dout[9]~output (
+	.i(\lnrn_genA|rlg15|Ro[7]~36_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[9]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[9]~output .bus_hold = "false";
+defparam \dout[9]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X26_Y29_N16
+cycloneiii_io_obuf \dout[8]~output (
+	.i(\din[7]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[8]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[8]~output .bus_hold = "false";
+defparam \dout[8]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X14_Y29_N23
+cycloneiii_io_obuf \dout[7]~output (
+	.i(\din[7]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[7]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[7]~output .bus_hold = "false";
+defparam \dout[7]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X30_Y0_N30
+cycloneiii_io_obuf \dout[6]~output (
+	.i(\din[5]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[6]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[6]~output .bus_hold = "false";
+defparam \dout[6]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X30_Y0_N9
+cycloneiii_io_obuf \dout[5]~output (
+	.i(\din[5]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[5]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[5]~output .bus_hold = "false";
+defparam \dout[5]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y22_N9
+cycloneiii_io_obuf \dout[4]~output (
+	.i(\din[3]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[4]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[4]~output .bus_hold = "false";
+defparam \dout[4]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y24_N16
+cycloneiii_io_obuf \dout[3]~output (
+	.i(\din[3]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[3]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[3]~output .bus_hold = "false";
+defparam \dout[3]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X14_Y29_N16
+cycloneiii_io_obuf \dout[2]~output (
+	.i(\din[1]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[2]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[2]~output .bus_hold = "false";
+defparam \dout[2]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X16_Y29_N9
+cycloneiii_io_obuf \dout[1]~output (
+	.i(\din[1]~input_o ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[1]~output .bus_hold = "false";
+defparam \dout[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOOBUF_X0_Y9_N23
+cycloneiii_io_obuf \oflag~output (
+	.i(gnd),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\oflag~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \oflag~output .bus_hold = "false";
+defparam \oflag~output .open_drain_output = "false";
+// synopsys translate_on
+
+// atom is at IOIBUF_X19_Y0_N15
+cycloneiii_io_ibuf \din[63]~input (
+	.i(din[63]),
+	.ibar(gnd),
+	.o(\din[63]~input_o ));
+// synopsys translate_off
+defparam \din[63]~input .bus_hold = "false";
+defparam \din[63]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y4_N8
+cycloneiii_io_ibuf \din[61]~input (
+	.i(din[61]),
+	.ibar(gnd),
+	.o(\din[61]~input_o ));
+// synopsys translate_off
+defparam \din[61]~input .bus_hold = "false";
+defparam \din[61]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X23_Y29_N1
+cycloneiii_io_ibuf \din[59]~input (
+	.i(din[59]),
+	.ibar(gnd),
+	.o(\din[59]~input_o ));
+// synopsys translate_off
+defparam \din[59]~input .bus_hold = "false";
+defparam \din[59]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y12_N15
+cycloneiii_io_ibuf \din[11]~input (
+	.i(din[11]),
+	.ibar(gnd),
+	.o(\din[11]~input_o ));
+// synopsys translate_off
+defparam \din[11]~input .bus_hold = "false";
+defparam \din[11]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X9_Y0_N1
+cycloneiii_io_ibuf \din[19]~input (
+	.i(din[19]),
+	.ibar(gnd),
+	.o(\din[19]~input_o ));
+// synopsys translate_off
+defparam \din[19]~input .bus_hold = "false";
+defparam \din[19]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[1]~34 (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro[1]~34_combout  = !\din[3]~input_o  & !\din[11]~input_o  & \din[61]~input_o  & !\din[19]~input_o 
+
+	.dataa(\din[3]~input_o ),
+	.datab(\din[11]~input_o ),
+	.datac(\din[61]~input_o ),
+	.datad(\din[19]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro[1]~34_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[1]~34 .lut_mask = 16'h0010;
+defparam \lnrn_genA|rlg15|Ro[1]~34 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X16_Y0_N29
+cycloneiii_io_ibuf \din[27]~input (
+	.i(din[27]),
+	.ibar(gnd),
+	.o(\din[27]~input_o ));
+// synopsys translate_off
+defparam \din[27]~input .bus_hold = "false";
+defparam \din[27]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y10_N22
+cycloneiii_io_ibuf \key[41]~input (
+	.i(key[41]),
+	.ibar(gnd),
+	.o(\key[41]~input_o ));
+// synopsys translate_off
+defparam \key[41]~input .bus_hold = "false";
+defparam \key[41]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y29_N22
+cycloneiii_io_ibuf \key[18]~input (
+	.i(key[18]),
+	.ibar(gnd),
+	.o(\key[18]~input_o ));
+// synopsys translate_off
+defparam \key[18]~input .bus_hold = "false";
+defparam \key[18]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s4|ShiftLeft0~1 (
+// Equation(s):
+// \lnrn_genA|rlg1|s4|ShiftLeft0~1_combout  = \din[3]~input_o  & \key[18]~input_o  & (\key[41]~input_o  $ \din[61]~input_o ) # !\din[3]~input_o  & !\key[18]~input_o  & (\key[41]~input_o  $ \din[61]~input_o )
+
+	.dataa(\din[3]~input_o ),
+	.datab(\key[41]~input_o ),
+	.datac(\din[61]~input_o ),
+	.datad(\key[18]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s4|ShiftLeft0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s4|ShiftLeft0~1 .lut_mask = 16'h2814;
+defparam \lnrn_genA|rlg1|s4|ShiftLeft0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X26_Y0_N8
+cycloneiii_io_ibuf \din[57]~input (
+	.i(din[57]),
+	.ibar(gnd),
+	.o(\din[57]~input_o ));
+// synopsys translate_off
+defparam \din[57]~input .bus_hold = "false";
+defparam \din[57]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y8_N15
+cycloneiii_io_ibuf \key[27]~input (
+	.i(key[27]),
+	.ibar(gnd),
+	.o(\key[27]~input_o ));
+// synopsys translate_off
+defparam \key[27]~input .bus_hold = "false";
+defparam \key[27]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X15_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg1|ke1[22] (
+// Equation(s):
+// \lnrn_genA|rlg1|ke1 [22] = \key[27]~input_o  $ \din[11]~input_o 
+
+	.dataa(gnd),
+	.datab(\key[27]~input_o ),
+	.datac(gnd),
+	.datad(\din[11]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|ke1 [22]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|ke1[22] .lut_mask = 16'h33CC;
+defparam \lnrn_genA|rlg1|ke1[22] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[1]~32 (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro[1]~32_combout  = \din[57]~input_o  $ (\lnrn_genA|rlg1|s4|ShiftLeft0~0_combout  & \lnrn_genA|rlg1|s4|ShiftLeft0~1_combout  & !\lnrn_genA|rlg1|ke1 [22])
+
+	.dataa(\lnrn_genA|rlg1|s4|ShiftLeft0~0_combout ),
+	.datab(\lnrn_genA|rlg1|s4|ShiftLeft0~1_combout ),
+	.datac(\din[57]~input_o ),
+	.datad(\lnrn_genA|rlg1|ke1 [22]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[1]~32 .lut_mask = 16'hF078;
+defparam \lnrn_genA|rlg9|Ro[1]~32 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[1]~32 (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro[1]~32_combout  = \lnrn_genA|rlg9|Ro[1]~32_combout  $ (\lnrn_genA|rlg15|Ro[1]~34_combout  & !\din[27]~input_o )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg15|Ro[1]~34_combout ),
+	.datac(\din[27]~input_o ),
+	.datad(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro[1]~32_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[1]~32 .lut_mask = 16'hF30C;
+defparam \lnrn_genA|rlg10|Ro[1]~32 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y2_N1
+cycloneiii_io_ibuf \din[55]~input (
+	.i(din[55]),
+	.ibar(gnd),
+	.o(\din[55]~input_o ));
+// synopsys translate_off
+defparam \din[55]~input .bus_hold = "false";
+defparam \din[55]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y9_N15
+cycloneiii_io_ibuf \key[58]~input (
+	.i(key[58]),
+	.ibar(gnd),
+	.o(\key[58]~input_o ));
+// synopsys translate_off
+defparam \key[58]~input .bus_hold = "false";
+defparam \key[58]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[6]~35 (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro[6]~35_combout  = \key[58]~input_o  $ !\din[27]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\key[58]~input_o ),
+	.datad(\din[27]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro[6]~35_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[6]~35 .lut_mask = 16'hF00F;
+defparam \lnrn_genA|rlg9|Ro[6]~35 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X23_Y0_N15
+cycloneiii_io_ibuf \din[17]~input (
+	.i(din[17]),
+	.ibar(gnd),
+	.o(\din[17]~input_o ));
+// synopsys translate_off
+defparam \din[17]~input .bus_hold = "false";
+defparam \din[17]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y29_N29
+cycloneiii_io_ibuf \din[43]~input (
+	.i(din[43]),
+	.ibar(gnd),
+	.o(\din[43]~input_o ));
+// synopsys translate_off
+defparam \din[43]~input .bus_hold = "false";
+defparam \din[43]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y8_N8
+cycloneiii_io_ibuf \key[25]~input (
+	.i(key[25]),
+	.ibar(gnd),
+	.o(\key[25]~input_o ));
+// synopsys translate_off
+defparam \key[25]~input .bus_hold = "false";
+defparam \key[25]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y21_N8
+cycloneiii_io_ibuf \key[44]~input (
+	.i(key[44]),
+	.ibar(gnd),
+	.o(\key[44]~input_o ));
+// synopsys translate_off
+defparam \key[44]~input .bus_hold = "false";
+defparam \key[44]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[6]~34 (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro[6]~34_combout  = \din[35]~input_o  & (\din[43]~input_o  $ \key[25]~input_o  # !\key[44]~input_o ) # !\din[35]~input_o  & (\key[44]~input_o  # \din[43]~input_o  $ \key[25]~input_o )
+
+	.dataa(\din[35]~input_o ),
+	.datab(\din[43]~input_o ),
+	.datac(\key[25]~input_o ),
+	.datad(\key[44]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro[6]~34_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[6]~34 .lut_mask = 16'h7DBE;
+defparam \lnrn_genA|rlg9|Ro[6]~34 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[6]~36 (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro[6]~36_combout  = \din[17]~input_o  $ (!\lnrn_genA|rlg9|Ro[6]~33_combout  & !\lnrn_genA|rlg9|Ro[6]~35_combout  & !\lnrn_genA|rlg9|Ro[6]~34_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro[6]~33_combout ),
+	.datab(\lnrn_genA|rlg9|Ro[6]~35_combout ),
+	.datac(\din[17]~input_o ),
+	.datad(\lnrn_genA|rlg9|Ro[6]~34_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[6]~36 .lut_mask = 16'hF0E1;
+defparam \lnrn_genA|rlg9|Ro[6]~36 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X16_Y0_N1
+cycloneiii_io_ibuf \key[12]~input (
+	.i(key[12]),
+	.ibar(gnd),
+	.o(\key[12]~input_o ));
+// synopsys translate_off
+defparam \key[12]~input .bus_hold = "false";
+defparam \key[12]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y8_N22
+cycloneiii_io_ibuf \din[47]~input (
+	.i(din[47]),
+	.ibar(gnd),
+	.o(\din[47]~input_o ));
+// synopsys translate_off
+defparam \din[47]~input .bus_hold = "false";
+defparam \din[47]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y13_N22
+cycloneiii_io_ibuf \din[31]~input (
+	.i(din[31]),
+	.ibar(gnd),
+	.o(\din[31]~input_o ));
+// synopsys translate_off
+defparam \din[31]~input .bus_hold = "false";
+defparam \din[31]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X26_Y29_N8
+cycloneiii_io_ibuf \din[39]~input (
+	.i(din[39]),
+	.ibar(gnd),
+	.o(\din[39]~input_o ));
+// synopsys translate_off
+defparam \din[39]~input .bus_hold = "false";
+defparam \din[39]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[7]~32 (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro[7]~32_combout  = !\din[55]~input_o  & \din[31]~input_o  & !\din[39]~input_o  & !\din[63]~input_o 
+
+	.dataa(\din[55]~input_o ),
+	.datab(\din[31]~input_o ),
+	.datac(\din[39]~input_o ),
+	.datad(\din[63]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[7]~32 .lut_mask = 16'h0004;
+defparam \lnrn_genA|rlg16|Ro[7]~32 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[7]~36 (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro[7]~36_combout  = \lnrn_genA|rlg14|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\key[12]~input_o  $ !\din[47]~input_o ))
+
+	.dataa(\lnrn_genA|rlg14|Ro [7]),
+	.datab(\key[12]~input_o ),
+	.datac(\din[47]~input_o ),
+	.datad(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro[7]~36_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[7]~36 .lut_mask = 16'h69AA;
+defparam \lnrn_genA|rlg15|Ro[7]~36 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X35_Y0_N29
+cycloneiii_io_ibuf \din[25]~input (
+	.i(din[25]),
+	.ibar(gnd),
+	.o(\din[25]~input_o ));
+// synopsys translate_off
+defparam \din[25]~input .bus_hold = "false";
+defparam \din[25]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X16_Y29_N29
+cycloneiii_io_ibuf \din[1]~input (
+	.i(din[1]),
+	.ibar(gnd),
+	.o(\din[1]~input_o ));
+// synopsys translate_off
+defparam \din[1]~input .bus_hold = "false";
+defparam \din[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg16|s2|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg16|s2|vout[4]~13_combout  = \din[59]~input_o  & !\din[25]~input_o  & !\din[1]~input_o 
+
+	.dataa(\din[59]~input_o ),
+	.datab(\din[25]~input_o ),
+	.datac(\din[1]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|s2|vout[4]~13 .lut_mask = 16'h0202;
+defparam \lnrn_genA|rlg16|s2|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y5_N8
+cycloneiii_io_ibuf \din[51]~input (
+	.i(din[51]),
+	.ibar(gnd),
+	.o(\din[51]~input_o ));
+// synopsys translate_off
+defparam \din[51]~input .bus_hold = "false";
+defparam \din[51]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X3_Y0_N22
+cycloneiii_io_ibuf \din[35]~input (
+	.i(din[35]),
+	.ibar(gnd),
+	.o(\din[35]~input_o ));
+// synopsys translate_off
+defparam \din[35]~input .bus_hold = "false";
+defparam \din[35]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[6]~35 (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro[6]~35_combout  = \din[27]~input_o  & !\din[51]~input_o  & !\din[59]~input_o  & !\din[35]~input_o 
+
+	.dataa(\din[27]~input_o ),
+	.datab(\din[51]~input_o ),
+	.datac(\din[59]~input_o ),
+	.datad(\din[35]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro[6]~35_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[6]~35 .lut_mask = 16'h0002;
+defparam \lnrn_genA|rlg15|Ro[6]~35 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[6]~34 (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro[6]~34_combout  = \lnrn_genA|rlg9|Ro[6]~36_combout  $ (!\din[43]~input_o  & \lnrn_genA|rlg15|Ro[6]~35_combout )
+
+	.dataa(gnd),
+	.datab(\din[43]~input_o ),
+	.datac(\lnrn_genA|rlg15|Ro[6]~35_combout ),
+	.datad(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[6]~34 .lut_mask = 16'hCF30;
+defparam \lnrn_genA|rlg14|Ro[6]~34 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X23_Y0_N8
+cycloneiii_io_ibuf \key[28]~input (
+	.i(key[28]),
+	.ibar(gnd),
+	.o(\key[28]~input_o ));
+// synopsys translate_off
+defparam \key[28]~input .bus_hold = "false";
+defparam \key[28]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro [7] = \lnrn_genA|rlg13|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\key[28]~input_o  $ !\din[47]~input_o ))
+
+	.dataa(\lnrn_genA|rlg13|Ro [7]),
+	.datab(\key[28]~input_o ),
+	.datac(\din[47]~input_o ),
+	.datad(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[7] .lut_mask = 16'h69AA;
+defparam \lnrn_genA|rlg14|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro [18] = \lnrn_genA|rlg14|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg14|Ro[6]~34_combout  & !\lnrn_genA|rlg14|Ro [7])
+
+	.dataa(\lnrn_genA|rlg14|Ro [18]),
+	.datab(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datad(\lnrn_genA|rlg14|Ro [7]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[18] .lut_mask = 16'hAAA6;
+defparam \lnrn_genA|rlg15|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro [18] = \lnrn_genA|rlg15|Ro [18] $ (!\lnrn_genA|rlg9|Ro[6]~36_combout  & !\lnrn_genA|rlg15|Ro[7]~36_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.datab(\lnrn_genA|rlg15|Ro[7]~36_combout ),
+	.datac(\lnrn_genA|rlg15|Ro [18]),
+	.datad(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[18] .lut_mask = 16'hE1F0;
+defparam \lnrn_genA|rlg16|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X30_Y29_N15
+cycloneiii_io_ibuf \din[49]~input (
+	.i(din[49]),
+	.ibar(gnd),
+	.o(\din[49]~input_o ));
+// synopsys translate_off
+defparam \din[49]~input .bus_hold = "false";
+defparam \din[49]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X28_Y0_N1
+cycloneiii_io_ibuf \din[33]~input (
+	.i(din[33]),
+	.ibar(gnd),
+	.o(\din[33]~input_o ));
+// synopsys translate_off
+defparam \din[33]~input .bus_hold = "false";
+defparam \din[33]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg2|s1|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg2|s1|vout[4]~13_combout  = !\din[49]~input_o  & !\din[33]~input_o  & \din[25]~input_o 
+
+	.dataa(\din[49]~input_o ),
+	.datab(\din[33]~input_o ),
+	.datac(\din[25]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|s1|vout[4]~13 .lut_mask = 16'h1010;
+defparam \lnrn_genA|rlg2|s1|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg3|s1|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg3|s1|vout[4]~13_combout  = \lnrn_genA|rlg2|s1|vout[4]~13_combout  & (\lnrn_genA|rlg9|Ro[1]~32_combout  $ (\din[27]~input_o  # !\lnrn_genA|rlg15|Ro[1]~34_combout ))
+
+	.dataa(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datab(\lnrn_genA|rlg15|Ro[1]~34_combout ),
+	.datac(\din[27]~input_o ),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|s1|vout[4]~13 .lut_mask = 16'h5900;
+defparam \lnrn_genA|rlg3|s1|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y14_N8
+cycloneiii_io_ibuf \key[54]~input (
+	.i(key[54]),
+	.ibar(gnd),
+	.o(\key[54]~input_o ));
+// synopsys translate_off
+defparam \key[54]~input .bus_hold = "false";
+defparam \key[54]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y8_N1
+cycloneiii_io_ibuf \key[37]~input (
+	.i(key[37]),
+	.ibar(gnd),
+	.o(\key[37]~input_o ));
+// synopsys translate_off
+defparam \key[37]~input .bus_hold = "false";
+defparam \key[37]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y14_N15
+cycloneiii_io_ibuf \din[45]~input (
+	.i(din[45]),
+	.ibar(gnd),
+	.o(\din[45]~input_o ));
+// synopsys translate_off
+defparam \din[45]~input .bus_hold = "false";
+defparam \din[45]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s5|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg1|s5|vout[4]~14_combout  = \din[37]~input_o  & \key[37]~input_o  & (\key[54]~input_o  $ !\din[45]~input_o ) # !\din[37]~input_o  & !\key[37]~input_o  & (\key[54]~input_o  $ !\din[45]~input_o )
+
+	.dataa(\din[37]~input_o ),
+	.datab(\key[54]~input_o ),
+	.datac(\key[37]~input_o ),
+	.datad(\din[45]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s5|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s5|vout[4]~14 .lut_mask = 16'h8421;
+defparam \lnrn_genA|rlg1|s5|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y8_N15
+cycloneiii_io_ibuf \din[53]~input (
+	.i(din[53]),
+	.ibar(gnd),
+	.o(\din[53]~input_o ));
+// synopsys translate_off
+defparam \din[53]~input .bus_hold = "false";
+defparam \din[53]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg1|s5|vout[4]~13_combout  = \key[39]~input_o  & \din[53]~input_o  & (\din[61]~input_o  $ !\key[28]~input_o ) # !\key[39]~input_o  & !\din[53]~input_o  & (\din[61]~input_o  $ !\key[28]~input_o )
+
+	.dataa(\key[39]~input_o ),
+	.datab(\din[61]~input_o ),
+	.datac(\din[53]~input_o ),
+	.datad(\key[28]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s5|vout[4]~13 .lut_mask = 16'h8421;
+defparam \lnrn_genA|rlg1|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y12_N1
+cycloneiii_io_ibuf \din[29]~input (
+	.i(din[29]),
+	.ibar(gnd),
+	.o(\din[29]~input_o ));
+// synopsys translate_off
+defparam \din[29]~input .bus_hold = "false";
+defparam \din[29]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s5|vout[4]~15 (
+// Equation(s):
+// \lnrn_genA|rlg1|s5|vout[4]~15_combout  = \lnrn_genA|rlg1|s5|vout[4]~14_combout  & \lnrn_genA|rlg1|s5|vout[4]~13_combout  & (\key[4]~input_o  $ \din[29]~input_o )
+
+	.dataa(\key[4]~input_o ),
+	.datab(\lnrn_genA|rlg1|s5|vout[4]~14_combout ),
+	.datac(\lnrn_genA|rlg1|s5|vout[4]~13_combout ),
+	.datad(\din[29]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s5|vout[4]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s5|vout[4]~15 .lut_mask = 16'h4080;
+defparam \lnrn_genA|rlg1|s5|vout[4]~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y13_N15
+cycloneiii_io_ibuf \din[41]~input (
+	.i(din[41]),
+	.ibar(gnd),
+	.o(\din[41]~input_o ));
+// synopsys translate_off
+defparam \din[41]~input .bus_hold = "false";
+defparam \din[41]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg2|s1|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg2|s1|vout[4]~14_combout  = \lnrn_genA|rlg9|Ro[1]~32_combout  # \lnrn_genA|rlg1|s5|vout[4]~15_combout  $ \din[41]~input_o  # !\lnrn_genA|rlg2|s1|vout[4]~13_combout 
+
+	.dataa(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datab(\lnrn_genA|rlg1|s5|vout[4]~15_combout ),
+	.datac(\din[41]~input_o ),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|s1|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|s1|vout[4]~14 .lut_mask = 16'hBEFF;
+defparam \lnrn_genA|rlg2|s1|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y9_N8
+cycloneiii_io_ibuf \key[31]~input (
+	.i(key[31]),
+	.ibar(gnd),
+	.o(\key[31]~input_o ));
+// synopsys translate_off
+defparam \key[31]~input .bus_hold = "false";
+defparam \key[31]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg1|ke1[48] (
+// Equation(s):
+// \lnrn_genA|rlg1|ke1 [48] = \key[31]~input_o  $ \din[57]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\key[31]~input_o ),
+	.datad(\din[57]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|ke1 [48]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|ke1[48] .lut_mask = 16'h0FF0;
+defparam \lnrn_genA|rlg1|ke1[48] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y0_N8
+cycloneiii_io_ibuf \key[14]~input (
+	.i(key[14]),
+	.ibar(gnd),
+	.o(\key[14]~input_o ));
+// synopsys translate_off
+defparam \key[14]~input .bus_hold = "false";
+defparam \key[14]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y9_N15
+cycloneiii_io_ibuf \din[23]~input (
+	.i(din[23]),
+	.ibar(gnd),
+	.o(\din[23]~input_o ));
+// synopsys translate_off
+defparam \din[23]~input .bus_hold = "false";
+defparam \din[23]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s8|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg1|s8|vout[4]~13_combout  = \key[13]~input_o  & \din[23]~input_o  & (\key[14]~input_o  $ !\din[31]~input_o ) # !\key[13]~input_o  & !\din[23]~input_o  & (\key[14]~input_o  $ !\din[31]~input_o )
+
+	.dataa(\key[13]~input_o ),
+	.datab(\key[14]~input_o ),
+	.datac(\din[31]~input_o ),
+	.datad(\din[23]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s8|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s8|vout[4]~13 .lut_mask = 16'h8241;
+defparam \lnrn_genA|rlg1|s8|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg1|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg1|Ro [21] = \din[29]~input_o  $ (\lnrn_genA|rlg1|s8|vout[4]~14_combout  & \lnrn_genA|rlg1|ke1 [48] & \lnrn_genA|rlg1|s8|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg1|s8|vout[4]~14_combout ),
+	.datab(\lnrn_genA|rlg1|ke1 [48]),
+	.datac(\lnrn_genA|rlg1|s8|vout[4]~13_combout ),
+	.datad(\din[29]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|Ro[21] .lut_mask = 16'h7F80;
+defparam \lnrn_genA|rlg1|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y12_N8
+cycloneiii_io_ibuf \key[57]~input (
+	.i(key[57]),
+	.ibar(gnd),
+	.o(\key[57]~input_o ));
+// synopsys translate_off
+defparam \key[57]~input .bus_hold = "false";
+defparam \key[57]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y14_N22
+cycloneiii_io_ibuf \key[2]~input (
+	.i(key[2]),
+	.ibar(gnd),
+	.o(\key[2]~input_o ));
+// synopsys translate_off
+defparam \key[2]~input .bus_hold = "false";
+defparam \key[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s2|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg1|s2|vout[4]~13_combout  = \din[17]~input_o  & \key[2]~input_o  & (\din[25]~input_o  $ !\key[57]~input_o ) # !\din[17]~input_o  & !\key[2]~input_o  & (\din[25]~input_o  $ !\key[57]~input_o )
+
+	.dataa(\din[17]~input_o ),
+	.datab(\din[25]~input_o ),
+	.datac(\key[57]~input_o ),
+	.datad(\key[2]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s2|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s2|vout[4]~13 .lut_mask = 16'h8241;
+defparam \lnrn_genA|rlg1|s2|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X1_Y0_N15
+cycloneiii_io_ibuf \din[9]~input (
+	.i(din[9]),
+	.ibar(gnd),
+	.o(\din[9]~input_o ));
+// synopsys translate_off
+defparam \din[9]~input .bus_hold = "false";
+defparam \din[9]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X26_Y29_N22
+cycloneiii_io_ibuf \key[19]~input (
+	.i(key[19]),
+	.ibar(gnd),
+	.o(\key[19]~input_o ));
+// synopsys translate_off
+defparam \key[19]~input .bus_hold = "false";
+defparam \key[19]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y0_N29
+cycloneiii_io_ibuf \key[9]~input (
+	.i(key[9]),
+	.ibar(gnd),
+	.o(\key[9]~input_o ));
+// synopsys translate_off
+defparam \key[9]~input .bus_hold = "false";
+defparam \key[9]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s2|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg1|s2|vout[4]~14_combout  = \din[1]~input_o  & \key[19]~input_o  & (\din[9]~input_o  $ !\key[9]~input_o ) # !\din[1]~input_o  & !\key[19]~input_o  & (\din[9]~input_o  $ !\key[9]~input_o )
+
+	.dataa(\din[1]~input_o ),
+	.datab(\din[9]~input_o ),
+	.datac(\key[19]~input_o ),
+	.datad(\key[9]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s2|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s2|vout[4]~14 .lut_mask = 16'h8421;
+defparam \lnrn_genA|rlg1|s2|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg1|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg1|Ro [18] = \din[53]~input_o  $ (\lnrn_genA|rlg1|ke1 [12] & \lnrn_genA|rlg1|s2|vout[4]~13_combout  & \lnrn_genA|rlg1|s2|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg1|ke1 [12]),
+	.datab(\lnrn_genA|rlg1|s2|vout[4]~13_combout ),
+	.datac(\din[53]~input_o ),
+	.datad(\lnrn_genA|rlg1|s2|vout[4]~14_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|Ro[18] .lut_mask = 16'h78F0;
+defparam \lnrn_genA|rlg1|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X32_Y0_N22
+cycloneiii_io_ibuf \din[5]~input (
+	.i(din[5]),
+	.ibar(gnd),
+	.o(\din[5]~input_o ));
+// synopsys translate_off
+defparam \din[5]~input .bus_hold = "false";
+defparam \din[5]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X30_Y29_N1
+cycloneiii_io_ibuf \key[29]~input (
+	.i(key[29]),
+	.ibar(gnd),
+	.o(\key[29]~input_o ));
+// synopsys translate_off
+defparam \key[29]~input .bus_hold = "false";
+defparam \key[29]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s6|ShiftLeft0~1 (
+// Equation(s):
+// \lnrn_genA|rlg1|s6|ShiftLeft0~1_combout  = \key[23]~input_o  & \din[5]~input_o  & (\key[29]~input_o  $ \din[63]~input_o ) # !\key[23]~input_o  & !\din[5]~input_o  & (\key[29]~input_o  $ \din[63]~input_o )
+
+	.dataa(\key[23]~input_o ),
+	.datab(\din[5]~input_o ),
+	.datac(\key[29]~input_o ),
+	.datad(\din[63]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s6|ShiftLeft0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s6|ShiftLeft0~1 .lut_mask = 16'h0990;
+defparam \lnrn_genA|rlg1|s6|ShiftLeft0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X32_Y0_N29
+cycloneiii_io_ibuf \din[21]~input (
+	.i(din[21]),
+	.ibar(gnd),
+	.o(\din[21]~input_o ));
+// synopsys translate_off
+defparam \din[21]~input .bus_hold = "false";
+defparam \din[21]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X9_Y0_N22
+cycloneiii_io_ibuf \key[5]~input (
+	.i(key[5]),
+	.ibar(gnd),
+	.o(\key[5]~input_o ));
+// synopsys translate_off
+defparam \key[5]~input .bus_hold = "false";
+defparam \key[5]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s6|ShiftLeft0~0 (
+// Equation(s):
+// \lnrn_genA|rlg1|s6|ShiftLeft0~0_combout  = \key[30]~input_o  & \din[29]~input_o  & (\din[21]~input_o  $ !\key[5]~input_o ) # !\key[30]~input_o  & !\din[29]~input_o  & (\din[21]~input_o  $ !\key[5]~input_o )
+
+	.dataa(\key[30]~input_o ),
+	.datab(\din[21]~input_o ),
+	.datac(\key[5]~input_o ),
+	.datad(\din[29]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s6|ShiftLeft0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s6|ShiftLeft0~0 .lut_mask = 16'h8241;
+defparam \lnrn_genA|rlg1|s6|ShiftLeft0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg1|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg1|Ro [19] = \din[45]~input_o  $ (!\lnrn_genA|rlg1|ke1 [34] & \lnrn_genA|rlg1|s6|ShiftLeft0~1_combout  & \lnrn_genA|rlg1|s6|ShiftLeft0~0_combout )
+
+	.dataa(\lnrn_genA|rlg1|ke1 [34]),
+	.datab(\lnrn_genA|rlg1|s6|ShiftLeft0~1_combout ),
+	.datac(\lnrn_genA|rlg1|s6|ShiftLeft0~0_combout ),
+	.datad(\din[45]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|Ro[19] .lut_mask = 16'hBF40;
+defparam \lnrn_genA|rlg1|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg2|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg2|s5|vout[4]~13_combout  = !\lnrn_genA|rlg1|Ro [18] & !\lnrn_genA|rlg1|Ro [19] & (\key[49]~input_o  $ \lnrn_genA|rlg1|Ro [21])
+
+	.dataa(\key[49]~input_o ),
+	.datab(\lnrn_genA|rlg1|Ro [21]),
+	.datac(\lnrn_genA|rlg1|Ro [18]),
+	.datad(\lnrn_genA|rlg1|Ro [19]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|s5|vout[4]~13 .lut_mask = 16'h0006;
+defparam \lnrn_genA|rlg2|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg2|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg2|Ro [3] = \lnrn_genA|rlg1|s5|vout[4]~15_combout  $ \din[41]~input_o  $ (\lnrn_genA|rlg2|s5|vout[4]~14_combout  & \lnrn_genA|rlg2|s5|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datab(\lnrn_genA|rlg1|s5|vout[4]~15_combout ),
+	.datac(\lnrn_genA|rlg2|s5|vout[4]~13_combout ),
+	.datad(\din[41]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|Ro[3] .lut_mask = 16'h936C;
+defparam \lnrn_genA|rlg2|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg3|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg3|Ro [31] = \lnrn_genA|rlg1|Ro [31] $ \lnrn_genA|rlg2|s1|vout[4]~14_combout  $ (\lnrn_genA|rlg2|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg1|Ro [31]),
+	.datab(\lnrn_genA|rlg2|s1|vout[4]~14_combout ),
+	.datac(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg2|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|Ro[31] .lut_mask = 16'h9969;
+defparam \lnrn_genA|rlg3|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X32_Y29_N8
+cycloneiii_io_ibuf \din[13]~input (
+	.i(din[13]),
+	.ibar(gnd),
+	.o(\din[13]~input_o ));
+// synopsys translate_off
+defparam \din[13]~input .bus_hold = "false";
+defparam \din[13]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg4|s6|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg4|s6|vout[4]~13_combout  = !\din[21]~input_o  & !\din[5]~input_o  & !\din[13]~input_o  & \din[63]~input_o 
+
+	.dataa(\din[21]~input_o ),
+	.datab(\din[5]~input_o ),
+	.datac(\din[13]~input_o ),
+	.datad(\din[63]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|s6|vout[4]~13 .lut_mask = 16'h0100;
+defparam \lnrn_genA|rlg4|s6|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg2|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg2|Ro [19] = \lnrn_genA|rlg1|Ro [19] $ (!\lnrn_genA|rlg1|Ro [21] & \lnrn_genA|rlg4|s6|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg1|Ro [19]),
+	.datab(\lnrn_genA|rlg1|Ro [21]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|Ro[19] .lut_mask = 16'h9A9A;
+defparam \lnrn_genA|rlg2|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y10_N22
+cycloneiii_io_ibuf \key[20]~input (
+	.i(key[20]),
+	.ibar(gnd),
+	.o(\key[20]~input_o ));
+// synopsys translate_off
+defparam \key[20]~input .bus_hold = "false";
+defparam \key[20]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg1|ke1[42] (
+// Equation(s):
+// \lnrn_genA|rlg1|ke1 [42] = \din[31]~input_o  $ \key[20]~input_o 
+
+	.dataa(gnd),
+	.datab(\din[31]~input_o ),
+	.datac(gnd),
+	.datad(\key[20]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|ke1 [42]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|ke1[42] .lut_mask = 16'h33CC;
+defparam \lnrn_genA|rlg1|ke1[42] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y19_N1
+cycloneiii_io_ibuf \key[63]~input (
+	.i(key[63]),
+	.ibar(gnd),
+	.o(\key[63]~input_o ));
+// synopsys translate_off
+defparam \key[63]~input .bus_hold = "false";
+defparam \key[63]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s7|ShiftLeft0~1 (
+// Equation(s):
+// \lnrn_genA|rlg1|s7|ShiftLeft0~1_combout  = \key[15]~input_o  & \din[39]~input_o  & (\din[47]~input_o  $ !\key[63]~input_o ) # !\key[15]~input_o  & !\din[39]~input_o  & (\din[47]~input_o  $ !\key[63]~input_o )
+
+	.dataa(\key[15]~input_o ),
+	.datab(\din[39]~input_o ),
+	.datac(\din[47]~input_o ),
+	.datad(\key[63]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s7|ShiftLeft0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s7|ShiftLeft0~1 .lut_mask = 16'h9009;
+defparam \lnrn_genA|rlg1|s7|ShiftLeft0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg1|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg1|Ro [7] = \din[9]~input_o  $ (\lnrn_genA|rlg1|s7|ShiftLeft0~0_combout  & \lnrn_genA|rlg1|ke1 [42] & \lnrn_genA|rlg1|s7|ShiftLeft0~1_combout )
+
+	.dataa(\lnrn_genA|rlg1|s7|ShiftLeft0~0_combout ),
+	.datab(\lnrn_genA|rlg1|ke1 [42]),
+	.datac(\lnrn_genA|rlg1|s7|ShiftLeft0~1_combout ),
+	.datad(\din[9]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|Ro[7] .lut_mask = 16'h7F80;
+defparam \lnrn_genA|rlg1|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg2|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg2|Ro [18] = \lnrn_genA|rlg1|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg1|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout )
+
+	.dataa(\lnrn_genA|rlg1|Ro [18]),
+	.datab(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg1|Ro [7]),
+	.datad(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|Ro[18] .lut_mask = 16'hAAA6;
+defparam \lnrn_genA|rlg2|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg3|s5|vout[4]~15 (
+// Equation(s):
+// \lnrn_genA|rlg3|s5|vout[4]~15_combout  = !\din[37]~input_o  & !\lnrn_genA|rlg2|Ro [19] & !\lnrn_genA|rlg2|Ro [18] & !\din[61]~input_o 
+
+	.dataa(\din[37]~input_o ),
+	.datab(\lnrn_genA|rlg2|Ro [19]),
+	.datac(\lnrn_genA|rlg2|Ro [18]),
+	.datad(\din[61]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|s5|vout[4]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|s5|vout[4]~15 .lut_mask = 16'h0001;
+defparam \lnrn_genA|rlg3|s5|vout[4]~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X32_Y0_N15
+cycloneiii_io_ibuf \key[33]~input (
+	.i(key[33]),
+	.ibar(gnd),
+	.o(\key[33]~input_o ));
+// synopsys translate_off
+defparam \key[33]~input .bus_hold = "false";
+defparam \key[33]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg3|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg3|Ro [3] = \lnrn_genA|rlg2|Ro [3] $ (\lnrn_genA|rlg3|s5|vout[4]~15_combout  & (\lnrn_genA|rlg2|Ro [21] $ \key[33]~input_o ))
+
+	.dataa(\lnrn_genA|rlg2|Ro [21]),
+	.datab(\lnrn_genA|rlg2|Ro [3]),
+	.datac(\lnrn_genA|rlg3|s5|vout[4]~15_combout ),
+	.datad(\key[33]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|Ro[3] .lut_mask = 16'h9C6C;
+defparam \lnrn_genA|rlg3|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg4|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg4|Ro [31] = \lnrn_genA|rlg3|Ro [31] $ (\lnrn_genA|rlg9|Ro[1]~32_combout  # \lnrn_genA|rlg3|Ro [3] # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg3|Ro [31]),
+	.datac(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datad(\lnrn_genA|rlg3|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|Ro[31] .lut_mask = 16'h3339;
+defparam \lnrn_genA|rlg4|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y29_N1
+cycloneiii_io_ibuf \din[7]~input (
+	.i(din[7]),
+	.ibar(gnd),
+	.o(\din[7]~input_o ));
+// synopsys translate_off
+defparam \din[7]~input .bus_hold = "false";
+defparam \din[7]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg3|s8|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg3|s8|vout[4]~13_combout  = !\din[31]~input_o  & !\din[7]~input_o  & !\din[23]~input_o 
+
+	.dataa(gnd),
+	.datab(\din[31]~input_o ),
+	.datac(\din[7]~input_o ),
+	.datad(\din[23]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|s8|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|s8|vout[4]~13 .lut_mask = 16'h0003;
+defparam \lnrn_genA|rlg3|s8|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg2|s8|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg2|s8|vout[4]~13_combout  = \lnrn_genA|rlg3|s8|vout[4]~13_combout  & (\din[7]~input_o  & (\din[39]~input_o ) # !\din[7]~input_o  & \lnrn_genA|rlg9|Ro[1]~32_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datab(\lnrn_genA|rlg3|s8|vout[4]~13_combout ),
+	.datac(\din[7]~input_o ),
+	.datad(\din[39]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|s8|vout[4]~13 .lut_mask = 16'hC808;
+defparam \lnrn_genA|rlg2|s8|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg2|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg2|Ro [21] = \lnrn_genA|rlg1|Ro [21] $ (\lnrn_genA|rlg1|Ro [31] & \lnrn_genA|rlg2|s8|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg1|Ro [31]),
+	.datab(gnd),
+	.datac(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg1|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|Ro[21] .lut_mask = 16'h5FA0;
+defparam \lnrn_genA|rlg2|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg3|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg3|Ro [19] = \lnrn_genA|rlg1|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg1|Ro [21] $ \lnrn_genA|rlg2|Ro [21]))
+
+	.dataa(\lnrn_genA|rlg1|Ro [19]),
+	.datab(\lnrn_genA|rlg1|Ro [21]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg2|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|Ro[19] .lut_mask = 16'h9A6A;
+defparam \lnrn_genA|rlg3|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y11_N1
+cycloneiii_io_ibuf \key[55]~input (
+	.i(key[55]),
+	.ibar(gnd),
+	.o(\key[55]~input_o ));
+// synopsys translate_off
+defparam \key[55]~input .bus_hold = "false";
+defparam \key[55]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg2|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg2|Ro [7] = \lnrn_genA|rlg1|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[55]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datac(\lnrn_genA|rlg1|Ro [7]),
+	.datad(\key[55]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|Ro[7] .lut_mask = 16'h78B4;
+defparam \lnrn_genA|rlg2|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg3|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg3|Ro [18] = \lnrn_genA|rlg2|Ro [18] $ (!\lnrn_genA|rlg2|Ro [7] & !\lnrn_genA|rlg14|Ro[6]~34_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg2|Ro [18]),
+	.datab(\lnrn_genA|rlg2|Ro [7]),
+	.datac(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datad(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|Ro[18] .lut_mask = 16'hA9AA;
+defparam \lnrn_genA|rlg3|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg4|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg4|Ro [3] = \lnrn_genA|rlg3|Ro [3] $ (\lnrn_genA|rlg4|s5|vout[4]~13_combout  & !\lnrn_genA|rlg3|Ro [19] & !\lnrn_genA|rlg3|Ro [18])
+
+	.dataa(\lnrn_genA|rlg4|s5|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg3|Ro [19]),
+	.datac(\lnrn_genA|rlg3|Ro [18]),
+	.datad(\lnrn_genA|rlg3|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|Ro[3] .lut_mask = 16'hFD02;
+defparam \lnrn_genA|rlg4|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg5|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg5|Ro [31] = \lnrn_genA|rlg4|Ro [31] $ (\lnrn_genA|rlg4|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg4|Ro [31]),
+	.datac(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg4|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|Ro[31] .lut_mask = 16'h33C3;
+defparam \lnrn_genA|rlg5|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg6|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg6|Ro [31] = \lnrn_genA|rlg5|Ro [31] $ (\lnrn_genA|rlg5|Ro [3] # \lnrn_genA|rlg9|Ro[1]~32_combout  # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg5|Ro [3]),
+	.datab(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datac(\lnrn_genA|rlg5|Ro [31]),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|Ro[31] .lut_mask = 16'h1E0F;
+defparam \lnrn_genA|rlg6|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg7|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg7|Ro [31] = \lnrn_genA|rlg6|Ro [31] $ (\lnrn_genA|rlg6|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg6|Ro [3]),
+	.datab(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.datac(gnd),
+	.datad(\lnrn_genA|rlg6|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|Ro[31] .lut_mask = 16'h44BB;
+defparam \lnrn_genA|rlg7|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg3|s8|vout[4]~15 (
+// Equation(s):
+// \lnrn_genA|rlg3|s8|vout[4]~15_combout  = \lnrn_genA|rlg3|s8|vout[4]~13_combout  & (\lnrn_genA|rlg3|s8|vout[4]~14_combout  $ (!\din[7]~input_o  & !\lnrn_genA|rlg9|Ro[1]~32_combout ))
+
+	.dataa(\lnrn_genA|rlg3|s8|vout[4]~14_combout ),
+	.datab(\lnrn_genA|rlg3|s8|vout[4]~13_combout ),
+	.datac(\din[7]~input_o ),
+	.datad(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|s8|vout[4]~15 .lut_mask = 16'h8884;
+defparam \lnrn_genA|rlg3|s8|vout[4]~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y11_N8
+cycloneiii_io_ibuf \key[17]~input (
+	.i(key[17]),
+	.ibar(gnd),
+	.o(\key[17]~input_o ));
+// synopsys translate_off
+defparam \key[17]~input .bus_hold = "false";
+defparam \key[17]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s1|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg1|s1|vout[4]~14_combout  = \key[49]~input_o  & (\key[17]~input_o  $ !\din[25]~input_o  # !\din[33]~input_o ) # !\key[49]~input_o  & (\din[33]~input_o  # \key[17]~input_o  $ !\din[25]~input_o )
+
+	.dataa(\key[49]~input_o ),
+	.datab(\key[17]~input_o ),
+	.datac(\din[25]~input_o ),
+	.datad(\din[33]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s1|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s1|vout[4]~14 .lut_mask = 16'hD7EB;
+defparam \lnrn_genA|rlg1|s1|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y17_N8
+cycloneiii_io_ibuf \key[51]~input (
+	.i(key[51]),
+	.ibar(gnd),
+	.o(\key[51]~input_o ));
+// synopsys translate_off
+defparam \key[51]~input .bus_hold = "false";
+defparam \key[51]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg1|s1|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg1|s1|vout[4]~13_combout  = \key[34]~input_o  & (\din[57]~input_o  $ \key[51]~input_o  # !\din[49]~input_o ) # !\key[34]~input_o  & (\din[49]~input_o  # \din[57]~input_o  $ \key[51]~input_o )
+
+	.dataa(\key[34]~input_o ),
+	.datab(\din[57]~input_o ),
+	.datac(\key[51]~input_o ),
+	.datad(\din[49]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|s1|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|s1|vout[4]~13 .lut_mask = 16'h7DBE;
+defparam \lnrn_genA|rlg1|s1|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X30_Y29_N8
+cycloneiii_io_ibuf \din[15]~input (
+	.i(din[15]),
+	.ibar(gnd),
+	.o(\din[15]~input_o ));
+// synopsys translate_off
+defparam \din[15]~input .bus_hold = "false";
+defparam \din[15]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg1|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg1|Ro [31] = \din[15]~input_o  $ (\lnrn_genA|rlg1|s1|vout[4]~15_combout  # \lnrn_genA|rlg1|s1|vout[4]~14_combout  # \lnrn_genA|rlg1|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg1|s1|vout[4]~15_combout ),
+	.datab(\lnrn_genA|rlg1|s1|vout[4]~14_combout ),
+	.datac(\lnrn_genA|rlg1|s1|vout[4]~13_combout ),
+	.datad(\din[15]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg1|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg1|Ro[31] .lut_mask = 16'h01FE;
+defparam \lnrn_genA|rlg1|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg3|s8|vout[4]~16 (
+// Equation(s):
+// \lnrn_genA|rlg3|s8|vout[4]~16_combout  = \lnrn_genA|rlg3|s8|vout[4]~15_combout  & (\lnrn_genA|rlg2|s1|vout[4]~14_combout  $ !\lnrn_genA|rlg1|Ro [31])
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg2|s1|vout[4]~14_combout ),
+	.datac(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datad(\lnrn_genA|rlg1|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|s8|vout[4]~16_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|s8|vout[4]~16 .lut_mask = 16'hC030;
+defparam \lnrn_genA|rlg3|s8|vout[4]~16 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X29_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg4|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg4|Ro [21] = \lnrn_genA|rlg2|Ro [21] $ \lnrn_genA|rlg3|s8|vout[4]~16_combout  $ (\lnrn_genA|rlg3|Ro [31] & \lnrn_genA|rlg2|s8|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg2|Ro [21]),
+	.datab(\lnrn_genA|rlg3|Ro [31]),
+	.datac(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg3|s8|vout[4]~16_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|Ro[21] .lut_mask = 16'h956A;
+defparam \lnrn_genA|rlg4|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg5|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg5|Ro [21] = \lnrn_genA|rlg4|Ro [21] $ (\lnrn_genA|rlg3|s8|vout[4]~15_combout  & !\lnrn_genA|rlg4|Ro [31])
+
+	.dataa(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datab(\lnrn_genA|rlg4|Ro [31]),
+	.datac(gnd),
+	.datad(\lnrn_genA|rlg4|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|Ro[21] .lut_mask = 16'hDD22;
+defparam \lnrn_genA|rlg5|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg6|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg6|Ro [21] = \lnrn_genA|rlg5|Ro [21] $ (\lnrn_genA|rlg2|s8|vout[4]~13_combout  & \lnrn_genA|rlg5|Ro [31])
+
+	.dataa(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datab(gnd),
+	.datac(\lnrn_genA|rlg5|Ro [31]),
+	.datad(\lnrn_genA|rlg5|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|Ro[21] .lut_mask = 16'h5FA0;
+defparam \lnrn_genA|rlg6|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg7|s8|vout[4]~16 (
+// Equation(s):
+// \lnrn_genA|rlg7|s8|vout[4]~16_combout  = \din[49]~input_o  # \din[33]~input_o  # \lnrn_genA|rlg9|Ro[1]~32_combout  # !\din[25]~input_o 
+
+	.dataa(\din[49]~input_o ),
+	.datab(\din[33]~input_o ),
+	.datac(\din[25]~input_o ),
+	.datad(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|s8|vout[4]~16_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|s8|vout[4]~16 .lut_mask = 16'hFFEF;
+defparam \lnrn_genA|rlg7|s8|vout[4]~16 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg7|s8|vout[4]~15 (
+// Equation(s):
+// \lnrn_genA|rlg7|s8|vout[4]~15_combout  = \lnrn_genA|rlg3|s8|vout[4]~15_combout  & (\lnrn_genA|rlg5|Ro [31] $ (!\lnrn_genA|rlg5|Ro [3] & !\lnrn_genA|rlg7|s8|vout[4]~16_combout ))
+
+	.dataa(\lnrn_genA|rlg5|Ro [3]),
+	.datab(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datac(\lnrn_genA|rlg5|Ro [31]),
+	.datad(\lnrn_genA|rlg7|s8|vout[4]~16_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|s8|vout[4]~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|s8|vout[4]~15 .lut_mask = 16'hC084;
+defparam \lnrn_genA|rlg7|s8|vout[4]~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg8|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg8|Ro [21] = \lnrn_genA|rlg6|Ro [21] $ \lnrn_genA|rlg7|s8|vout[4]~15_combout  $ (\lnrn_genA|rlg2|s8|vout[4]~13_combout  & \lnrn_genA|rlg7|Ro [31])
+
+	.dataa(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg7|Ro [31]),
+	.datac(\lnrn_genA|rlg6|Ro [21]),
+	.datad(\lnrn_genA|rlg7|s8|vout[4]~15_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|Ro[21] .lut_mask = 16'h8778;
+defparam \lnrn_genA|rlg8|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg8|s6|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg8|s6|vout[4]~13_combout  = \lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg6|Ro [21] $ (\lnrn_genA|rlg6|Ro [31] # !\lnrn_genA|rlg3|s8|vout[4]~15_combout ))
+
+	.dataa(\lnrn_genA|rlg6|Ro [21]),
+	.datab(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datad(\lnrn_genA|rlg6|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|s6|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|s6|vout[4]~13 .lut_mask = 16'h4484;
+defparam \lnrn_genA|rlg8|s6|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro [19] = \lnrn_genA|rlg7|Ro [19] $ \lnrn_genA|rlg8|s6|vout[4]~13_combout  $ (!\lnrn_genA|rlg8|Ro [21] & \lnrn_genA|rlg4|s6|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg7|Ro [19]),
+	.datab(\lnrn_genA|rlg8|Ro [21]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg8|s6|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[19] .lut_mask = 16'h659A;
+defparam \lnrn_genA|rlg9|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg8|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg8|Ro [31] = \lnrn_genA|rlg7|Ro [31] $ (\lnrn_genA|rlg7|Ro [3] # \lnrn_genA|rlg9|Ro[1]~32_combout  # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg7|Ro [3]),
+	.datab(\lnrn_genA|rlg7|Ro [31]),
+	.datac(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|Ro[31] .lut_mask = 16'h3633;
+defparam \lnrn_genA|rlg8|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro [21] = \lnrn_genA|rlg8|Ro [21] $ (!\lnrn_genA|rlg8|Ro [31] & \lnrn_genA|rlg3|s8|vout[4]~15_combout )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg8|Ro [31]),
+	.datac(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datad(\lnrn_genA|rlg8|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[21] .lut_mask = 16'hCF30;
+defparam \lnrn_genA|rlg9|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg12|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg12|Ro [19] = \lnrn_genA|rlg9|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg11|s8|vout[4]~13_combout  $ !\lnrn_genA|rlg9|Ro [21]))
+
+	.dataa(\lnrn_genA|rlg11|s8|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg9|Ro [19]),
+	.datac(\lnrn_genA|rlg9|Ro [21]),
+	.datad(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|Ro[19] .lut_mask = 16'h69CC;
+defparam \lnrn_genA|rlg12|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y8_N1
+cycloneiii_io_ibuf \key[59]~input (
+	.i(key[59]),
+	.ibar(gnd),
+	.o(\key[59]~input_o ));
+// synopsys translate_off
+defparam \key[59]~input .bus_hold = "false";
+defparam \key[59]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg10|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg10|s5|vout[4]~13_combout  = !\lnrn_genA|rlg9|Ro [19] & (\lnrn_genA|rlg9|Ro [21] $ \key[59]~input_o )
+
+	.dataa(\lnrn_genA|rlg9|Ro [21]),
+	.datab(\lnrn_genA|rlg9|Ro [19]),
+	.datac(\key[59]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|s5|vout[4]~13 .lut_mask = 16'h1212;
+defparam \lnrn_genA|rlg10|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X9_Y0_N29
+cycloneiii_io_ibuf \din[37]~input (
+	.i(din[37]),
+	.ibar(gnd),
+	.o(\din[37]~input_o ));
+// synopsys translate_off
+defparam \din[37]~input .bus_hold = "false";
+defparam \din[37]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg2|s5|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg2|s5|vout[4]~14_combout  = !\din[37]~input_o  & !\din[61]~input_o 
+
+	.dataa(gnd),
+	.datab(\din[37]~input_o ),
+	.datac(\din[61]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg2|s5|vout[4]~14 .lut_mask = 16'h0303;
+defparam \lnrn_genA|rlg2|s5|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y10_N8
+cycloneiii_io_ibuf \key[39]~input (
+	.i(key[39]),
+	.ibar(gnd),
+	.o(\key[39]~input_o ));
+// synopsys translate_off
+defparam \key[39]~input .bus_hold = "false";
+defparam \key[39]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg3|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg3|Ro [7] = \lnrn_genA|rlg2|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[39]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\lnrn_genA|rlg2|Ro [7]),
+	.datac(\key[39]~input_o ),
+	.datad(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg3|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg3|Ro[7] .lut_mask = 16'h69CC;
+defparam \lnrn_genA|rlg3|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y0_N22
+cycloneiii_io_ibuf \key[23]~input (
+	.i(key[23]),
+	.ibar(gnd),
+	.o(\key[23]~input_o ));
+// synopsys translate_off
+defparam \key[23]~input .bus_hold = "false";
+defparam \key[23]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg4|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg4|Ro [7] = \lnrn_genA|rlg3|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[23]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\lnrn_genA|rlg3|Ro [7]),
+	.datac(\key[23]~input_o ),
+	.datad(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|Ro[7] .lut_mask = 16'h69CC;
+defparam \lnrn_genA|rlg4|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg5|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg5|Ro [18] = \lnrn_genA|rlg4|Ro [18] $ (!\lnrn_genA|rlg4|Ro [7] & !\lnrn_genA|rlg14|Ro[6]~34_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg4|Ro [18]),
+	.datab(\lnrn_genA|rlg4|Ro [7]),
+	.datac(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datad(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|Ro[18] .lut_mask = 16'hA9AA;
+defparam \lnrn_genA|rlg5|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg6|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg6|Ro [18] = \lnrn_genA|rlg5|Ro [18] $ (!\lnrn_genA|rlg5|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg5|Ro [7]),
+	.datab(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.datac(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg5|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|Ro[18] .lut_mask = 16'hEF10;
+defparam \lnrn_genA|rlg6|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg6|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg6|Ro [7] = \lnrn_genA|rlg5|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[54]~input_o ))
+
+	.dataa(\lnrn_genA|rlg5|Ro [7]),
+	.datab(\din[47]~input_o ),
+	.datac(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datad(\key[54]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|Ro[7] .lut_mask = 16'h6A9A;
+defparam \lnrn_genA|rlg6|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg7|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg7|Ro [18] = \lnrn_genA|rlg6|Ro [18] $ (!\lnrn_genA|rlg14|Ro[6]~34_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg6|Ro [7])
+
+	.dataa(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datab(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg6|Ro [18]),
+	.datad(\lnrn_genA|rlg6|Ro [7]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|Ro[18] .lut_mask = 16'hF0B4;
+defparam \lnrn_genA|rlg7|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg8|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg8|Ro [18] = \lnrn_genA|rlg7|Ro [18] $ (!\lnrn_genA|rlg7|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg7|Ro [7]),
+	.datab(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.datac(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg7|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|Ro[18] .lut_mask = 16'hEF10;
+defparam \lnrn_genA|rlg8|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y9_N1
+cycloneiii_io_ibuf \key[10]~input (
+	.i(key[10]),
+	.ibar(gnd),
+	.o(\key[10]~input_o ));
+// synopsys translate_off
+defparam \key[10]~input .bus_hold = "false";
+defparam \key[10]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg9|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg9|s5|vout[4]~13_combout  = \lnrn_genA|rlg7|Ro [19] & \lnrn_genA|rlg8|s6|vout[4]~13_combout  & (\key[10]~input_o  $ \lnrn_genA|rlg8|Ro [21]) # !\lnrn_genA|rlg7|Ro [19] & !\lnrn_genA|rlg8|s6|vout[4]~13_combout  & (\key[10]~input_o  $ 
+// \lnrn_genA|rlg8|Ro [21])
+
+	.dataa(\lnrn_genA|rlg7|Ro [19]),
+	.datab(\key[10]~input_o ),
+	.datac(\lnrn_genA|rlg8|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg8|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|s5|vout[4]~13 .lut_mask = 16'h2184;
+defparam \lnrn_genA|rlg9|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro [3] = \lnrn_genA|rlg8|Ro [3] $ (!\lnrn_genA|rlg8|Ro [18] & \lnrn_genA|rlg9|s5|vout[4]~13_combout  & \lnrn_genA|rlg2|s5|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg8|Ro [3]),
+	.datab(\lnrn_genA|rlg8|Ro [18]),
+	.datac(\lnrn_genA|rlg9|s5|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[3] .lut_mask = 16'h9AAA;
+defparam \lnrn_genA|rlg9|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro [3] = \lnrn_genA|rlg9|Ro [3] $ (!\lnrn_genA|rlg9|Ro [18] & \lnrn_genA|rlg10|s5|vout[4]~13_combout  & \lnrn_genA|rlg2|s5|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro [18]),
+	.datab(\lnrn_genA|rlg10|s5|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datad(\lnrn_genA|rlg9|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[3] .lut_mask = 16'hBF40;
+defparam \lnrn_genA|rlg10|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X19_Y0_N1
+cycloneiii_io_ibuf \key[43]~input (
+	.i(key[43]),
+	.ibar(gnd),
+	.o(\key[43]~input_o ));
+// synopsys translate_off
+defparam \key[43]~input .bus_hold = "false";
+defparam \key[43]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro [19] = \lnrn_genA|rlg9|Ro [19] $ (!\lnrn_genA|rlg9|Ro [21] & \lnrn_genA|rlg4|s6|vout[4]~13_combout )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg9|Ro [19]),
+	.datac(\lnrn_genA|rlg9|Ro [21]),
+	.datad(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[19] .lut_mask = 16'hC3CC;
+defparam \lnrn_genA|rlg10|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg4|s6|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg4|s6|vout[4]~14_combout  = \lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg2|Ro [21] $ !\lnrn_genA|rlg3|s8|vout[4]~16_combout )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg2|Ro [21]),
+	.datac(\lnrn_genA|rlg3|s8|vout[4]~16_combout ),
+	.datad(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|s6|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|s6|vout[4]~14 .lut_mask = 16'hC300;
+defparam \lnrn_genA|rlg4|s6|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg5|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg5|Ro [19] = \lnrn_genA|rlg3|Ro [19] $ \lnrn_genA|rlg4|s6|vout[4]~14_combout  $ (!\lnrn_genA|rlg4|Ro [21] & \lnrn_genA|rlg4|s6|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg4|Ro [21]),
+	.datab(\lnrn_genA|rlg3|Ro [19]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~14_combout ),
+	.datad(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|Ro[19] .lut_mask = 16'h693C;
+defparam \lnrn_genA|rlg5|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg6|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg6|Ro [19] = \lnrn_genA|rlg5|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & !\lnrn_genA|rlg5|Ro [21])
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg5|Ro [19]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg5|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|Ro[19] .lut_mask = 16'hCC3C;
+defparam \lnrn_genA|rlg6|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg7|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg7|s5|vout[4]~13_combout  = !\lnrn_genA|rlg6|Ro [19] & (\key[34]~input_o  $ \lnrn_genA|rlg6|Ro [21])
+
+	.dataa(\key[34]~input_o ),
+	.datab(\lnrn_genA|rlg6|Ro [21]),
+	.datac(gnd),
+	.datad(\lnrn_genA|rlg6|Ro [19]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|s5|vout[4]~13 .lut_mask = 16'h0066;
+defparam \lnrn_genA|rlg7|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y10_N1
+cycloneiii_io_ibuf \key[50]~input (
+	.i(key[50]),
+	.ibar(gnd),
+	.o(\key[50]~input_o ));
+// synopsys translate_off
+defparam \key[50]~input .bus_hold = "false";
+defparam \key[50]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg6|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg6|s5|vout[4]~13_combout  = !\lnrn_genA|rlg5|Ro [19] & (\lnrn_genA|rlg5|Ro [21] $ \key[50]~input_o )
+
+	.dataa(\lnrn_genA|rlg5|Ro [21]),
+	.datab(\lnrn_genA|rlg5|Ro [19]),
+	.datac(gnd),
+	.datad(\key[50]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|s5|vout[4]~13 .lut_mask = 16'h1122;
+defparam \lnrn_genA|rlg6|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X22_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg4|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg4|Ro [18] = \lnrn_genA|rlg3|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg3|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout )
+
+	.dataa(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg3|Ro [7]),
+	.datac(\lnrn_genA|rlg3|Ro [18]),
+	.datad(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg4|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg4|Ro[18] .lut_mask = 16'hF0D2;
+defparam \lnrn_genA|rlg4|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X11_Y0_N22
+cycloneiii_io_ibuf \key[1]~input (
+	.i(key[1]),
+	.ibar(gnd),
+	.o(\key[1]~input_o ));
+// synopsys translate_off
+defparam \key[1]~input .bus_hold = "false";
+defparam \key[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X30_Y10_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg5|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg5|s5|vout[4]~13_combout  = \lnrn_genA|rlg4|Ro [21] & !\key[1]~input_o  & (\lnrn_genA|rlg3|Ro [19] $ !\lnrn_genA|rlg4|s6|vout[4]~14_combout ) # !\lnrn_genA|rlg4|Ro [21] & \key[1]~input_o  & (\lnrn_genA|rlg3|Ro [19] $ 
+// !\lnrn_genA|rlg4|s6|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg4|Ro [21]),
+	.datab(\lnrn_genA|rlg3|Ro [19]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~14_combout ),
+	.datad(\key[1]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|s5|vout[4]~13 .lut_mask = 16'h4182;
+defparam \lnrn_genA|rlg5|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg5|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg5|Ro [3] = \lnrn_genA|rlg4|Ro [3] $ (\lnrn_genA|rlg2|s5|vout[4]~14_combout  & !\lnrn_genA|rlg4|Ro [18] & \lnrn_genA|rlg5|s5|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datab(\lnrn_genA|rlg4|Ro [3]),
+	.datac(\lnrn_genA|rlg4|Ro [18]),
+	.datad(\lnrn_genA|rlg5|s5|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg5|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg5|Ro[3] .lut_mask = 16'hC6CC;
+defparam \lnrn_genA|rlg5|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X28_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg6|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg6|Ro [3] = \lnrn_genA|rlg5|Ro [3] $ (!\lnrn_genA|rlg5|Ro [18] & \lnrn_genA|rlg6|s5|vout[4]~13_combout  & \lnrn_genA|rlg2|s5|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg5|Ro [18]),
+	.datab(\lnrn_genA|rlg6|s5|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg5|Ro [3]),
+	.datad(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg6|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg6|Ro[3] .lut_mask = 16'hB4F0;
+defparam \lnrn_genA|rlg6|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg7|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg7|Ro [3] = \lnrn_genA|rlg6|Ro [3] $ (!\lnrn_genA|rlg6|Ro [18] & \lnrn_genA|rlg7|s5|vout[4]~13_combout  & \lnrn_genA|rlg2|s5|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg6|Ro [18]),
+	.datab(\lnrn_genA|rlg7|s5|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datad(\lnrn_genA|rlg6|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|Ro[3] .lut_mask = 16'hBF40;
+defparam \lnrn_genA|rlg7|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg8|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg8|Ro [3] = \lnrn_genA|rlg7|Ro [3] $ (\lnrn_genA|rlg8|s5|vout[4]~13_combout  & !\lnrn_genA|rlg7|Ro [18] & \lnrn_genA|rlg2|s5|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg8|s5|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg7|Ro [18]),
+	.datac(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datad(\lnrn_genA|rlg7|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|Ro[3] .lut_mask = 16'hDF20;
+defparam \lnrn_genA|rlg8|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro [31] = \lnrn_genA|rlg8|Ro [31] $ (\lnrn_genA|rlg8|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg8|Ro [3]),
+	.datad(\lnrn_genA|rlg8|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[31] .lut_mask = 16'h0CF3;
+defparam \lnrn_genA|rlg9|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro [21] = \lnrn_genA|rlg9|Ro [21] $ (\lnrn_genA|rlg9|Ro [31] & \lnrn_genA|rlg2|s8|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro [21]),
+	.datab(\lnrn_genA|rlg9|Ro [31]),
+	.datac(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[21] .lut_mask = 16'h6A6A;
+defparam \lnrn_genA|rlg10|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N14
+cycloneiii_lcell_comb \lnrn_genA|rlg11|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg11|s5|vout[4]~13_combout  = !\lnrn_genA|rlg10|Ro [19] & (\key[43]~input_o  $ \lnrn_genA|rlg10|Ro [21])
+
+	.dataa(gnd),
+	.datab(\key[43]~input_o ),
+	.datac(\lnrn_genA|rlg10|Ro [19]),
+	.datad(\lnrn_genA|rlg10|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|s5|vout[4]~13 .lut_mask = 16'h030C;
+defparam \lnrn_genA|rlg11|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X23_Y0_N1
+cycloneiii_io_ibuf \key[22]~input (
+	.i(key[22]),
+	.ibar(gnd),
+	.o(\key[22]~input_o ));
+// synopsys translate_off
+defparam \key[22]~input .bus_hold = "false";
+defparam \key[22]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y10_N15
+cycloneiii_io_ibuf \key[38]~input (
+	.i(key[38]),
+	.ibar(gnd),
+	.o(\key[38]~input_o ));
+// synopsys translate_off
+defparam \key[38]~input .bus_hold = "false";
+defparam \key[38]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X24_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg7|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg7|Ro [7] = \lnrn_genA|rlg6|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\key[38]~input_o  $ !\din[47]~input_o ))
+
+	.dataa(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datab(\key[38]~input_o ),
+	.datac(\din[47]~input_o ),
+	.datad(\lnrn_genA|rlg6|Ro [7]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg7|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg7|Ro[7] .lut_mask = 16'h7D82;
+defparam \lnrn_genA|rlg7|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg8|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg8|Ro [7] = \lnrn_genA|rlg7|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[22]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\key[22]~input_o ),
+	.datac(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datad(\lnrn_genA|rlg7|Ro [7]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg8|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg8|Ro[7] .lut_mask = 16'h6F90;
+defparam \lnrn_genA|rlg8|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N24
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro [7] = \lnrn_genA|rlg8|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[14]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\lnrn_genA|rlg8|Ro [7]),
+	.datac(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datad(\key[14]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[7] .lut_mask = 16'h6C9C;
+defparam \lnrn_genA|rlg9|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg9|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg9|Ro [18] = \lnrn_genA|rlg8|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg8|Ro [7] & !\lnrn_genA|rlg14|Ro[6]~34_combout )
+
+	.dataa(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg8|Ro [7]),
+	.datac(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datad(\lnrn_genA|rlg8|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg9|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg9|Ro[18] .lut_mask = 16'hFD02;
+defparam \lnrn_genA|rlg9|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro [18] = \lnrn_genA|rlg9|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg9|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout )
+
+	.dataa(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg9|Ro [7]),
+	.datac(\lnrn_genA|rlg9|Ro [18]),
+	.datad(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[18] .lut_mask = 16'hF0D2;
+defparam \lnrn_genA|rlg10|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg11|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg11|Ro [3] = \lnrn_genA|rlg10|Ro [3] $ (\lnrn_genA|rlg2|s5|vout[4]~14_combout  & \lnrn_genA|rlg11|s5|vout[4]~13_combout  & !\lnrn_genA|rlg10|Ro [18])
+
+	.dataa(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datab(\lnrn_genA|rlg10|Ro [3]),
+	.datac(\lnrn_genA|rlg11|s5|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg10|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|Ro[3] .lut_mask = 16'hCC6C;
+defparam \lnrn_genA|rlg11|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro [31] = \lnrn_genA|rlg9|Ro [31] $ (\lnrn_genA|rlg9|Ro [3] # \lnrn_genA|rlg9|Ro[1]~32_combout  # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro [3]),
+	.datab(\lnrn_genA|rlg9|Ro [31]),
+	.datac(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[31] .lut_mask = 16'h3633;
+defparam \lnrn_genA|rlg10|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg11|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg11|Ro [31] = \lnrn_genA|rlg10|Ro [31] $ (\lnrn_genA|rlg10|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout )
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg10|Ro [31]),
+	.datac(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg10|Ro [3]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|Ro[31] .lut_mask = 16'h33C3;
+defparam \lnrn_genA|rlg11|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg12|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg12|Ro [31] = \lnrn_genA|rlg11|Ro [31] $ (\lnrn_genA|rlg11|Ro [3] # \lnrn_genA|rlg9|Ro[1]~32_combout  # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg11|Ro [3]),
+	.datac(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datad(\lnrn_genA|rlg11|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|Ro[31] .lut_mask = 16'h02FD;
+defparam \lnrn_genA|rlg12|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg14|s8|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg14|s8|vout[4]~13_combout  = \lnrn_genA|rlg2|s8|vout[4]~13_combout  & (\lnrn_genA|rlg12|Ro [31] $ (\lnrn_genA|rlg12|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout ))
+
+	.dataa(\lnrn_genA|rlg12|Ro [3]),
+	.datab(\lnrn_genA|rlg12|Ro [31]),
+	.datac(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|s8|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|s8|vout[4]~13 .lut_mask = 16'h6030;
+defparam \lnrn_genA|rlg14|s8|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X16_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg12|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg12|Ro [21] = \lnrn_genA|rlg11|s8|vout[4]~13_combout  $ \lnrn_genA|rlg10|Ro [21] $ (\lnrn_genA|rlg2|s8|vout[4]~13_combout  & \lnrn_genA|rlg11|Ro [31])
+
+	.dataa(\lnrn_genA|rlg11|s8|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg10|Ro [21]),
+	.datac(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg11|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|Ro[21] .lut_mask = 16'h9666;
+defparam \lnrn_genA|rlg12|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N12
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro [19] = \lnrn_genA|rlg12|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & (\lnrn_genA|rlg14|s8|vout[4]~13_combout  $ !\lnrn_genA|rlg12|Ro [21]))
+
+	.dataa(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg12|Ro [19]),
+	.datac(\lnrn_genA|rlg14|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg12|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[19] .lut_mask = 16'h6CC6;
+defparam \lnrn_genA|rlg15|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X14_Y0_N15
+cycloneiii_io_ibuf \key[11]~input (
+	.i(key[11]),
+	.ibar(gnd),
+	.o(\key[11]~input_o ));
+// synopsys translate_off
+defparam \key[11]~input .bus_hold = "false";
+defparam \key[11]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg13|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg13|s5|vout[4]~13_combout  = !\lnrn_genA|rlg12|Ro [19] & (\key[11]~input_o  $ \lnrn_genA|rlg12|Ro [21])
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg12|Ro [19]),
+	.datac(\key[11]~input_o ),
+	.datad(\lnrn_genA|rlg12|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|s5|vout[4]~13 .lut_mask = 16'h0330;
+defparam \lnrn_genA|rlg13|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y6_N1
+cycloneiii_io_ibuf \key[45]~input (
+	.i(key[45]),
+	.ibar(gnd),
+	.o(\key[45]~input_o ));
+// synopsys translate_off
+defparam \key[45]~input .bus_hold = "false";
+defparam \key[45]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y0_N1
+cycloneiii_io_ibuf \key[61]~input (
+	.i(key[61]),
+	.ibar(gnd),
+	.o(\key[61]~input_o ));
+// synopsys translate_off
+defparam \key[61]~input .bus_hold = "false";
+defparam \key[61]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg10|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg10|Ro [7] = \lnrn_genA|rlg9|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[61]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\lnrn_genA|rlg9|Ro [7]),
+	.datac(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datad(\key[61]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg10|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg10|Ro[7] .lut_mask = 16'h6C9C;
+defparam \lnrn_genA|rlg10|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg11|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg11|Ro [7] = \lnrn_genA|rlg10|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[45]~input_o ))
+
+	.dataa(\din[47]~input_o ),
+	.datab(\key[45]~input_o ),
+	.datac(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datad(\lnrn_genA|rlg10|Ro [7]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|Ro[7] .lut_mask = 16'h6F90;
+defparam \lnrn_genA|rlg11|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N22
+cycloneiii_lcell_comb \lnrn_genA|rlg11|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg11|Ro [18] = \lnrn_genA|rlg10|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg10|Ro [7] & !\lnrn_genA|rlg14|Ro[6]~34_combout )
+
+	.dataa(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg10|Ro [7]),
+	.datac(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datad(\lnrn_genA|rlg10|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg11|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg11|Ro[18] .lut_mask = 16'hFD02;
+defparam \lnrn_genA|rlg11|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg12|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg12|Ro [18] = \lnrn_genA|rlg11|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg11|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout )
+
+	.dataa(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg11|Ro [7]),
+	.datac(\lnrn_genA|rlg11|Ro [18]),
+	.datad(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|Ro[18] .lut_mask = 16'hF0D2;
+defparam \lnrn_genA|rlg12|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N0
+cycloneiii_lcell_comb \lnrn_genA|rlg13|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg13|Ro [3] = \lnrn_genA|rlg12|Ro [3] $ (\lnrn_genA|rlg2|s5|vout[4]~14_combout  & \lnrn_genA|rlg13|s5|vout[4]~13_combout  & !\lnrn_genA|rlg12|Ro [18])
+
+	.dataa(\lnrn_genA|rlg12|Ro [3]),
+	.datab(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datac(\lnrn_genA|rlg13|s5|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg12|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|Ro[3] .lut_mask = 16'hAA6A;
+defparam \lnrn_genA|rlg13|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro [31] = \lnrn_genA|rlg13|Ro [31] $ (\lnrn_genA|rlg13|Ro [3] # \lnrn_genA|rlg9|Ro[1]~32_combout  # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg13|Ro [31]),
+	.datab(\lnrn_genA|rlg13|Ro [3]),
+	.datac(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[31] .lut_mask = 16'h5655;
+defparam \lnrn_genA|rlg14|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro [21] = \lnrn_genA|rlg13|Ro [21] $ \lnrn_genA|rlg14|s8|vout[4]~13_combout  $ (\lnrn_genA|rlg3|s8|vout[4]~15_combout  & !\lnrn_genA|rlg14|Ro [31])
+
+	.dataa(\lnrn_genA|rlg13|Ro [21]),
+	.datab(\lnrn_genA|rlg14|s8|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datad(\lnrn_genA|rlg14|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[21] .lut_mask = 16'h6696;
+defparam \lnrn_genA|rlg15|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X11_Y11_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[19] (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro [19] = \lnrn_genA|rlg15|Ro [19] $ (\lnrn_genA|rlg4|s6|vout[4]~13_combout  & !\lnrn_genA|rlg15|Ro [21])
+
+	.dataa(gnd),
+	.datab(\lnrn_genA|rlg15|Ro [19]),
+	.datac(\lnrn_genA|rlg4|s6|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg15|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro [19]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[19] .lut_mask = 16'hCC3C;
+defparam \lnrn_genA|rlg16|Ro[19] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg12|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg12|Ro [7] = \lnrn_genA|rlg11|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\key[29]~input_o  $ !\din[47]~input_o ))
+
+	.dataa(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datab(\lnrn_genA|rlg11|Ro [7]),
+	.datac(\key[29]~input_o ),
+	.datad(\din[47]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg12|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg12|Ro[7] .lut_mask = 16'h6CC6;
+defparam \lnrn_genA|rlg12|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X20_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg13|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg13|Ro [18] = \lnrn_genA|rlg12|Ro [18] $ (\lnrn_genA|rlg16|s2|vout[4]~13_combout  & !\lnrn_genA|rlg12|Ro [7] & !\lnrn_genA|rlg14|Ro[6]~34_combout )
+
+	.dataa(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg12|Ro [7]),
+	.datac(\lnrn_genA|rlg14|Ro[6]~34_combout ),
+	.datad(\lnrn_genA|rlg12|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|Ro[18] .lut_mask = 16'hFD02;
+defparam \lnrn_genA|rlg13|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N28
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro [3] = \lnrn_genA|rlg13|Ro [3] $ (\lnrn_genA|rlg14|s5|vout[4]~13_combout  & \lnrn_genA|rlg2|s5|vout[4]~14_combout  & !\lnrn_genA|rlg13|Ro [18])
+
+	.dataa(\lnrn_genA|rlg14|s5|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg13|Ro [3]),
+	.datac(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.datad(\lnrn_genA|rlg13|Ro [18]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[3] .lut_mask = 16'hCC6C;
+defparam \lnrn_genA|rlg14|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y7_N22
+cycloneiii_io_ibuf \key[13]~input (
+	.i(key[13]),
+	.ibar(gnd),
+	.o(\key[13]~input_o ));
+// synopsys translate_off
+defparam \key[13]~input .bus_hold = "false";
+defparam \key[13]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N8
+cycloneiii_lcell_comb \lnrn_genA|rlg13|Ro[7] (
+// Equation(s):
+// \lnrn_genA|rlg13|Ro [7] = \lnrn_genA|rlg12|Ro [7] $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\din[47]~input_o  $ !\key[13]~input_o ))
+
+	.dataa(\lnrn_genA|rlg12|Ro [7]),
+	.datab(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.datac(\din[47]~input_o ),
+	.datad(\key[13]~input_o ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|Ro [7]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|Ro[7] .lut_mask = 16'h6AA6;
+defparam \lnrn_genA|rlg13|Ro[7] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[18] (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro [18] = \lnrn_genA|rlg13|Ro [18] $ (!\lnrn_genA|rlg13|Ro [7] & !\lnrn_genA|rlg9|Ro[6]~36_combout  & \lnrn_genA|rlg16|s2|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg13|Ro [18]),
+	.datab(\lnrn_genA|rlg13|Ro [7]),
+	.datac(\lnrn_genA|rlg9|Ro[6]~36_combout ),
+	.datad(\lnrn_genA|rlg16|s2|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro [18]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[18] .lut_mask = 16'hA9AA;
+defparam \lnrn_genA|rlg14|Ro[18] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro [3] = \lnrn_genA|rlg14|Ro [3] $ (\lnrn_genA|rlg15|s5|vout[4]~13_combout  & !\lnrn_genA|rlg14|Ro [18] & \lnrn_genA|rlg2|s5|vout[4]~14_combout )
+
+	.dataa(\lnrn_genA|rlg15|s5|vout[4]~13_combout ),
+	.datab(\lnrn_genA|rlg14|Ro [3]),
+	.datac(\lnrn_genA|rlg14|Ro [18]),
+	.datad(\lnrn_genA|rlg2|s5|vout[4]~14_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[3] .lut_mask = 16'hC6CC;
+defparam \lnrn_genA|rlg15|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N4
+cycloneiii_lcell_comb \lnrn_genA|rlg16|s5|vout[4]~14 (
+// Equation(s):
+// \lnrn_genA|rlg16|s5|vout[4]~14_combout  = !\lnrn_genA|rlg15|Ro [18] & !\din[37]~input_o  & !\din[61]~input_o 
+
+	.dataa(\lnrn_genA|rlg15|Ro [18]),
+	.datab(\din[37]~input_o ),
+	.datac(\din[61]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|s5|vout[4]~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|s5|vout[4]~14 .lut_mask = 16'h0101;
+defparam \lnrn_genA|rlg16|s5|vout[4]~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N10
+cycloneiii_lcell_comb \lnrn_genA|rlg13|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg13|Ro [31] = \lnrn_genA|rlg12|Ro [31] $ (\lnrn_genA|rlg12|Ro [3] # !\lnrn_genA|rlg3|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg12|Ro [3]),
+	.datab(\lnrn_genA|rlg3|s1|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg12|Ro [31]),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg13|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg13|Ro[31] .lut_mask = 16'h4B4B;
+defparam \lnrn_genA|rlg13|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N16
+cycloneiii_lcell_comb \lnrn_genA|rlg14|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg14|Ro [21] = \lnrn_genA|rlg13|Ro [21] $ (\lnrn_genA|rlg2|s8|vout[4]~13_combout  & \lnrn_genA|rlg13|Ro [31])
+
+	.dataa(\lnrn_genA|rlg13|Ro [21]),
+	.datab(gnd),
+	.datac(\lnrn_genA|rlg2|s8|vout[4]~13_combout ),
+	.datad(\lnrn_genA|rlg13|Ro [31]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg14|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg14|Ro[21] .lut_mask = 16'h5AAA;
+defparam \lnrn_genA|rlg14|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X14_Y10_N2
+cycloneiii_lcell_comb \lnrn_genA|rlg16|s5|vout[4]~13 (
+// Equation(s):
+// \lnrn_genA|rlg16|s5|vout[4]~13_combout  = \key[36]~input_o  $ \lnrn_genA|rlg14|Ro [21] $ (!\lnrn_genA|rlg14|Ro [31] & \lnrn_genA|rlg3|s8|vout[4]~15_combout )
+
+	.dataa(\key[36]~input_o ),
+	.datab(\lnrn_genA|rlg14|Ro [31]),
+	.datac(\lnrn_genA|rlg3|s8|vout[4]~15_combout ),
+	.datad(\lnrn_genA|rlg14|Ro [21]),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|s5|vout[4]~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|s5|vout[4]~13 .lut_mask = 16'h659A;
+defparam \lnrn_genA|rlg16|s5|vout[4]~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X11_Y11_N26
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[3] (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro [3] = \lnrn_genA|rlg15|Ro [3] $ (!\lnrn_genA|rlg15|Ro [19] & \lnrn_genA|rlg16|s5|vout[4]~14_combout  & \lnrn_genA|rlg16|s5|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg15|Ro [3]),
+	.datab(\lnrn_genA|rlg15|Ro [19]),
+	.datac(\lnrn_genA|rlg16|s5|vout[4]~14_combout ),
+	.datad(\lnrn_genA|rlg16|s5|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro [3]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[3] .lut_mask = 16'h9AAA;
+defparam \lnrn_genA|rlg16|Ro[3] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N18
+cycloneiii_lcell_comb \lnrn_genA|rlg15|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg15|Ro [31] = \lnrn_genA|rlg14|Ro [31] $ (\lnrn_genA|rlg10|Ro[1]~32_combout  # \lnrn_genA|rlg14|Ro [3] # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg10|Ro[1]~32_combout ),
+	.datab(\lnrn_genA|rlg14|Ro [3]),
+	.datac(\lnrn_genA|rlg14|Ro [31]),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg15|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg15|Ro[31] .lut_mask = 16'h1E0F;
+defparam \lnrn_genA|rlg15|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N20
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[21] (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro [21] = \lnrn_genA|rlg15|Ro [21] $ (\lnrn_genA|rlg3|s8|vout[4]~13_combout  & \lnrn_genA|rlg15|Ro [31] & \lnrn_genA|rlg9|Ro[1]~32_combout )
+
+	.dataa(\lnrn_genA|rlg15|Ro [21]),
+	.datab(\lnrn_genA|rlg3|s8|vout[4]~13_combout ),
+	.datac(\lnrn_genA|rlg15|Ro [31]),
+	.datad(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro [21]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[21] .lut_mask = 16'h6AAA;
+defparam \lnrn_genA|rlg16|Ro[21] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at LCCOMB_X17_Y10_N30
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[31] (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro [31] = \lnrn_genA|rlg15|Ro [31] $ (\lnrn_genA|rlg9|Ro[1]~32_combout  # \lnrn_genA|rlg15|Ro [3] # !\lnrn_genA|rlg2|s1|vout[4]~13_combout )
+
+	.dataa(\lnrn_genA|rlg9|Ro[1]~32_combout ),
+	.datab(\lnrn_genA|rlg15|Ro [31]),
+	.datac(\lnrn_genA|rlg15|Ro [3]),
+	.datad(\lnrn_genA|rlg2|s1|vout[4]~13_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro [31]),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[31] .lut_mask = 16'h3633;
+defparam \lnrn_genA|rlg16|Ro[31] .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X26_Y0_N1
+cycloneiii_io_ibuf \key[4]~input (
+	.i(key[4]),
+	.ibar(gnd),
+	.o(\key[4]~input_o ));
+// synopsys translate_off
+defparam \key[4]~input .bus_hold = "false";
+defparam \key[4]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at LCCOMB_X19_Y10_N6
+cycloneiii_lcell_comb \lnrn_genA|rlg16|Ro[7]~33 (
+// Equation(s):
+// \lnrn_genA|rlg16|Ro[7]~33_combout  = \lnrn_genA|rlg15|Ro[7]~36_combout  $ (\lnrn_genA|rlg16|Ro[7]~32_combout  & (\key[4]~input_o  $ !\din[47]~input_o ))
+
+	.dataa(\key[4]~input_o ),
+	.datab(\lnrn_genA|rlg15|Ro[7]~36_combout ),
+	.datac(\din[47]~input_o ),
+	.datad(\lnrn_genA|rlg16|Ro[7]~32_combout ),
+	.cin(gnd),
+	.combout(\lnrn_genA|rlg16|Ro[7]~33_combout ),
+	.cout());
+// synopsys translate_off
+defparam \lnrn_genA|rlg16|Ro[7]~33 .lut_mask = 16'h69CC;
+defparam \lnrn_genA|rlg16|Ro[7]~33 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y24_N1
+cycloneiii_io_ibuf \din[3]~input (
+	.i(din[3]),
+	.ibar(gnd),
+	.o(\din[3]~input_o ));
+// synopsys translate_off
+defparam \din[3]~input .bus_hold = "false";
+defparam \din[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y14_N15
+cycloneiii_io_ibuf \clk~input (
+	.i(clk),
+	.ibar(gnd),
+	.o(\clk~input_o ));
+// synopsys translate_off
+defparam \clk~input .bus_hold = "false";
+defparam \clk~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y14_N22
+cycloneiii_io_ibuf \reset~input (
+	.i(reset),
+	.ibar(gnd),
+	.o(\reset~input_o ));
+// synopsys translate_off
+defparam \reset~input .bus_hold = "false";
+defparam \reset~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X37_Y0_N22
+cycloneiii_io_ibuf \mode~input (
+	.i(mode),
+	.ibar(gnd),
+	.o(\mode~input_o ));
+// synopsys translate_off
+defparam \mode~input .bus_hold = "false";
+defparam \mode~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y22_N15
+cycloneiii_io_ibuf \din[64]~input (
+	.i(din[64]),
+	.ibar(gnd),
+	.o(\din[64]~input_o ));
+// synopsys translate_off
+defparam \din[64]~input .bus_hold = "false";
+defparam \din[64]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y26_N22
+cycloneiii_io_ibuf \din[62]~input (
+	.i(din[62]),
+	.ibar(gnd),
+	.o(\din[62]~input_o ));
+// synopsys translate_off
+defparam \din[62]~input .bus_hold = "false";
+defparam \din[62]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X37_Y29_N29
+cycloneiii_io_ibuf \din[60]~input (
+	.i(din[60]),
+	.ibar(gnd),
+	.o(\din[60]~input_o ));
+// synopsys translate_off
+defparam \din[60]~input .bus_hold = "false";
+defparam \din[60]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X7_Y29_N22
+cycloneiii_io_ibuf \din[58]~input (
+	.i(din[58]),
+	.ibar(gnd),
+	.o(\din[58]~input_o ));
+// synopsys translate_off
+defparam \din[58]~input .bus_hold = "false";
+defparam \din[58]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X1_Y29_N1
+cycloneiii_io_ibuf \din[56]~input (
+	.i(din[56]),
+	.ibar(gnd),
+	.o(\din[56]~input_o ));
+// synopsys translate_off
+defparam \din[56]~input .bus_hold = "false";
+defparam \din[56]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y5_N8
+cycloneiii_io_ibuf \din[54]~input (
+	.i(din[54]),
+	.ibar(gnd),
+	.o(\din[54]~input_o ));
+// synopsys translate_off
+defparam \din[54]~input .bus_hold = "false";
+defparam \din[54]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y24_N22
+cycloneiii_io_ibuf \din[52]~input (
+	.i(din[52]),
+	.ibar(gnd),
+	.o(\din[52]~input_o ));
+// synopsys translate_off
+defparam \din[52]~input .bus_hold = "false";
+defparam \din[52]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X21_Y29_N8
+cycloneiii_io_ibuf \din[50]~input (
+	.i(din[50]),
+	.ibar(gnd),
+	.o(\din[50]~input_o ));
+// synopsys translate_off
+defparam \din[50]~input .bus_hold = "false";
+defparam \din[50]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X3_Y0_N8
+cycloneiii_io_ibuf \din[48]~input (
+	.i(din[48]),
+	.ibar(gnd),
+	.o(\din[48]~input_o ));
+// synopsys translate_off
+defparam \din[48]~input .bus_hold = "false";
+defparam \din[48]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y21_N22
+cycloneiii_io_ibuf \din[46]~input (
+	.i(din[46]),
+	.ibar(gnd),
+	.o(\din[46]~input_o ));
+// synopsys translate_off
+defparam \din[46]~input .bus_hold = "false";
+defparam \din[46]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X35_Y29_N15
+cycloneiii_io_ibuf \din[44]~input (
+	.i(din[44]),
+	.ibar(gnd),
+	.o(\din[44]~input_o ));
+// synopsys translate_off
+defparam \din[44]~input .bus_hold = "false";
+defparam \din[44]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y25_N15
+cycloneiii_io_ibuf \din[42]~input (
+	.i(din[42]),
+	.ibar(gnd),
+	.o(\din[42]~input_o ));
+// synopsys translate_off
+defparam \din[42]~input .bus_hold = "false";
+defparam \din[42]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X5_Y0_N1
+cycloneiii_io_ibuf \din[40]~input (
+	.i(din[40]),
+	.ibar(gnd),
+	.o(\din[40]~input_o ));
+// synopsys translate_off
+defparam \din[40]~input .bus_hold = "false";
+defparam \din[40]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X37_Y0_N15
+cycloneiii_io_ibuf \din[38]~input (
+	.i(din[38]),
+	.ibar(gnd),
+	.o(\din[38]~input_o ));
+// synopsys translate_off
+defparam \din[38]~input .bus_hold = "false";
+defparam \din[38]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X1_Y29_N8
+cycloneiii_io_ibuf \din[36]~input (
+	.i(din[36]),
+	.ibar(gnd),
+	.o(\din[36]~input_o ));
+// synopsys translate_off
+defparam \din[36]~input .bus_hold = "false";
+defparam \din[36]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y2_N8
+cycloneiii_io_ibuf \din[34]~input (
+	.i(din[34]),
+	.ibar(gnd),
+	.o(\din[34]~input_o ));
+// synopsys translate_off
+defparam \din[34]~input .bus_hold = "false";
+defparam \din[34]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X7_Y29_N15
+cycloneiii_io_ibuf \din[32]~input (
+	.i(din[32]),
+	.ibar(gnd),
+	.o(\din[32]~input_o ));
+// synopsys translate_off
+defparam \din[32]~input .bus_hold = "false";
+defparam \din[32]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X3_Y29_N15
+cycloneiii_io_ibuf \din[30]~input (
+	.i(din[30]),
+	.ibar(gnd),
+	.o(\din[30]~input_o ));
+// synopsys translate_off
+defparam \din[30]~input .bus_hold = "false";
+defparam \din[30]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X14_Y29_N1
+cycloneiii_io_ibuf \din[28]~input (
+	.i(din[28]),
+	.ibar(gnd),
+	.o(\din[28]~input_o ));
+// synopsys translate_off
+defparam \din[28]~input .bus_hold = "false";
+defparam \din[28]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X35_Y0_N15
+cycloneiii_io_ibuf \din[26]~input (
+	.i(din[26]),
+	.ibar(gnd),
+	.o(\din[26]~input_o ));
+// synopsys translate_off
+defparam \din[26]~input .bus_hold = "false";
+defparam \din[26]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y20_N15
+cycloneiii_io_ibuf \din[24]~input (
+	.i(din[24]),
+	.ibar(gnd),
+	.o(\din[24]~input_o ));
+// synopsys translate_off
+defparam \din[24]~input .bus_hold = "false";
+defparam \din[24]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X7_Y0_N22
+cycloneiii_io_ibuf \din[22]~input (
+	.i(din[22]),
+	.ibar(gnd),
+	.o(\din[22]~input_o ));
+// synopsys translate_off
+defparam \din[22]~input .bus_hold = "false";
+defparam \din[22]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y21_N8
+cycloneiii_io_ibuf \din[20]~input (
+	.i(din[20]),
+	.ibar(gnd),
+	.o(\din[20]~input_o ));
+// synopsys translate_off
+defparam \din[20]~input .bus_hold = "false";
+defparam \din[20]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X1_Y29_N29
+cycloneiii_io_ibuf \din[18]~input (
+	.i(din[18]),
+	.ibar(gnd),
+	.o(\din[18]~input_o ));
+// synopsys translate_off
+defparam \din[18]~input .bus_hold = "false";
+defparam \din[18]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X7_Y0_N15
+cycloneiii_io_ibuf \din[16]~input (
+	.i(din[16]),
+	.ibar(gnd),
+	.o(\din[16]~input_o ));
+// synopsys translate_off
+defparam \din[16]~input .bus_hold = "false";
+defparam \din[16]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y23_N15
+cycloneiii_io_ibuf \din[14]~input (
+	.i(din[14]),
+	.ibar(gnd),
+	.o(\din[14]~input_o ));
+// synopsys translate_off
+defparam \din[14]~input .bus_hold = "false";
+defparam \din[14]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y26_N15
+cycloneiii_io_ibuf \din[12]~input (
+	.i(din[12]),
+	.ibar(gnd),
+	.o(\din[12]~input_o ));
+// synopsys translate_off
+defparam \din[12]~input .bus_hold = "false";
+defparam \din[12]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X26_Y29_N29
+cycloneiii_io_ibuf \din[10]~input (
+	.i(din[10]),
+	.ibar(gnd),
+	.o(\din[10]~input_o ));
+// synopsys translate_off
+defparam \din[10]~input .bus_hold = "false";
+defparam \din[10]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X37_Y29_N22
+cycloneiii_io_ibuf \din[8]~input (
+	.i(din[8]),
+	.ibar(gnd),
+	.o(\din[8]~input_o ));
+// synopsys translate_off
+defparam \din[8]~input .bus_hold = "false";
+defparam \din[8]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X11_Y29_N15
+cycloneiii_io_ibuf \din[6]~input (
+	.i(din[6]),
+	.ibar(gnd),
+	.o(\din[6]~input_o ));
+// synopsys translate_off
+defparam \din[6]~input .bus_hold = "false";
+defparam \din[6]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X30_Y29_N29
+cycloneiii_io_ibuf \din[4]~input (
+	.i(din[4]),
+	.ibar(gnd),
+	.o(\din[4]~input_o ));
+// synopsys translate_off
+defparam \din[4]~input .bus_hold = "false";
+defparam \din[4]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X32_Y29_N29
+cycloneiii_io_ibuf \din[2]~input (
+	.i(din[2]),
+	.ibar(gnd),
+	.o(\din[2]~input_o ));
+// synopsys translate_off
+defparam \din[2]~input .bus_hold = "false";
+defparam \din[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y7_N15
+cycloneiii_io_ibuf \key[64]~input (
+	.i(key[64]),
+	.ibar(gnd),
+	.o(\key[64]~input_o ));
+// synopsys translate_off
+defparam \key[64]~input .bus_hold = "false";
+defparam \key[64]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X1_Y0_N1
+cycloneiii_io_ibuf \key[56]~input (
+	.i(key[56]),
+	.ibar(gnd),
+	.o(\key[56]~input_o ));
+// synopsys translate_off
+defparam \key[56]~input .bus_hold = "false";
+defparam \key[56]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y6_N8
+cycloneiii_io_ibuf \key[52]~input (
+	.i(key[52]),
+	.ibar(gnd),
+	.o(\key[52]~input_o ));
+// synopsys translate_off
+defparam \key[52]~input .bus_hold = "false";
+defparam \key[52]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X11_Y29_N8
+cycloneiii_io_ibuf \key[48]~input (
+	.i(key[48]),
+	.ibar(gnd),
+	.o(\key[48]~input_o ));
+// synopsys translate_off
+defparam \key[48]~input .bus_hold = "false";
+defparam \key[48]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y7_N1
+cycloneiii_io_ibuf \key[46]~input (
+	.i(key[46]),
+	.ibar(gnd),
+	.o(\key[46]~input_o ));
+// synopsys translate_off
+defparam \key[46]~input .bus_hold = "false";
+defparam \key[46]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X19_Y0_N22
+cycloneiii_io_ibuf \key[40]~input (
+	.i(key[40]),
+	.ibar(gnd),
+	.o(\key[40]~input_o ));
+// synopsys translate_off
+defparam \key[40]~input .bus_hold = "false";
+defparam \key[40]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X30_Y0_N22
+cycloneiii_io_ibuf \key[32]~input (
+	.i(key[32]),
+	.ibar(gnd),
+	.o(\key[32]~input_o ));
+// synopsys translate_off
+defparam \key[32]~input .bus_hold = "false";
+defparam \key[32]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X41_Y17_N1
+cycloneiii_io_ibuf \key[24]~input (
+	.i(key[24]),
+	.ibar(gnd),
+	.o(\key[24]~input_o ));
+// synopsys translate_off
+defparam \key[24]~input .bus_hold = "false";
+defparam \key[24]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y21_N22
+cycloneiii_io_ibuf \key[16]~input (
+	.i(key[16]),
+	.ibar(gnd),
+	.o(\key[16]~input_o ));
+// synopsys translate_off
+defparam \key[16]~input .bus_hold = "false";
+defparam \key[16]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y5_N15
+cycloneiii_io_ibuf \key[8]~input (
+	.i(key[8]),
+	.ibar(gnd),
+	.o(\key[8]~input_o ));
+// synopsys translate_off
+defparam \key[8]~input .bus_hold = "false";
+defparam \key[8]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X3_Y29_N1
+cycloneiii_io_ibuf \key[6]~input (
+	.i(key[6]),
+	.ibar(gnd),
+	.o(\key[6]~input_o ));
+// synopsys translate_off
+defparam \key[6]~input .bus_hold = "false";
+defparam \key[6]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y27_N1
+cycloneiii_io_ibuf \key[47]~input (
+	.i(key[47]),
+	.ibar(gnd),
+	.o(\key[47]~input_o ));
+// synopsys translate_off
+defparam \key[47]~input .bus_hold = "false";
+defparam \key[47]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// atom is at IOIBUF_X0_Y20_N8
+cycloneiii_io_ibuf \key[3]~input (
+	.i(key[3]),
+	.ibar(gnd),
+	.o(\key[3]~input_o ));
+// synopsys translate_off
+defparam \key[3]~input .bus_hold = "false";
+defparam \key[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+assign dout[64] = \dout[64]~output_o ;
+
+assign dout[63] = \dout[63]~output_o ;
+
+assign dout[62] = \dout[62]~output_o ;
+
+assign dout[61] = \dout[61]~output_o ;
+
+assign dout[60] = \dout[60]~output_o ;
+
+assign dout[59] = \dout[59]~output_o ;
+
+assign dout[58] = \dout[58]~output_o ;
+
+assign dout[57] = \dout[57]~output_o ;
+
+assign dout[56] = \dout[56]~output_o ;
+
+assign dout[55] = \dout[55]~output_o ;
+
+assign dout[54] = \dout[54]~output_o ;
+
+assign dout[53] = \dout[53]~output_o ;
+
+assign dout[52] = \dout[52]~output_o ;
+
+assign dout[51] = \dout[51]~output_o ;
+
+assign dout[50] = \dout[50]~output_o ;
+
+assign dout[49] = \dout[49]~output_o ;
+
+assign dout[48] = \dout[48]~output_o ;
+
+assign dout[47] = \dout[47]~output_o ;
+
+assign dout[46] = \dout[46]~output_o ;
+
+assign dout[45] = \dout[45]~output_o ;
+
+assign dout[44] = \dout[44]~output_o ;
+
+assign dout[43] = \dout[43]~output_o ;
+
+assign dout[42] = \dout[42]~output_o ;
+
+assign dout[41] = \dout[41]~output_o ;
+
+assign dout[40] = \dout[40]~output_o ;
+
+assign dout[39] = \dout[39]~output_o ;
+
+assign dout[38] = \dout[38]~output_o ;
+
+assign dout[37] = \dout[37]~output_o ;
+
+assign dout[36] = \dout[36]~output_o ;
+
+assign dout[35] = \dout[35]~output_o ;
+
+assign dout[34] = \dout[34]~output_o ;
+
+assign dout[33] = \dout[33]~output_o ;
+
+assign dout[32] = \dout[32]~output_o ;
+
+assign dout[31] = \dout[31]~output_o ;
+
+assign dout[30] = \dout[30]~output_o ;
+
+assign dout[29] = \dout[29]~output_o ;
+
+assign dout[28] = \dout[28]~output_o ;
+
+assign dout[27] = \dout[27]~output_o ;
+
+assign dout[26] = \dout[26]~output_o ;
+
+assign dout[25] = \dout[25]~output_o ;
+
+assign dout[24] = \dout[24]~output_o ;
+
+assign dout[23] = \dout[23]~output_o ;
+
+assign dout[22] = \dout[22]~output_o ;
+
+assign dout[21] = \dout[21]~output_o ;
+
+assign dout[20] = \dout[20]~output_o ;
+
+assign dout[19] = \dout[19]~output_o ;
+
+assign dout[18] = \dout[18]~output_o ;
+
+assign dout[17] = \dout[17]~output_o ;
+
+assign dout[16] = \dout[16]~output_o ;
+
+assign dout[15] = \dout[15]~output_o ;
+
+assign dout[14] = \dout[14]~output_o ;
+
+assign dout[13] = \dout[13]~output_o ;
+
+assign dout[12] = \dout[12]~output_o ;
+
+assign dout[11] = \dout[11]~output_o ;
+
+assign dout[10] = \dout[10]~output_o ;
+
+assign dout[9] = \dout[9]~output_o ;
+
+assign dout[8] = \dout[8]~output_o ;
+
+assign dout[7] = \dout[7]~output_o ;
+
+assign dout[6] = \dout[6]~output_o ;
+
+assign dout[5] = \dout[5]~output_o ;
+
+assign dout[4] = \dout[4]~output_o ;
+
+assign dout[3] = \dout[3]~output_o ;
+
+assign dout[2] = \dout[2]~output_o ;
+
+assign dout[1] = \dout[1]~output_o ;
+
+assign oflag = \oflag~output_o ;
+
+endmodule
