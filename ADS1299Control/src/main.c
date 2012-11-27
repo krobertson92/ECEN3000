@@ -31,32 +31,77 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #include "ADS1299_commands.h"
 
 #define PACKET_SIZE 27
+#define HEADER_SIZE 3
+#define MAX_BUFFER_SIZE 25
+
+extern volatile uint32_t UARTCount;
+extern volatile uint8_t UARTBuffer[BUFSIZE];
+
+extern volatile uint32_t UARTStatus;
+extern volatile uint8_t  UARTTxEmpty;
 
 uint8_t* rec_buffer_ptr;//[PACKET_SIZE];
 uint8_t* send_buffer_ptr;//[PACKET_SIZE];
 
-uint8_t buff1[PACKET_SIZE];
-uint8_t buff2[PACKET_SIZE];
+uint8_t buff1[MAX_BUFFER_SIZE];
+uint8_t buff2[MAX_BUFFER_SIZE];
+uint8_t temp_buffer[PACKET_SIZE];
+uint8_t unused_buffer[PACKET_SIZE];
+
+uint32_t num_packets;
+uint32_t max_num_packets;
 
 
 void send_data_to_matlab() {
-	uint8_t test[PACKET_SIZE-3];
+	//NVIC_DisableIRQ(EINT3_IRQn);
+	/*uint8_t test[PACKET_SIZE-3];
 	int j;for(j=0;j<8;j++){
 		test[j*3+0] = j;
 		test[j*3+1] = j;
 		test[j*3+2] = j;
 	}
-	UARTSend( (uint8_t *)test, PACKET_SIZE-3 );
-	/* the real code:
+	UARTSend( (uint8_t *)test, PACKET_SIZE-3 );*/
+	// the real code:
 	uint8_t* temp = send_buffer_ptr;
 	send_buffer_ptr = rec_buffer_ptr;
 	rec_buffer_ptr = temp;
-	UARTSend( ((uint8_t *)((send_buffer_ptr)+3*sizeof(uint8_t))), PACKET_SIZE-3 );*/
+	//UARTSend( ((uint8_t *)((send_buffer_ptr)+3*sizeof(uint8_t))), PACKET_SIZE-3 );
+	UARTSend( (uint8_t *)send_buffer_ptr, (num_packets)*(PACKET_SIZE-HEADER_SIZE+1) );
+	num_packets = 0;
+	//NVIC_EnableIRQ(EINT3_IRQn);
 }
 
+uint32_t counter=0;
+
 void PIOINT3_IRQHandler(void){
-	send_ads_command(ADS_RDATA);
-	SSP_Receive( SSP_NUM, (uint8_t *)(rec_buffer_ptr), PACKET_SIZE );
+	NVIC_DisableIRQ(EINT3_IRQn);
+	//int i;for(i=0;i<PACKET_SIZE-1;i++){
+		//rec_buffer_ptr[i] = (rec_buffer_ptr[i] << 1) + (rec_buffer_ptr[i+1] >> 7);
+	//}
+	if(num_packets>0){
+		rec_buffer_ptr[(num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = 119;
+		int i;for(i=HEADER_SIZE;i<PACKET_SIZE;i++){
+			if(temp_buffer[i]==119 || temp_buffer[i]==121)temp_buffer[i]++;
+			rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
+			//rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = i-HEADER_SIZE;
+		}
+	}
+	if(num_packets<max_num_packets){
+		counter++;
+		if(counter%2){
+			send_ads_command(ADS_RDATA);
+			//clock pulse
+			SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
+			num_packets++;
+		}else{//drop the packet
+			send_ads_command(ADS_RDATA);
+			//clock pulse
+			SSP_Receive( SSP_NUM, (uint8_t *)unused_buffer, PACKET_SIZE );
+		}
+	}else{
+		send_data_to_matlab();
+	}
+	NVIC_EnableIRQ(EINT3_IRQn);
 	//send_ads_command(ADS_RDATA);
 	//SSP_Receive( SSP_NUM, (uint8_t *)rec_buffer, PACKET_SIZE );
 	//volatile int i=0;for(i=0;i<100000;i++);
@@ -144,6 +189,8 @@ void UART_IRQHandler(void)
 int main(void) {
 	rec_buffer_ptr = (uint8_t*)buff1;
 	send_buffer_ptr = (uint8_t*)buff2;
+	num_packets = 0;
+	max_num_packets = MAX_BUFFER_SIZE/(PACKET_SIZE-HEADER_SIZE+1);
 
 	SystemInit();
 
@@ -155,12 +202,14 @@ int main(void) {
 
 	/* NVIC is installed inside UARTInit file. */
 		UARTInit(UART_BAUD);
+		//NVIC_SetPriority(UART_IRQn,2);
 
 	//data ready pin
 	GPIOSetDir( NDRDY_PORT, NDRDY_BIT, 0 );
 	GPIOSetInterrupt( NDRDY_PORT, NDRDY_BIT, 0,	0, 0 );
 	GPIOIntEnable( NDRDY_PORT, NDRDY_BIT );
 	NVIC_EnableIRQ(EINT3_IRQn);
+	//NVIC_SetPriority(EINT3_IRQn,10);
 
 	//reset pin
 	GPIOSetDir( NRST_PORT, NRST_BIT, 1 );
@@ -188,7 +237,7 @@ int main(void) {
 		//SSP_Receive( SSP_NUM, (uint8_t *)rec_buffer, PACKET_SIZE );
 		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
 		//send_ads_command(0xAA);//ADS_START);
-		volatile int i=0;for(i=0;i<100000;i++);
+		volatile int i=0;for(i=0;i<1000;i++);
 		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
 		//volatile int l=0;for(l=0;l<100000;l++);
 		//__WFI();
