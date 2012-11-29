@@ -32,7 +32,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 #define PACKET_SIZE 27
 #define HEADER_SIZE 3
-#define MAX_BUFFER_SIZE 25
+#define MAX_BUFFER_SIZE 100
 
 extern volatile uint32_t UARTCount;
 extern volatile uint8_t UARTBuffer[BUFSIZE];
@@ -87,17 +87,10 @@ void PIOINT3_IRQHandler(void){
 		}
 	}
 	if(num_packets<max_num_packets){
-		counter++;
-		if(counter%2){
 			send_ads_command(ADS_RDATA);
 			//clock pulse
 			SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
 			num_packets++;
-		}else{//drop the packet
-			send_ads_command(ADS_RDATA);
-			//clock pulse
-			SSP_Receive( SSP_NUM, (uint8_t *)unused_buffer, PACKET_SIZE );
-		}
 	}else{
 		send_data_to_matlab();
 	}
@@ -107,6 +100,71 @@ void PIOINT3_IRQHandler(void){
 	//volatile int i=0;for(i=0;i<100000;i++);
 	//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
 }
+
+int main(void) {
+	rec_buffer_ptr = (uint8_t*)buff1;
+	send_buffer_ptr = (uint8_t*)buff2;
+	num_packets = 0;
+	max_num_packets = MAX_BUFFER_SIZE/(PACKET_SIZE-HEADER_SIZE+1);
+
+	SystemInit();
+
+	SSP_IOConfig( SSP_NUM );	/* initialize SSP port, share pins with SPI1
+									on port2(p2.0-3). */
+	SSP_Init( SSP_NUM );
+
+	GPIOInit();
+
+	/* NVIC is installed inside UARTInit file. */
+		UARTInit(UART_BAUD);
+		//NVIC_SetPriority(UART_IRQn,2);
+
+	//data ready pin
+	GPIOSetDir( NDRDY_PORT, NDRDY_BIT, 0 );
+	//GPIOSetInterrupt( NDRDY_PORT, NDRDY_BIT, 0,	0, 0 );
+	//GPIOIntEnable( NDRDY_PORT, NDRDY_BIT );
+	//NVIC_EnableIRQ(EINT3_IRQn);
+	//NVIC_SetPriority(EINT3_IRQn,10);
+
+	//reset pin
+	GPIOSetDir( NRST_PORT, NRST_BIT, 1 );
+	GPIOSetValue( NRST_PORT, NRST_BIT, 1 );
+
+	GPIOSetValue( NRST_PORT, NRST_BIT, 0 );
+	volatile int k=0;for(k=0;k<10000;k++);
+	GPIOSetValue( NRST_PORT, NRST_BIT, 1 );
+	//send_ads_command(ADS_RDATAC);
+	send_ads_command(ADS_RESET);
+	send_ads_command(ADS_SDATAC);
+	send_ads_command(ADS_START);
+	//send_ads_command(ADS_RDATAC);
+	//uint8_t test[1];
+	//test[0] = 1;
+	//UARTSend( (uint8_t *)test, 1 );
+
+
+	// Enter an infinite loop, just incrementing a counter
+	uint8_t test[8];
+	while(1) {
+		volatile int j;for(j=0;j<8;j++){
+			test[j] = j+119;//0;
+		}
+		UARTSend( (uint8_t *)test, 8 );
+		//send_ads_command(ADS_START);
+		//send_ads_command(ADS_STOP);
+		//send_ads_command(ADS_RDATA);
+		//send_ads_command(0xff);
+		//SSP_Receive( SSP_NUM, (uint8_t *)rec_buffer, PACKET_SIZE );
+		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
+		//send_ads_command(0xAA);//ADS_START);
+		volatile int i=0;for(i=0;i<1000;i++);
+		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
+		//volatile int l=0;for(l=0;l<100000;l++);
+		//__WFI();
+	}
+	return 0 ;
+}
+
 
 #if CONFIG_UART_DEFAULT_UART_IRQHANDLER==0
 /*****************************************************************************
@@ -184,63 +242,3 @@ void UART_IRQHandler(void)
   return;
 }
 #endif
-
-
-int main(void) {
-	rec_buffer_ptr = (uint8_t*)buff1;
-	send_buffer_ptr = (uint8_t*)buff2;
-	num_packets = 0;
-	max_num_packets = MAX_BUFFER_SIZE/(PACKET_SIZE-HEADER_SIZE+1);
-
-	SystemInit();
-
-	SSP_IOConfig( SSP_NUM );	/* initialize SSP port, share pins with SPI1
-									on port2(p2.0-3). */
-	SSP_Init( SSP_NUM );
-
-	GPIOInit();
-
-	/* NVIC is installed inside UARTInit file. */
-		UARTInit(UART_BAUD);
-		//NVIC_SetPriority(UART_IRQn,2);
-
-	//data ready pin
-	GPIOSetDir( NDRDY_PORT, NDRDY_BIT, 0 );
-	GPIOSetInterrupt( NDRDY_PORT, NDRDY_BIT, 0,	0, 0 );
-	GPIOIntEnable( NDRDY_PORT, NDRDY_BIT );
-	NVIC_EnableIRQ(EINT3_IRQn);
-	//NVIC_SetPriority(EINT3_IRQn,10);
-
-	//reset pin
-	GPIOSetDir( NRST_PORT, NRST_BIT, 1 );
-	GPIOSetValue( NRST_PORT, NRST_BIT, 1 );
-
-	GPIOSetValue( NRST_PORT, NRST_BIT, 0 );
-	volatile int k=0;for(k=0;k<10000;k++);
-	GPIOSetValue( NRST_PORT, NRST_BIT, 1 );
-	//send_ads_command(ADS_RDATAC);
-	send_ads_command(ADS_RESET);
-	send_ads_command(ADS_SDATAC);
-	send_ads_command(ADS_START);
-	//send_ads_command(ADS_RDATAC);
-	//uint8_t test[1];
-	//test[0] = 1;
-	//UARTSend( (uint8_t *)test, 1 );
-
-
-	// Enter an infinite loop, just incrementing a counter
-	while(1) {
-		//send_ads_command(ADS_START);
-		//send_ads_command(ADS_STOP);
-		//send_ads_command(ADS_RDATA);
-		//send_ads_command(0xff);
-		//SSP_Receive( SSP_NUM, (uint8_t *)rec_buffer, PACKET_SIZE );
-		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
-		//send_ads_command(0xAA);//ADS_START);
-		volatile int i=0;for(i=0;i<1000;i++);
-		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
-		//volatile int l=0;for(l=0;l<100000;l++);
-		//__WFI();
-	}
-	return 0 ;
-}
