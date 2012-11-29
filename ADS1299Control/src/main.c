@@ -76,11 +76,16 @@ uint32_t counter=0;
 void PIOINT3_IRQHandler(void){
 	NVIC_DisableIRQ(EINT3_IRQn);
 	//int i;for(i=0;i<PACKET_SIZE-1;i++){
-		//rec_buffer_ptr[i] = (rec_buffer_ptr[i] << 1) + (rec_buffer_ptr[i+1] >> 7);
+	//	rec_buffer_ptr[i] = (rec_buffer_ptr[i] << 1) + (rec_buffer_ptr[i+1] >> 7);
 	//}
 	if(num_packets>0){
 		rec_buffer_ptr[(num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = 119;
 		int i;for(i=HEADER_SIZE;i<PACKET_SIZE;i++){
+			if(i<PACKET_SIZE-1){
+				temp_buffer[i] = (temp_buffer[i] << 1) + (temp_buffer[i+1] >> 7);
+			}else{
+				temp_buffer[i] = (temp_buffer[i] << 1);
+			}
 			if(temp_buffer[i]==119 || temp_buffer[i]==121)temp_buffer[i]++;
 			rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
 			//rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = i-HEADER_SIZE;
@@ -121,9 +126,9 @@ int main(void) {
 
 	//data ready pin
 	GPIOSetDir( NDRDY_PORT, NDRDY_BIT, 0 );
-	//GPIOSetInterrupt( NDRDY_PORT, NDRDY_BIT, 0,	0, 0 );
-	//GPIOIntEnable( NDRDY_PORT, NDRDY_BIT );
-	//NVIC_EnableIRQ(EINT3_IRQn);
+	GPIOSetInterrupt( NDRDY_PORT, NDRDY_BIT, 0,	0, 0 );
+	GPIOIntEnable( NDRDY_PORT, NDRDY_BIT );
+	NVIC_EnableIRQ(EINT3_IRQn);
 	//NVIC_SetPriority(EINT3_IRQn,10);
 
 	//reset pin
@@ -136,6 +141,7 @@ int main(void) {
 	//send_ads_command(ADS_RDATAC);
 	send_ads_command(ADS_RESET);
 	send_ads_command(ADS_SDATAC);
+	set_sample_rate(SAMPLE_4000);
 	send_ads_command(ADS_START);
 	//send_ads_command(ADS_RDATAC);
 	//uint8_t test[1];
@@ -144,12 +150,12 @@ int main(void) {
 
 
 	// Enter an infinite loop, just incrementing a counter
-	uint8_t test[8];
+	//uint8_t test[8];
 	while(1) {
-		volatile int j;for(j=0;j<8;j++){
+		/*volatile int j;for(j=0;j<8;j++){
 			test[j] = j+119;//0;
 		}
-		UARTSend( (uint8_t *)test, 8 );
+		UARTSend( (uint8_t *)test, 8 );*/
 		//send_ads_command(ADS_START);
 		//send_ads_command(ADS_STOP);
 		//send_ads_command(ADS_RDATA);
@@ -157,12 +163,13 @@ int main(void) {
 		//SSP_Receive( SSP_NUM, (uint8_t *)rec_buffer, PACKET_SIZE );
 		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
 		//send_ads_command(0xAA);//ADS_START);
-		volatile int i=0;for(i=0;i<1000;i++);
+
 		//UARTSend( (uint8_t *)rec_buffer, PACKET_SIZE );
 		//volatile int l=0;for(l=0;l<100000;l++);
 		//__WFI();
+		volatile int i=0;for(i=0;i<1000;i++);
 	}
-	return 0 ;
+	//return 0 ;
 }
 
 
