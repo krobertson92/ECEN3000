@@ -33,17 +33,19 @@
 %         end
 %     end
  function DigitalLab()
-    grab=500
+    grab=50
     %b = Bluetooth('FireFly-B2C5',1,'InputBufferSize',2*25*grab,'OutputBufferSize',2*25*grab,'BytesAvailableFcnCount',2*25*grab,'BytesAvailableFcnMode','byte','BytesAvailableFcn',{@local_uart_callback});
-    b=serial('COM10','BaudRate',115200);%,'InputBufferSize',2*25*grab,'OutputBufferSize',2*25*grab,'BytesAvailableFcnCount',2*25*grab,'BytesAvailableFcnMode','byte','BytesAvailableFcn',{@local_uart_callback});
-    b.ReadAsyncMode='manual';
+    b=serial('COM25','BaudRate',115200,'InputBufferSize',2*25*grab,'OutputBufferSize',25*grab,'BytesAvailableFcnCount',25*grab,'BytesAvailableFcnMode','byte','BytesAvailableFcn',{@local_uart_callback});
+    %b.ReadAsyncMode='manual';
     %set(b,'Timeout',5);
     %set(b,'Terminator',121);
     
 %     vali=0;
     sync=-1;
-    global grabFirst grabFirsti f bufferA dtgraphA
+    global grabFirst grabFirsti f bufferA dtgraphA startA dtgraphBuffer
+    startA=0;
     grabFirst=zeros(25*grab);
+    dtgraphBuffer=zeros(20*grab);
     for k=1:grab-2
         grabFirst(25*k+0)=1;
         grabFirst(25*k+1)=1;
@@ -60,13 +62,18 @@
     readasync(b);
     idlecount=0;
     dummyoutput = ones(1,grab);
+    
+    while(true)
+        pause(0.1);
+    end
+    
     while(true)
         disp('waiting...');
         pause(.1);
         try
             disp('writing to ensure stream remains open...');
             fwrite(b,dummyoutput,'sync');
-            local_uart_callback(b,0)
+            %local_uart_callback(b,0)
         catch err
             disp(err)
             disp('write failed. resetting...')
@@ -104,11 +111,16 @@
         %bytsA=b.bytesAvailable
         %clrdevice(b);
         %fscanf(b)
+        pause(.1);
         try
             disp('recieving data...');
             pause(0.1)
             ts = get(b,'TransferStatus')
             bav=get(b, 'BytesAvailable')
+            if(bav>0&&startA==0)
+                fread(b);
+            end
+            startA=1;
             while(bav<=500)
                 pause(0.1)
                 bav=get(b, 'BytesAvailable')
@@ -116,7 +128,7 @@
             bav=get(b, 'BytesAvailable')
             if(bav>500)
                 disp('bytes are available...')
-                [A,~,msg] = fread(b);%,25*grab);
+                [A,~,msg] = fread(b,bav);%fread(b);%,25*grab);
                 if(~strcmp(msg,''))%'The specified amount of data was not returned within the Timeout period.'))
                    error(msg);
                 else
@@ -126,16 +138,14 @@
                     if(size(bufferA,1)>=25*grab)
                         disp('bufferA sufficiently large...')
                         sync=find(bufferA(1:25)==119);
+                        
                         disp('picking out data...');
+                        disp(sync);
                         readBuf=bufferA((sync+1):(25*grab-(25-sync)));
                         %readBuf=readBuf(grabFirsti);%channel 1
                        % vertcat(readBuf((sync+1):end),readBuf(1:sync));
                        
                        disp('preparing plot...');
-                       
-                       disp(readBuf(grabFirsti(1)))
-                       disp(readBuf(grabFirsti(2)))
-                       disp(readBuf(grabFirsti(3)))
                        
                        for i=1:3:size(grabFirsti)-3
                         readBuf(ceil(i/3))= 2^((2)*8)*readBuf(grabFirsti(i)+1) + 2^((1)*8)*readBuf(grabFirsti(i+1)+1) + 2^((0)*8)*readBuf(grabFirsti(i+2)+1);
@@ -150,18 +160,13 @@
                                 signext = signext+2^i;
                             end
                             dtgraph(ceil(i/3)) = -1*(1+bitcmp(signext,'uint32'));
-                            disp('Neg')
                         else
                             dtgraph(ceil(i/3)) = readBuf(ceil(i/3));
-                            disp('Pos')
                         end
-                        disp(dtgraph(ceil(i/3)))
-                        disp(ceil(i/3))
                        end
+                       dtgraphBuffer=vertcat(dtgraphBuffer(1:end-floor(size(grabFirsti)/3)-1),readBuf(1:floor(size(grabFirsti)/3)));
                        %disp(dec2bin(readBuf(1:size(grabFirsti)/3)));
                        %dtgraph=bin2num(quantizer([24,1]),num2bin(quantizer([24,1]),readBuf(1:size(grabFirsti)/3),24));
-                       disp(binary(1))
-                       disp(dtgraph(1))
                         % dtgraphA(1:end-size(dtgraph)+1)=dtgraphA(size(dtgraph):end);
                         
                         %disp(size(dtgraphA(end-size(dtgraph)+1:end)))
@@ -170,12 +175,13 @@
                         
                         %dtgraph(55*250/3:65*250/3)=0;
                         dtgraphPlotA=abs(fft(dtgraph));
-                        disp('filtering...')
+                        disp('filtering...');
                         %dtgraphPlotA(floor(57/(250/2*3/2)*size(dtgraphPlotA,1)):ceil(68/(250/2*3/2)*size(dtgraphPlotA,1)))=0;
-                        disp('truncating')
+                        disp('truncating');
                         dtgraphPlot = dtgraphPlotA(1:ceil(100/(250/2*3/2)*size(dtgraphPlotA,1)));
                         disp('plotting...');
                         disp(size(dtgraph));
+                        
                         %f = 250/2*3/2*linspace(0,1,size(dtgraphPlot,1));
                         t1 = 100*linspace(0,1,size(dtgraph,2));
                         tplot = abs(ifft(dtgraphPlot));
@@ -183,8 +189,7 @@
                         f = 100*linspace(0,1,size(dtgraphPlot,2));
                         %disp(size(f))
                         %disp(size(dtgraphPlot))
-                        disp(t1);
-                        subplot(3,1,1);plt1=plot(dtgraph');
+                        subplot(3,1,1);plt1=plot(dtgraphBuffer);
                         %ylim([0 1])
                         subplot(3,1,2);plt1=plot(f,dtgraphPlot);
                         %ylim([0 10])
@@ -202,10 +207,10 @@
             else
                 if bav==0
                     disp('no bytes available...')
-                   [~,~,msg] = fread(b);%,25*grab);
-                    if(~strcmp(msg,''))%'The specified amount of data was not returned within the Timeout period.'))
-                       error(msg);
-                    end
+%                    [~,~,msg] = fscanf(b);%,25*grab);
+%                     if(~strcmp(msg,''))%'The specified amount of data was not returned within the Timeout period.'))
+%                        error(msg);
+%                     end
                 end
             end
             
