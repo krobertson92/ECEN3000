@@ -32,7 +32,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 #define PACKET_SIZE 27
 #define HEADER_SIZE 3
-#define MAX_BUFFER_SIZE 100
+#define MAX_BUFFER_SIZE 500
 
 extern volatile uint32_t UARTCount;
 extern volatile uint8_t UARTBuffer[BUFSIZE];
@@ -74,32 +74,33 @@ void send_data_to_matlab() {
 uint32_t counter=0;
 
 void PIOINT3_IRQHandler(void){
-	NVIC_DisableIRQ(EINT3_IRQn);
+	//NVIC_DisableIRQ(EINT3_IRQn);
 	//int i;for(i=0;i<PACKET_SIZE-1;i++){
 	//	rec_buffer_ptr[i] = (rec_buffer_ptr[i] << 1) + (rec_buffer_ptr[i+1] >> 7);
 	//}
+
+	send_ads_command(ADS_RDATA);
+	//clock pulse
+	SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
+	num_packets++;
+
 	if(num_packets>0){
 		rec_buffer_ptr[(num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = 119;
 		int i;for(i=HEADER_SIZE;i<PACKET_SIZE;i++){
-			if(i<PACKET_SIZE-1){
+			/*if(i<PACKET_SIZE-1){
 				temp_buffer[i] = (temp_buffer[i] << 1) + (temp_buffer[i+1] >> 7);
 			}else{
 				temp_buffer[i] = (temp_buffer[i] << 1);
-			}
+			}*/
 			if(temp_buffer[i]==119 || temp_buffer[i]==121)temp_buffer[i]++;
 			rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
 			//rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = i-HEADER_SIZE;
 		}
 	}
-	if(num_packets<max_num_packets){
-			send_ads_command(ADS_RDATA);
-			//clock pulse
-			SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
-			num_packets++;
-	}else{
+	if(num_packets>=max_num_packets){
 		send_data_to_matlab();
 	}
-	NVIC_EnableIRQ(EINT3_IRQn);
+	//NVIC_EnableIRQ(EINT3_IRQn);
 	//send_ads_command(ADS_RDATA);
 	//SSP_Receive( SSP_NUM, (uint8_t *)rec_buffer, PACKET_SIZE );
 	//volatile int i=0;for(i=0;i<100000;i++);
@@ -128,7 +129,6 @@ int main(void) {
 	GPIOSetDir( NDRDY_PORT, NDRDY_BIT, 0 );
 	GPIOSetInterrupt( NDRDY_PORT, NDRDY_BIT, 0,	0, 0 );
 	GPIOIntEnable( NDRDY_PORT, NDRDY_BIT );
-	NVIC_EnableIRQ(EINT3_IRQn);
 	//NVIC_SetPriority(EINT3_IRQn,10);
 
 	//reset pin
@@ -138,10 +138,16 @@ int main(void) {
 	GPIOSetValue( NRST_PORT, NRST_BIT, 0 );
 	volatile int k=0;for(k=0;k<10000;k++);
 	GPIOSetValue( NRST_PORT, NRST_BIT, 1 );
-	//send_ads_command(ADS_RDATAC);
-	send_ads_command(ADS_RESET);
+	for(k=0;k<10000;k++);
+	//send_ads_command(ADS_RESET);
+
 	send_ads_command(ADS_SDATAC);
-	set_sample_rate(SAMPLE_4000);
+	for(k=0;k<1000;k++);
+	set_sample_rate(SAMPLE_500);
+	for(k=0;k<1000;k++);
+	send_ads_command(ADS_RDATAC);
+	for(k=0;k<1000;k++);
+	NVIC_EnableIRQ(EINT3_IRQn);
 	send_ads_command(ADS_START);
 	//send_ads_command(ADS_RDATAC);
 	//uint8_t test[1];
