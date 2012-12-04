@@ -31,8 +31,8 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #include "ADS1299_commands.h"
 
 #define PACKET_SIZE 27
-#define HEADER_SIZE 3
-#define MAX_BUFFER_SIZE 500
+#define HEADER_SIZE 0
+#define MAX_BUFFER_SIZE 28
 
 extern volatile uint32_t UARTCount;
 extern volatile uint8_t UARTBuffer[BUFSIZE];
@@ -72,13 +72,14 @@ void send_data_to_matlab() {
 }
 
 uint32_t counter=0;
+uint8_t in_progress=0;
 
 void PIOINT3_IRQHandler(void){
 	//NVIC_DisableIRQ(EINT3_IRQn);
 	//int i;for(i=0;i<PACKET_SIZE-1;i++){
 	//	rec_buffer_ptr[i] = (rec_buffer_ptr[i] << 1) + (rec_buffer_ptr[i+1] >> 7);
 	//}
-
+	GPIOIntClear(NRST_PORT,NRST_BIT);
 	send_ads_command(ADS_RDATA);
 	//clock pulse
 	SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
@@ -93,12 +94,21 @@ void PIOINT3_IRQHandler(void){
 				temp_buffer[i] = (temp_buffer[i] << 1);
 			}*/
 			if(temp_buffer[i]==119 || temp_buffer[i]==121)temp_buffer[i]++;
-			rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
+
+				rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
 			//rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = i-HEADER_SIZE;
 		}
 	}
 	if(num_packets>=max_num_packets){
-		send_data_to_matlab();
+		if(in_progress==0){
+			in_progress=1;
+			send_data_to_matlab();
+			in_progress = 0;
+		}else{
+			uint8_t zeros[100];
+			int u;for(u=0;u<100;u++){zeros[u]=0;}
+			UARTSend( (uint8_t *)zeros, 100 );
+		}
 	}
 	//NVIC_EnableIRQ(EINT3_IRQn);
 	//send_ads_command(ADS_RDATA);
@@ -143,7 +153,7 @@ int main(void) {
 
 	send_ads_command(ADS_SDATAC);
 	for(k=0;k<1000;k++);
-	set_sample_rate(SAMPLE_500);
+	set_sample_rate(SAMPLE_250);
 	for(k=0;k<1000;k++);
 	send_ads_command(ADS_RDATAC);
 	for(k=0;k<1000;k++);

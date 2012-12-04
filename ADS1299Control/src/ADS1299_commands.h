@@ -29,6 +29,7 @@ void send_ads_command(uint8_t command) {
 #define SAMPLE_1000 0b10010100
 #define SAMPLE_2000 0b10010011
 #define SAMPLE_4000 0b10010010
+#define SAMPLE_16000 0b10010000
 
 void set_sample_rate(uint8_t reg_val){
 	uint8_t first_byte[1];
