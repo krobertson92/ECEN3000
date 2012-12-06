@@ -82,23 +82,26 @@ void PIOINT3_IRQHandler(void){
 	GPIOIntClear(NRST_PORT,NRST_BIT);
 	send_ads_command(ADS_RDATA);
 	//clock pulse
-	SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
-	num_packets++;
+	if(counter%100==0){
+		SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
+		num_packets++;
 
-	if(num_packets>0){
-		rec_buffer_ptr[(num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = 119;
-		int i;for(i=HEADER_SIZE;i<PACKET_SIZE;i++){
-			/*if(i<PACKET_SIZE-1){
-				temp_buffer[i] = (temp_buffer[i] << 1) + (temp_buffer[i+1] >> 7);
-			}else{
-				temp_buffer[i] = (temp_buffer[i] << 1);
-			}*/
-			if(temp_buffer[i]==119 || temp_buffer[i]==121)temp_buffer[i]++;
+		if(num_packets>0){
+			rec_buffer_ptr[(num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = 119;
+			int i;for(i=HEADER_SIZE;i<PACKET_SIZE;i++){
+				/*if(i<PACKET_SIZE-1){
+					temp_buffer[i] = (temp_buffer[i] << 1) + (temp_buffer[i+1] >> 7);
+				}else{
+					temp_buffer[i] = (temp_buffer[i] << 1);
+				}*/
+				if(temp_buffer[i]==119 || temp_buffer[i]==121)temp_buffer[i]++;
 
-				rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
-			//rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = i-HEADER_SIZE;
+					rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = temp_buffer[i];
+				//rec_buffer_ptr[(i-HEADER_SIZE+1) + (num_packets-1)*(PACKET_SIZE-HEADER_SIZE+1)] = i-HEADER_SIZE;
+			}
 		}
 	}
+	counter++;
 	if(num_packets>=max_num_packets){
 		if(in_progress==0){
 			in_progress=1;
