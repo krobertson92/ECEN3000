@@ -24,6 +24,22 @@ void send_ads_command(uint8_t command) {
 	SSP_Send( SSP_NUM, comm, 1 );
 }
 
+void set_srb() {
+	uint8_t first_byte[1];
+	uint8_t second_byte[1];
+	uint8_t set_to[1];
+	first_byte[0] = 0b01010101;
+	second_byte[0] = 0b00000001;
+	set_to[0] = 0b00100000;
+	int i;for(i=0;i<10000;i++);
+	SSP_Send( SSP_NUM, first_byte, 1 );
+	for(i=0;i<10000;i++);
+	SSP_Send( SSP_NUM, second_byte, 1 );
+	for(i=0;i<10000;i++);
+	SSP_Send( SSP_NUM, set_to, 1 );
+	for(i=0;i<10000;i++);
+}
+
 #define SAMPLE_250 0b10010110
 #define SAMPLE_500 0b10010101
 #define SAMPLE_1000 0b10010100

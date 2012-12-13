@@ -79,10 +79,11 @@ void PIOINT3_IRQHandler(void){
 	//int i;for(i=0;i<PACKET_SIZE-1;i++){
 	//	rec_buffer_ptr[i] = (rec_buffer_ptr[i] << 1) + (rec_buffer_ptr[i+1] >> 7);
 	//}
-	GPIOIntClear(NRST_PORT,NRST_BIT);
+	GPIOIntClear(NDRDY_PORT,NDRDY_BIT);
 	send_ads_command(ADS_RDATA);
 	//clock pulse
-	if(counter%100==0){
+
+	if(1){
 		SSP_Receive( SSP_NUM, (uint8_t *)temp_buffer, PACKET_SIZE );
 		num_packets++;
 
@@ -156,12 +157,15 @@ int main(void) {
 
 	send_ads_command(ADS_SDATAC);
 	for(k=0;k<1000;k++);
-	set_sample_rate(SAMPLE_250);
+	set_sample_rate(SAMPLE_500);
+	for(k=0;k<1000;k++);
+	//set_srb();
 	for(k=0;k<1000;k++);
 	send_ads_command(ADS_RDATAC);
 	for(k=0;k<1000;k++);
 	NVIC_EnableIRQ(EINT3_IRQn);
 	send_ads_command(ADS_START);
+	//send_ads_command(ADS_RDATA);
 	//send_ads_command(ADS_RDATAC);
 	//uint8_t test[1];
 	//test[0] = 1;
@@ -190,81 +194,3 @@ int main(void) {
 	}
 	//return 0 ;
 }
-
-
-#if CONFIG_UART_DEFAULT_UART_IRQHANDLER==0
-/*****************************************************************************
-** Function name:		UART_IRQHandler
-**
-** Descriptions:		UART interrupt handler
-**
-** parameters:			None
-** Returned value:		None
-**
-*****************************************************************************/
-void UART_IRQHandler(void)
-{
-  uint8_t IIRValue, LSRValue;
-  uint8_t Dummy = Dummy;
-
-  IIRValue = LPC_UART->IIR;
-
-  IIRValue >>= 1;			/* skip pending bit in IIR */
-  IIRValue &= 0x07;			/* check bit 1~3, interrupt identification */
-  if (IIRValue == IIR_RLS)		/* Receive Line Status */
-  {
-    LSRValue = LPC_UART->LSR;
-    /* Receive Line Status */
-    if (LSRValue & (LSR_OE | LSR_PE | LSR_FE | LSR_RXFE | LSR_BI))
-    {
-      /* There are errors or break interrupt */
-      /* Read LSR will clear the interrupt */
-      UARTStatus = LSRValue;
-      Dummy = LPC_UART->RBR;	/* Dummy read on RX to clear
-								interrupt, then bail out */
-      return;
-    }
-    if (LSRValue & LSR_RDR)	/* Receive Data Ready */
-    {
-      /* If no error on RLS, normal ready, save into the data buffer. */
-      /* Note: read RBR will clear the interrupt */
-      UARTBuffer[UARTCount++] = LPC_UART->RBR;
-      send_data_to_matlab();
-      if (UARTCount == BUFSIZE)
-      {
-        UARTCount = 0;		/* buffer overflow */
-      }
-    }
-  }
-  else if (IIRValue == IIR_RDA)	/* Receive Data Available */
-  {
-    /* Receive Data Available */
-    UARTBuffer[UARTCount++] = LPC_UART->RBR;
-    send_data_to_matlab();
-    if (UARTCount == BUFSIZE)
-    {
-      UARTCount = 0;		/* buffer overflow */
-    }
-  }
-  else if (IIRValue == IIR_CTI)	/* Character timeout indicator */
-  {
-    /* Character Time-out indicator */
-    UARTStatus |= 0x100;		/* Bit 9 as the CTI error */
-  }
-  else if (IIRValue == IIR_THRE)	/* THRE, transmit holding register empty */
-  {
-    /* THRE interrupt */
-    LSRValue = LPC_UART->LSR;		/* Check status in the LSR to see if
-								valid data in U0THR or not */
-    if (LSRValue & LSR_THRE)
-    {
-      UARTTxEmpty = 1;
-    }
-    else
-    {
-      UARTTxEmpty = 0;
-    }
-  }
-  return;
-}
-#endif
